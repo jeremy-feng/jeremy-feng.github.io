@@ -2849,7 +2849,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                     <span class="md-ellipsis">
                       
-                        阅读时间 1 分钟
+                        阅读时间 2 分钟
                       
                     </span>
                   </div>
@@ -3034,36 +3034,40 @@
 <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># ruff: noqa</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div>
+<p>或者在 <code>pyproject.toml</code> 中配置：</p>
+<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;*.py&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>这样就可以对所有的 <code>.py</code> 文件禁用 <code>ruff</code>。</p>
 <h2 id="配置格式化规则">配置格式化规则<a class="headerlink" href="#配置格式化规则" title="定位到这">&para;</a></h2>
 <p>以下部分转载自 <a href="https://mp.weixin.qq.com/s/yKMFQl0UM0zb3nl7PFfE7w" target="_blank" rel="noopener">如何写出“高颜值”的 Python 代码</a>。已获得作者授权。</p>
 <p><code>ruff</code>默认的格式化规则基本上兼容<code>black</code>，但如果你想要<strong>「自定义」</strong>调整部分的格式化规则，譬如在引号的使用上，你更倾向于使用单引号，在<code>ruff</code>中也可以很轻松的实现。</p>
 <p><code>ruff</code>中推荐以具体的<strong>「项目」</strong>为控制范围，通过在<strong>「项目根目录」</strong>中创建<code>pyproject.toml</code>或<code>ruff.toml</code>来编写具体的规则，譬如在下面的示例<code>ruff.toml</code>文件中，我们声明了优先使用单引号：</p>
-<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[format]</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 使用单引号</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
+<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[format]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 使用单引号</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
 </code></pre></div>
 <p>格式化结果中就会对应的优先使用单引号。</p>
 <p>或是限制每行最多字符数量：</p>
-<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 限制每行最多 20 个字符</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">[format]</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1"># 使用单引号</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
+<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 限制每行最多 20 个字符</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">[format]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1"># 使用单引号</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
 </code></pre></div>
 <p>设置缩进使用单个<code>Tab</code>符（默认为 4 个空格）：</p>
-<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[format]</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 使用单引号</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 缩进使用单个 tab</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tab&quot;</span>
-</code></pre></div>
-<p>且<code>ruff</code>还支持对 docstring 注释中的代码片段进行识别并格式化：</p>
 <div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[format]</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 使用单引号</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 启用 docstring 代码片段格式化</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">docstring-code-format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 缩进使用单个 tab</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tab&quot;</span>
+</code></pre></div>
+<p>且<code>ruff</code>还支持对 docstring 注释中的代码片段进行识别并格式化：</p>
+<div class="highlight"><span class="filename">ruff.toml</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">[format]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1"># 使用单引号</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;single&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1"># 启用 docstring 代码片段格式化</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos="5 "></span></a><span class="n">docstring-code-format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
 <p>更多有关<code>ruff</code>代码格式化功能的细节，请移步 <a href="https://docs.astral.sh/ruff/formatter/" target="_blank" rel="noopener">ruff 官方文档</a>了解更多。</p>
 
@@ -3079,7 +3083,7 @@
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 4 月 11 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 10 月 18 日</span>
       </span>
     
     
