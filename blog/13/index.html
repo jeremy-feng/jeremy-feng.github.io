@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/8/">
+        <link rel="next" href="../2024/12/">
       
       
         
@@ -651,6 +651,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -688,6 +690,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2665,6 +2695,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#black-格式化-python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Black 格式化 Python 代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#修改-vs-code-键盘快捷键" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2763,17 +2804,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-实现多列滚动计算以更优波动率为例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 实现多列滚动计算——以“更优波动率”为例
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2788,6 +2818,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-02-05 00:00:00">2023年2月5日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="black-格式化-python-代码"><a class="toclink" href="../python-formatter-black/">Black 格式化 Python 代码</a></h2>
+<p>用 Black 自动格式化 Python 代码，编写规范、美观的 Python 代码，让阅读代码变成一种享受。</p>
+<p>本文记录了在 VS Code 中安装 Black 时遇到的问题和解决方案。</p>
+<p><img alt="python-formatter-black" src="../assets/2023-02-05-python-formatter-black/index-image/python-formatter-black.gif" width="200px" /></p>
+
+    <nav class="md-post__action">
+      <a href="../python-formatter-black/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3278,63 +3355,6 @@ $$</p>
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-22 00:00:00">2023年1月22日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-实现多列滚动计算以更优波动率为例"><a class="toclink" href="../rolling-in-python/">Python 实现多列滚动计算——以“更优波动率”为例</a></h2>
-<p>对单列数据进行滚动计算，可以使用常规的<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>。</p>
-<p>如果需要对多列数据进行滚动计算，可以考虑下面两种方法：</p>
-<ol>
-<li>引入外部包<code>numpy_ext</code>，使用其中的<code class="highlight"><span class="n">rollling_apply</span><span class="p">()</span></code>方法。</li>
-<li>在<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>中加入参数<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>。</li>
-</ol>
-<p>本文以方正金工发表的一篇研报中提出的计算“更优波动率”为例，实现了对多列数据进行滚动计算，并对上述两种方法总结如下：</p>
-<ol>
-<li><code class="highlight"><span class="n">numpy_ext</span><span class="o">.</span><span class="n">rollling_apply</span><span class="p">()</span></code>需要引入外部包<code class="highlight"><span class="n">numpy_ext</span></code>，该方法接受需要进行滚动计算的多个 Series，并返回计算出的一个数组。</li>
-<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>是 Pandas 内置的函数（需要升级到较新的版本），指定<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>后，就可以对数据框中的多列进行滚动计算，并返回一个数据框。若返回的多列结果相同，我们只需要取出其中一列即可。</li>
-<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>使用了<code class="highlight"><span class="n">engine</span><span class="o">=</span><span class="s1">&#39;numba&#39;</span></code>，计算速度更快。</li>
-</ol>
-
-    <nav class="md-post__action">
-      <a href="../rolling-in-python/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3383,13 +3403,13 @@ $$</p>
         
         
           
-          <a href="../2024/8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 8 月" rel="next">
+          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 8 月
+                2024 年 12 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

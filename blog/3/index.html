@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/8/">
+        <link rel="next" href="../2024/12/">
       
       
         
@@ -651,6 +651,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -688,6 +690,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2665,6 +2695,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#迁移-conda-虚拟环境" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迁移 Conda 虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#在-python-中使用大语言模型进行文本分类" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2763,17 +2804,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-中的-set-和-list-转换时的随机性" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 中的 set 和 list 转换时的随机性
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2788,6 +2818,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-21 00:00:00">2024年1月21日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 5 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="迁移-conda-虚拟环境"><a class="toclink" href="../migrate-conda-environment/">迁移 Conda 虚拟环境</a></h2>
+<p>在一个设备上搭建了 Conda 虚拟环境后，如果需要在另一个设备上使用相同的环境，可以制作 <code>environment.yml</code> 文件，方便快速地迁移，而不需要再次手动安装包。</p>
+<p>本文记录了将 macOS 的 Conda 虚拟环境迁移到 Linux 的过程。</p>
+<p><img alt="image-20240121224354485" src="../assets/2024-01-21-migrate-conda-environment/index-image/image-20240121224354485.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../migrate-conda-environment/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3215,54 +3292,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-12-14 00:00:00">2023年12月14日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-中的-set-和-list-转换时的随机性"><a class="toclink" href="../randomness-when-convert-set-to-list/">Python 中的 set 和 list 转换时的随机性</a></h2>
-<p>在 Python 中，set 和 list 是两种不同的数据结构，它们在使用和功能上有很大的不同。set 是一个无序的、不重复的元素集合，而 list 是一个有序的、可重复的元素集合。</p>
-<p>然而，从 set 到 list 的过程并不是一个简单的转换，因为 set 本身就是无序的，所以从 set 到 list 的过程并没有固定的顺序。这意味着每次转换得到的 list 的元素顺序可能都会不同。</p>
-<p>在一些项目中，我们希望结果可重现，因此需要确保每一步的结果都没有随机性。许多随机性可以通过随机种子来控制，但从 set 到 list 的过程并不会被随机种子控制住，因此仍然存在随机性。</p>
-<p>本文探讨了从 set 到 list 的过程中的随机性，亦作为排查随机性来源的一次记录。</p>
-
-    <nav class="md-post__action">
-      <a href="../randomness-when-convert-set-to-list/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3311,13 +3340,13 @@
         
         
           
-          <a href="../2024/8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 8 月" rel="next">
+          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 8 月
+                2024 年 12 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

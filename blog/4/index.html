@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/8/">
+        <link rel="next" href="../2024/12/">
       
       
         
@@ -651,6 +651,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -688,6 +690,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2665,6 +2695,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-中的-set-和-list-转换时的随机性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 中的 set 和 list 转换时的随机性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#批量修改-jupyter-notebook-的内容" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2763,17 +2804,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-使用--以强制调用者使用关键字参数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 使用 * 以强制调用者使用关键字参数
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2788,6 +2818,54 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-12-14 00:00:00">2023年12月14日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-中的-set-和-list-转换时的随机性"><a class="toclink" href="../randomness-when-convert-set-to-list/">Python 中的 set 和 list 转换时的随机性</a></h2>
+<p>在 Python 中，set 和 list 是两种不同的数据结构，它们在使用和功能上有很大的不同。set 是一个无序的、不重复的元素集合，而 list 是一个有序的、可重复的元素集合。</p>
+<p>然而，从 set 到 list 的过程并不是一个简单的转换，因为 set 本身就是无序的，所以从 set 到 list 的过程并没有固定的顺序。这意味着每次转换得到的 list 的元素顺序可能都会不同。</p>
+<p>在一些项目中，我们希望结果可重现，因此需要确保每一步的结果都没有随机性。许多随机性可以通过随机种子来控制，但从 set 到 list 的过程并不会被随机种子控制住，因此仍然存在随机性。</p>
+<p>本文探讨了从 set 到 list 的过程中的随机性，亦作为排查随机性来源的一次记录。</p>
+
+    <nav class="md-post__action">
+      <a href="../randomness-when-convert-set-to-list/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3227,52 +3305,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-10-04 00:00:00">2023年10月4日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-使用--以强制调用者使用关键字参数"><a class="toclink" href="../python-keyward-only-argument/">Python 使用 <code>*</code> 以强制调用者使用关键字参数</a></h2>
-<p>在 Python 中，函数可以接受不同类型的参数，包括位置参数和关键字参数。位置参数必须按照特定的顺序传递给函数，而关键字参数可以根据参数名指定。</p>
-<p>在某些情况下，我们可能希望定义一个函数，其中一部分参数只能以关键字形式指定。为此，我们可以使用独立的 <code>*</code> 号来分隔这些参数。</p>
-
-    <nav class="md-post__action">
-      <a href="../python-keyward-only-argument/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3321,13 +3353,13 @@
         
         
           
-          <a href="../2024/8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 8 月" rel="next">
+          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 8 月
+                2024 年 12 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

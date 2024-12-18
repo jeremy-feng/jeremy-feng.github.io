@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/8/">
+        <link rel="next" href="../2024/12/">
       
       
         
@@ -651,6 +651,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -688,6 +690,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2665,6 +2695,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-conformal-learning-预测企业信贷违约情况" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Conformal Learning 预测企业信贷违约情况
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#深度学习-cheat-sheet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2763,17 +2804,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#gpt-论文精读笔记" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GPT 论文精读笔记
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2788,6 +2818,64 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-06-06 00:00:00">2023年6月6日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-conformal-learning-预测企业信贷违约情况"><a class="toclink" href="../nonconformist-for-firm-loan/">使用 Conformal Learning 预测企业信贷违约情况</a></h2>
+<p>本文使用 8 种经典的分类器，基于逆概率错误进行 Conformal Learning。</p>
+<p>本文使用了 <a href="https://github.com/donlnz/nonconformist" target="_blank" rel="noopener"><code>nonconformist</code></a> 包，它在使用 Conformal Learning 进行分类预测时的核心步骤是：</p>
+<ol>
+<li>在训练集上训练，这一步和常规的机器学习训练相同。</li>
+<li>在校准集上校准，得到每个校准集样本属于每个标签的预测概率。</li>
+<li>用一个 ErrFunc 衡量每个校准集样本的预测效果，作为 nonconformity score。最简单的是 <code>InverseProbabilityErrFunc</code>，它等于 <code>1-predict_probability[true_y]</code>。例如，某个样本的真实标签是 1，而模型预测出该样本属于标签 1 的概率是 0.9，则 ErrFunc 的值是 1-0.9=0.1。</li>
+<li>在测试集上测试，得到每个测试集样本属于每个标签的预测概率。</li>
+<li>用 ErrFunc 衡量每个测试集样本的预测效果。</li>
+<li>对每一个测试集样本，计算：有多少比例的校准集样本的 nonconformity score 大于或等于当前测试样本的 nonconformity score，记为 p。p 越大，说明校准集中有非常多的样本比当前测试集样本的预测效果更差，说明第 j 个测试样本属于第 i 个类的可能性越大。</li>
+<li>返回 p &gt; significance。得到一个 N*2 的 True 和 False 组成的二维矩阵，每一行代表一个测试集样本，每一列代表是否将该标签纳入该样本的 prediction set 中。</li>
+</ol>
+<p><img alt="image-20230606154615357" src="../assets/2023-06-06-nonconformist-for-firm-loan/index-image/image-20230606154615357.png" /></p>
+<p>本项目的完整展示文件在<a href="../assets/2023-06-06-nonconformist-for-firm-loan/nonconformist-for-firm-loan-slides.pdf">这里</a>。</p>
+
+    <nav class="md-post__action">
+      <a href="../nonconformist-for-firm-loan/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3386,58 +3474,6 @@ Your browser does not support the video tag.
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-05-01 00:00:00">2023年5月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 5 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="gpt-论文精读笔记"><a class="toclink" href="../gpt/">GPT 论文精读笔记</a></h2>
-<p>Generative Pre-trained Transformer（GPT）系列是由 OpenAI 提出的非常强大的预训练语言模型，这一系列的模型可以在非常复杂的 NLP 任务中取得非常惊艳的效果，例如文章生成，代码生成，机器翻译，问答等，而完成这些任务甚至 <mark>并不需要有监督学习进行模型微调</mark> 。</p>
-<p>本文梳理了 GPT 系列文章中介绍的的关键技术，包括：</p>
-<ul>
-<li>GPT-1 的解码器、微调、输入形式；</li>
-<li>GPT-2 的 Zero-shot 和 Prompt；</li>
-<li>GPT-3 的 Few-shot；</li>
-<li>Instruct GPT 如何通过基于人类反馈的强化学习生成有帮助的和安全的文本。</li>
-</ul>
-
-    <nav class="md-post__action">
-      <a href="../gpt/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3486,13 +3522,13 @@ Your browser does not support the video tag.
         
         
           
-          <a href="../2024/8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 8 月" rel="next">
+          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 8 月
+                2024 年 12 月
               </div>
             </div>
             <div class="md-footer__button md-icon">
