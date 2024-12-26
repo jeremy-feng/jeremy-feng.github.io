@@ -2861,6 +2861,19 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#即使某行语句报错也继续执行后续语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          即使某行语句报错，也继续执行后续语句
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3232,23 +3245,32 @@
 <a id="__codelineno-30-11" name="__codelineno-30-11"></a><a href="#__codelineno-30-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1"># 将值追加到变量的尾端。</span>
 </code></pre></div>
 <p>更多进阶内容可以参考：<a href="https://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">阮一峰 - Make 命令教程</a>。</p>
+<h3 id="即使某行语句报错也继续执行后续语句">即使某行语句报错，也继续执行后续语句<a class="headerlink" href="#即使某行语句报错也继续执行后续语句" title="定位到这">&para;</a></h3>
+<p>在 Makefile 中，可以使用 <code>-</code> 前缀来忽略命令的错误。</p>
+<div class="highlight"><span class="filename">Makefile</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a><span class="err">-pytest</span><span class="w"> </span><span class="err">--doctest-modules</span><span class="w"> </span><span class="err">--accept</span>
+</code></pre></div>
+<p>这样，即使 <code>pytest</code> 命令执行失败，Makefile 也会继续执行后续的命令。</p>
+<p>或者，可以使用 <code>|| true</code> 后缀来确保即使命令失败，整个语句也返回真值：</p>
+<div class="highlight"><span class="filename">Makefile</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos="1 "></span></a><span class="err">pytest</span><span class="w"> </span><span class="err">--doctest-modules</span><span class="w"> </span><span class="err">--accept</span><span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="err">true</span>
+</code></pre></div>
+<p>两种方法都可以达到目的，选择哪一种取决于个人偏好。 <code>-</code> 更简洁，<code>|| true</code> 更清晰地表达了“即使失败也继续”的意图。</p>
 <h2 id="使用示例">使用示例<a class="headerlink" href="#使用示例" title="定位到这">&para;</a></h2>
 <p>以下是一个 <code>Makefile</code> 示例。在项目中添加本文件后，只需要 <code>make lint</code> 就可以使用 <code>autocorrect</code> 来进行文本检查，<code>make all</code> 就可以一键更新博客。</p>
-<div class="highlight"><span class="filename">Makefile</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">lint</span> <span class="n">fix</span> <span class="n">serve</span> <span class="n">push</span> <span class="n">deploy</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos=" 2 "></span></a>
-<a id="__codelineno-31-3" name="__codelineno-31-3"></a><a href="#__codelineno-31-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">lint</span> <span class="n">fix</span> <span class="n">push</span> <span class="n">deploy</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4"></a><a href="#__codelineno-31-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nf">lint</span><span class="o">:</span>
-<a id="__codelineno-31-5" name="__codelineno-31-5"></a><a href="#__codelineno-31-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span>autocorrect<span class="w"> </span>--lint<span class="w"> </span>./
-<a id="__codelineno-31-6" name="__codelineno-31-6"></a><a href="#__codelineno-31-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="nf">fix</span><span class="o">:</span>
-<a id="__codelineno-31-7" name="__codelineno-31-7"></a><a href="#__codelineno-31-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span>autocorrect<span class="w"> </span>--fix<span class="w"> </span>./
-<a id="__codelineno-31-8" name="__codelineno-31-8"></a><a href="#__codelineno-31-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="nf">serve</span><span class="o">:</span>
-<a id="__codelineno-31-9" name="__codelineno-31-9"></a><a href="#__codelineno-31-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span>mkdocs<span class="w"> </span>serve
-<a id="__codelineno-31-10" name="__codelineno-31-10"></a><a href="#__codelineno-31-10"><span class="linenos" data-linenos="10 "></span></a><span class="nf">push</span><span class="o">:</span>
-<a id="__codelineno-31-11" name="__codelineno-31-11"></a><a href="#__codelineno-31-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="p">;</span><span class="se">\</span>
-<a id="__codelineno-31-12" name="__codelineno-31-12"></a><a href="#__codelineno-31-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;:sparkles: docs: update&quot;</span><span class="w"> </span><span class="p">;</span><span class="se">\</span>
-<a id="__codelineno-31-13" name="__codelineno-31-13"></a><a href="#__codelineno-31-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span>git<span class="w"> </span>push
-<a id="__codelineno-31-14" name="__codelineno-31-14"></a><a href="#__codelineno-31-14"><span class="linenos" data-linenos="14 "></span></a><span class="nf">deploy</span><span class="o">:</span>
-<a id="__codelineno-31-15" name="__codelineno-31-15"></a><a href="#__codelineno-31-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span>mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
+<div class="highlight"><span class="filename">Makefile</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">lint</span> <span class="n">fix</span> <span class="n">serve</span> <span class="n">push</span> <span class="n">deploy</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a><a href="#__codelineno-33-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a><a href="#__codelineno-33-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">lint</span> <span class="n">fix</span> <span class="n">push</span> <span class="n">deploy</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a><a href="#__codelineno-33-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nf">lint</span><span class="o">:</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a><a href="#__codelineno-33-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span>autocorrect<span class="w"> </span>--lint<span class="w"> </span>./
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a><a href="#__codelineno-33-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="nf">fix</span><span class="o">:</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a><a href="#__codelineno-33-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span>autocorrect<span class="w"> </span>--fix<span class="w"> </span>./
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a><a href="#__codelineno-33-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="nf">serve</span><span class="o">:</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9"></a><a href="#__codelineno-33-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span>mkdocs<span class="w"> </span>serve
+<a id="__codelineno-33-10" name="__codelineno-33-10"></a><a href="#__codelineno-33-10"><span class="linenos" data-linenos="10 "></span></a><span class="nf">push</span><span class="o">:</span>
+<a id="__codelineno-33-11" name="__codelineno-33-11"></a><a href="#__codelineno-33-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span>git<span class="w"> </span>add<span class="w"> </span>.<span class="w"> </span><span class="p">;</span><span class="se">\</span>
+<a id="__codelineno-33-12" name="__codelineno-33-12"></a><a href="#__codelineno-33-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;:sparkles: docs: update&quot;</span><span class="w"> </span><span class="p">;</span><span class="se">\</span>
+<a id="__codelineno-33-13" name="__codelineno-33-13"></a><a href="#__codelineno-33-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span>git<span class="w"> </span>push
+<a id="__codelineno-33-14" name="__codelineno-33-14"></a><a href="#__codelineno-33-14"><span class="linenos" data-linenos="14 "></span></a><span class="nf">deploy</span><span class="o">:</span>
+<a id="__codelineno-33-15" name="__codelineno-33-15"></a><a href="#__codelineno-33-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span>mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 </code></pre></div>
 
   
@@ -3263,7 +3285,7 @@
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 4 月 07 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 12 月 25 日</span>
       </span>
     
     
