@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/12/">
+        <link rel="next" href="../2025/1/">
       
       
         
@@ -653,6 +653,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -690,6 +692,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 1 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2695,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#线性回归的普通最小二乘估计" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性回归的普通最小二乘估计
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-实现多列滚动计算以更优波动率为例" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2793,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-tqdm-美化进度条" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 tqdm 美化进度条
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2818,6 +2848,67 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-01-23 00:00:00">2023年1月23日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="线性回归的普通最小二乘估计"><a class="toclink" href="../ols-estimator/">线性回归的普通最小二乘估计</a></h2>
+<p><img alt="ols" src="../assets/2023-01-23-ols-estimator/index-image/ols.png" width="60%" /></p>
+<p>本文推导了线性回归的普通最小二乘估计量的矩阵形式，并在一元线性回归的情境下给出了求和形式的表达式。
+$$
+Y=X \widehat{\beta}+e
+$$</p>
+<div class="arithmatex">\[
+\beta^{O L S}=\left(X^{\prime} X\right)^{-1} X^{\prime} Y
+\]</div>
+<p>在一元线性回归的情境下：</p>
+<div class="arithmatex">\[
+\beta_1^{O L S} =\frac{\overline{X Y}-\overline{X} * \overline{Y}}{\overline{X^2}-\left(\overline{X}\right)^2}
+\]</div>
+<div class="arithmatex">\[
+\beta_0^{O L S} =\frac{\overline{X^2} * \overline{Y}-\overline{X} * \overline{X Y}}{\overline{X^2}-\left(\overline{X}\right)^2}
+\]</div>
+
+    <nav class="md-post__action">
+      <a href="../ols-estimator/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3283,52 +3374,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-30 00:00:00">2022年12月30日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-tqdm-美化进度条"><a class="toclink" href="../tqdm/">使用 tqdm 美化进度条</a></h2>
-<p>在项目中经常遇到耗时较久的循环，<code>tqdm</code>可以打印美观的进度条，同时输出循环中的变量信息。</p>
-<p><img alt="高级用法" src="../assets/2022-12-30-tqdm/index-image/%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95.gif" /></p>
-
-    <nav class="md-post__action">
-      <a href="../tqdm/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3377,13 +3422,13 @@
         
         
           
-          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
+          <a href="../2025/1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 1 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 12 月
+                2025 年 1 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

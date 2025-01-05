@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2024/12/">
+        <link rel="next" href="../2025/1/">
       
       
         
@@ -653,6 +653,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -690,6 +692,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 1 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2695,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#对含有空值的数据使用-npcorrcoef-计算-pearson-和-spearman-相关系数" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对含有空值的数据使用 np.corrcoef 计算 Pearson 和 Spearman 相关系数
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#迁移-conda-虚拟环境" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2793,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#pytorch-中的数据与模型迁移理解-todevice-的使用" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PyTorch 中的数据与模型迁移：理解 .to(device) 的使用
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2818,6 +2848,56 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-24 00:00:00">2024年1月24日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="对含有空值的数据使用-npcorrcoef-计算-pearson-和-spearman-相关系数"><a class="toclink" href="../nan-in-np-corrcoef/">对含有空值的数据使用 <code>np.corrcoef</code> 计算 Pearson 和 Spearman 相关系数</a></h2>
+<p>本文实验探究了 <code>np.corrcoef</code> 在对含有空值的数据计算 Pearson 相关系数和 Spearman 相关系数时的结果。</p>
+<ul>
+<li><code>np.corrcoef</code> 在计算相关系数时，如果数据中存在一个空值，那么空值所在列与其他列的相关系数也会为空值。</li>
+<li>如果需要忽略空值后计算相关系数，可以使用 <code>np.ma.corrcoef</code>，它的参数 <code>allow_masked</code> 默认为 <code>True</code>。当传入一个 <code>MaskedArray</code> 对象时，<code>np.ma.corrcoef</code> 会忽略掉其中的空值。</li>
+<li>在对含有空值的数据使用 <code>argsort().argsort()</code> 对数据进行排序后，空值会被当做最小值，它也会获得一个排序值，空值内部的排序值大小取决于该空值所在的位置。因此，计算 Spearman 相关系数时，需要先手动删除空值。</li>
+</ul>
+
+    <nav class="md-post__action">
+      <a href="../nan-in-np-corrcoef/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3247,51 +3327,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-01-01 00:00:00">2024年1月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pytorch-中的数据与模型迁移理解-todevice-的使用"><a class="toclink" href="../pytorch-to-device/">PyTorch 中的数据与模型迁移：理解 <code>.to(device)</code> 的使用</a></h2>
-<p>在使用 PyTorch 框架进行深度学习模型训练时，我们经常需要将模型从 CPU 迁移到 GPU 上以加速计算。PyTorch 提供了一个简洁的 API <code>model.to(device)</code> 来实现这一过程。但是，在使用这个 API 时，我们可能会遇到两种不同的写法：<code>model.to(device)</code> 和 <code>model = model.to(device)</code>。那么，这两种写法有什么区别呢？</p>
-
-    <nav class="md-post__action">
-      <a href="../pytorch-to-device/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3340,13 +3375,13 @@
         
         
           
-          <a href="../2024/12/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2024 年 12 月" rel="next">
+          <a href="../2025/1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 1 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2024 年 12 月
+                2025 年 1 月
               </div>
             </div>
             <div class="md-footer__button md-icon">
