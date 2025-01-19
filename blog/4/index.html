@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#理解-pytorch-中的-crossentropyloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解 PyTorch 中的 CrossEntropyLoss
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pytorch-中的数据与模型迁移理解-todevice-的使用" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-312-新特性override-装饰器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 3.12 新特性：@override 装饰器
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-02 00:00:00">2024年1月2日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
+              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="理解-pytorch-中的-crossentropyloss"><a class="toclink" href="../pytorch-cross-entropy-loss/">理解 PyTorch 中的 <code>CrossEntropyLoss</code></a></h2>
+<p>在机器学习中，特别是处理分类问题时，损失函数是衡量模型预测与实际标签差异的关键。在 PyTorch 中，<code>CrossEntropyLoss</code>是一个常用的损失函数，用于分类问题。它首先通过 Softmax 函数计算对应类别的概率值，然后计算每个样本的负对数似然损失，最后对所有样本的损失值求平均。</p>
+<p>本文将通过一个简单的例子来手动计算<code>CrossEntropyLoss</code>，并展示如何使用 PyTorch 实现这一过程。</p>
+
+    <nav class="md-post__action">
+      <a href="../pytorch-cross-entropy-loss/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3269,55 +3316,6 @@
 
     <nav class="md-post__action">
       <a href="../calculate-subset-of-correlation-matrix/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-10-15 00:00:00">2023年10月15日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-312-新特性override-装饰器"><a class="toclink" href="../python-3-12-ovverride-decorator/">Python 3.12 新特性：<code>@override</code> 装饰器</a></h2>
-<p>Python 3.12 引入了 <code>@override</code> 装饰器，可以用来指定该方法是用来覆盖基类方法的。</p>
-<h3 id="新特性简介"><a class="toclink" href="../python-3-12-ovverride-decorator/#%C3%A6%C2%96%C2%B0%C3%A7%C2%89%C2%B9%C3%A6%C2%80%C2%A7%C3%A7%C2%AE%C2%80%C3%A4%C2%BB%C2%8B">新特性简介</a></h3>
-<p>在继承基类后，如果我们想覆盖基类中的某个方法 <code>original()</code>，我们可以改写该方法。然而，如果我们不小心将方法名拼写错误为 <code>ooooriginal()</code>，即一个基类中不存在的方法，那么当调用子类的 <code>original()</code> 方法时，实际上会调用基类中的方法，而且程序不会产生错误。这种情况下，我们可能无法察觉到问题的存在。</p>
-<p>为了解决这个问题，我们可以使用 <code>@override</code> 注解来明确表示方法的覆盖关系。这样程序会检查 <code>ooooriginal()</code> 方法是否在基类中存在。由于 <code>ooooriginal()</code> 方法并未在基类中定义，程序会报错，从而帮助我们发现错误。</p>
-<p>简而言之，使用 <code>@override</code> 注解可以帮助我们检测覆盖方法是否正确，避免潜在的错误。</p>
-
-    <nav class="md-post__action">
-      <a href="../python-3-12-ovverride-decorator/">
         继续阅读
       </a>
     </nav>

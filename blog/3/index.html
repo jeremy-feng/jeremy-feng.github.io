@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-pathvalidate-处理不合法的文件或路径名字符串" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 pathvalidate 处理不合法的文件或路径名字符串
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#对含有空值的数据使用-npcorrcoef-计算-pearson-和-spearman-相关系数" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#理解-pytorch-中的-crossentropyloss" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        理解 PyTorch 中的 CrossEntropyLoss
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,52 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-31 00:00:00">2024年1月31日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-pathvalidate-处理不合法的文件或路径名字符串"><a class="toclink" href="../pathvalidate/">使用 <code>pathvalidate</code> 处理不合法的文件或路径名字符串</a></h2>
+<p>在编程时经常需要处理文件和目录的命名，然而直接将字符串用作文件名或路径名时，可能会遇到一个常见问题：字符串中含有特殊字符或保留字，这可能导致在尝试保存文件时出现异常，如无法创建文件、路径解析错误等问题。例如，Windows 系统不允许文件名包含字符如 <code>\</code>、<code>/</code>、<code>:</code>、<code>*</code>、<code>?</code>、<code>"</code>、<code>&lt;</code>、<code>&gt;</code> 和 <code>|</code>。</p>
+<p>本文介绍了 <code>pathvalidate</code> 库，它提供了一系列实用的函数，用于验证和清理文件名和路径名中的非法字符。这样我们就不必重复造轮子来处理这些特殊字符了。</p>
+
+    <nav class="md-post__action">
+      <a href="../pathvalidate/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3274,53 +3320,6 @@
 
     <nav class="md-post__action">
       <a href="../display-dataframe-in-a-row/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-01-02 00:00:00">2024年1月2日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="理解-pytorch-中的-crossentropyloss"><a class="toclink" href="../pytorch-cross-entropy-loss/">理解 PyTorch 中的 <code>CrossEntropyLoss</code></a></h2>
-<p>在机器学习中，特别是处理分类问题时，损失函数是衡量模型预测与实际标签差异的关键。在 PyTorch 中，<code>CrossEntropyLoss</code>是一个常用的损失函数，用于分类问题。它首先通过 Softmax 函数计算对应类别的概率值，然后计算每个样本的负对数似然损失，最后对所有样本的损失值求平均。</p>
-<p>本文将通过一个简单的例子来手动计算<code>CrossEntropyLoss</code>，并展示如何使用 PyTorch 实现这一过程。</p>
-
-    <nav class="md-post__action">
-      <a href="../pytorch-cross-entropy-loss/">
         继续阅读
       </a>
     </nav>

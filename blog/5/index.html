@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-312-新特性override-装饰器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 3.12 新特性：@override 装饰器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pandas-根据日期进行分组" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用下一个非空值的平摊值填充" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用下一个非空值的平摊值填充
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,55 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-10-15 00:00:00">2023年10月15日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-312-新特性override-装饰器"><a class="toclink" href="../python-3-12-ovverride-decorator/">Python 3.12 新特性：<code>@override</code> 装饰器</a></h2>
+<p>Python 3.12 引入了 <code>@override</code> 装饰器，可以用来指定该方法是用来覆盖基类方法的。</p>
+<h3 id="新特性简介"><a class="toclink" href="../python-3-12-ovverride-decorator/#%C3%A6%C2%96%C2%B0%C3%A7%C2%89%C2%B9%C3%A6%C2%80%C2%A7%C3%A7%C2%AE%C2%80%C3%A4%C2%BB%C2%8B">新特性简介</a></h3>
+<p>在继承基类后，如果我们想覆盖基类中的某个方法 <code>original()</code>，我们可以改写该方法。然而，如果我们不小心将方法名拼写错误为 <code>ooooriginal()</code>，即一个基类中不存在的方法，那么当调用子类的 <code>original()</code> 方法时，实际上会调用基类中的方法，而且程序不会产生错误。这种情况下，我们可能无法察觉到问题的存在。</p>
+<p>为了解决这个问题，我们可以使用 <code>@override</code> 注解来明确表示方法的覆盖关系。这样程序会检查 <code>ooooriginal()</code> 方法是否在基类中存在。由于 <code>ooooriginal()</code> 方法并未在基类中定义，程序会报错，从而帮助我们发现错误。</p>
+<p>简而言之，使用 <code>@override</code> 注解可以帮助我们检测覆盖方法是否正确，避免潜在的错误。</p>
+
+    <nav class="md-post__action">
+      <a href="../python-3-12-ovverride-decorator/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3332,63 +3381,6 @@
 
     <nav class="md-post__action">
       <a href="../download-model-from-huggingface/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-08-23 00:00:00">2023年8月23日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用下一个非空值的平摊值填充"><a class="toclink" href="../fillna-with-next-non-nan-value/">使用下一个非空值的平摊值填充</a></h2>
-<p>本文记录了一个数据处理的小项目。需求如下：</p>
-<ul>
-<li>
-<p>一列数据中 <mark>存在零值</mark> 。</p>
-</li>
-<li>
-<p>我们需要 <mark>用下一个非零值进行填充</mark> 。</p>
-</li>
-<li><mark>用于填充的值</mark> 是“下一个非零值”除以“这一段零值的长度 +1”，也就是将下一个非零值平摊后进行填充。</li>
-</ul>
-<p><img alt="image-20230823233238606" src="../assets/2023-08-23-fillna-with-next-non-nan-value/index-image/image-20230823233238606.png" width="60%" /></p>
-<p><img alt="image-20230823234017340" src="../assets/2023-08-23-fillna-with-next-non-nan-value/index-image/image-20230823234017340.png" width="60%" /></p>
-<p>本文还记录了如何向同一个工作簿中导出多个工作表。</p>
-
-    <nav class="md-post__action">
-      <a href="../fillna-with-next-non-nan-value/">
         继续阅读
       </a>
     </nav>

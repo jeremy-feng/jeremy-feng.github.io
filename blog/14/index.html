@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#普通最小二乘估计的无偏性和一致性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        普通最小二乘估计的无偏性和一致性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#线性回归的普通最小二乘估计" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#l1l2-正则化与贝叶斯先验" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        L1、L2 正则化与贝叶斯先验
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,61 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-01-24 00:00:00">2023年1月24日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="普通最小二乘估计的无偏性和一致性"><a class="toclink" href="../ols-estimator-unbiasedness-and-consistency/">普通最小二乘估计的无偏性和一致性</a></h2>
+<p>本文证明了普通最小二乘估计的无偏性和一致性。</p>
+<p>无偏性：</p>
+<div class="arithmatex">\[
+E\left[\beta^{O L S}\right]=\beta
+\]</div>
+<p>一致性</p>
+<div class="arithmatex">\[
+\beta^{O L S}-\beta=\left(X^{\prime} X\right)^{-1} X^{\prime} u \stackrel{p}{\rightarrow} 0  \text { as } T \rightarrow \infty
+\]</div>
+
+    <nav class="md-post__action">
+      <a href="../ols-estimator-unbiasedness-and-consistency/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3318,56 +3373,6 @@ $$</p>
 
     <nav class="md-post__action">
       <a href="../logistic-regression-lasso/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-31 00:00:00">2022年12月31日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 4 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="l1l2-正则化与贝叶斯先验"><a class="toclink" href="../regularization-and-bayesian-prior/">L1、L2 正则化与贝叶斯先验</a></h2>
-<p>从贝叶斯统计的视角看，L1 正则化的 Lasso 回归和 L2 正则化的岭回归，分别相当于参数具有拉普拉斯先验和高斯先验。</p>
-<figure>
-<p><img alt="image-20221231112601740" src="../assets/2022-12-31-regularization-and-bayesian-prior/index.zh-image/image-20221231112601740.png" width="300" />
-  </p>
-<figcaption>拉普拉斯分布的概率密度函数图像</figcaption>
-</figure>
-
-    <nav class="md-post__action">
-      <a href="../regularization-and-bayesian-prior/">
         继续阅读
       </a>
     </nav>

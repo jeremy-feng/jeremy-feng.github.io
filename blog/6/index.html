@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用下一个非空值的平摊值填充" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用下一个非空值的平摊值填充
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-继承-mixin-以拓展类的功能" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-进阶教程系列-3生成器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 进阶教程系列 3：生成器
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,63 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-08-23 00:00:00">2023年8月23日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用下一个非空值的平摊值填充"><a class="toclink" href="../fillna-with-next-non-nan-value/">使用下一个非空值的平摊值填充</a></h2>
+<p>本文记录了一个数据处理的小项目。需求如下：</p>
+<ul>
+<li>
+<p>一列数据中 <mark>存在零值</mark> 。</p>
+</li>
+<li>
+<p>我们需要 <mark>用下一个非零值进行填充</mark> 。</p>
+</li>
+<li><mark>用于填充的值</mark> 是“下一个非零值”除以“这一段零值的长度 +1”，也就是将下一个非零值平摊后进行填充。</li>
+</ul>
+<p><img alt="image-20230823233238606" src="../assets/2023-08-23-fillna-with-next-non-nan-value/index-image/image-20230823233238606.png" width="60%" /></p>
+<p><img alt="image-20230823234017340" src="../assets/2023-08-23-fillna-with-next-non-nan-value/index-image/image-20230823234017340.png" width="60%" /></p>
+<p>本文还记录了如何向同一个工作簿中导出多个工作表。</p>
+
+    <nav class="md-post__action">
+      <a href="../fillna-with-next-non-nan-value/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3285,58 +3342,6 @@
 
     <nav class="md-post__action">
       <a href="../advanced-python-4-argument-parsing/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-07-29 00:00:00">2023年7月29日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-进阶教程系列-3生成器"><a class="toclink" href="../advanced-python-3-generator/">Python 进阶教程系列 3：生成器</a></h2>
-<p>本文是 Python 进阶教程系列 3，主要介绍了生成器 <code>generator</code> 与 <code>yield</code> 的机制和 <code>next</code> 与 <code>send</code> 的用法，并展示了如何用 <code>generator</code> 生成无限序列。</p>
-<p>在循环中使用生成器作为迭代对象，就不用将所有需要遍历的值都全部计算出来再迭代，而是可以每迭代一次就计算一个需要遍历的值。</p>
-<p>这种写法有以下几个好处：</p>
-<ol>
-<li><strong>节省内存资源</strong>：生成器以延迟计算的方式逐个生成数据，不会一次性生成所有数据，因此可以避免在内存中存储大量数据，从而减少内存资源的占用。</li>
-<li><strong>更快的计算速度</strong>：由于生成器以延迟计算的方式逐步生成数据，避免了一次性计算所有数据所带来的资源浪费，因此生成器往往比一次性生成所有数据的方式更加高效。</li>
-<li><strong>更灵活的逻辑处理</strong>：生成器可以动态地生成数据，并且可以支持迭代过程中的数据清洗、处理等操作，从而让代码更加灵活、简单。</li>
-</ol>
-
-    <nav class="md-post__action">
-      <a href="../advanced-python-3-generator/">
         继续阅读
       </a>
     </nav>

@@ -2725,6 +2725,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#concatdataset-和-stackdataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConcatDataset 和 StackDataset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#layer-normalization" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2834,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#春日时光" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        春日时光
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2848,76 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-19 00:00:00">2025年1月19日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/pytorch/" class="md-meta__link">PyTorch</a>, 
+              <a href="category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="concatdataset-和-stackdataset"><a class="toclink" href="concatdataset-stackdataset/">ConcatDataset 和 StackDataset</a></h2>
+<p>在 PyTorch 中，<code>ConcatDataset</code> 和 <code>StackDataset</code> 是两种不同的数据集组合方式。本文介绍了它们的作用及其适用场景。</p>
+<div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="concatdataset-stackdataset/#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">## 使用 ConcatDataset 连接数据集</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="concatdataset-stackdataset/#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">concat_dataset</span> <span class="o">=</span> <span class="n">ConcatDataset</span><span class="p">([</span><span class="n">dataset1</span><span class="p">,</span> <span class="n">dataset2</span><span class="p">])</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="concatdataset-stackdataset/#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1">## 遍历 ConcatDataset</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="concatdataset-stackdataset/#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">concat_dataset</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="concatdataset-stackdataset/#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="concatdataset-stackdataset/#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>1
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="concatdataset-stackdataset/#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>2
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="concatdataset-stackdataset/#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>3
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="concatdataset-stackdataset/#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>4
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="concatdataset-stackdataset/#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>5
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="concatdataset-stackdataset/#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>6
+</code></pre></div>
+<div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="concatdataset-stackdataset/#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">## 使用 StackDataset 组合数据集</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="concatdataset-stackdataset/#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">stack_dataset</span> <span class="o">=</span> <span class="n">StackDataset</span><span class="p">(</span><span class="n">dataset1</span><span class="p">,</span> <span class="n">dataset2</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="concatdataset-stackdataset/#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="concatdataset-stackdataset/#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="c1">## 遍历 StackDataset</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="concatdataset-stackdataset/#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a><span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">stack_dataset</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="concatdataset-stackdataset/#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="concatdataset-stackdataset/#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>(1, 4)
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="concatdataset-stackdataset/#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>(2, 5)
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="concatdataset-stackdataset/#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>(3, 6)
+</code></pre></div>
+
+    <nav class="md-post__action">
+      <a href="concatdataset-stackdataset/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3281,55 +3351,6 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
 
     <nav class="md-post__action">
       <a href="manage-memory-in-python/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-04-07 00:00:00">2024年4月7日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="春日时光"><a class="toclink" href="spring-in-2024/">春日时光</a></h2>
-<figure>
-<p><img alt="58010B9E-B461-45BC-BA31-1D86E88FD92C_1_105_c" src="assets/2024-04-07-spring-in-2024/index-image/58010B9E-B461-45BC-BA31-1D86E88FD92C_1_105_c.jpeg" />
-  </p>
-<figcaption>采茶人</figcaption>
-</figure>
-
-    <nav class="md-post__action">
-      <a href="spring-in-2024/">
         继续阅读
       </a>
     </nav>
