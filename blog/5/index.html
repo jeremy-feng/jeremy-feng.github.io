@@ -16,7 +16,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/1/">
+        <link rel="next" href="../2025/3/">
       
       
         
@@ -655,6 +655,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -692,6 +694,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 3 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2725,6 +2755,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#计算部分相关系数矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算部分相关系数矩阵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-312-新特性override-装饰器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2823,17 +2864,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#从-hugging-face-下载模型文件" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        从 Hugging Face 下载模型文件
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2848,6 +2878,57 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-10-30 00:00:00">2023年10月30日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="计算部分相关系数矩阵"><a class="toclink" href="../calculate-subset-of-correlation-matrix/">计算部分相关系数矩阵</a></h2>
+<p>本文使用相关系数的矩阵表达形式，实现了计算部分相关系数矩阵的加速算法，并实证检验了三种计算相关系数矩阵方法的运行速度。</p>
+<ul>
+<li>在计算部分相关系数矩阵时，自定义的加速算法 相比 Pandas <code>.corr()</code> 方法提速约 2180 倍，比 Numpy <code>.corrcoef()</code> 方法提速约  115 倍。</li>
+<li>在计算全部相关系数矩阵时，Numpy <code>.corrcoef()</code> 方法比自定义的加速算法略快 <span class="arithmatex">\(10\%\)</span>，比 Pandas <code>.corr()</code> 方法快约 20 倍。</li>
+</ul>
+
+    <nav class="md-post__action">
+      <a href="../calculate-subset-of-correlation-matrix/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3342,58 +3423,13 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-08-31 00:00:00">2023年8月31日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="从-hugging-face-下载模型文件"><a class="toclink" href="../download-model-from-huggingface/">从 Hugging Face 下载模型文件</a></h2>
-<p>本文记录了如何用代码从 Hugging Face 下载模型文件。</p>
-
-    <nav class="md-post__action">
-      <a href="../download-model-from-huggingface/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12l4.58-4.59Z"/></svg></a> <a class="md-pagination__link" href="../4/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <span class="md-pagination__current">5</span> <a class="md-pagination__link" href="../6/">6</a> <a class="md-pagination__link" href="../7/">7</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../23/">23</a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../23/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12 5.59 7.41m6 0L13 6l6 6-6 6-1.41-1.41L16.17 12l-4.58-4.59Z"/></svg></a>
+  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12l4.58-4.59Z"/></svg></a> <a class="md-pagination__link" href="../4/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <span class="md-pagination__current">5</span> <a class="md-pagination__link" href="../6/">6</a> <a class="md-pagination__link" href="../7/">7</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../24/">24</a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../24/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12 5.59 7.41m6 0L13 6l6 6-6 6-1.41-1.41L16.17 12l-4.58-4.59Z"/></svg></a>
 </nav>
       
     </div>
@@ -3435,13 +3471,13 @@
         
         
           
-          <a href="../2025/1/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 1 月" rel="next">
+          <a href="../2025/3/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 3 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 1 月
+                2025 年 3 月
               </div>
             </div>
             <div class="md-footer__button md-icon">
