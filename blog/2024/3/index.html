@@ -222,6 +222,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "fkujvevd2q");
   </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1438193177826254" crossorigin="anonymous"></script>
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Jeremy Feng" class="md-header__button md-logo" aria-label="Jeremy Feng" data-md-component="logo">
       
@@ -2943,6 +2944,10 @@
   <div class="md-post__content md-typeset">
     <h2 id="python-类型检查工具-beartype"><a class="toclink" href="../../beartype/">Python 类型检查工具 <code>beartype</code></a></h2>
 <p>Python 代码中的类型提示并不是需要强制满足的。如果我们希望代码使用者严格遵循类型提示，在类型不符时抛出错误，可以使用 <code>beartype</code> 进行类型检查。</p>
+<div class="admonition tip">
+<p class="admonition-title">静态类型检查推荐使用 <code>pyright</code></p>
+<p><code>beartype</code> 的功能是：当你真正调用函数时，才进行参数和返回值的类型检查。若我们不想真正运行代码，而只希望进行静态类型检查，可以使用 <a href="https://github.com/microsoft/pyright" target="_blank" rel="noopener"><code>pyright</code></a>。</p>
+</div>
 
     <nav class="md-post__action">
       <a href="../../beartype/">
