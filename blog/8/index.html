@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/5/">
+        <link rel="next" href="../2025/6/">
       
       
         
@@ -670,6 +670,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -707,6 +709,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 6 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2854,6 +2884,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#基于-giscus-为网站添加评论系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于 giscus 为网站添加评论系统
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#基于深度学习的中文文本错误识别与纠正模型总结" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2952,17 +2993,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#conformal-learning-求解回归问题和多标签分类问题" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conformal Learning 求解回归问题和多标签分类问题
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2977,6 +3007,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-07-21 00:00:00">2023年7月21日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="基于-giscus-为网站添加评论系统"><a class="toclink" href="../comment-system-with-giscus/">基于 giscus 为网站添加评论系统</a></h2>
+<p>giscus 是一个简单易用的评论系统，它使用 GitHub Discussions 的作为存储和管理评论的后端。网站的访客可以使用 GitHub 账号登录并发表评论，当有新评论时 GitHub 还会用邮件通知网站的主人。</p>
+<p>本文记录了基于 giscus 为网站添加评论系统的过程。整个过程还算比较顺利，但中途遇到的关于一键配置多个页面展示评论系统的问题也困扰了我很久。将其记录于此，希望能帮助自己和他人。</p>
+<p><img alt="image-20230722131239896" src="../assets/2023-07-21-comment-system-with-giscus/index-image/image-20230722131239896.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../comment-system-with-giscus/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3477,98 +3554,6 @@ Your browser does not support the video tag.
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-05-21 00:00:00">2023年5月21日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 4 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="conformal-learning-求解回归问题和多标签分类问题"><a class="toclink" href="../conformal-learning/">Conformal Learning 求解回归问题和多标签分类问题</a></h2>
-<p>Conformal Learning 是一种非参数统计方法，利用“样本属于某个标签时的离群程度”来进行回归和分类。本文分别使用“老忠实泉的爆发和等待时间数据”进行回归预测，使用“玻璃分类数据”进行多标签分类预测。</p>
-<p>参考文献：<a href="https://jmlr.csail.mit.edu/papers/volume9/shafer08a/shafer08a.pdf" target="_blank" rel="noopener">A Tutorial on Conformal Prediction</a></p>
-<div class="admonition note">
-<p class="admonition-title">回归问题</p>
-<ol>
-<li>
-<p>对于训练集的某一个样本 <span class="arithmatex">\(i\)</span>，找到离样本 <span class="arithmatex">\(i\)</span> 最近的样本。</p>
-<ul>
-<li>
-<p>若最近的样本只有一个，记为样本 <span class="arithmatex">\(j\)</span>，则计算样本 <span class="arithmatex">\(i\)</span> 和 样本 <span class="arithmatex">\(j\)</span> 的标签之间的差值的绝对值；</p>
-</li>
-<li>
-<p>若最近的样本有多个，则先计算这多个样本的标签的中位数，再将样本 <span class="arithmatex">\(i\)</span> 的标签值与该中位数做差后取绝对值。</p>
-</li>
-</ul>
-</li>
-<li>
-<p>此“绝对值”就衡量了样本 <span class="arithmatex">\(i\)</span> 的离群程度。</p>
-</li>
-<li>
-<p>对于一个新样本 <span class="arithmatex">\(n\)</span>，同样找到离样本 <span class="arithmatex">\(n\)</span> 最近的样本，用“离样本 <span class="arithmatex">\(n\)</span> 最近的一个或多个样本的标签的中位数”作为新样本的标签预测值。</p>
-</li>
-<li>
-<p>根据信心水平 <span class="arithmatex">\(level\)</span>（例如 <span class="arithmatex">\(90\%\)</span>），选定一个离群程度，使得该离群程度在所有训练样本的离群程度中的大小排名分位数是 <span class="arithmatex">\(1-level\)</span>（例如 <span class="arithmatex">\(10\%\)</span>，即100个数中第10大的数）。</p>
-</li>
-<li>
-<p>在该预测值的基础上加减上一步选定的离群程度，就得到新样本标签值的预测区间。</p>
-</li>
-</ol>
-</div>
-<div class="admonition note">
-<p class="admonition-title">分类问题</p>
-<ol>
-<li>对于一个新样本，为其赋予所有可能的标签后，将其纳入训练样本中，形成一个 Bag。</li>
-<li>对于 Bag 中的每一个样本：<ol>
-<li>对于与该样本的标签相同的其他样本，计算它们与该样本的距离，从中选择最小的，作为分子。</li>
-<li>对于与该样本的标签不同的其他样本，计算它们与该样本的距离，从中选择最小的，作为分母。</li>
-<li>将前两步的分子除以分母，即可衡量“为该样本赋予该标签时的离群程度”。该值越大，说明分子越大、分母越小。<ul>
-<li>分子越大，说明虽然标签相同但距离很远，可以推测这个样本很可能并不属于这个标签。</li>
-<li>分母越大，说明虽然标签不同但距离很近，可以推测这个样本很可能属于其他标签。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>对于每一个可能的标签，根据信心水平 <span class="arithmatex">\(level\)</span>（例如 <span class="arithmatex">\(90\%\)</span>），判断：当新样本确实属于这个标签时，Bag 中有多少比例样本的离群程度比新样本的离群程度更高。如果这个比例超过了 <span class="arithmatex">\(1-level\)</span>（例如 <span class="arithmatex">\(10\%\)</span>），则将这个标签加入到预测标签集中。</li>
-<li>输出预测标签集，它可能有一个或多个预测值，也可能是空集。</li>
-</ol>
-</div>
-
-    <nav class="md-post__action">
-      <a href="../conformal-learning/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3617,13 +3602,13 @@ Your browser does not support the video tag.
         
         
           
-          <a href="../2025/5/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 5 月" rel="next">
+          <a href="../2025/6/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 6 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 5 月
+                2025 年 6 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

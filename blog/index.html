@@ -18,7 +18,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="2025/5/">
+        <link rel="next" href="2025/6/">
       
       
         
@@ -670,6 +670,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -707,6 +709,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2025/6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 6 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2854,6 +2884,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pandas-rolling-exponential-滚动计算指数加权标准差会受起点影响" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pandas rolling exponential 滚动计算指数加权标准差会受起点影响
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#生活存档" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2952,17 +2993,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#告别学生时代" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        告别学生时代
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2977,6 +3007,53 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-06-02 00:00:00">2025年6月2日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/python/" class="md-meta__link">Python</a>, 
+              <a href="category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="pandas-rolling-exponential-滚动计算指数加权标准差会受起点影响"><a class="toclink" href="pandas-rolling-exponential-weighted-standard-deviation/">pandas rolling exponential 滚动计算指数加权标准差会受起点影响</a></h2>
+<p>在使用 <code>rolling(win_type="exponential").std()</code> 计算标准差时，结果可能会受数据起点的影响。</p>
+<p>本文将通过几个简单的代码示例，探究数据具有<strong>不同数据起点</strong>（通过 <code>iloc[1:]</code> 手动构造不同的数据起点进行模拟）对 Pandas <code>rolling(win_type="exponential").std()</code> 计算结果的影响，并提供了一个自定义函数实现严格控制滚动回看窗口，以获得一致的结果。</p>
+
+    <nav class="md-post__action">
+      <a href="pandas-rolling-exponential-weighted-standard-deviation/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3449,51 +3526,6 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-06-30 00:00:00">2024年6月30日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="告别学生时代"><a class="toclink" href="master-graduation/">告别学生时代</a></h2>
-<p><img alt="1" loading="lazy" src="assets/2024-06-30-master-graduation/index-image/1.jpeg" /></p>
-
-    <nav class="md-post__action">
-      <a href="master-graduation/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3542,13 +3574,13 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
         
         
           
-          <a href="2025/5/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 5 月" rel="next">
+          <a href="2025/6/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 6 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 5 月
+                2025 年 6 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -672,6 +672,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -709,6 +711,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 6 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3166,7 +3196,7 @@
 - <code>!!</code> - 完整的上一条命令，包括参数。常见应用：当你因为权限不足执行命令失败时，可以使用 <code>sudo !!</code>再尝试一次。
 - <code>$_</code> - 上一条命令的最后一个参数。如果你正在使用的是交互式 Shell，你可以通过按下 <code>Esc</code> 之后键入 . 来获取这个值。</p>
 <p>命令通常使用 <code>STDOUT</code>来返回输出值，使用<code>STDERR</code> 来返回错误及错误码，便于脚本以更加友好的方式报告错误。</p>
-<p>返回码或退出状态是脚本/命令之间交流执行状态的方式。返回值0表示正常执行，其他所有非0的返回值都表示有错误发生。</p>
+<p>返回码或退出状态是脚本/命令之间交流执行状态的方式。返回值 0 表示正常执行，其他所有非 0 的返回值都表示有错误发生。</p>
 <p>退出码可以搭配 <code>&amp;&amp;</code>（与操作符）和 <code>||</code>（或操作符）使用，用来进行条件判断，决定是否执行其他程序。它们都属于<a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation" target="_blank" rel="noopener">短路运算符</a>（short-circuiting）同一行的多个命令可以用<code>;</code>分隔。程序 <code>true</code> 的返回码永远是<code>0</code>，<code>false</code> 的返回码永远是<code>1</code>。让我们看几个例子</p>
 <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nb">false</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Oops, fail&quot;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="c1"># Oops, fail</span>
@@ -3234,7 +3264,7 @@
 <a id="__codelineno-4-22" name="__codelineno-4-22"></a><a href="#__codelineno-4-22"><span class="linenos" data-linenos="22 "></span></a><span class="c1"># ---</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23"></a><a href="#__codelineno-4-23"><span class="linenos" data-linenos="23 "></span></a><span class="c1"># &gt; y</span>
 </code></pre></div>
-<p>编写 Bash 脚本有时候会很别扭和反直觉。例如 <a href="https://github.com/koalaman/Shellcheck" target="_blank" rel="noopener">Shellcheck</a> 这样的工具可以帮助你定位sh/Bash脚本中的错误。</p>
+<p>编写 Bash 脚本有时候会很别扭和反直觉。例如 <a href="https://github.com/koalaman/Shellcheck" target="_blank" rel="noopener">Shellcheck</a> 这样的工具可以帮助你定位 sh/Bash 脚本中的错误。</p>
 <p>注意，脚本并不一定只有用 Bash 写才能在终端里调用。比如说，这是一段 Python 脚本，作用是将输入的参数倒序输出：</p>
 <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="ch">#!/usr/local/bin/python</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a><span class="kn">import</span> <span class="nn">sys</span>
@@ -3332,7 +3362,7 @@
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 3 月 23 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 6 月 03 日</span>
       </span>
     
     
