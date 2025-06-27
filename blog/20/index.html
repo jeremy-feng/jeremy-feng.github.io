@@ -2920,6 +2920,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#基于-em-算法的多元高斯混合模型聚类及其-python-实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于 EM 算法的多元高斯混合模型聚类及其 Python 实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#在线词云图生成器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3018,17 +3029,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#最小二乘法的矩阵形式推导" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最小二乘法的矩阵形式推导
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3043,6 +3043,58 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-11-08 00:00:00">2022年11月8日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 8 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="基于-em-算法的多元高斯混合模型聚类及其-python-实现"><a class="toclink" href="../em-algorithm-for-multivariable-gaussian-mixture-model/">基于 EM 算法的多元高斯混合模型聚类及其 Python 实现</a></h2>
+<p>基于 EM 算法，推导多元高斯混合模型聚类的参数迭代公式，并使用 Python 对数据集进行聚类和各类别的参数求解。</p>
+<p>在编写代码的过程中，遇到了一个非常简单但一直没发现的 Bug。</p>
+<blockquote>
+<p>定义数组用<code>all_density = np.array([0]*K)</code>，再用<code>all_density[k] = k_density</code>并不会让<code>all_density</code>的第<code>k</code>个元素改变。这是因为<code>all_density</code>是介于 0 到 1 之间的，而在定义<code>all_density</code>的时候没有指定数组内部的数据类型，默认是不支持小数的，因此赋值之后<code>all_density</code>的第<code>k</code>个元素仍然是 0。</p>
+<p>解决方法：定义数组的时候一定要指定元素的数据类型，指定为<code>dtype=flout64</code>就可以存储高精度的浮点数。</p>
+</blockquote>
+<p><img alt="result" src="../assets/2022-11-08-em-algorithm-for-multivariable-gaussian-mixture-model/index-image/result.svg" /></p>
+
+    <nav class="md-post__action">
+      <a href="../em-algorithm-for-multivariable-gaussian-mixture-model/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3474,57 +3526,6 @@ L(x, y, \lambda) = x^2 + 5y^2 + xy + \lambda(x^2 + y^2 - 1)
 
     <nav class="md-post__action">
       <a href="../sql-exercise/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-10-08 00:00:00">2022年10月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 5 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="最小二乘法的矩阵形式推导"><a class="toclink" href="../ols-in-matrix-form/">最小二乘法的矩阵形式推导</a></h2>
-<p>利用必要的矩阵求导法则，推导最小二乘法的矩阵形式。</p>
-<div class="arithmatex">\[
-\begin{aligned}
-{\color{red}{\boldsymbol{\beta}}}&amp;\color{red}{=(\boldsymbol{X}^{\top} \boldsymbol{X})^{-1} \boldsymbol{X}^{\top} \boldsymbol{y}}
-\end{aligned}
-\]</div>
-
-    <nav class="md-post__action">
-      <a href="../ols-in-matrix-form/">
         继续阅读
       </a>
     </nav>

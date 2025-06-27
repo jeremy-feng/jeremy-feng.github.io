@@ -2920,6 +2920,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer 中的 Positional Encoding Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#安装-gurobi-优化器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3018,17 +3029,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#单纯形法求解线性规划问题" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        单纯形法求解线性规划问题
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3043,6 +3043,60 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-30 00:00:00">2023年4月30日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="transformer-中的-positional-encoding-layer"><a class="toclink" href="../positional-encoding-in-transformer/">Transformer 中的 Positional Encoding Layer</a></h2>
+<p>在 Transformer 的模型结构中，Positional Encoding Layer 是将输入文本进行位置编码，使得模型知道每个词在文本中的绝对位置和相对位置。有时，当一个词的位置发生变化后，语义会发生巨大的变化，因此 Positional Encoding Layer 是至关重要的。</p>
+<p>Transformer 原始论文中只给出了关键的编码公式，而我第一次看到这个公式时觉得晦涩难懂。深度学习课程的老师在课上讲解了之后，我还是不太明白。</p>
+<div class="arithmatex">\[
+\begin{aligned}
+P E(p o s, 2 i+1)&amp;=\cos \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right) \\
+P E(p o s, 2 i)&amp;=\sin \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right)
+\end{aligned}
+\]</div>
+<p>终于，我找到了写得非常好的资料。作者从最简单的绝对位置编码（也就是将第一个位置编码为 1，第二个位置编码为 2，以此类推。这当然是最容易想到的方法。）开始介绍，一步一步引导我们为什么要用上面的公式。</p>
+<p><img alt="image-20230430211441325" src="../assets/2023-04-30-positional-encoding-in-transformer/index-image/image-20230430211441325.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../positional-encoding-in-transformer/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3493,67 +3547,6 @@ $$</p>
 
     <nav class="md-post__action">
       <a href="../maximum-likelihood-and-least-square/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-08 00:00:00">2023年4月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 6 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="单纯形法求解线性规划问题"><a class="toclink" href="../simplex-for-linear-programming-problem/">单纯形法求解线性规划问题</a></h2>
-<h3 id="线性规划的一般形式"><a class="toclink" href="../simplex-for-linear-programming-problem/#%C3%A7%C2%BA%C2%BF%C3%A6%C2%80%C2%A7%C3%A8%C2%A7%C2%84%C3%A5%C2%88%C2%92%C3%A7%C2%9A%C2%84%C3%A4%C2%B8%C2%80%C3%A8%C2%88%C2%AC%C3%A5%C2%BD%C2%A2%C3%A5%C2%BC%C2%8F">线性规划的一般形式</a></h3>
-<p>在线性约束条件下，寻找目标函数 <span class="arithmatex">\(z\)</span> 的最大值：</p>
-<div class="arithmatex">\[
-\max \ z = x_1 + x_2
-\]</div>
-<div class="arithmatex">\[
-s.t \begin{cases}
-2x_1 + x_2 \leq 12 \\
-x_1 + 2x_2 \leq 9  \\
-x_1, x_2 \geq 0
-\end{cases}
-\]</div>
-<h3 id="线性规划的可行域"><a class="toclink" href="../simplex-for-linear-programming-problem/#%C3%A7%C2%BA%C2%BF%C3%A6%C2%80%C2%A7%C3%A8%C2%A7%C2%84%C3%A5%C2%88%C2%92%C3%A7%C2%9A%C2%84%C3%A5%C2%8F%C2%AF%C3%A8%C2%A1%C2%8C%C3%A5%C2%9F%C2%9F">线性规划的可行域</a></h3>
-<p>满足线性规划问题约束条件的所有点组成的集合就是线性规划的可行域。若可行域有界（以下主要考虑有界可行域），线性规划问题的目标函数最优解必然在可行域的顶点上达到最优。</p>
-<p>单纯形法就是通过设置不同的基向量，经过矩阵的线性变换，求得基可行解（可行域顶点），并判断该解是否最优，否则继续设置另一组基向量，重复执行以上步骤，直到找到最优解。所以，单纯形法的求解过程是一个循环迭代的过程。</p>
-<p><img alt="kexingyu" src="../assets/2023-04-08-simplex-for-linear-programming-problem/index-image/kexingyu.jpg" /></p>
-<p><center>图 1 可行域</center></p>
-
-    <nav class="md-post__action">
-      <a href="../simplex-for-linear-programming-problem/">
         继续阅读
       </a>
     </nav>

@@ -2920,6 +2920,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#断开-ssh-连接后继续执行任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        断开 SSH 连接后继续执行任务
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#在-linux-中软链接至其他文件或目录" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3018,17 +3029,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-argparse-解析命令行参数为布尔值" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python argparse 解析命令行参数为布尔值
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3043,6 +3043,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-19 00:00:00">2024年1月19日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/linux/" class="md-meta__link">Linux</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="断开-ssh-连接后继续执行任务"><a class="toclink" href="../prevent-a-background-process-from-being-stopped-after-closing-ssh-client/">断开 SSH 连接后继续执行任务</a></h2>
+<p>我们经常需要通过 SSH 连接到远程 Linux 服务器来执行各种任务。但有时，我们希望即使在断开 SSH 连接后，这些任务也能继续运行。</p>
+<p>本文介绍了如何将任务放入后台并使用 <code>disown</code> 命令使其在当前 Shell 终端窗口关闭后依然不会结束。</p>
+<p><img alt="image-20240119101805146" src="../assets/2024-01-19-prevent-a-background-process-from-being-stopped-after-closing-ssh-client/index-image/image-20240119101805146.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../prevent-a-background-process-from-being-stopped-after-closing-ssh-client/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3461,53 +3508,6 @@
 
     <nav class="md-post__action">
       <a href="../nbformat/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-11-22 00:00:00">2023年11月22日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-argparse-解析命令行参数为布尔值"><a class="toclink" href="../argparse-bool-type/">Python <code>argparse</code> 解析命令行参数为布尔值</a></h2>
-<p>在 Python 开发中，命令行参数解析是一个常见的需求，它允许我们以命令行的方式向程序传递参数，从而实现更灵活和可配置的程序设计。Python 提供了一个内置库 <code>argparse</code>，它简化了命令行参数解析的过程。</p>
-<p><a href="../advanced-python-4-argument-parsing/#使用-argparse-解析命令行参数">这篇帖子</a>介绍过如何使用 <code>argparse</code> 解析命令行参数，本文将介绍如何指定命令行参数为布尔值类型。直接使用 <code>type=bool</code> 是无法实现的，而需要传入一个 <code>callable</code> 的对象，在其中编写将字符串转换为布尔值的逻辑。</p>
-<p><img alt="image-20231122230439023" src="../assets/2023-11-22-argparse-bool-type/index-image/image-20231122230439023.png" /></p>
-
-    <nav class="md-post__action">
-      <a href="../argparse-bool-type/">
         继续阅读
       </a>
     </nav>
