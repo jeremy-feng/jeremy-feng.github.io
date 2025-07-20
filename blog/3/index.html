@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/6/">
+        <link rel="next" href="../2025/7/">
       
       
         
@@ -678,6 +678,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -715,6 +717,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 7 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2920,6 +2950,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#多线程下调试-python-代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多线程下调试 Python 代码
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#使用-blacken-docs-对文档中的-python-代码进行格式化" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3018,17 +3059,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#在-python-中使用大语言模型进行文本分类" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 Python 中使用大语言模型进行文本分类
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3043,6 +3073,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-03-25 00:00:00">2024年3月25日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="多线程下调试-python-代码"><a class="toclink" href="../debug-multiple-n-jobs/">多线程下调试 Python 代码</a></h2>
+<p>当启用 <code>n_jobs</code> 超过 1 时，直接调试 Python 代码可能会报错 <code>"Couldn't find a debug adapter descriptor for debug type 'Python Kernel Debug Adapter' (extension might have failed to activate)"</code>。</p>
+<p><img alt="image-20240325190005418" src="../assets/2024-03-25-debug-multiple-n-jobs/index-image/image-20240325190005418.png" /></p>
+<p>本文记录了一个解决方案，可以在 <code>n_jobs</code> 超过 1 的多线程环境下调试 Python 代码。</p>
+
+    <nav class="md-post__action">
+      <a href="../debug-multiple-n-jobs/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3469,57 +3546,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-01-20 00:00:00">2024年1月20日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-python-中使用大语言模型进行文本分类"><a class="toclink" href="../text-classification-using-llm-with-marvin/">在 Python 中使用大语言模型进行文本分类</a></h2>
-<p>大语言模型可以做很多事情：给它一个提示词，它就能给出聪明的回复。但是，我们有时需要得到结构化的、具有严格类型要求的回答。例如我们需要判断一句话的情感得分，那么我们只需要得到一个数值，而不需要任何其他的元素。即使我们每次都在提示词中写上“请返回一个数值，例如 1.0。不要包含任何其他元素，只要一个数值，求你了”，模型仍然可能会返回各种奇怪的文本，这些文本在后续代码中极有可能出错。</p>
-<p><code>marvin</code> 是一个非常实用的 Python 包，它使用简单的代码和类型提示就能获取特定数据类型的返回。它的官网介绍说：</p>
-<blockquote>
-<p>This lets you focus on what you've always focused on: writing clean, versioned, reusable <em>code</em> and <em>data models</em>, and not scrutinizing whether you begged your LLM hard enough to output JSON or needed to offer it a bigger tip for the right answer.</p>
-</blockquote>
-<p>本文借助 <code>marvin</code> 用 <code>gpt-3.5-turbo</code> 对文本进行二分类，判断一段文本是否由大语言模型生成，而不是人类生成。</p>
-<p><img alt="image-20240120232958730" src="../assets/2024-01-20-text-classification-using-llm-with-marvin/index-image/image-20240120232958730.png" width="500px" /></p>
-
-    <nav class="md-post__action">
-      <a href="../text-classification-using-llm-with-marvin/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3568,13 +3594,13 @@
         
         
           
-          <a href="../2025/6/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 6 月" rel="next">
+          <a href="../2025/7/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 7 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 6 月
+                2025 年 7 月
               </div>
             </div>
             <div class="md-footer__button md-icon">
