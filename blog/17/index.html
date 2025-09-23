@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#在-pandas-中计算方差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 pandas 中计算方差
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#在-jupyter-notebook-中插入本地图片并导出带有图片的-pdf-文件" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#batch-normalization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Batch Normalization
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,63 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-12-16 00:00:00">2022年12月16日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="在-pandas-中计算方差"><a class="toclink" href="../calculate-variance-in-pandas/">在 pandas 中计算方差</a></h2>
+<p class="annotate">pandas 默认的<code>.var()</code>方法计算的是样本方差，即自由度为<span class="arithmatex">\(N-1\)</span>。若想计算总体方差，需指定参数<code>ddof=0</code>(1)。</p>
+<ol>
+<li>Delta Degrees of Freedom。当指定<code>ddof</code>时，计算方差的分母为<code>N-ddof</code>。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">总结</p>
+<ul>
+<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n-1，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>；</li>
+<li>NumPy 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>；</li>
+<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>相当于 NumPy 中的 <code class="highlight"><span class="n">var</span><span class="p">()</span></code>。</li>
+</ul>
+</div>
+
+    <nav class="md-post__action">
+      <a href="../calculate-variance-in-pandas/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3544,52 +3601,6 @@
 
     <nav class="md-post__action">
       <a href="../thanks-to-those-helpful-people-in-my-life/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-08 00:00:00">2022年12月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="batch-normalization"><a class="toclink" href="../batch-normalization/">Batch Normalization</a></h2>
-<p>批标准化是神经网络中最常用的组件之一。</p>
-<p><img alt="image-20221208231504504" src="../assets/2022-12-08-batch-normalization/index-image/image-20221208231504504.png" /></p>
-
-    <nav class="md-post__action">
-      <a href="../batch-normalization/">
         继续阅读
       </a>
     </nav>

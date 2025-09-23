@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#手动计算简单的反向传播算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手动计算简单的反向传播算法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#神经网络中的激活函数" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#量化实习工作总结" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        量化实习工作总结
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,55 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-10 00:00:00">2023年4月10日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
+              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="手动计算简单的反向传播算法"><a class="toclink" href="../backward-propagation-by-hand/">手动计算简单的反向传播算法</a></h2>
+<p>反向传播算法是深度学习进行参数优化的基础。本文手动计算了多层感知机中损失函数对权重、净输入值的梯度，并与 PyTorch 的计算结果进行了验证。</p>
+<p>反向传播算法的本质是矩阵微分和链式法则，这两个知识都不难理解，但刚接触反向传播算法时总容易被一些陌生的符号弄糊涂。理解反向传播算法的理论推导，最重要的是弄清楚各个向量、矩阵的维度，以及熟练它们之间的前向传播关系。最后多加练习，就能对反向传播算法的理解更加透彻。</p>
+<h3 id="理论推导"><a class="toclink" href="../backward-propagation-by-hand/#%C3%A7%C2%90%C2%86%C3%A8%C2%AE%C2%BA%C3%A6%C2%8E%C2%A8%C3%A5%C2%AF%C2%BC">理论推导</a></h3>
+<p><img alt="image-20230411003621789" src="../assets/2023-04-10-backward-propagation-by-hand/index-image/image-20230411003621789.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../backward-propagation-by-hand/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3606,51 +3655,6 @@ x_1, x_2 \geq 0
 
     <nav class="md-post__action">
       <a href="../linear-transformation-of-multivariate-normal-distribution/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-03-21 00:00:00">2023年3月21日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 6 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="量化实习工作总结"><a class="toclink" href="../quant-intern-d-lab/">量化实习工作总结</a></h2>
-<p>总结因子开发与多因子机器学习模型的工作。</p>
-
-    <nav class="md-post__action">
-      <a href="../quant-intern-d-lab/">
         继续阅读
       </a>
     </nav>

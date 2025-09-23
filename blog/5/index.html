@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pytorch-中的数据与模型迁移理解-todevice-的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyTorch 中的数据与模型迁移：理解 .to(device) 的使用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-中的-set-和-list-转换时的随机性" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#pandas-根据日期进行分组" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pandas 根据日期进行分组
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,51 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-01 00:00:00">2024年1月1日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="pytorch-中的数据与模型迁移理解-todevice-的使用"><a class="toclink" href="../pytorch-to-device/">PyTorch 中的数据与模型迁移：理解 <code>.to(device)</code> 的使用</a></h2>
+<p>在使用 PyTorch 框架进行深度学习模型训练时，我们经常需要将模型从 CPU 迁移到 GPU 上以加速计算。PyTorch 提供了一个简洁的 API <code>model.to(device)</code> 来实现这一过程。但是，在使用这个 API 时，我们可能会遇到两种不同的写法：<code>model.to(device)</code> 和 <code>model = model.to(device)</code>。那么，这两种写法有什么区别呢？</p>
+
+    <nav class="md-post__action">
+      <a href="../pytorch-to-device/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3565,62 +3610,6 @@
 
     <nav class="md-post__action">
       <a href="../python-3-12-ovverride-decorator/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-10-08 00:00:00">2023年10月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pandas-根据日期进行分组"><a class="toclink" href="../pandas-group-by-date-from-datetimeindex/">Pandas 根据日期进行分组</a></h2>
-<p>问题背景：有一个分钟级别索引的数据框，需要根据日期进行分组聚合计算。</p>
-<ol>
-<li>简单的 <code>.groupby('datetime')</code> 无法实现按日期分组。</li>
-<li><code>.groupby(pd.Grouper(level='datetime', freq='D'))</code> 会为原始数据中不存在的日期填充空值（例如，在股票数据中，周末、节假日等非交易日会被填充为空值）。<ul>
-<li>如果分组后调用的是 <code>.mean()</code>，则会出现这个问题。</li>
-<li>如果分组后调用的是 <code>.transform('mean')</code>，则不存在这个问题。</li>
-</ul>
-</li>
-</ol>
-<p>本文记录了可以正确根据日期进行分组的方法。</p>
-<p><img alt="image-20231008235016433" src="../assets/2023-10-08-pandas-group-by-date-from-datetimeindex/index-image/image-20231008235016433.png" width="500px" /></p>
-
-    <nav class="md-post__action">
-      <a href="../pandas-group-by-date-from-datetimeindex/">
         继续阅读
       </a>
     </nav>

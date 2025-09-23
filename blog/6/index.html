@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pandas-根据日期进行分组" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pandas 根据日期进行分组
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-使用--以强制调用者使用关键字参数" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-继承-mixin-以拓展类的功能" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 继承 Mixin 以拓展类的功能
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,62 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-10-08 00:00:00">2023年10月8日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="pandas-根据日期进行分组"><a class="toclink" href="../pandas-group-by-date-from-datetimeindex/">Pandas 根据日期进行分组</a></h2>
+<p>问题背景：有一个分钟级别索引的数据框，需要根据日期进行分组聚合计算。</p>
+<ol>
+<li>简单的 <code>.groupby('datetime')</code> 无法实现按日期分组。</li>
+<li><code>.groupby(pd.Grouper(level='datetime', freq='D'))</code> 会为原始数据中不存在的日期填充空值（例如，在股票数据中，周末、节假日等非交易日会被填充为空值）。<ul>
+<li>如果分组后调用的是 <code>.mean()</code>，则会出现这个问题。</li>
+<li>如果分组后调用的是 <code>.transform('mean')</code>，则不存在这个问题。</li>
+</ul>
+</li>
+</ol>
+<p>本文记录了可以正确根据日期进行分组的方法。</p>
+<p><img alt="image-20231008235016433" src="../assets/2023-10-08-pandas-group-by-date-from-datetimeindex/index-image/image-20231008235016433.png" width="500px" /></p>
+
+    <nav class="md-post__action">
+      <a href="../pandas-group-by-date-from-datetimeindex/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3624,59 +3680,6 @@
 
     <nav class="md-post__action">
       <a href="../fillna-with-next-non-nan-value/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-08-10 00:00:00">2023年8月10日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-继承-mixin-以拓展类的功能"><a class="toclink" href="../python-mixin/">Python 继承 Mixin 以拓展类的功能</a></h2>
-<p>在 Python 中，我们经常会使用继承来构建类之间的关系。继承可以让子类获得父类的属性和方法，在代码复用和扩展功能方面非常有用。然而，当我们需要在一个类中引入多个不相关的功能时，继承的方式可能会变得复杂和混乱。这时，就可以使用 Mixin 以一种更灵活的方式来扩展类的功能。</p>
-<h3 id="使用-mixin-的好处"><a class="toclink" href="../python-mixin/#%C3%A4%C2%BD%C2%BF%C3%A7%C2%94%C2%A8-mixin-%C3%A7%C2%9A%C2%84%C3%A5%C2%A5%C2%BD%C3%A5%C2%A4%C2%84">使用 Mixin 的好处</a></h3>
-<ol>
-<li>灵活性：使用 Mixin 可以将特定功能的复用与类的继承分离开来，使代码更加灵活和可维护。</li>
-<li>可组合性：通过多继承，可以将多个 Mixin 类组合在一起，来实现多个功能的复用。</li>
-<li>避免继承层次过深：当需要引入多个不相关的功能时，使用 Mixin 可以避免继承层次过深造成的代码复杂性和混乱。</li>
-<li>增强可读性：Mixin 类中只包含特定功能的方法或属性，使代码更易读、更易理解。</li>
-</ol>
-<h3 id="什么是-mixin"><a class="toclink" href="../python-mixin/#%C3%A4%C2%BB%C2%80%C3%A4%C2%B9%C2%88%C3%A6%C2%98%C2%AF-mixin">什么是 Mixin</a></h3>
-
-    <nav class="md-post__action">
-      <a href="../python-mixin/">
         继续阅读
       </a>
     </nav>

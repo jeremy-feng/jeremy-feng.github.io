@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#饮料企业多工厂生产与补货优化" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        饮料企业多工厂生产与补货优化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#使用-conformal-learning-预测企业信贷违约情况" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#gurobi-求解线性规划问题" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gurobi 求解线性规划问题
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-06-26 00:00:00">2023年6月26日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 10 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="饮料企业多工厂生产与补货优化"><a class="toclink" href="../replenishment-optimization/">饮料企业多工厂生产与补货优化</a></h2>
+<p>本文基于某饮料企业的工厂、仓库与商品相关的历史信息，结合随机模拟的售价与成本数据，构建了多工厂、多仓库的生产与补货优化模型。</p>
+<p>数值试验表明，本文构建的优化后的生产与补货模型能够比基线模型（简单基于历史销量而固定生产量）多获得约 500 万元的利润，且在补货行为上更具优势。对工厂和仓库容量的灵敏度分析表明，工厂 2 和 DC4、5、7、14 多具有当前容量较小、运输成本低、历史销量高等特点，对它们进行扩容能够取得显著的回报增益。对整托约束的松弛表明，整托运输虽以节省运输成本为目的，但实际却可能造成运输资源的浪费，而考虑适当放松整托约束有潜力能够提高约 100 万元的利润。</p>
+<p><img alt="问题目标示意图" src="../assets/2023-06-26-replenishment-optimization/index-image/image-20230610124042686.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../replenishment-optimization/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3670,125 +3717,6 @@ Your browser does not support the video tag.
 
     <nav class="md-post__action">
       <a href="../solution-for-linear-programming-problem-and-its-dual/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-05-02 00:00:00">2023年5月2日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 6 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="gurobi-求解线性规划问题"><a class="toclink" href="../linear-programming-using-gurobi/">Gurobi 求解线性规划问题</a></h2>
-<p>本文针对钢铁企业对供应商的选择问题，构建线性规划模型，并使用 Gurobi 求解器进行求解。</p>
-<h3 id="题目背景"><a class="toclink" href="../linear-programming-using-gurobi/#%C3%A9%C2%A2%C2%98%C3%A7%C2%9B%C2%AE%C3%A8%C2%83%C2%8C%C3%A6%C2%99%C2%AF">题目背景</a></h3>
-<p>考虑一家小型的钢铁企业，该企业炼钢时使用的主要原材料是炼焦煤，每年的需求量在 100 到 150 万吨。现在需要帮助该公司安排明年的生产，选择原料的供应商。目前他们收到了 8 家供应商的报价，如下表。表格中的信息包括了每家供应商的最大供应量、是否为工会的公司、运输的方式、炼焦煤的可燃率、单位价格。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>1</strong></th>
-<th><strong>2</strong></th>
-<th><strong>3</strong></th>
-<th><strong>4</strong></th>
-<th><strong>5</strong></th>
-<th><strong>6</strong></th>
-<th><strong>7</strong></th>
-<th><strong>8</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>供应量</strong>  <strong>（千吨/年）</strong></td>
-<td>300</td>
-<td>600</td>
-<td>510</td>
-<td>655</td>
-<td>575</td>
-<td>680</td>
-<td>450</td>
-<td>490</td>
-</tr>
-<tr>
-<td><strong>工会 U/</strong>  <strong>非工会 N</strong></td>
-<td>U</td>
-<td>U</td>
-<td>N</td>
-<td>U</td>
-<td>N</td>
-<td>U</td>
-<td>N</td>
-<td>N</td>
-</tr>
-<tr>
-<td><strong>卡车 T/</strong>  <strong>铁路 R</strong></td>
-<td>R</td>
-<td>T</td>
-<td>R</td>
-<td>T</td>
-<td>T</td>
-<td>T</td>
-<td>R</td>
-<td>R</td>
-</tr>
-<tr>
-<td><strong>可燃率（%）</strong></td>
-<td>15</td>
-<td>16</td>
-<td>18</td>
-<td>20</td>
-<td>21</td>
-<td>22</td>
-<td>23</td>
-<td>25</td>
-</tr>
-<tr>
-<td><strong>价格 (￥/吨)</strong></td>
-<td>49.5</td>
-<td>50.0</td>
-<td>61.0</td>
-<td>63.5</td>
-<td>66.5</td>
-<td>71.0</td>
-<td>72.5</td>
-<td>80.0</td>
-</tr>
-</tbody>
-</table>
-
-    <nav class="md-post__action">
-      <a href="../linear-programming-using-gurobi/">
         继续阅读
       </a>
     </nav>

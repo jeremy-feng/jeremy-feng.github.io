@@ -3016,6 +3016,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-tqdm-美化进度条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 tqdm 美化进度条
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#当梯度下降陷入局部最优解" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3125,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#在-pandas-中计算方差" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 pandas 中计算方差
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3139,52 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-12-30 00:00:00">2022年12月30日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-tqdm-美化进度条"><a class="toclink" href="../tqdm/">使用 tqdm 美化进度条</a></h2>
+<p>在项目中经常遇到耗时较久的循环，<code>tqdm</code>可以打印美观的进度条，同时输出循环中的变量信息。</p>
+<p><img alt="高级用法" src="../assets/2022-12-30-tqdm/index-image/%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95.gif" /></p>
+
+    <nav class="md-post__action">
+      <a href="../tqdm/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3564,63 +3610,6 @@
 
     <nav class="md-post__action">
       <a href="../unbiasness-of-sample-variance/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-16 00:00:00">2022年12月16日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-pandas-中计算方差"><a class="toclink" href="../calculate-variance-in-pandas/">在 pandas 中计算方差</a></h2>
-<p class="annotate">pandas 默认的<code>.var()</code>方法计算的是样本方差，即自由度为<span class="arithmatex">\(N-1\)</span>。若想计算总体方差，需指定参数<code>ddof=0</code>(1)。</p>
-<ol>
-<li>Delta Degrees of Freedom。当指定<code>ddof</code>时，计算方差的分母为<code>N-ddof</code>。</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">总结</p>
-<ul>
-<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n-1，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>；</li>
-<li>NumPy 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>；</li>
-<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>相当于 NumPy 中的 <code class="highlight"><span class="n">var</span><span class="p">()</span></code>。</li>
-</ul>
-</div>
-
-    <nav class="md-post__action">
-      <a href="../calculate-variance-in-pandas/">
         继续阅读
       </a>
     </nav>
