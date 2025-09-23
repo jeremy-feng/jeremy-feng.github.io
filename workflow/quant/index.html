@@ -1,0 +1,1458 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Coding, AI, and Life" name="description"/>
+<meta content="Jeremy Feng" name="author"/>
+<link href="https://fengchao.pro/workflow/quant/" rel="canonical">
+<link href="../" rel="prev"/>
+<link href="../writing/" rel="next"/>
+<link href="../../blog/avatar.ico" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.0.13+insiders-4.32.0" name="generator"/>
+<title>量化研究 - Jeremy Feng's Blog</title>
+<link href="../../assets/stylesheets/main.22245cb8.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.6932e648.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0 0 114.6 0 256s114.6 256 256 256zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM288 352c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32 14.3 32 32 32 32-14.3 32-32z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM224 256c0 35.3-28.7 64-64 64s-64-28.7-64-64 28.7-64 64-64 64 28.7 64 64zm128 64c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h128c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64h128V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256c0-22.1-17.9-40-40-40s-40 17.9-40 40 17.9 40 40 40 40-17.9 40-40zm152 40c22.1 0 40-17.9 40-40s-17.9-40-40-40-40 17.9-40 40 17.9 40 40 40zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+<style>.md-tag-icon--cs{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M384 96v224H64V96h320zM64 32C28.7 32 0 60.7 0 96v224c0 35.3 28.7 64 64 64h117.3l-10.7 32H96c-17.7 0-32 14.3-32 32s14.3 32 32 32h256c17.7 0 32-14.3 32-32s-14.3-32-32-32h-74.7l-10.7-32H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm464 0c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h64c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48h-64zm16 64h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16zm-16 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16zm32 224c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"/></svg>');}.md-tag-icon--database{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0s224 35.8 224 80zm-54.8 134.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432v-85.9z"/></svg>');}.md-tag-icon--dl{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M0 64c0-17.7 14.3-32 32-32h128c123.7 0 224 100.3 224 224S283.7 480 160 480H32c-17.7 0-32-14.3-32-32V64zm64 32v320h96c88.4 0 160-71.6 160-160S248.4 96 160 96H64z"/></svg>');}.md-tag-icon--indie-dev{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM404.1 32H43.9C19.7 32 .06 51.59 0 75.8v360.4C.06 460.41 19.7 480 43.9 480h360.2c24.21 0 43.84-19.59 43.9-43.8V75.8c-.06-24.21-19.7-43.8-43.9-43.8zM154.2 291.19c0 18.81-11.61 47.31-48.36 47.25h-46.4V172.98h47.38c35.44 0 47.36 28.46 47.37 47.28l.01 70.93zm100.68-88.66H201.6v38.42h32.57v29.57H201.6v38.41h53.29v29.57h-62.18c-11.16.29-20.44-8.53-20.72-19.69V193.7c-.27-11.15 8.56-20.41 19.71-20.69h63.19l-.01 29.52zm103.64 115.29c-13.2 30.75-36.85 24.63-47.44 0l-38.53-144.8h32.57l29.71 113.72 29.57-113.72h32.58l-38.46 144.8z"/></svg>');}.md-tag-icon--latex{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18.5 4 1.16 4.35-.96.26c-.45-.87-.91-1.74-1.44-2.18C16.73 6 16.11 6 15.5 6H13v10.5c0 .5 0 1 .33 1.25.34.25 1 .25 1.67.25v1H9v-1c.67 0 1.33 0 1.67-.25.33-.25.33-.75.33-1.25V6H8.5c-.61 0-1.23 0-1.76.43-.53.44-.99 1.31-1.44 2.18l-.96-.26L5.5 4h13Z"/></svg>');}.md-tag-icon--leetcode{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>');}.md-tag-icon--life{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m47.6 300.4 180.7 168.7c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9l180.7-168.7c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141-45.6-7.6-92 7.3-124.6 39.9l-12 12-12-12c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>');}.md-tag-icon--linux{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>');}.md-tag-icon--llm{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08-4.778 2.758a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5Z"/></svg>');}.md-tag-icon--ml{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.7 33.4c13.5-4.1 28.1 1.1 35.9 12.9l165.4 248L389.4 46.2c7.8-11.7 22.4-17 35.9-12.9S448 49.9 448 64v384c0 17.7-14.3 32-32 32s-32-14.3-32-32V169.7L250.6 369.8c-5.9 8.9-15.9 14.2-26.6 14.2s-20.7-5.3-26.6-14.2L64 169.7V448c0 17.7-14.3 32-32 32S0 465.7 0 448V64c0-14.1 9.2-26.5 22.7-30.6z"/></svg>');}.md-tag-icon--or{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.8 5c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2h-5.5c-.6 0-1.2-.6-1.2-1.3V6.2c0-.6.6-1.2 1.2-1.2V3.5C16.2 2.1 17.6 1 19 1s2.8 1.1 2.8 2.5V5m-1.3 0V3.5c0-.8-.7-1.3-1.5-1.3s-1.5.5-1.5 1.3V5h3M1.74 19.25l1.47-5.46 1.47 2.55L9 13.85V3h2v10.85l6.53 3.76L19 15.03l1.5 5.47-5.5 1.46 1.53-2.61L10 15.58l-4.32 2.49 1.53 2.64-5.47-1.46Z"/></svg>');}.md-tag-icon--python{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>');}.md-tag-icon--rust{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m508.52 249.75-21.82-13.51c-.17-2-.34-3.93-.55-5.88l18.72-17.5a7.35 7.35 0 0 0-2.44-12.25l-24-9c-.54-1.88-1.08-3.78-1.67-5.64l15-20.83a7.35 7.35 0 0 0-4.79-11.54l-25.42-4.15c-.9-1.73-1.79-3.45-2.73-5.15l10.68-23.42a7.35 7.35 0 0 0-6.95-10.39l-25.82.91q-1.79-2.22-3.61-4.4L439 81.84a7.36 7.36 0 0 0-8.84-8.84L405 78.93q-2.17-1.83-4.4-3.61l.91-25.82a7.35 7.35 0 0 0-10.39-7L367.7 53.23c-1.7-.94-3.43-1.84-5.15-2.73l-4.15-25.42a7.35 7.35 0 0 0-11.54-4.79L326 35.26c-1.86-.59-3.75-1.13-5.64-1.67l-9-24a7.35 7.35 0 0 0-12.25-2.44l-17.5 18.72c-1.95-.21-3.91-.38-5.88-.55L262.25 3.48a7.35 7.35 0 0 0-12.5 0L236.24 25.3c-2 .17-3.93.34-5.88.55l-17.5-18.72a7.35 7.35 0 0 0-12.25 2.44l-9 24c-1.89.55-3.79 1.08-5.66 1.68l-20.82-15a7.35 7.35 0 0 0-11.54 4.79l-4.15 25.41c-1.73.9-3.45 1.79-5.16 2.73l-23.4-10.63a7.35 7.35 0 0 0-10.39 7l.92 25.81c-1.49 1.19-3 2.39-4.42 3.61L81.84 73A7.36 7.36 0 0 0 73 81.84L78.93 107c-1.23 1.45-2.43 2.93-3.62 4.41l-25.81-.91a7.42 7.42 0 0 0-6.37 3.26 7.35 7.35 0 0 0-.57 7.13l10.66 23.41c-.94 1.7-1.83 3.43-2.73 5.16l-25.41 4.14a7.35 7.35 0 0 0-4.79 11.54l15 20.82c-.59 1.87-1.13 3.77-1.68 5.66l-24 9a7.35 7.35 0 0 0-2.44 12.25l18.72 17.5c-.21 1.95-.38 3.91-.55 5.88l-21.86 13.5a7.35 7.35 0 0 0 0 12.5l21.82 13.51c.17 2 .34 3.92.55 5.87l-18.72 17.5a7.35 7.35 0 0 0 2.44 12.25l24 9c.55 1.89 1.08 3.78 1.68 5.65l-15 20.83a7.35 7.35 0 0 0 4.79 11.54l25.42 4.15c.9 1.72 1.79 3.45 2.73 5.14l-10.63 23.43a7.35 7.35 0 0 0 .57 7.13 7.13 7.13 0 0 0 6.37 3.26l25.83-.91q1.77 2.22 3.6 4.4L73 430.16a7.36 7.36 0 0 0 8.84 8.84l25.16-5.93q2.18 1.83 4.41 3.61l-.92 25.82a7.35 7.35 0 0 0 10.39 6.95l23.43-10.68c1.69.94 3.42 1.83 5.14 2.73l4.15 25.42a7.34 7.34 0 0 0 11.54 4.78l20.83-15c1.86.6 3.76 1.13 5.65 1.68l9 24a7.36 7.36 0 0 0 12.25 2.44l17.5-18.72c1.95.21 3.92.38 5.88.55l13.51 21.82a7.35 7.35 0 0 0 12.5 0l13.51-21.82c2-.17 3.93-.34 5.88-.56l17.5 18.73a7.36 7.36 0 0 0 12.25-2.44l9-24c1.89-.55 3.78-1.08 5.65-1.68l20.82 15a7.34 7.34 0 0 0 11.54-4.78l4.15-25.42c1.72-.9 3.45-1.79 5.15-2.73l23.42 10.68a7.35 7.35 0 0 0 10.39-6.95l-.91-25.82q2.22-1.79 4.4-3.61l25.15 5.93a7.36 7.36 0 0 0 8.84-8.84L433.07 405q1.83-2.17 3.61-4.4l25.82.91a7.23 7.23 0 0 0 6.37-3.26 7.35 7.35 0 0 0 .58-7.13l-10.68-23.42c.94-1.7 1.83-3.43 2.73-5.15l25.42-4.15a7.35 7.35 0 0 0 4.79-11.54l-15-20.83c.59-1.87 1.13-3.76 1.67-5.65l24-9a7.35 7.35 0 0 0 2.44-12.25l-18.72-17.5c.21-1.95.38-3.91.55-5.87l21.82-13.51a7.35 7.35 0 0 0 0-12.5Zm-151 129.08A13.91 13.91 0 0 0 341 389.51l-7.64 35.67a187.51 187.51 0 0 1-156.36-.74l-7.64-35.66a13.87 13.87 0 0 0-16.46-10.68l-31.51 6.76a187.38 187.38 0 0 1-16.26-19.21H258.3c1.72 0 2.89-.29 2.89-1.91v-54.19c0-1.57-1.17-1.91-2.89-1.91h-44.83l.05-34.35H262c4.41 0 23.66 1.28 29.79 25.87 1.91 7.55 6.17 32.14 9.06 40 2.89 8.82 14.6 26.46 27.1 26.46H407a187.3 187.3 0 0 1-17.34 20.09Zm25.77 34.49A15.24 15.24 0 1 1 368 398.08h.44a15.23 15.23 0 0 1 14.8 15.24Zm-225.62-.68a15.24 15.24 0 1 1-15.25-15.25h.45a15.25 15.25 0 0 1 14.75 15.25Zm-88.1-178.49 32.83-14.6a13.88 13.88 0 0 0 7.06-18.33L102.69 186h26.56v119.73h-53.6a187.65 187.65 0 0 1-6.08-71.58Zm-11.26-36.06a15.24 15.24 0 0 1 15.23-15.25H74a15.24 15.24 0 1 1-15.67 15.24Zm155.16 24.49.05-35.32h63.26c3.28 0 23.07 3.77 23.07 18.62 0 12.29-15.19 16.7-27.68 16.7ZM399 306.71c-9.8 1.13-20.63-4.12-22-10.09-5.78-32.49-15.39-39.4-30.57-51.4 18.86-11.95 38.46-29.64 38.46-53.26 0-25.52-17.49-41.59-29.4-49.48-16.76-11-35.28-13.23-40.27-13.23h-198.9a187.49 187.49 0 0 1 104.89-59.19l23.47 24.6a13.82 13.82 0 0 0 19.6.44l26.26-25a187.51 187.51 0 0 1 128.37 91.43l-18 40.57a14 14 0 0 0 7.09 18.33l34.59 15.33a187.12 187.12 0 0 1 .4 32.54h-19.28c-1.91 0-2.69 1.27-2.69 3.13v8.82C421 301 409.31 305.58 399 306.71ZM240 60.21A15.24 15.24 0 0 1 255.21 45h.45A15.24 15.24 0 1 1 240 60.21ZM436.84 214a15.24 15.24 0 1 1 0-30.48h.44a15.24 15.24 0 0 1-.44 30.48Z"/></svg>');}.md-tag-icon--pytorch{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.005 0 4.952 7.053a9.865 9.865 0 0 0 0 14.022 9.866 9.866 0 0 0 14.022 0c3.984-3.9 3.986-10.205.085-14.023l-1.744 1.743c2.904 2.905 2.904 7.634 0 10.538s-7.634 2.904-10.538 0-2.904-7.634 0-10.538l4.647-4.646.582-.665zm3.568 3.899a1.327 1.327 0 0 0-1.327 1.327 1.327 1.327 0 0 0 1.327 1.328A1.327 1.327 0 0 0 16.9 5.226 1.327 1.327 0 0 0 15.573 3.9z"/></svg>');}.md-tag-icon--quant{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.08 17.8c-.46.13-.87.2-1.23.2-1.2 0-2.01-.88-2.42-2.65h-.05c-.99 1.91-2.38 2.86-4.13 2.86-1.31 0-2.36-.49-3.15-1.48S5.92 14.5 5.92 13c0-1.75.45-3.15 1.34-4.24.89-1.09 2.1-1.64 3.63-1.64.82 0 1.56.23 2.2.68.64.46 1.13 1.1 1.47 1.93h.04l.71-2.4h2.56l-2.14 5.32c.24 1.24.49 2.09.77 2.54.24.45.58.68 1 .68.24 0 .43-.04.6-.11l-.02 2.04m-4.26-5.24c-.21-1.13-.55-2.01-1.01-2.61-.45-.61-1-.91-1.63-.91-.82 0-1.48.37-1.97 1.1-.49.74-.71 1.65-.71 2.72 0 .98.19 1.79.62 2.45.42.66.99.98 1.7.98.6 0 1.15-.29 1.64-.84.5-.57.91-1.4 1.24-2.49l.12-.4Z"/></svg>');}.md-tag-icon--stats{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-6 4.1L14.1 6l1.4 1.4L16.9 6 18 7.1l-1.4 1.4L18 9.9 16.9 11l-1.4-1.4-1.4 1.4L13 9.9l1.4-1.4L13 7.1m-6.8.6h5v1.5h-5V7.7m5.3 8.3h-2v2H8v-2H6v-1.5h2v-2h1.5v2h2V16m6.5 1.2h-5v-1.5h5v1.5m0-2.4h-5v-1.5h5v1.5Z"/></svg>');}.md-tag-icon--visulization{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 21H2V3h2v16h2v-9h4v9h2V6h4v13h2v-5h4v7Z"/></svg>');}</style>
+<link href="../../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#构造因子">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "fkujvevd2q");
+  </script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1438193177826254"></script>
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Jeremy Feng's Blog" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Jeremy Feng's Blog">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40h-16c-1.1 0-2.2 0-3.3-.1-1.4.1-2.8.1-4.2.1H392c-22.1 0-40-17.9-40-40v-88c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v88c0 22.1-17.9 40-40 40h-55.9c-1.5 0-3-.1-4.5-.2-1.2.1-2.4.2-3.6.2h-16c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8v-69.6H32c-18 0-32-14-32-32.1 0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7l255.4 224.5c8 7 12 15 11 24z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Jeremy Feng's Blog
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              量化研究
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="跟随系统" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme)" data-md-color-primary="" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="跟随系统">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"></path></svg>
+</label>
+<input aria-label="日间模式" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="日间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="夜间模式" class="md-option" data-md-color-accent="" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="夜间模式">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="按 F 或 S 搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="按 F 或 S 搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<a aria-label="分享" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="分享">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"></path></svg>
+</a>
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+    
+  
+  首页
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../blog/">
+          
+  
+    
+  
+  博客
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../code/">
+          
+  
+    
+  
+  代码
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+          
+  
+    
+  
+  效率
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../blog/tags/">
+        
+  
+  标签
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="https://v.fengchao.pro" target="_blank" rel="noopener">
+        
+  
+  问答
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../about/">
+          
+  
+    
+  
+  关于
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Jeremy Feng's Blog" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Jeremy Feng's Blog">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40h-16c-1.1 0-2.2 0-3.3-.1-1.4.1-2.8.1-4.2.1H392c-22.1 0-40-17.9-40-40v-88c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v88c0 22.1-17.9 40-40 40h-55.9c-1.5 0-3-.1-4.5-.2-1.2.1-2.4.2-3.6.2h-16c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9.1-2.8v-69.6H32c-18 0-32-14-32-32.1 0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7l255.4 224.5c8 7 12 15 11 24z"></path></svg>
+</a>
+    Jeremy Feng's Blog
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../blog/">
+<span class="md-ellipsis">
+    
+  
+    博客
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    博客
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    归档
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    归档
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/9/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 9 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/7/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 7 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 6 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/5/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 5 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/4/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 4 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/3/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 3 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2025/1/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2025 年 1 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/12/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 12 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/8/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 8 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/7/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 7 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 6 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/5/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 5 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/4/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 4 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/3/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 3 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/2/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 2 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2024/1/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2024 年 1 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/12/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 12 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/11/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 11 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/10/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 10 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/9/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 9 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/8/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 8 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/7/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 7 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 6 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/5/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 5 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/4/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 4 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/3/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 3 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/2/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 2 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2023/1/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2023 年 1 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/12/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 12 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/11/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 11 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/10/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 10 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/9/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 9 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/8/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 8 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/7/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 7 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 6 月
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/2022/5/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      2022 年 5 月
+    </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    标签
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    标签
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/computer-science/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      Computer Science
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/indiedev/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      IndieDev
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/latex/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      LaTeX
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/leetcode/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      LeetCode
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/linux/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      Linux
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/llm/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      LLM
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/python/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      Python
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/pytorch/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      PyTorch
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/rust/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      Rust
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      数据可视化
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      数据库
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      机器学习
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      深度学习
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E7%94%9F%E6%B4%BB/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      生活
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E7%BB%9F%E8%AE%A1/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      统计
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E8%BF%90%E7%AD%B9%E5%AD%A6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      运筹学
+    </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/">
+<span class="md-ellipsis">
+<span class="md-typeset">
+      量化研究
+    </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../code/">
+<span class="md-ellipsis">
+    
+  
+    代码
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    代码
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/pandas/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.922 0h2.623v18.104h-2.623zm-4.126 12.94h2.623v2.57h-2.623zm0-7.037h2.623v5.446h-2.623zm0 11.197h2.623v5.446h-2.623zM4.456 5.896h2.622V24H4.455zm4.213 2.559h2.623v2.57H8.67zm0 4.151h2.623v5.447H8.67zm0-11.187h2.623v5.446H8.67Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Pandas 数据框
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/numpy/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m10.315 4.876-4.01-2.024-4.401 2.196 4.118 2.068zm1.838.928 4.205 2.122-4.363 2.19L7.87 8.046zm5.615-2.922 4.32 2.166-3.863 1.94-4.213-2.125zM15.91 1.95 12.021 0 8.174 1.92l4.007 2.02zm-3.04 16.744V24l4.711-2.35-.005-5.31zm4.704-4.206-.005-5.253-4.699 2.336v5.254zm5.655-.984v5.327l-4.018 2.005-.002-5.303zm0-1.863v-5.22l-4.025 2.001.003 5.264zm-12.022-.07L8.033 9.976v6.895s-3.88-8.257-4.24-8.998c-.046-.096-.237-.201-.285-.227A357.475 357.475 0 0 0 .773 6.25V18.43l2.82 1.508V13.57s3.84 7.378 3.878 7.458c.04.08.425.858.837 1.132.548.363 2.899 1.776 2.899 1.776z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    NumPy 数组
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/list/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 4v2h3v12h-3v2h5V4M4 4v16h5v-2H6V6h3V4H4Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    List 列表
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/loop/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 4a8 8 0 1 1-8 8 8 8 0 0 1 8-8M3 12a6 6 0 0 0 4 5.65v2.09A8 8 0 0 1 7 4.26v2.09A6 6 0 0 0 3 12Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Loop 循环
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/plot/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 20.85c1.78-.7 1.39-2.63.49-3.85-.89-1.25-2.12-2.11-3.36-2.94A9.817 9.817 0 0 1 4.54 12c-.28-.33-.85-.94-.27-1.06.59-.12 1.61.46 2.13.68.91.38 1.81.82 2.65 1.34l1.01-1.7C8.5 10.23 6.5 9.32 4.64 9.05c-1.06-.16-2.18.06-2.54 1.21-.32.99.19 1.99.77 2.77 1.37 1.83 3.5 2.71 5.09 4.29.34.33.75.72.95 1.18.21.44.16.47-.31.47-1.24 0-2.79-.97-3.8-1.61l-1.01 1.7c1.53.94 4.09 2.41 5.96 1.79m11.09-15.6c.22-.22.22-.58 0-.79l-1.3-1.3a.562.562 0 0 0-.78 0l-1.02 1.02 2.08 2.08M11 10.92V13h2.08l6.15-6.15-2.08-2.08L11 10.92Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Plot 绘图
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/print/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 3H6v4h12m1 5a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m-3 7H8v-5h8m3-6H5a3 3 0 0 0-3 3v6h4v4h12v-4h4v-6a3 3 0 0 0-3-3Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Print 打印
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/machine-learning/">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M22.7 33.4c13.5-4.1 28.1 1.1 35.9 12.9l165.4 248L389.4 46.2c7.8-11.7 22.4-17 35.9-12.9S448 49.9 448 64v384c0 17.7-14.3 32-32 32s-32-14.3-32-32V169.7L250.6 369.8c-5.9 8.9-15.9 14.2-26.6 14.2s-20.7-5.3-26.6-14.2L64 169.7V448c0 17.7-14.3 32-32 32S0 465.7 0 448V64c0-14.1 9.2-26.5 22.7-30.6z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Machine Learning 机器学习
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/sql/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    SQL 数据库
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/r/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.178.002a12.002 12.002 0 0 0-8.662 3.515 12.002 12.002 0 0 0 0 16.97 12.002 12.002 0 0 0 16.97 0 12.002 12.002 0 0 0 0-16.97A12.002 12.002 0 0 0 12.179.002zM7.77 5.995c.562.128 1.05.217 1.663.217.921 0 1.863-.217 2.786-.217 1.79 0 3.45.814 3.45 2.8 0 1.54-.921 2.517-2.35 2.93l2.788 4.107h1.301v1.01h-1.986l-3.293-4.934h-1.757v3.924h1.718v1.01H7.77v-1.01h1.483V7.134L7.77 6.951v-.957zm4.466 1.012c-.596 0-1.213.053-1.864.127v3.798l.941.02c2.298.034 3.183-.85 3.183-2.026 0-1.376-.997-1.919-2.26-1.919z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    R 语言
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../code/others/">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M495.9 166.6c3.2 8.7.5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4l-55.6 17.8c-8.8 2.8-18.6.3-24.5-6.8-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4c-1.1-8.4-1.7-16.9-1.7-25.5s.6-17.1 1.7-25.4l-43.3-39.4c-6.9-6.2-9.6-15.9-6.4-24.6 4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2 5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8 8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    Others 其他
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    效率
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    效率
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.08 17.8c-.46.13-.87.2-1.23.2-1.2 0-2.01-.88-2.42-2.65h-.05c-.99 1.91-2.38 2.86-4.13 2.86-1.31 0-2.36-.49-3.15-1.48S5.92 14.5 5.92 13c0-1.75.45-3.15 1.34-4.24.89-1.09 2.1-1.64 3.63-1.64.82 0 1.56.23 2.2.68.64.46 1.13 1.1 1.47 1.93h.04l.71-2.4h2.56l-2.14 5.32c.24 1.24.49 2.09.77 2.54.24.45.58.68 1 .68.24 0 .43-.04.6-.11l-.02 2.04m-4.26-5.24c-.21-1.13-.55-2.01-1.01-2.61-.45-.61-1-.91-1.63-.91-.82 0-1.48.37-1.97 1.1-.49.74-.71 1.65-.71 2.72 0 .98.19 1.79.62 2.45.42.66.99.98 1.7.98.6 0 1.15-.29 1.64-.84.5-.57.91-1.4 1.24-2.49l.12-.4Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    量化研究
+  
+
+    
+  </span>
+<span class="md-status md-status--encrypted"></span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.08 17.8c-.46.13-.87.2-1.23.2-1.2 0-2.01-.88-2.42-2.65h-.05c-.99 1.91-2.38 2.86-4.13 2.86-1.31 0-2.36-.49-3.15-1.48S5.92 14.5 5.92 13c0-1.75.45-3.15 1.34-4.24.89-1.09 2.1-1.64 3.63-1.64.82 0 1.56.23 2.2.68.64.46 1.13 1.1 1.47 1.93h.04l.71-2.4h2.56l-2.14 5.32c.24 1.24.49 2.09.77 2.54.24.45.58.68 1 .68.24 0 .43-.04.6-.11l-.02 2.04m-4.26-5.24c-.21-1.13-.55-2.01-1.01-2.61-.45-.61-1-.91-1.63-.91-.82 0-1.48.37-1.97 1.1-.49.74-.71 1.65-.71 2.72 0 .98.19 1.79.62 2.45.42.66.99.98 1.7.98.6 0 1.15-.29 1.64-.84.5-.57.91-1.4 1.24-2.49l.12-.4Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    量化研究
+  
+
+    
+  </span>
+<span class="md-status md-status--encrypted"></span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#构造因子">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          构造因子
+        </span>
+</span>
+</a>
+<nav aria-label="构造因子" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#提取数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          提取数据
+        </span>
+</span>
+</a>
+<nav aria-label="提取数据" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#日频数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          日频数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#分钟频数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          分钟频数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#重复表达式复用">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          重复表达式复用
+        </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#绩效评价">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          绩效评价
+        </span>
+</span>
+</a>
+<nav aria-label="绩效评价" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#将收益率数据转换为价格数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          将收益率数据转换为价格数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算年化收益率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算年化收益率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算每年每月收益率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算每年、每月收益率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算年化波动率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算年化波动率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算夏普比率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算夏普比率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算最大回撤">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算最大回撤
+        </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../writing/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-1.9l10-10V8l-6-6H6m7 1.5L18.5 9H13V3.5m7.1 9.5c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-2 1.8L12 20.9V23h2.1l6.1-6.1-2.1-2.1Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    写作
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tools/">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m21.71 20.29-1.42 1.42a1 1 0 0 1-1.41 0L7 9.85A3.81 3.81 0 0 1 6 10a4 4 0 0 1-3.78-5.3l2.54 2.54.53-.53 1.42-1.42.53-.53L4.7 2.22A4 4 0 0 1 10 6a3.81 3.81 0 0 1-.15 1l11.86 11.88a1 1 0 0 1 0 1.41M2.29 18.88a1 1 0 0 0 0 1.41l1.42 1.42a1 1 0 0 0 1.41 0l5.47-5.46-2.83-2.83M20 2l-4 2v2l-2.17 2.17 2 2L18 8h2l2-4Z"></path></svg>
+<span class="md-ellipsis">
+    
+  
+    工具
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../blog/tags/">
+<span class="md-ellipsis">
+    
+  
+    标签
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://v.fengchao.pro" target="_blank" rel="noopener">
+<span class="md-ellipsis">
+    
+  
+    问答
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../about/">
+<span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    关于
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/en/">
+<span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden="">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#构造因子">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          构造因子
+        </span>
+</span>
+</a>
+<nav aria-label="构造因子" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#提取数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          提取数据
+        </span>
+</span>
+</a>
+<nav aria-label="提取数据" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#日频数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          日频数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#分钟频数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          分钟频数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#重复表达式复用">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          重复表达式复用
+        </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#绩效评价">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          绩效评价
+        </span>
+</span>
+</a>
+<nav aria-label="绩效评价" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#将收益率数据转换为价格数据">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          将收益率数据转换为价格数据
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算年化收益率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算年化收益率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算每年每月收益率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算每年、每月收益率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算年化波动率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算年化波动率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算夏普比率">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算夏普比率
+        </span>
+</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#计算最大回撤">
+<span class="md-ellipsis">
+<span class="md-typeset">
+          计算最大回撤
+        </span>
+</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/jeremy-feng/blog/edit/master/docs/workflow/quant.md" title="Edit this page" target="_blank" rel="noopener">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"></path></svg>
+</a>
+<div id="mkdocs-encrypted-content" style="display:none">NFrX1zbOaZBlogRdub8kRg==;MjlDtuX9AMYRBSwDO1yn0Lu9i3VTlZC10HiEMF0urhG1aUNAr+YW70UL3GQP9zvP6T64C6Ufk0NAeFeMVKErW1rpfyzFRdaDAqTg6b+JJj5AYHjA2BM2XTsJf9+gGby003jL0z1Qnk5TJcQZyMjEMAeUL44Xk4knBJQxsDMengEuPPGQvehoC53XRdsE+ibtphaX2CiwTFSopHeQlc6Jy28hTYIgE+Lz2wgQa5SlIoPq9Bfd2vY0jVt34oNa0qXlUXzdeaeiNWObDEM4AaZ7+WsSoo6HgtG6SzHjS6EnnCkp4ujEWrPOoWlsvE/nEmszkH+S+XThJXc8/4pF3ud7qB+zozl3pJ6eSJIXXMompmn4UR+FWoa45V9apZ1vrMM4zZkG+sIBBwLQjRE7uBZCZwtRh6+QDZAK3mDPMG5PRVzze06uO6ERpqNY7eH4Rbuy1+g6CrRtQEupSLvb3GBj1nvj6qn2H0V+lOU6ldPyf4aiUo05t43eTJCGjqQvxfEWkC8W9wPDD9xl83UPFf0dnVJw0A84HlEy2zn5N6lTRykeo5ldYq+NkF8I5WR8ivkgrekOR5sfDgHA/asQhFsL7Sg7KrpMC/IdcDWY0HE/GTG9vhZmyehgfm1GgGCPeaOqng6KnGPi7rFBKZanntRV2E3jiNHPjBfPNpJms45jAs53BaTz4ruwDc/W9la/Q1RFVLFPBTWIob2YNENyuaTskwx+vCl8tLt6HSvbSXpnMgq90AutRmKshhAkQIsMUPy22ZSUgxx+1T5l3R56c+vRiPHSIlUe3mOwo0Ndvk+qSG4C3r7XuU4tr8U8u7GGQ2Ga/jt9SsinycEU9kHfSNLpoXDY1QxhtH/2Pp2ur5OkTp9lL3oN8xz2iTgxDwiq05BiDLXzaXdix5HetRPiQegh7QGh+UgyvAbNqPD6KfD1Buinc+b1TJgVyhP4Xfl8bst4FV4djq08mmTEAh5un8EPjDClguGtPbbtWj1Sx9PHvYG7M5FsfM26RR6ssIZ/Dsnb4ukYwUAE5mugwcRtgrbK/RBiTeoIAygLIUkBKBuPqkSkJrhjvFvQyUzrrMSZprJYvonOAM/g3NrhUKsW489mMC0Ea/D38QJOL9KrSUQbGbO0Y/B2ybNQcWwGWQZWRS5wZMASLt/PKqXIdGaYUZj+uge6bO2bQWaJ+ybIYM0tguMhCjw7x4FMkHaF0/y6dj8BuUBkcdZKCA9dAD4bEI2xLVBy8OMApZ3eUYNXj+MxfjcY2PpRnsg4Z2K9iU0BU6j/Aa2ovSBPfpnaDmtPG5N57vwm2z5Ig5lWgZUMnOPM4Ou1QdwNbX8ewefR+gll9s+eE0PtLd97KUUVCzFm+VpkAuPIisQoCNR/3xIRFA9O1ZFp/3DsHKdQtCXvDHyZ1mPDL+TXu2Bm+Y49iMDM5oQOHdgOKXIAu5G3L5+1/3opJ+G7s/mtcybTmSoIHmWZBSdba0ICQnQiuiU04hh1p4HAVEp+8vLE6NCL2F4//Ie0+/UJCTNNvaXvAvy9EwkURLQExfbCNp/0RWZWyMe46SkzJdbu/HaG6JTJp/A6qKo00XKx48aUtjj3oTYdgWVe8+KNYdtbctbLp35CdvZQ3fY49poIOSVWUgMALIVxdI3IbBuMEngJa/7qQqxbTTRlqUmEp0wKqGb48HXezUPyQAsplRYGAvE1NtORriTyf/SAhQI3EbplCvX8hoGHO5fTNn2Td7gparjxdOMfPsxQPapCr+wYgrtXICVGBXsUtgCwvprCe74QGnvRpj5/Xlo01ljX+gJhiWigNSHj/PSzbRajP5oSukzVef0upPXnc5hbU7wNCSGkO01ceBayW46HY3fBsv2E8dH0/qMF3DGM5tcSxMp1sgo8Bdgy96Ze5L2gzVYfNINo0Hol4js3gfqcplMjESAuCM4/TOsyjxPce6/dwGKGbq3Xpn+WqP7YaSXYskw+p39cNcSitXxffiyQ8iKCCyq1cZ2/dBQxUy39RdllwYuLeuzd8/vQPcRRuGkjzoSHPZrdlqw7nH+RWcd4+XPnonJDutjUREwldgilWwHEPci2QCWidjuhL2bDMz7LDXTRagrr0iQy8yJ/4iOumbSE4Ssqnw7UDMQ+dwtdIKk16ZK787AYuMQ9+gybzDgQ2DaXR5yRJeSg9fDsl0Qg0Ft2uajFAxi9/dmEg1wZSMYtCSlNMhboyE2lfeBFEe3YRsXrGy60UzAR/HMUGjQFpe13tag6paeHnhDI6RHjIGyVNoCZIEJ4K2+odKsTOW2gcn9GyTwwGLNM2XBVSREX2o7w2ORNq+HentKdsH4quIrWUGywAo1qcgNK9akg8tuGpdAjOvz8/PVWmNhLno5WawbUgZO9dHPDVsRSWNOrE16HhEKk08KXtciga/qH1o5B88H6i8Q2l3iwyzIlPYzRxJHY9zEhwmaGx0aXuAWaDEXEFaJbM40had1Zi6qJ959GRO2mVzUAqCOS9JOn6bA+a27LsfVeMlL8pjJyOD6AZ1cGnpkQ2qOQc13yhbshXQPSeB0OXmGX5Rav7HK0sCLr3qMNl4HuqFmyu65Z4vJhwNZlpvOKub7qAWyeMA00EiGgzv7SLC/BsxRC7RgfH6XQNtzUOktTrLQdbOVHEtcpZ71nxevdIWQd9GPk/z0QGE1kKUqIdpsVJScj48yRMrRsFcDSPpDf22LuYPr/cs9TD2UdZGbPployoFLwDu18YTKh/qUNcR5qNHW4Az0Kq+t86zgKiwNXPi8TZ+KkpOQ2swDqICdkqeodNRal49AoUDbNFyTsl0RLeC3amssAkqIZIsuIp35BSlQuRAPy+sYlAgbw64/abDudbWvFb6CsW2MEeHrI8caZEMEcGgv97jEtzyDmn5t+RZecUGSfcw5F3u9LLypacZHj3KXFtKQeItMPBArWd3HpmRtgkM8BpQpWWhsjKYUloA1ZF+hy+SKvIQu/kZMTx/0nw8lAGcAvqhnW1Gv5qkX8maxkJe+tPGPBEomnf25hxsEkPtyyU5P77TftRTzukV+6e+C/mLbboae5y97GUKar2s15aABDb6zfUGpBa6T23H4+QYy/WwWs4Hiwb/8DJtHnQKZqWxg9WzLhD16tn3nBNk/qvWEMCnsPqM2Gv1pxzb6koicbkMeuxhFkmmkCx0pp/qFO3hj3BjDBjW1Nxn5nczSQ+b7IHaq/+UiY7gV2TA6uj8Uy6cU1XurxjyoLkuZlQnx+/o+1PGoSWDvBPJ296vrQMCKLzjSwx45ONR3LjqAZGdsaOWNVmGJTc7xZImGKT5nQcbXlaOMo/n/QX27I04TUCm7ovMyCV3T06gsxFSshSsgEbiCtipJKkzceXv9ya8rMTXM/6JWz/aiiYfbEziEAw5R6v9nVJA6ZAOTGr3rXjwEvVj2krOfqBn5HJoJilfEaVykY59WIEp+HbGKy7mY8oHez17sTKuXWW2KdxfHSkizlPSJ3BjPaT1JHi8TwQhfJ3UkeEYeKMCeTxHw6VgVUsRLel3axBk+T06dUkZummOY46ezSrZ6prn+t9vpdFOnXQRI4MANUJfaDXME3inj7EB8ey0s+uEbCKzumveL0cKoF69nej+7fPyIMfBT3vmZGzWnFamgZlEPF0s1otxFhvJd39dtpT30gt9EHAx0mJTlvMnioIsCjzQ6Ot/x+qjHFd8m5mrZ+fVcqvRHlNktHC/mbdush7Idn6RnJ0JQGbJGhCVleVpYR3OlpOCTZRKL0N40QukvnYSwUMG8t1dClIsH2ElH5vydIBx5izOJQrlC9KsqzUJgTiy733LCgqemtXeGZ4bXhP7NRpj0Hvf7zh21lw0elowHg+cuhn695JmGrTzLKDS/JLON0Xa+cHGQa5RreIMfXr/8Mia7khY3AGiyd2TfIUIJQ7x5DLXcKnLx7Lmihofz59tgeqExmf5iybkWTC5JXM2921QT9dREYXbGpKH+taX8zEIyYhIwYp6MPXHP+rzRWgWoBRzgU2q2CiSKYFCl7af0afA0x/qvITU7rc314MBYq8HQtaT2gk95E64nrO48BhpUGeQYdXFhfH90/ywDPXWgvbxDgDf3nOya5pN4E48U7ljOKV6jfiaPXPKX6p0LscgteA+MWQbsYFiRvWy5GaDavrNHXiqJJ/x72wqhJOawwQrk2WaIWO2d9L7FQndpJJWRWdjIaAyXiztxKeHXnROZp8FSq4i25//OY2HE8jcgUThPDhmkNZC7OMraPHlYs6crvBI32UOcjR+iZ8smidpk7iPRB6xl8D7cI3UCqqlYS6t1GktCv+/hFiBJzVOMzXrVzvLE6h2bKFAPsMUWswP9JU7E4/PPsjPQu2E84pYuby61MfdhdyPTeOcp8uMmH9BIwAgWakYK4DPKqmR1LBVcpNgmjTfN6UUj5AoCBb2hyLScwxPtx0P+sHS/nHc7GvwEaszvZO4I78HlWaSxOBOyjOXvFXeG1JDZFjKz1IFDK1Qs2INIpP4Exti3SfhBzjVfOSXl5JHUTzJCEb5+0v/1OULV0yWzGrNy56oEwISGtbKdLq9stxNcDlM9VOGnfAKSnIL0HGJpuXg6Hx2qsjPnic8OARgTku9OfVwabWYb704qG28E3cezwCdl4mlYvj+HmSWJl2Kuty+uroWNYYWCfelwTMrndTaYsNU/fdAtdPe++8PfOepZe1QUBtw6+bWfQ2QtX1e37N+FrkvL7dlDx04P6UQX/S2xWE5kAI9YCmyHe0hJvq83Q5AkkGwNeMU5eLyes1E726CrFa7bnpIa64DSTOnaREFJmmhQ/pEwopuaL/nxeOs/nyzPP7mnGoGrC3uUi2Xz8V1b4ZZTLeqPdE0tz5gqQmsr9jlnJfx3UEeLcxUI+ivF+3+aISBgi0FlwRkhMaLd2PX0GMAdCzVr9bcADMChf1AXKYKOb6xhoTHItsGh9FW9vWexVkPybGu0kwG2ExGSdvB0sRigKrQI8jRGsodQslQDyldKuM/E5pXGXpovkleN1t29D2bw8t0E4YaHw5BpLCYuVn6WCOGjVHGko9BH7kxisMg4LAdZzba1/zCU6JeL6KB5wmgpPVUA6uI2qBszug/C73I939J9xHcV64Ibpp3KwXFPxWnz8xgxIktCjXpNF6knAbOcASXFZZviOf1Nw8d9aK3slHP8ToVDDLIoQxzxdfLA9LPu52rXBrODEK3Ra15igTMkIfiE4YXmSuMumHKQ094QtIVjYLL5mzGhBb8YNwp8n1MkJGRVztUtYARYYiXPnoz8B3YMgRjHkqScvlkJK8PjDLWjz7c8MzKizPQR/m1ZhSPvcgg3yKdIVUgG9J69wAfXx4HZfUAcghrbn04ecRk4R+yWOcZxTevy3O20+irdHVfYH5Xjgs344cELwBHmryl21TihLMDabt7EXu/Mm7z1KSJXbQ2/XnTm+SGfdT300kjMKsXHksJQdT72ABnfFGN+s5mB5EzAmAvtm0WUGDix3Wa0aZc1aS6KcuPWvHlEzM31CVQlXGoUgUU5JXiSm5V59E8Stld+hIdYmglOe+tGnEEI16zJIwaCokml4Xl/fAOjBU0ecmLxNYzeAN2pTvTP62i6sgbrzPvBtbKgiSLkRmnZ9m7Dbw86KzDj1RPTpqxJL1Zq9rYCUdKC+dYKUKtRGYDHZz/TEZOkchnnuCoxEyQ6I6UhXW7g8uQlLpMH0LWH2uCao6elALyENZq7BZLTbLw7fwGkeN+PMsjVBeCSlVyijwvijbCGe1Wcf/dqCemES9kNQ0/pWswPAvHAdH9tER1iTsEDRJcIIHLRBS9TD8ECnw9hsbgeclE4PdiNX/ijXwrSfKJYi0JvAHWpuxET82NNm8nFUKrkS8O0tzQSZUINlqSfalUHwaEe7FKn5lEkspcrGr4zhkqJrbWITxMkNhjCzjJSu/lkELF5Tlvju8C5MO/HQ0I0QV3HkNQ4z+2DoXsFwjDtCbWhB4vY+vThieIcPHG+hBwawkKJXgGL7Srme4Mi+1QPfFWd4OvHrShKzt/W/3g/rlr529hD8PLg1ON9xgum6WVQx+Zsa5zVAZYUv6CpGR0eW5oOZBP9CzA7cp16jD2EquqAMWqehIutS2rB0Rp0TF+SGuywfIhA8uZbhl/ApA5kkKyn/5wsz80NU1gcZ8dfx9QUfhQ+IrHBLuu2MGI7xO1FUH+w5etZM47IYvEVZDQtZpLGZsUsYZIVKdJRxdlQhT1lwzOzAD5nCyahOmAGYxHyoWCbEjgjqExuvJCDni8w6cto3SbG4JjduhDVERPNoQ+jbJkPVwB+I2qR5kStTHmM7+QQ6+zXHoi8o+/sITi9IvGdoT1ttR4OLXqvNV3pijAUKBcp/skV6JDwf+mfSGiNt96/4gKicPCBPptXgcjcLsqKN1nEInN9vgXKNOqdJxe6II+0PewhY1aC4xn7LnqHAOV2LvTjlvezw/H9xT2pXQLb+/D+eIeR4EmlzxewT7gsFKFTYhheSlzHIiQJPsuUNGaup5ovglZGaXbj3DgrOT/yXZZEdEf2vRU9OTuz+ty1S76jO5oE9XF8rEGKVK8dcXxZlQqeetzcRWYI7qdaJWm/kjhYmLJtVHYhyJEGsk4IBh6QziQP7oYGce+xzmVjoUiO4hLDSbqaypYBoQueiBQOG/AK7mBvO49TDEYhpBhDc2DA4ZSyrpBzGnsx/eJ++uO7ZKTc/AuC2KdJEZ4kg2isnlsrRfWRp2jwtCnK8bQ0heJV9CI0fAKyNrm5Y8YkEhpAGhh0b7Sm4ARuNwGjKwp8hGPUWqDnaVtCYQITCcsaAslHTZ7TIZwpwtK1G1KZ0Qb2f0UbxOo2UM8VycX2tE7mbKhJ+zxSVM+VBrscClTM9xiu8jbAQP4tAfLwKtwREhM1aVTtNV2i7eHecWMEwqapubfXKoGjhiEy0ZRnBRZh5SalsI8nc5RYqUgvutHLFuNXmWklO56BVf/zKxLVt+P5MOnQhvToh7sRkfgBSSuxdtVNVIlaolb1dr3maRGNa3uYEa9wOpcl+h1K3yOudhjN9EibNWHE/JsW/X7BF8m5sfi25OvZM68lNfd0tXjJk+RtTOVo93z2eoi5YLMAgSS5ofKIBUgFKBoc6y98JNcrj7xvRtFbtQdF2exM076w0uk0FBneeGiw/gJIzIBwCRCg3oCZkJUqgYyxa0eYwwP79JW2GJPyucYkInMVAlfHKfljUONgi3QNNemyOvIJdqoOhb0TMPHN41yYnYt88PJc3cm7Ag42zF8y1d63f0zeQhEamY77nIQCr9zNmmjRtm157wf455c0gONZxKDR9PMogBv6WS2bVXkWTtoQASsB3kwVNXIGTg4k9g0fD7hqcAgQ+z946bvPM1zryAwtDg8/P7GO4+cd8kGVT38pRD5IzsrKEKU0g3X+KQAkjvwNkhwG5DxhK6eQQiDk/klGKi9UT7I/3Ko6KlVSzTRJaS8s6a8TFUEfvuYbpRlAgU1YkZuyeemdYYmhyUN7qAO1IdpfPAZR2NVIWqwLAHVWKJcFeXTTC+BRXKn4k9h+m0Avobd5RbMML6OT2cQgP3kMZbDjY9dddNkwRB89XijaUOYbdq+VotpJNVk9o1dKI2cwf5YPlfCHOimyHt5GXEp0BeKP3QuDbAeRxZZzJR5kzPW2Ym3tVaztnTBOsGY2VL1OWlnepAhNGy5y5JcGnfxwKjbH0wtx4Xm81gcaShwmCkAkyBnsCwYaL7ri6uHq/aOX0daM5jV2RxZyzEos3GHphyYEz5yhbrcRo0LQCDi8oz/vSnuCoL9Q5xUQ/WzKmdM1lfMMnjARjCIro2lardAj5tAgDgIioNrXwRvAu3kA7CxlPud/Wx5m7QEfD8PeW6H0VoZ+Jm9jFpZrVsrMzrjek9vhr545FBqAHwQI5HdtMYIo/8MmtfSh0jPOGcdDJRwKVxzlp5M9rk504D5nd7YxUgTahsf26PJtxAGXKvXY0ty7gytzWNqXDHO2RDHImC0ycto0YKK+Qep4ujI9H6jLQKznSnBQ7+GgsjboCdItfYqDbKPJYCaTpXv3W+dDtZOHckESpwYTMuyyWeLwZwQJSMV9hz7tw+kqAYRWMUu/qMiZcLmBc0AiLNTDxzCsNjFbDuPIU4+QrXF2PTmB7Aky/nrPAZJvjkVkzaorWZb2kcbd8BhtMUgMjt0K63PDOF0H2Ojw5LpNcltFv0zLYE6HfBJ2jtx8MpORdvuBNfuNAE+Pc6S9l9GxQPpXaOlr4vuPzVRfvwxKD/rhydReoX0o+oJSWLa3Zc5QYQVgdK6WG2DCygc25rkN9F8G4gKzdSG/fdT1F2QWQymKLWNNeebmSpIhEO9MZVNvLbEuYXzmU3YVjsdPiqe3MtTOXz/Yr5N1tvkNzOAdKCqAVlduqxTq6OK2jkBzIhQ5jPqGmAtQ08lwm9On/FoFErfXC8ojFlpmmhPjbH+LR/HjZYy8ntoewMRafOGYl6dV3vMhp8+C9V5Z+qINP1CvyEiCAZanT0lxbioX4AMfvSmI6Pm7nC71OBGdhunSmus/Y825CAibBrkG6OojHkNQID9EAd9wV9WbagG7jmt0erqAMWlZmYg562HNJ5w4387KeMlB0l7Ju9TFtOndDi5zZuCXfbponypnnRneaWBIxniYe4tLbVoWN5l1jqT8tmRUPZfcZbymthTLwxoAv7vhxLd4jpU8XzX5fB77DtYxiLZ+bAbilsZxScKOUpT8fvNA6DsANkq8fE8mZs5eQFB2/ldd5PEq4l03M/JF7nDc1wgqvWKAZ1ZpKvwEcqWcONWlPVHKrj3x3Ac8LtnkMRqK659HC0WVYpoYzIAo3xB+699Jr7hyoAnMZwHf/Pvy1iCMAJF3BxLjSuNQ6jqiPyyVG00rJtgBxBg63SbnyX9l1K0QRiQBQvOl3EZo6XjJFIgvgpQ62QdDK3XUfBC9tX+vjKjiV3AJnoEobesAlbE8z5LRJyxc6nJA0y8XsuQbylVM0b2sg1RNxlj/Ho9A2ZmfvnuucuO4JAHvfa280Cu8YG+OSmKeByWTED2d4dORNjySg0ak8I3J2r6z0o9V4cwWOi67RZS9ihF7CI6m/dg9YwldSiPLZJ4TR9S6ZqqluRB3LauEvrTYSlYGRbmwTFKmAKAiK8SgcSCFjWGmW+iJSJp4B+YPYpwzRTiklGypUURwuT34/mhdwFb3EI1qE4vvWq1eGOeIqf3eaEtRq9d5IqO4jFERKUT2QVOSnB/nUhOYwsWbrunGevYfKURoD+2y7+pJTCPq/lt2jydIzUibx3oIBLyr/wihQEyUDXIPCGIGTJ0K2woA5OGbGxpcX7L1mjntQwMe9BJEU+PBf4zEoz3RRpPBCyUc7vBNsjWJexlPps7LkTy/+Oi7dszWWKyHXwZ+m8VgPuAnnvSFayllsRyldQarnKB11d9IC5ld4MOZtomjuIL+uq4OroB5WUFJZ5ovomzM8yd7Q5/v86bnPiVOyLw9yFf83/JDGcchcj8yTqaUtD6HM2WznLN8m/DBTVe6zFgsA40l5j5j+OeAEAo5ImdOBwB2J30P0WUIu3/s/uGZcExC96ZogW0CUPTewZBoS3d2caazusjZyRc4JHeG68JdxPnDEJJOGtODyhWdgUtK9be8spW3+jsU2pp3GIwO0j4B7UBZzQtGUj+miQ46UKEw2fjedH2raomu9Byoof1S86bqXJIVgVDzZkOnnHx/mIzdtU7fTKif/64GqyDsQG+8Lwk/sbAnrd/C/wtPrvGYfEBEA7CFuUim2wyJK2gkUYHvxnB9IEaB6F9sfEYSWuomfu/FbjFu7lM0M+gnATrYijrqSrlbIkBXVfFQwMA6JrV3qKtSkuUzqxGayftmPdC46At1ILJVTwfMcajvzX44KIgkzubSXQQqV9NkDl2RAkVwm3gVd3mRetqZOn3x4PDKi722V+X4QXlVdxfaCvSdv1w+GxdXOON7o3IemGHa/dKAuDngISCgWWPIawX+qn9GRHjgyDerOpZi7+2fQ6IIeMKOWE84vpMJwCz0PYIAGvaVhi6Hz47Rz8BMrMjqy+x15ZYocL+nRx+elvY/AkcoZ7+12MgkWRSR5nFYCHa1c/m7gMjohFXCA5tDh3YoJwdbWGycarYEMc10ufSp9ylxIUdJxOigEm47E0kaW1u6n4gfFQ8ArrcN9d6PUS1a7CencHN0bi0tuhIvT2zstRursHMpDGvJfqU/PV4qc55YoouCpFBYsk/9jC4xIp0mBpNewpImyx3PZEyiyi2HT9WCH79ZOSA7v7Y3b5K4ZaXwu0l4+4Lc4ZiKShcFUNk+4dJOKy5PukIa/iVyE0ondgA7wW9i3lFfWEsFzx0mYRTASp9+X9a/o8Jnner6GddfD51uIxorbpXLBmGNQH2ohglqx6izflrXMaGdJRYYljLPlLwYmSCFjsxN0UMOorYsCeNP0hfg/g0+8JVjUBD3/GMJDn4aQlt3a8DlLs/VVC6lzDCk6e80zgijBmfDUObffbC65z4o3ZgTcst/WtSSmwgFPiZ/CMZpbTwFGQJceNWdwovajKItcKKrrfbmyZ1Pm+1czYI2lKP3oixD9QIQfpM3HHg64tdZYl0PBV4Lvt8lHGvoTQRRu/hwVvYjWYdTuLoVSMKa6cbm3bgR3OhkTgAHIa3e6iCwzCRLH5QgcOhFqn3rYlTtWtSocD8enjlUu7ij1mnTsBj+n+Mq7lOtigymIfQscgwQqXru6XfJH/kP8NCIgINdyt5a27Xu1f146Ut2Sqjnj1iLdZsGbUW3Hmp7XBzOOLfPHRPtVZnT9JzcAGz3gs0iWX2TbQbIxdvlVBoesQ8bYguL9RMpdjUQtlMGHuRj0d6xVOOrIyWvnWqr78GnugW5rfpblcsXgRPpnjXrp2/9O6898B6OU23KtGqTH7063eWxelMKLZamcFPbZja9FHRw1qJBbegw2PfxdQBU+8hQmseMZ/0GE+hn73xUOIUZnB3L6I+kngw3sqPvUD9hBT3FPB+gWaJqA44RKJAQgor1FA/8QHGPFNDPWLpVTOQtOVXkF8P4PDvDjdhwSSq0J/skesz3CB9KziWZKozdDbAZIMLRnjR02nFouDNzooe7ldfgByiuSoriEzsr+P/sK3fKllSvOlnRN/jiP6VZkrWdhLGW+cMbkF/cF49xmPF56Boo96LwZQWwYsIpxZ4CrV+mbA6gqeHJ/yy577Qi4NoL0oJASIDiiB56bePQ/2Uo2nuPd1yC5rbogaqP9s6q4xlaLueYeQUhWubKA6Az11bRRxpuFHULmI9yZsLOkx0UQIA3UyLiH6PiQjz/8eEDYaraYMcDcpG0IqkyV+0WBtpqx6ULySdq9uvg0aTiLlkjsfAmJo97zEKOGzsriJZY6VevOqDAoXmJIP7IVPRpn4rELoG89ZCsUrS/wh8vpWKlQX5TQDvEWOQSX08i8ohcQDdYSBBik9lZ036dxWeiBb0r2XCrhnIN3BbISRoLKzCNsRqOCVvtka/iHqNgl/onsJjx729+7+mKY2iNABok4qkxHlE9WZy57JQJ/3YevjSEaMo3pk+tVqVg6FPMib4ZALDIm+WLEou3CLFQCS01llu1aO7vHa/gBCszh5Vy14qs+Jm6aiYYXcoQDSTzstanyXlFVLYNdq12mzJKHaSExthJJpm8QQeDL4cP5tf/Zg47hPH3fNLG96KlflOOq9QZ8JHBssICTRUAc7c3C/Bic/GaCOp5cIND6bu9AM61XzO1t2w0wWha/pMWAP44j6mT7aullTkxPOEqACuD0kZ5LR+SLdBhKr1tRAsbmnb+l3LuHgiXHSwfIFb1zUVq1M5geZFa7vzaN7B8xbN+iNKYYoNIQhR9TvURNTpgU+GcKeLNPvioX0YM4dqryfKjD18vtXwCRiek13o0PBUTKkGQdSc0vLvVoFnmgh+ZbZigyF/Gu9Q1awMKCnqC6pMMV05Hh/jhluC2rhGksY6e8/5QIhCimhnH4tF2i+oH6huOTJYwOaXXjiQoZzj1Cf1NpMNtSftuAhcmLeid/T41c7HOffO8S72J9mzBV4MLbNggbLI9lsQ83FY6NR655du7YnakKhFhAA55Z884j0tIYurh/i2iLA+oHiCKgVgAuZYlw20O6/14b0rAX78FKldt12s/PnyVwbIKwmUbYH7MK+D0MJAyAZ0xV+nW0r8XtFasBX+KDPDSUXqvXXX1RtlivD/Gr4JvZOdVqUzavcMQ9q6MFvQ8/Qmj0wbIWt+e6XL0Sq3Mx8nJAuUVUh/yaB72hxYt7TIt8Mi45oDm0//GZAs173nmDJYlTmtirk1jnE5cKYzd6ChirNvGiN3RH8BLThIdKf5N7DQ14ntJxciivKm324qhxFW3cIh+S/zrpGLa8BSM9SGVVmRj7aBHCZo6C50bT/lkDvrFQK6rbN2j9MQ4jJ9xLtLK5lc51eAmWIbgQ4RgxXTjvQfSD4xIu7RBzYlW8/rVohWVIkO+dztkMPQ7Gevs7RmAYbyfTPaG1emetecmY7D5cMK6lO7Gutvu6ek7MMcSb4DnHfJmUdghIbrPnFcb4u/E1uHCbFM62ugYH0QroDNCpHTyLRxcMRPdnfH2Up7Px4rbtCvq2RhiSJuXSi0SLIeDqcNiHIMYCZyaERNb8zAzkYylIaF8ltdleoNp0XTc8uHGdqCB7P33HX3Ok9inJEXzngEr7Vz1TXzYCi3PKuKq15DwBzQ+rmwhdetIF2Bz0edOsIQCJlSZp0dQN7Y6ssbRTDVO21zw+c1LMeDFEWAr92SLqNvalqG/rzB2g/CI6I/ICOfgUDvDkfP0rszDLx7YcMzb71ij7ypB3dp7MJAPzV0YCpLGp7bSu2bFsdjc/IS1R2FJuOVsvbBlnXlT5KkgjVMcbmIVncOljIjw1wHvF4B6aW28tGnhJr35Yq6xlTim59Vv6Qef7vZVg2bbB41dwccySwIoR4Mk3lCeFO7D+VKru+f2QHRqkkx2bYBlm9dzxnfmx1J/2ulfznkAtdmhI0RXLsjSMWmIJJ4Tu5klNaSbKMSi78BW7fNE/FwDSaDDipwieDdNo2lHe4gSsMk6h4yWLOjpgFb76xqBEf9acO9Gznf1HczKRb+0hGvTX8CHkhdZWDDCxTRuez2wAfa4lN1lebAhxugy1P/WMEGazPIofmTpKLSV85BXY5quY+oJLjL2O0nRuIn2fQmDIbkknLPqQudhjjil0JVrXwTccaFLTbdaWWqXKOsL1tI01bvbwbgli4omIExWUNnJ2LE/xIwL5kQ+j09Lv7WOmoPwWE7Od65w6LaZ7hVi7ceZ2iN4vLoe4zU8W4UEHnEw4mC2v5+zySakmqiaaWd2iWgXcnLnpP8+vE0eAWOgoU+30M3EUUWVgGIBgOCdeLK0CJVgkYCuc5XnMNJG5M+/1tSzuoS5MiMsgu+C40gYaqhZsUkawQIoGk7R29cMHaHBLwZkYq1JLLPK2W0jh6NHq+nMQV2gULJbuOaTzFgB79IkeHieLOqKi1eXBG8165CqAvgxmPpFI0jY2lteQb+IKS5tYaYZJwWaIKcntxTrnFeDNGF78EVEDD/B+jTXH1Ca91tRjaJfpn8KLrgwtHPXlGjKQ0fCX+EzSUd161mhivl8ub+eK9WcZk+pSyUDefzExMtooLOfTN/DslL8KyBxKGk1+Vf+QeN6n38GJerHJf4ScmU2lZ3iSoCjrW8O/Gc+NIRx6d5jNB6O5vmOTnjDWihUOAkpr86heUD6AthnS8d7NmfsRzxgMyFkoKyTewoJB0QlBDXGN8e2MVd59ahg6rUBa48guWjCtdM0LJDO0yWVZ3WLNEdVs/kHjS2J+pUUPxgsE2Ha5uwGJHuE22124qleqxtQJe2Pb4RvHSjQkjEkUlgEneLQoW4E1ODCyAfkILYefjrH/dSlVnDyG9fSydz25we2zFeJ/zBJhXTWYP3cKQKVzBphZZ+9nwU0W419rlUaQWpcUZvl9lAJmv3loV4XVc9vYf0ZkgRXnze491SvCxDc3T8HWk2c5zTTtZhML+qc4yfYOvidnOHglfQtQe9m+y0Au9qnuPEkyn1OD+2KWed1RceKAx3sHHZHpyy26tN5RHfG3p+yw/fM+WHlT3dcCEd+Tw0eN9w1oK8KikgMaJXiAGXTeHJCXzV+hIGshNSksFCuLZlF5mRLpkoC8GiuVqM0llOHnbmuhWOYRZkIKDq5v1sG6ZbyrBPtgtWWwJtCiLn8c6iz3fvoTHP95jv6tR44us9WRzj5WezAT8fAQ6jDuj/FDT33jrvo8sAnWlBLVdKO4VFnT8yid7DnEEiZ+YjuXvizsb85blMfwRMZlNdPqd1c1sSUi4bN7lTAwZVVc3OBCTC/TgS/az/lPmwl+vLGSPBZ22C0344r1Di8SqQySZOiQaPw5c+wrhCjBHVXKpx13nrVigUN2yDqKP/mSfRj5BKCpRyTSXNW8qxUQnuI1T51zriSPecqku510rkhNSaLBPwunPvjydG/vUo9Wf4O9senka8RWBnvlt/TAD2ztstAdWQ1DumeOrj4U440K+VyKOodMi6bDiussLlXG6+/FShhOAZDZd2xqHpibesnaUXjt+gOCqu4AtciRkl6Qgpuwxn1S9raweN6IKJwXk7rJNU39YfSAOD3DRBZC3nmiK++tHdd2uMwOvZwvy44Uj5nv8mTuTJzxiLUdQzRISje11pH/0p8pfIQqOv2ewg1b/0uD2MlfoK5UyA+vromRDQgKP6yqhO3HVP5DYWCoacbqDFQtaROh1hrF+iekDp5iYRKk5dNthWRnoY7GFs4+Y2khR3KrM4B5Uso2UVZPuUbtSNQTCmN5Cly1sEP51FrCYiIi2t1KFmwOdbLM8iW6AgTbXaVJUkmTJI3vap3B97+gcCisXpZWgstOkw+85LaTcTobakUftks1qX8n7cQFtuvWAGARMPvFnjFVZW6wRmLN0i4BuG7DmyrVaB7w6OtPcI5by+KQUzSTxMuZ1rBpGdc8w7wCh6BnqH8gYsK2rnL/EpLAEEUbIzB8NTYSpinftphNX76Ra4S6S3gt2igkzwarF/Jeuq7nFb7yTNFI1xDN+xfrsUV5fvbKK/QTluTWgOyvagbCdtMKKZ553Zf1fYy+d+j9DQ1P7utwWilRsdaF7WhiBbWIEqso7RMOXGbYf08GCPFavSCJCTZ2X+UeQOA4Kef7h1zwXllL9XvOSyPi6NGIjEHpO7AJWJgw0TL8jsu1pmDDNS9hEg2k5l0ahFHa8euVSc1uZvLdT8fWZo1rSKEh7ZpfQbWApMRG1ZvVWLk/hOQShS2Da7QQjTBBc71Ne6FcN/cHB0A925NG6DoR8xDDupxFkXjurYC/TtySHgzwngbSQ5FDQKfpsVYsGtmhBsxswKeNE0+Iso0F6PsB0Ci4tKviHJ+cUVOzXo4QgeuVvgZ76W48mBltVc3nMKGWdVe2dos7ZEYLmaLNzJQqT2Oo0Uo5+D2ksNSw2s6S1bdF3ciWT2XbpS2aFtJu2hZ/P2FhYqisr91tEOthtnTZxU8B7jX6YqPTqk+H2o09mrteoAVkIA5bHNNgrkbWGK3UkZz2sJLlZ08ekktQKi1jrvoEtTZ4F/QJ6jf13CxSBhRRuZLQxUUJd2ne4i8SOmCjEtMox8JYXI/LHjPPXNhDBLF08TCwdfSkMsnAaIU3prIpwm4nii8nR67XLtTKqNV1FC4b2VJ9zOgzGj7BOLQcGM7pkZx8N8inafh18VbKdxOn0n7huEQd6e1H7RtQvOLosO36dAl6m3g1I1rx4+xep+LPZduB+jnyzOnQiNglivJHJQtH0abinD4NaYlRrZoWlvQ7Qxg/ZCkH3CsE9jVy8/v7wVJBMWG/jRFAnniBg4AKQAyrp1tC68BUQuqokQeFa5j/9gOE8/hdIiYbGPoPNdNhIWG8BQy80LYeQIgwyo9oi0rJEawdFhBQW6u2TyQMUQl74aQrfEdYgrTU0XCnN5tPeOvP1yChiX+yCCHu6vMMtJcG/cWAYF7FTjtNKRS6ZSZXyhAVHK7TrOf2V416OHOnQNvINhP34ka4Dt8iPNYP1mdewodXLhFMB4seoIojXBWcFFi0GT6Cm2l+z3wvBmNIe8mtVake85cfE80mh+X7oS7I5jlR0eMAmqCry9D3Ilek5m+n/1JeDao2XsWWAw+KT/97NbtwXpAnuGY8sf4XRasp3NzAOBxl/I1rhInLUZc3vaHxWvRie+KVhN5OjuNIGzIBC3hVTHEoPBEDg/kuNrW1FU3fU5VQJZv8+QVdinOhy6VCwQAALGf4noUc/Gx2oVKlj50mc0PQ/bLZNThempC8H6bp5vceTjs1XVOMxoxuIsZ+RbemKzHFMEvxkihCCk5TTtiA25h2COMhHMw5JC0jNxhesOK7o2VyEkgptQsvyLlP9SMfbGtZy4EXKhuuPVTkcBtbAF/4Y9pPOzGm5+oJ3CUqqjDuhhSHoDNBxsbwDiY+yzxJdCIyfuzC0TR7M2TpmO+yY9TKCsPSCleEUeeFn+T/XV6W8MoVZV5ZAH7i0YbPNKM141auKZfeiJB6+Yh3f33zx3mL64CpV+ShJ9gLUQJaxJCx27lgOpn3JB5Bzr0RXZkTl3155r5DzaazIjIKDoVUUU0IUMz669ehShzrOsljwh0+qXGwi0j3dylqJqTn6Ygheaw3PmXlAsaKqDtkfwicAc1mnZ9qyxakVgSMsMr2GvqDX1Xb1CjqovJQRk6Fv/NiX65mmXI1GfA26kkRpN0Ee74gCcug9GbUU4FKd7GJpo0HbPCUj+9MbaQWLUpzx9rw00ntacvqQJrsfH2i3pm9coX7dU+eMQXzsImR0Fm5ZB9Xfd+fyqmxAyHvEXP8BTe7T4tCsu+5sypYYCD9JrvqwZm/H8pGcao50GyPTx5wo8rP2TlRkTsiw7Y5MnfVgGoZG62117+bko+atpqlGPnC6H3/AWENsKkwOFFGCN518JT/JePdtiuOg/MbLYv4KD78lcyf64cUANJYxb82eKmAYlXnrGLK3If+ojj92OAM4fAh9ULVWC4lZKhv80qTzcC5YgaCi/C6jCZa1RQ9R/W+wxiRYmZtH540Ll1Ds4ZH552RYEL9C4RLkj17mxhcI6rHSkPXOXga64uWLChpr0AdF6wbQX881oZJCZFV0dZV0qvA/zw+yVGjoATnH6YczxDzDBt6DBhWroTWSbbzbWis3TiQrHt/DnDP1Q/Fh/WuQmYH7MWZGWwCCfsDkMD2w1mA6+XYmVQ7f2uhhRLb/qd8LjYUxc5Q5PL/F+SfluhdfW2LFyesZaGE4EwaDSet/C6qiyvfowyZUa9zpzzbA2UsdG/cpR3zNgATNjWXlxgwOT1rPlw0BfbGKPDaBeCFAjyFmhcn2PJ+QoXz5t8iImJQhI694Oml8AEwUbXMeJIyCcJgucPDEy8cbF3b+LInT+d1cyi5+d2PoKC25Y7qhJLgt2psSvioJ59RR2q6CxTaKEtyqhlbgMZluqQhvPduQjJkKaAWzL12IAEh2k/xasUock1VqXA8dUk9yZqyO179jdHdzsMJ7KoUgV29vCtOqwvji+g5zZtNDZhmhdLUq1SmlFZu78xiScCkx33pVr4uX4TvDMoXlDinNu43r07Uk6WFIbwjjmcUt+SFMH33WCmYwSHKyUQmbVNG+XOJAEkupwhGGHwzYRiUfvjFNF1aFafR/g+lSN4htSK4LK/ofmfWWULEiJiuV1yTbRUy6r4plk9QXCaSA2LQLjyVpxTZ4/NN6ejfSdwFixsWaXgDtDziLOgDivTIgQG1Wt7KU5zcCdj5EO9fqGbYHZGYPN1d6O1g/latkOP1Oc4mjlMBnpBQKDyhE7+Nu33zmdRJ+cxhff/9QIu8sKD+D+nd5yE7Xytv94UGS+9wufuo114z5UPktzsY7lB6H1o4hkuJdIgCWjicVaitK/HKxFtvkzdoU9aKqUq5DR4qO3LeTxGeh6XLUyf04ZIxV7Y5m70rHXOhUOCj9pqAJSVYtiZ3nZbZ823MiIuQhv0IJgRomv4DTO0C8w6mXwsjN5hlByiuY3RtzXue1hgLPAgPGbujUOcAW0+8YfMP41NOmYcpX9R/U5EtCuUIhUKqd61aWesQ/3tMU8bNDtC6BTWg+NqW2dmiAb7WGauMjoA6av6Ex2YJt6Xlc4csFHoS2EFD+uUuO4uXnM9j/OlNCPmCBsUiqZkyt2YcByo1Lao4veglxRy0E73hguaXrsVkxnbliyO4nMaO9D9IvcLcJAgPh5A5hSpiXVDBoXnDEFDtbn8asanqMevFNvoipW53ea6ny3RZB/nVaUDAeFHlnMseLyqxzJzHcDLiFNrz4WzqiNUpN+Mi0i3qdO/P/dTpGh4z/3085tKtlUQzqLCsHYFoDxbzhlEtUJ+wSVIbLdUEymMc7UdDgXL0TEj+vvkJ769jEdtweu1nNX2Z1OlSivEHA8VT/czqwA7OlFf5s9qen3sfzUqBx7SAzTV72655nIlc+0vNOWiJefnryTFe7TVVpW5wGg0nsZZ3oBEOtLy7lcrxW1sZdYkf1TY/L3378uKApX5BpofJmlFHZBPlqUUV7jxOo0akb0KR6Gx07qDePwUSkhFv7TD3nQBa3aUKmwDIGXQ3ANVnDrFqU0Vk7a3zlw0VPrGoVfIT+TUMFmo9h1w1ZcYSHskMNifS+kWOX024Wkg7mP0A6uq7m//6Gksecw6DlHEpQ9prmhknSrvD5xMCi4nUQ/4yfkC+/V6mb/4ZEDu6tuKYTC0FedfVDgjhBaD82e8K0zx3880sNNz0kvyq12WpVSoquRuUylnScrfFX9tW8jaB4s2BGhCUxtORXV/erzcQ3GhLr9upHxRztBAVUP6JRzNsGFQV9SBX+U1WHr5qxnfQZ++MdPDbfXezaFBjfP+7QxHy0yXNixOg/wNkagCsNgVcIjdnIJ4oO+5Z1uSS9fiCsyINLSdKyrCtYfjFJiUvBeWKVQcJrME4FpJ1QbdzPK4z947njYpc8TPVyQKdkKb9nlNiFZX0wZwxmu3tbD9s4ppXsdwqgy0T+4pqvZ+n/99t72Bf7qR80ZizbNH8z7QCJHC7iVEAAhjOkRWm9sTCH+QCCigwuyaxmGTc5Du23aAW/H/xZm50Zt2pAC7o2hKeIvZUlFcR+Fgl31CNS86vkA1PXmMv5FJyEN6lBvdajnVAP7VayFqO9oCz2pX89qxhnebspwcjq1HKTvgr+z80qgsj8mUUUDWCFx/y3JdItwdWWRP1JUbgeP0DieChiLoUShCU1yc3o4k1P+xJMMRHM5lAB3hAymYCjma+RC2nc0hKI5SFwwpMA0vfO+svpcJWhKg2PNbYPTqRc+k5HC79wOlRUvPCYL0NPuBhf8fM2RNmDqafDEi4DlfLC+gNp2KIwWfnlZasD0EROs5jetWKLspza+OaB05bAup7LWRJV6PkiVrMABC3hqfrWpbySaD98sYTb2sKPr+V+10upObbobMmT2GGNHBbdwa98Lu2tEXO9AHdax1KJ2D7XjsS2YySgdZAYPE7TBHj730wnMJ5/06NO/Pdm/fgd3VCVizJG9zhloyfmWF0xfozt2E4iKnR055aOhu9+StFZ0APi1+y+5I+FXvWdubqn/Fb9euAFBhSagjGpyxIlEXpbCsiDxfnmPTjBPWUQ9pT7mBZpbcNskxaF4dCVvKFU7WIl73cccwvHybjiEepB2PkMn9RNCgSavOUDwLVYJg9g92lg2Elw/oUNKZgnBxEeF9An95sw8riMXowVl30kacZyAbRMlH0gOGRN+NO7J8JXtssxyr2ujO0tY24UcycZII2s2HxwTRBWM+JKZa3JGw3wPYHFX5j7cUDEXAx+07TSSh1yw9jePid5s0abM+P2cHxml5ZovT9H3NKwozqjzyeQQyiNd1eM8TXWWH7x2U+Zhf9jTk5fpJGYP6cvI+SLxtIg9mvQyOTp5wA2vHCpfy6bHhCRvHZTJB69GfDbewlYXH54A8ctgMdkuHb7DF0bei1zRv87F88GuXrTnYih0mEseP6FwYPc40Xik3TFKjm0QLH9ZayhjcJS2lfCedo6qm7m5n1hG5W0d6o/7F9Vcrqg53z0FoZI1udDz1JHhkf8GrINgFVkADp2RAXti1k7WRMZIxgCOTy4/XdidGfxIQD92XCi7WAd+Qbgv7NhCBvKZsfQL6b9RCGCyq6akpwSeA66fILrbQi6zkErk5m6bz1g0q+tJisFl1yxCKvT3MSdrLuohTrimDSHZ12Mk1yvSxK2OTVrbqM5cjq8ptPUVhh28NQyGsaioeberSkeNCj43TyKeLx+F6OUM/kBj8oA42jbsfTYlMeRLZI+MQ3VMgWFMRU2og6xeI07e4ruPBxlFwbh1SaF6ahtgECvW/l0PgNMNE+OouCcm+NQ37h2zxauKN7cCKjRkpCcp7uw2eae08AcYJ/YzwGEh+L825EakhYhaqjyK7htpYBAM7AhMhpoOfoSWvjhXM3OorB2/XTjLOFwzDmfzTilDSyBV5/7bBrnPypKTM5vrlG/pozfuA24Iuymynyld8jIx3Atv12eQTskebScqF4/vVb5q8zWKPBfT0zZf6p1oiUYd+Y7zE1N2UqvxXdmN9JrZ8Iob8xvYPhIQBkV1XEuu2Nngjm3v7Y+m0xVAaIIKKcwUjziBXfR/jN94GvgYepNg2pX9J1oTEAKYUW/rbBCqMTydT4Yg/K7BrObjVHIgQ46v9wAImq9UgOdIW9xnRxRCTIJ//EHIUmvGGKieSCRTXXMvrxr2YNWjvBd+DPY0fLBT71Bap3AjoD96mb1rRraHY7Kf8ZkJrst+AX0fOppItII90BlwYZ009i2wM+6TL5806t4AiTxXYVmo33rcgEaREy5RGy/mHGTdAvvratJHRM48oTRdtICRczYubX0KFI059UXStOwk7EyMPb88zXtEBJcYS/C+fMX5+W8gl7MC33ur10uJBrkt4gsbJsHmRj8jHDCsyzTuIAn+0xN5t7yjozZAmsHT7HuYrhy5hAKV+ZvFj/yDfkLR+/UpKBwz6ufjfFJWG+FQSsLglUe4cabgvNtn9mqCmLRsXJq3qzAaCjc0Hi9o13mTpASm5ndL6t/Yv/b9xDTUAf+jJbcyNtog05RlWtI+3MfDGHSY9m3J+bxfKu/fO1gYrvhaC7Bn+f1XQqIBNdpFkWAXMAo6NQQsPITV9sXXB8jf9PpHSLHhjMfCLdAHZ3ytah1qlNg/EpJKK9nt5yOPhqgRFRCoCPShOQbWfDzyJXJohCN1m7ftXdbj4JRo8wVkTCutlx/TjYZkmDk9TozV7Zmkk1RnoiiObMY+VFV1Mefkzy/RtYV68LxDPes+Fi+QYRbQZ0UFk1UP4CLFoA+jFfMgjDA3bnQk6XqZdplRS89Wf44OGaqB5UkT5/GsTO6RSPr6xYmXmoEuhRGG9oy5xjRsOd/B4OefQ3GPZ1lNkhKQ7nawTt0xU5pOMr8xyTAIiMKRpd95pW6qqoUM8Hj1rFf0AR+3fwmh/1KLfKWNi74oUB0vfD0/ZvSCPvoZ9z5WgyGOf2NHBMFP+VYwQbU002QzGwM2dFaf60yDvQ+kBTUiN3+RpiHjnXxDA9ClOHcQk4VEOU5JTaTp6ZUdy6QsxQsRwkIwm9b5DYbqtBpbOcYBqxNr/OmWeGc3uxc2m3CWQsnk1z3dJl0Fpjs7Jlqmf23XAlbyh+nZsgLxA55EeDwW4VMuIFhawu0IXI0PdmYFveuyRYIU7O+X892LEMIIUO4Arxhs/1w/e8yR6/8DCIJqQnZDaSw1KH2WRL8Tkw7NRmdHUctOr1QsVkr06tb5HTNKwNSU3uXHPBWLxwmNIylPyDst0qDhoi0MyxfKYca6goQbG4syMZCv6a7lfFAPYpkkMeeOIybDEDcQ4HrHNdgkIR+DISFFA3QsyjAn6xCSix0BwjIsOlCXRuZn66CbOzafL+OtImqGB3f0BrVTBd/InvIS45cdxyrON3Oz0K8hKjWImbhsm8b6qLd4IkkeSfkNIwB++JHt9/Jearqpox0q0dXnHsx3ul0YCCOhay7J+zX4z65JsGoblpYnKE9I9XMVd6VuMAVeu7J1f5scGlGWZxLoFwhghLXDfWkLERtUDemb/ywokbjFD9LY2Us3PAt1cdQuHRwJHEYWtMmHKjGGg6EFjQjuROpnM/T/w3+j/4220oYqRvWVfoJlh7CDlEz/hwZqQyPbr+RUSPofbozHWlOZcQL1PG8iynZiT+k+qaeabHsfTr1eWAuzNIPQshxw+QSUHyTxPAYeLH/uSJVBLaD0UZjPWQHmgQ5+vU4T1EpxxrKjDRztdto5RWTp9ltK87KlDCg3JJqrH2c+bZ+9fUtclJczoIjuZncOwWYvYneHlk9XEGnEKEfZXLN500XmZb62/81lvKMffRBu3phctxLj946Y/dZU94sFJ+yLNoKY1hZWKBs9En0klN/JsREdvKAAKetYnq0K3Px9hOpv/g2FZCNQiHqWbRO+5mVNnPAyoDQ4qcmyaclcl8QDFRSsQfE3ez+zc6YecB8vTnza68E+pftAoAqF+1fHrecYx4XkE/sCFm2J8117vlKCjZDxGJsf+ZhsSgMjJVrseUsihfHeQe/fgNX2Q58qmYXSe6q9bjpWh1AQOoEv4urvSHL6DAo91L1UaxUvRhmy/IIvimrdtdiaVZRFxKuo8WBBO4X2LTJhTZaXeo9uiribGJ9u3RdvPygU1ir9cel2hXn4X17+v0jZajOxlkRw55D6MMZ6IG4hwsSPwAb6iJdTyMtL4DFOsCW0dPcmd3nlZzRsO3XJq3gO4BTm4MnddgAT2watJqMvx2sB25BiGArwyriw/MDB3AUKGRan+tjOaZ0kk1HBGa2EaM6LcvX0vCeWjbBafQBLeacr2/3i+zlkH9XGa8MOxXGE00xW8/GCPlh19PQMn2UTj3ZgW1fUQd0H6Pu3j4voY0fcTbyZMYQ/EblFcniKGFCUYEnFWGneUd5M6FmkEJMOL94nHoXxicLa+6rlAYcKsqFWSpOFrSV26ftwwStq589dAnPbGqhXf/iIYHepAGgKggSxTujVC3WIrhGZd/cgxZ+zAEKmH6iJmKHUS+ynjzgVA9KqWm2Tb8ZnCO+I6PxBPcbIQ0Yv7tgWPDuEyd5mZGkqtp0iGxin+NyDq1gV2gyxYUV/huwrRnurSsK1fr8W9B3E0Hd6EJP4eer9iQm83GYaXH9mcQasw+rUWIsegY5eWlfL3fKgCWpbLv+5zGaIYMO9fmoDg5UMkv0zkseQRQPofXX9MgBXvqiJLrmebUB76rlqQ1o/Kwt8lkb9Ysdivf0u9xsin5y46qMlSW0zV2SwIet5qUsLVSN18TY/2NTT02ggxL7WfO0V99HEGQzkR0aCpuM4ixMu7FC9VZuR9407WawunBl97RflvjVosP2vCRZGIHhw/Uj0iW5PaGJpZ1Q02uhovf7Nc2Wxz4QxgfQc5xnE2+dWn1HkmnKyAp42qPSwyWpZH0J8aKXOaOfbqzfKnm7+1T7uBxzbYNJq6/JQOoiH+DDayGs0u8nS4p89pFRJZmuXLeO1OkEm6HvAjXwoPiQbX+EkYVv4I0K+ODZXivpaTw0JVJc2tLs2GdbCheTkUV0zQcm/LaMVl8R7sdZR6NcHZHwrnBehrU+J2FKtV/QjMvjBWdaXbScd6CM8QiwoG3vwGGpTzSqFVseG6L/BSN6ns1+Chd0Svu/wAFoqkA3CHLc28Hl/3/wLBgrdHZi240g24Zcf1KcogLXjYSeJh+VTww2mbH6A0klYKuyQPJCF8b6F8QxTUKdZiOUJ62JI1k/kH4KfkImbe0Hw14OnEnperuCx+NF06cyJvtL+bDqNg1WGI1SK5ujnCVrz5vR2s6eiwlrZTuQqUPumpKp4J2Ku+UOeV9+UfVnUkO+ET5mD0Zf62kAc6cvrUbyatLILG9cLaYjJTwCTaM5smt38g7QVZVf8Jl+9oT4SISbDAQfOsqx0fMcfVY+Wz6ho7Osu0TWUxFnIsNqlxTxbuCM2qIKTyNqeaegx1NnawM0ydn0IITCvZVZKToro5R2wsSv9pB72gnjQl6PJMnZWpjChxg28QrUIbKWEIGbSxqvAgKO3U5kbs/BL0ZQjpWEIevcBpP/xB6kcAUY1jOV0FsHPCB8hWokxLIUSBS8726kzSSgDskX26jBUBudnEovofsjr7EDKs9xKo+ciw4zX6786lTvq90+6Fy1x8X1dQbwvn957uzSDNVjO36qy6AuJJKama8QMUKBnzWtB2AxNQNlNkn10yAJXUtrdqndbfl+RwXylgHc5C7zsBErLEVLL6o6yC5vDjWcXHaeije1lz8lFInWyHqS9QV685T/6D0sKYQcDXXA8l7AzJAQKXVIWXB2oJM7nW2g7Oxwz7Z2jI1O6bIQPuLf8ZeR+ZNEtSNhIXKN/WJGPnCTYWb9w6x4B9Dr1r/K0eBB9Z6LrNEXmc7UUCpbtXcI6m91GAqIn66+FmkGWcqxT3oFxHNpfGarykl5XzBDBUr8/1q4sPuH9jernHdZCr+ue8AP0N6WWYOJF1y46OWEJb/xspvsulpzAQ7406swpRHz1Rxi8EFrvUbzwXcM7bWGvrPHXQmf/ZtDzIibh8jdCCPOVCR586by9cDyS0/mkFg36C6uqNKUg2pCWIH8aLT0KQUz7vdGi24U0wGe4ukMA0MyUSuWZkhJ3Q6fnBNTT+p1VHOsaMlOSMETV2tMwlEW+XnORqFjUSQhbWBiZMi+mCUpHVsRi0iMluauVu9zdaxTe3bDrGLq5g1cIDMR1BUN4v/QwX68PuhVZ+fbkfOz/WaloeBK0LcLCctBBTANs9Mgk7ct2T5pboK+ElAY86x/ny4AanpLJzDwK0N3ORJ29gL4mBkHbL062oTWuX24KzCZPwbcW8sqLDGJpPTcfpseoRcyLgUs0CPTK7QJNWuFJDHSBmYlhII6X9pFbsxA6gASpxaI9RlwHienC153DkEPjfad74xTfsRU7+IVPL+A93Bdw3Dpa0BzfZX7zC92Sr0yBdRNiSICle3Ra80tD7+sznfaB4oAbAYBVAHNqHDcguUB9ad74uLtoYK7tz9eYED0xu24gpusneXiQo30xP626v2ub9DRXhBVP+Q3K7v08mpGtrBIRwb+gJdFuYuNZNlfhB93Nwd+/mKoUukP3lwgD2s291gbuw/Jl9hpPc35uiPNwGdpUWQpxURJMbmjbwv4jWIA/k9j0VX1FRuVqoCf+xihp/cZi2qh3qc89x582FjnxmYcQBsHmW7P1YnSbqxP5rGnE9AsonQpN3mW3XzT+61t64fKDL4yYpmhQ+LJhh1fVPArH/zPxCLeS/RUJ3ssd9pk5JvxJyndhBIzqVefe+78TxRkzud6qYpxCgDTkcqVtTaoeU1TKJBfy40d+4uyBESkmWgwG8Y2nYAmDfJ0plEQbQKwjEcKvOkRulmlP6I5Gsex1ZDb417rzZbXHPQyQDbPURVAT89JATVk3p/dyshyFRSpMG4/taCnYhWAKAcELwJ4931px1ZPDlF/z/SQuCtwsmc+2B7Tq3KRvTTCYOOVBN6UcdIHyO7uoJ16fCjBuSoYEC1Xbiqoig/rDKnmhDgNYQA3e4pgr4ejoP5jtGB2j3PuX7CVRmPA3nLjj1d/MYdXcQ7nb7Aqwvj2zYp5HyhKOT9ftuordOYelJoKn7/n97TLjcBppI2vUQh7IevCTyZ87lnAZeGqK1sG3BBw5dT+zYqfB0Ha31DrTj80bj5DN6fQZfjYrfLipsCs1Jw47tXlfri3kcMRqirN88jZt4RzG3kge09cZt1NjHKCt9wrC1zFB/dGHjKjb/L2uG88g1lYSpb/upz7R356bELPk+mnbI3tNt/BYJ4s9KmKLgIMGRcPida2/MY8GZO1e4T1bPEdghf7w/YDBs6dvBI32hVzNefExB8Upmc2WDPAsscsvT81aRS51O3lbutC1zu3aTFZcfTGP74hSZm6ql5SsWimQtI0C8EcLyHf/Y+T2D8g5MW2KRuxoUzFxBJIFfg5x7q9p9Bc63DqI2Zc1avqLlUGaiVTAZrxK/lugX2MPhQDVtg4QQ8bqXNwt8yrO715Tquij29CpN0xmO+c7grt8uG94qlc811wjz0lXOvj+CKMqPveELuDUpvFyu9m/dosh5BOUoOrebfMidfSG8FUYb5yS77K7YO1dQ5H9vOqcvwuJ4+nteYPhdT3D8DXMHrArQ4fiI8zja81AP1LCtb9M9NXxhMY3mfh8+EwXjF244v3vqZ1lgcSS3Eq0TzjsH53V9XLq36yAFyTwARkWLVUO3N/XSWxB7KFM1GzhoY6cw7/mIqldxjRbuWSQd+TAmtgH8aWkitAnL53L2RaR25bTfo282m2Yw6U22IwIpMay4L1BTNDaX1C7rzIdoeyPoGx96c+13wy1eeH1+VFW8Nct5crgWoZaUM7daCiRMxO4arbtH08StrIIALgqiV2/iFT4c3EZRHEkQtTUU6tcvZb8AsVlfCGlXTEsdvggEi5up4/Kf8pMDmq6U4zEiEyMHkoLFC3E3ZlEH3lOJnHww7P39rRqZURA3xeFhJEmP6djOQY8GWsj1C+3EaUcjTh+OBm6z45sMzER8epMWG4C3VRAg2bgdDuhJGsUvnkU6kZOo4c4r5vmnYgj4iWLAzv3Pjbkc160zQkz67CJ9SX3e+J8YiyLXTN8UIQmLbiPQ+viqlOkM8EMRnetOLPC8xpui5UO87eVf9+FoC/gpxLBJRNK7Ii3ezDmH2RYd8qB9wc4NLts/z+ysR1ePFYrkUux+3J4VX9n8Y4NJ5YbagFF66wPWYyEQ3JZybcGQXvDPFKUWh98flFb+u1KEr2R2HFyDBoWG+n1rE5haLYESuobjJYd+0OTOScMSAssdi5mb+Qei9k+jNwn2WgR60Ki4K4IgHspfu03VHY69yQllU5+1uUp1w/FaC1ObIPt7UOpSJUJ8ibPPLz49mPXVJkNCpjWPRtYPmbyfXN1sOLK3uR9h5dzZy08rpSESlvdFON639ke+S3aReyIThcR5SqSKhA7K1cpvOgJwfsj17OwMEoOGU75/cjPtZgA+14z0qzTvXpv+58qiofEx6/XujHZCVmEWXIamNok1OCrf1jwm+PkxH5HzJhxwdm6Rp+fN5ky2zB3p7BmPOgQwcpit/sBaSwJBTCwX8wyundWe+tx75urO0TO/9/v2GM4FaNyQ9+9WZ6mAo7ZThK6SIi2FNWoITlggtr9QyyEGZyq5kHpLZYXjXmJTYBo6DB0h7trMVXRGuvritU+Plkq7gjbm56h49NZpf3Yu1v0Z2YwEGlqxF/MfnY09s6zwuH3V3bj2JnYye62KbsCdZoGfJ8D8H2SHeGGUBy1RqNROeRTIvfywGuJuZVi3chIssN3Hg0Y0Ge19/3Mb6wglHajwT24/mwLodKbKddTMqlCiUgFOdL3vVRKXMLm1rJqAiXtMwVw/QHtS5Q8wNuQFiaVa//jy18zW2G6DkciQaFSOy/rx4RRVD9TLdAs5NYOgKQRP98C7ojnE5eXYfadodDuCWPz9FhJe0oP4wQez6uS7q2wj+fFFrVe623tvY8Aptl+cFV6sdA2M/NWg7mtfJJqjcmxWwAxKsrtnGiUmJ7SbBdfl2yl2MEEDtTVQh5OB+tQ9EpzsYEec/ZkQS/3i3nCW73wlmCPujlFb2ygeTHKycU/BOpzCvkBl6BYI6hRkyw6gePXqkG7dUsqQNN102eLKbfrov/RXKwyg+7VEztFbslyaDFvkqlmiI2vSWeEm1i9CbAW2egxFKHWqnaoYYjo6536fHWuVaz//pAS68kfF/S5pgdgfYoCESZKNdVqpjR/nNXmKm3cjuI80dDFpUQxCRQK6iz0c20F79b4/ruTbiJF/ko0Tqewe178VjLQC3BXogJxvOtCdKLsY=;^</div>
+<div id="mkdocs-decrypted-content">
+<form id="mkdocs-decrypt-form">
+<h1>本页内容已加密。This page is encrypted.</h1>
+<p>需要密码</p>
+<input id="mkdocs-content-password" placeholder="请输入密码" type="password">
+<p id="mkdocs-decrypt-msg"></p>
+</input></form>
+</div>
+<script type="text/javascript">
+var encryptcontent_path = "workflow/quant/";
+var decryption_failure_message = "\u5bc6\u7801\u9519\u8bef";
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pad-nopadding.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/md5.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js" type="text/javascript"></script>
+<script defer="" src="../../assets/javascripts/decrypt-contents.js" type="text/javascript"></script>
+<aside class="md-source-file">
+<span class="md-source-file__fact">
+<span class="md-icon" title="最后更新">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"></path></svg>
+</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 3 月 23 日</span>
+</span>
+</aside>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            回到页面顶部
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 目录" class="md-footer__link md-footer__link--prev" href="../" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                  上一页
+                </span>
+                目录
+              </div>
+</div>
+</a>
+<a aria-label="下一页: 写作" class="md-footer__link md-footer__link--next" href="../writing/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                  下一页
+                </span>
+                写作
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+<p>Copyright © 2022 - <script>document.write(new Date().getFullYear())</script> Jeremy Feng</p>
+</div>
+</div>
+<div class="md-copyright">
+<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">湘 ICP 备 2023001413 号 - 1</a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/jeremy-feng" rel="noopener" target="_blank" title="GitHub">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+<a class="md-social__link" href="https://x.com/intent/follow?screen_name=JeremyFeng98" rel="noopener" target="_blank" title="X">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+<a class="md-social__link" href="mailto:jeremy-feng@qq.com" rel="noopener" target="_blank" title="Email">
+<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"></path></svg>
+</a>
+<a class="md-social__link" href="https://www.linkedin.com/in/chao-jeremy-feng/" rel="noopener" target="_blank" title="LinkedIn">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.footer", "navigation.tracking", "search.share", "search.highlight", "content.action.edit", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.follow", "header.autohide", "content.tooltips", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.6c7302c4.min.js", "tags": {"Computer Science": "cs", "IndieDev": "indie-dev", "LLM": "llm", "LaTeX": "latex", "LeetCode": "leetcode", "Linux": "linux", "PyTorch": "pytorch", "Python": "python", "Rust": "rust", "\u6570\u636e\u53ef\u89c6\u5316": "visulization", "\u6570\u636e\u5e93": "database", "\u673a\u5668\u5b66\u4e60": "ml", "\u6df1\u5ea6\u5b66\u4e60": "dl", "\u751f\u6d3b": "life", "\u7edf\u8ba1": "stats", "\u8fd0\u7b79\u5b66": "or", "\u91cf\u5316\u7814\u7a76": "quant"}, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.542a4128.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
