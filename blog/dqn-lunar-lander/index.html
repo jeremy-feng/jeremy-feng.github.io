@@ -690,6 +690,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -938,6 +940,34 @@
   
     <span class="md-typeset">
       2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 10 月
     </span>
   
 
@@ -3071,7 +3101,8 @@
                     <span class="md-ellipsis">
                        
                       
-                        <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></span>
+                        <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>, 
+                        <a href="../category/llm/">LLM</a></span>
                   </div>
                 </li>
               
@@ -3148,6 +3179,16 @@
       
       
         <a href="../tags/#深度学习" class="md-tag md-tag-icon md-tag-icon--dl">深度学习</a>
+      
+    
+      
+        
+        
+          
+        
+      
+      
+        <a href="../tags/#llm" class="md-tag md-tag-icon md-tag-icon--llm">LLM</a>
       
     
   </nav>
@@ -3238,8 +3279,8 @@ Your browser does not support the video tag.
 <span class="linenos" data-linenos="36 "></span>[0m
 </code></pre></div>
 <div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>!pip install swig
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>!pip install imageio[ffmpeg] 
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>!pip install gym pyvirtualdisplay pyglet 
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>!pip install imageio[ffmpeg]
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>!pip install gym pyvirtualdisplay pyglet
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a>!pip install gym[box2d]
 </code></pre></div>
 <div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Collecting swig
@@ -3625,7 +3666,7 @@ Your browser does not support the video tag.
 </code></pre></div>
 <h2 id="3---the-lunar-lander-environment">3 - The Lunar Lander Environment<a class="headerlink" href="#3---the-lunar-lander-environment" title="定位到这">&para;</a></h2>
 <p>In this notebook we will be using <a href="https://www.gymlibrary.dev/" target="_blank" rel="noopener">OpenAI's Gym Library</a>. The Gym library provides a wide variety of environments for reinforcement learning. To put it simply, an environment represents a problem or task to be solved. In this notebook, we will try to solve the Lunar Lander environment using reinforcement learning.</p>
-<p>The goal of the Lunar Lander environment is to land the lunar lander safely on the landing pad on the surface of the moon. The landing pad is designated by two flag poles and it is always at coordinates <code>(0,0)</code> but the lander is also allowed to land outside of the landing pad. The lander starts at the top center of the environment with a random initial force applied to its center of mass and has infinite fuel. The environment is considered solved if you get <code>200</code> points. </p>
+<p>The goal of the Lunar Lander environment is to land the lunar lander safely on the landing pad on the surface of the moon. The landing pad is designated by two flag poles and it is always at coordinates <code>(0,0)</code> but the lander is also allowed to land outside of the landing pad. The lander starts at the top center of the environment with a random initial force applied to its center of mass and has infinite fuel. The environment is considered solved if you get <code>200</code> points.</p>
 <h3 id="31-action-space">3.1 Action Space<a class="headerlink" href="#31-action-space" title="定位到这">&para;</a></h3>
 <p>The agent has four discrete actions available:</p>
 <ul>
@@ -3654,7 +3695,7 @@ Your browser does not support the video tag.
 <p>The Lunar Lander environment has the following reward system:</p>
 <ul>
 <li>Landing on the landing pad and coming to rest is about 100-140 points.</li>
-<li>If the lander moves away from the landing pad, it loses reward. </li>
+<li>If the lander moves away from the landing pad, it loses reward.</li>
 <li>If the lander crashes, it receives -100 points.</li>
 <li>If the lander comes to rest, it receives +100 points.</li>
 <li>Each leg with ground contact is +10 points.</li>
@@ -3691,7 +3732,7 @@ Your browser does not support the video tag.
 <p><code>reward</code> (<strong>float</strong>): amount of reward returned as a result of taking the given action. In the Lunar Lander environment this corresponds to a float of type <code>numpy.float64</code> as described in section <a href="#3.3">3.3 Rewards</a>.</p>
 </li>
 <li>
-<p><code>done</code> (<strong>boolean</strong>): When done is <code>True</code>, it indicates the episode has terminated and it’s time to reset the environment. </p>
+<p><code>done</code> (<strong>boolean</strong>): When done is <code>True</code>, it indicates the episode has terminated and it’s time to reset the environment.</p>
 </li>
 <li>
 <p><code>info</code> (<strong>dictionary</strong>): diagnostic information useful for debugging. We won't be using this variable in this notebook but it is shown here for completeness.</p>
@@ -3715,7 +3756,7 @@ Your browser does not support the video tag.
 <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># Reset the environment and get the initial state.</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">initial_state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre></div>
-<p>Once the environment is reset, the agent can start taking actions in the environment by using the <code>.step()</code> method. Note that the agent can only take one action per time step. </p>
+<p>Once the environment is reset, the agent can start taking actions in the environment by using the <code>.step()</code> method. Note that the agent can only take one action per time step.</p>
 <p>In the cell below you can select different actions and see how the returned values change depending on the action taken. Remember that in this environment the agent has four discrete actions available and we specify them in code by using their corresponding numerical value:</p>
 <div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a>Do nothing = 0
 <a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos="2 "></span></a>Fire right engine = 1
@@ -3852,7 +3893,7 @@ w^-\leftarrow \tau w + (1 - \tau) w^-
     \begin{cases}
       R_j &amp; \text{if episode terminates at step  } j+1\\
       R_j + \gamma \max_{a'}\hat{Q}(s_{j+1},a') &amp; \text{otherwise}\\
-    \end{cases}       
+    \end{cases}
 \end{equation}
 \]</div>
 <p>Here are a couple of things to note:</p>
@@ -3861,7 +3902,7 @@ w^-\leftarrow \tau w + (1 - \tau) w^-
 <p>The <code>compute_loss</code> function takes in a mini-batch of experience tuples. This mini-batch of experience tuples is unpacked to extract the <code>states</code>, <code>actions</code>, <code>rewards</code>, <code>next_states</code>, and <code>done_vals</code>. You should keep in mind that these variables are <em>Pytorch Tensors</em> whose size will depend on the mini-batch size. For example, if the mini-batch size is <code>64</code> then both <code>rewards</code> and <code>done_vals</code> will be Pytorch Tensors with <code>64</code> elements.</p>
 </li>
 <li>
-<p>Using <code>if/else</code> statements to set the <span class="arithmatex">\(y\)</span> targets will not work when the variables are tensors with many elements. However, notice that you can use the <code>done_vals</code> to implement the above in a single line of code. To do this, recall that the <code>done</code> variable is a Boolean variable that takes the value <code>True</code> when an episode terminates at step <span class="arithmatex">\(j+1\)</span> and it is <code>False</code> otherwise. Taking into account that a Boolean value of <code>True</code> has the numerical value of <code>1</code> and a Boolean value of <code>False</code> has the numerical value of <code>0</code>, you can use the factor <code>(1 - done_vals)</code> to implement the above in a single line of code. Here's a hint: notice that <code>(1 - done_vals)</code> has a value of <code>0</code> when <code>done_vals</code> is <code>True</code> and a value of <code>1</code> when <code>done_vals</code> is <code>False</code>. </p>
+<p>Using <code>if/else</code> statements to set the <span class="arithmatex">\(y\)</span> targets will not work when the variables are tensors with many elements. However, notice that you can use the <code>done_vals</code> to implement the above in a single line of code. To do this, recall that the <code>done</code> variable is a Boolean variable that takes the value <code>True</code> when an episode terminates at step <span class="arithmatex">\(j+1\)</span> and it is <code>False</code> otherwise. Taking into account that a Boolean value of <code>True</code> has the numerical value of <code>1</code> and a Boolean value of <code>False</code> has the numerical value of <code>0</code>, you can use the factor <code>(1 - done_vals)</code> to implement the above in a single line of code. Here's a hint: notice that <code>(1 - done_vals)</code> has a value of <code>0</code> when <code>done_vals</code> is <code>True</code> and a value of <code>1</code> when <code>done_vals</code> is <code>False</code>.</p>
 </li>
 </ul>
 <p>Lastly, compute the loss by calculating the Mean-Squared Error (<code>MSE</code>) between the <code>y_targets</code> and the <code>q_values</code>. To calculate the mean-squared error you should use <code>F.mse_loss</code>:</p>
@@ -4043,7 +4084,7 @@ w^-\leftarrow \tau w + (1 - \tau) w^-
 <p><strong>Line 7</strong>: The agent observes the current <code>state</code> and chooses an <code>action</code> using an <span class="arithmatex">\(\epsilon\)</span>-greedy policy. Our agent starts out using a value of <span class="arithmatex">\(\epsilon =\)</span> <code>epsilon = 1</code> which yields an <span class="arithmatex">\(\epsilon\)</span>-greedy policy that is equivalent to the equiprobable random policy. This means that at the beginning of our training, the agent is just going to take random actions regardless of the observed <code>state</code>. As training progresses we will decrease the value of <span class="arithmatex">\(\epsilon\)</span> slowly towards a minimum value using a given <span class="arithmatex">\(\epsilon\)</span>-decay rate. We want this minimum value to be close to zero because a value of <span class="arithmatex">\(\epsilon = 0\)</span> will yield an <span class="arithmatex">\(\epsilon\)</span>-greedy policy that is equivalent to the greedy policy. This means that towards the end of training, the agent will lean towards selecting the <code>action</code> that it believes (based on its past experiences) will maximize <span class="arithmatex">\(Q(s,a)\)</span>. We will set the minimum <span class="arithmatex">\(\epsilon\)</span> value to be <code>0.01</code> and not exactly 0 because we always want to keep a little bit of exploration during training. If you want to know how this is implemented in code we encourage you to take a look at the <code>utils.get_action</code> function in the <code>utils</code> module.</p>
 </li>
 <li>
-<p><strong>Line 8</strong>: We use the <code>.step()</code> method to take the given <code>action</code> in the environment and get the <code>reward</code> and the <code>next_state</code>. </p>
+<p><strong>Line 8</strong>: We use the <code>.step()</code> method to take the given <code>action</code> in the environment and get the <code>reward</code> and the <code>next_state</code>.</p>
 </li>
 <li>
 <p><strong>Line 9</strong>: We store the <code>experience(state, action, reward, next_state, done)</code> tuple in our <code>memory_buffer</code>. Notice that we also store the <code>done</code> variable so that we can keep track of when an episode terminates. This allowed us to set the <span class="arithmatex">\(y\)</span> targets in <a href="#ex02">Exercise 2</a>.</p>
@@ -4061,7 +4102,7 @@ w^-\leftarrow \tau w + (1 - \tau) w^-
 <p><strong>Line 16</strong>: At the end of each iteration of the outer loop we update the value of <span class="arithmatex">\(\epsilon\)</span>, and check if the environment has been solved. We consider that the environment has been solved if the agent receives an average of <code>200</code> points in the last <code>100</code> episodes. If the environment has not been solved we continue the outer loop and start a new episode.</p>
 </li>
 </ul>
-<p>Finally, we wanted to note that we have included some extra variables to keep track of the total number of points the agent received in each episode. This will help us determine if the agent has solved the environment and it will also allow us to see how our agent performed during training. We also use the <code>time</code> module to measure how long the training takes. </p>
+<p>Finally, we wanted to note that we have included some extra variables to keep track of the total number of points the agent received in each episode. This will help us determine if the agent has solved the environment and it will also allow us to see how our agent performed during training. We also use the <code>time</code> module to measure how long the training takes.</p>
 <p><img alt="deep_q_algorithm" src="../assets/2023-05-29-dqn-lunar-lander/index-image/deep_q_algorithm.png" /></p>
 <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><a href="#__codelineno-20-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">def</span> <span class="nf">get_action</span><span class="p">(</span><span class="n">q_values</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2"></a><a href="#__codelineno-20-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4225,7 +4266,7 @@ Your browser does not support the video tag.
 <p>Lillicrap, T. P., Hunt, J. J., Pritzel, A., et al. Continuous Control with Deep Reinforcement Learning. ICLR (2016).</p>
 </li>
 <li>
-<p>Mnih, V., Kavukcuoglu, K., Silver, D. et al. Playing Atari with Deep Reinforcement Learning. arXiv e-prints.  arXiv:1312.5602 (2013).</p>
+<p>Mnih, V., Kavukcuoglu, K., Silver, D. et al. Playing Atari with Deep Reinforcement Learning. arXiv e-prints. arXiv:1312.5602 (2013).</p>
 </li>
 </ul>
 
@@ -4241,7 +4282,7 @@ Your browser does not support the video tag.
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 3 月 23 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 10 月 16 日</span>
       </span>
     
     

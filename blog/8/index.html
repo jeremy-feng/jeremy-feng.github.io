@@ -688,6 +688,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -936,6 +938,34 @@
   
     <span class="md-typeset">
       2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 10 月
     </span>
   
 
@@ -3016,6 +3046,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-进阶教程系列-3生成器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 进阶教程系列 3：生成器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-进阶教程系列-2装饰器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3155,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#matplotlib-动态绘图神经网络训练过程可视化" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        matplotlib 动态绘图——神经网络训练过程可视化
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3169,58 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-07-29 00:00:00">2023年7月29日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-进阶教程系列-3生成器"><a class="toclink" href="../advanced-python-3-generator/">Python 进阶教程系列 3：生成器</a></h2>
+<p>本文是 Python 进阶教程系列 3，主要介绍了生成器 <code>generator</code> 与 <code>yield</code> 的机制和 <code>next</code> 与 <code>send</code> 的用法，并展示了如何用 <code>generator</code> 生成无限序列。</p>
+<p>在循环中使用生成器作为迭代对象，就不用将所有需要遍历的值都全部计算出来再迭代，而是可以每迭代一次就计算一个需要遍历的值。</p>
+<p>这种写法有以下几个好处：</p>
+<ol>
+<li><strong>节省内存资源</strong>：生成器以延迟计算的方式逐个生成数据，不会一次性生成所有数据，因此可以避免在内存中存储大量数据，从而减少内存资源的占用。</li>
+<li><strong>更快的计算速度</strong>：由于生成器以延迟计算的方式逐步生成数据，避免了一次性计算所有数据所带来的资源浪费，因此生成器往往比一次性生成所有数据的方式更加高效。</li>
+<li><strong>更灵活的逻辑处理</strong>：生成器可以动态地生成数据，并且可以支持迭代过程中的数据清洗、处理等操作，从而让代码更加灵活、简单。</li>
+</ol>
+
+    <nav class="md-post__action">
+      <a href="../advanced-python-3-generator/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3563,56 +3645,6 @@
 
     <nav class="md-post__action">
       <a href="../gru/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-06-30 00:00:00">2023年6月30日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-meta__link">数据可视化</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="matplotlib-动态绘图神经网络训练过程可视化"><a class="toclink" href="../plot-animation/"><code>matplotlib</code> 动态绘图——神经网络训练过程可视化</a></h2>
-<p>本文使用 <code>matplotlib</code> 实现动态绘图，可以用于查看神经网络训练过程的损失值和评估指标的变化情况。</p>
-<p><img alt="plot-animation" src="../assets/2023-06-30-plot-animation/index-image/plot-animation.gif" /></p>
-<blockquote>
-<p>本文部分代码参考了<a href="https://zh-v2.d2l.ai/d2l-zh-pytorch.pdf" target="_blank" rel="noopener">《动手学深度学习》</a>的 <code>utils.py</code> 中的函数。</p>
-</blockquote>
-
-    <nav class="md-post__action">
-      <a href="../plot-animation/">
         继续阅读
       </a>
     </nav>

@@ -688,6 +688,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -936,6 +938,34 @@
   
     <span class="md-typeset">
       2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 10 月
     </span>
   
 
@@ -3016,6 +3046,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用不同惩罚项的线性回归进行变量选择" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用不同惩罚项的线性回归进行变量选择
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#手动计算简单的反向传播算法" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3114,17 +3155,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#多元正态分布的线性变换仍为多元正态分布" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        多元正态分布的线性变换仍为多元正态分布
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3139,6 +3169,60 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-15 00:00:00">2023年4月15日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 8 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用不同惩罚项的线性回归进行变量选择"><a class="toclink" href="../variable-selection-via-nonconcave-penalized-likelihood/">使用不同惩罚项的线性回归进行变量选择</a></h2>
+<p>本文使用 SCAD、LASSO、Ridge 和 Garrote 惩罚项对线性回归进行了建模，在模拟数据下验证了不同惩罚项设计的对稀疏系数的选择能力。</p>
+<p>原始论文的标题叫做 Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties。对于 Oracle Properties，在 <a href="https://d.cosx.org/d/104104-104104/18" target="_blank" rel="noopener">统计之都上有一个非常精彩的解释</a>：</p>
+<blockquote>
+<p>Oracle 这个词对应的中文翻译叫做“神谕”，就是神的启示，它是指通过媒介（男女祭司或器物）传达神的难以捉摸或谜一般的启示或言语。在罚函数（比如 LASSO) 的研究领域，Oracle 指的是以下的渐进性质：</p>
+<ol>
+<li>真值为 0 的参数的估计也为 0。</li>
+<li>真值不为 0 的参数的估计值一致收敛到真值，并且协方差矩阵不受那些真值为 0 的参数估计的影响。</li>
+</ol>
+<p>简而言之：罚函数的估计结果就好像事先已经得到了神的启示，知道哪些是真值为 0 的参数一样。</p>
+</blockquote>
+
+    <nav class="md-post__action">
+      <a href="../variable-selection-via-nonconcave-penalized-likelihood/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3610,51 +3694,6 @@ x_1, x_2 \geq 0
 
     <nav class="md-post__action">
       <a href="../quantitative-investment-lecture-multiple-strategies/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-03-22 00:00:00">2023年3月22日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="多元正态分布的线性变换仍为多元正态分布"><a class="toclink" href="../linear-transformation-of-multivariate-normal-distribution/">多元正态分布的线性变换仍为多元正态分布</a></h2>
-<p>利用线性变换和雅可比矩阵，推导多元正态分布的线性变换的性质。</p>
-
-    <nav class="md-post__action">
-      <a href="../linear-transformation-of-multivariate-normal-distribution/">
         继续阅读
       </a>
     </nav>

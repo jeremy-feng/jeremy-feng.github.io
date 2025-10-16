@@ -29,7 +29,7 @@
     
     
       
-        <title>蒙特卡洛模拟的应用 - Jeremy Feng's Blog</title>
+        <title>蒙特卡洛模拟的应用与重要性抽样 - Jeremy Feng's Blog</title>
       
     
     
@@ -263,7 +263,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              蒙特卡洛模拟的应用
+              蒙特卡洛模拟的应用与重要性抽样
             
           </span>
         </div>
@@ -690,6 +690,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -938,6 +940,34 @@
   
     <span class="md-typeset">
       2024 年 12 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2024/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2024 年 10 月
     </span>
   
 
@@ -3389,7 +3419,6 @@ Profit = (P-X_1-X_2)\times D-A
         vertical-align: middle;
     }
 
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
@@ -3529,27 +3558,27 @@ Profit = (P-X_1-X_2)\times D-A
 </code></pre></div>
 <h2 id="重要性抽样">重要性抽样<a class="headerlink" href="#重要性抽样" title="定位到这">&para;</a></h2>
 <h3 id="要解决的问题">要解决的问题<a class="headerlink" href="#要解决的问题" title="定位到这">&para;</a></h3>
-<p>对于<span class="arithmatex">\(X \sim p(x)\)</span>，要求</p>
+<p>对于 <span class="arithmatex">\(X \sim p(x)\)</span>，要求</p>
 <div class="arithmatex">\[
 \mu=\mathbb{E} f(X)=\int f(x) p(x) d x
 \]</div>
 <p><img alt="image-20221206000407748" src="../assets/2022-12-05-monte-carlo-method/index.zh-image/image-20221206000407748.png" /></p>
-<p>问题 1：<span class="arithmatex">\(p(x)\)</span>很难抽取，因此很难通过普通的随机模拟方法求解。</p>
-<p>问题 2：<span class="arithmatex">\(f(x)\)</span>和<span class="arithmatex">\(p(x)\)</span>差异很大，体现在：当<span class="arithmatex">\(p(x)\)</span>很大时，<span class="arithmatex">\(f(x)\)</span>很小，而当当<span class="arithmatex">\(p(x)\)</span>很小时，<span class="arithmatex">\(f(x)\)</span>很大。这时，普通的随机模拟方法求解的结果很不准确。</p>
+<p>问题 1：<span class="arithmatex">\(p(x)\)</span> 很难抽取，因此很难通过普通的随机模拟方法求解。</p>
+<p>问题 2：<span class="arithmatex">\(f(x)\)</span> 和 <span class="arithmatex">\(p(x)\)</span> 差异很大，体现在：当 <span class="arithmatex">\(p(x)\)</span> 很大时，<span class="arithmatex">\(f(x)\)</span>很小，而当 <span class="arithmatex">\(p(x)\)</span> 很小时，<span class="arithmatex">\(f(x)\)</span> 很大。这时，普通的随机模拟方法求解的结果很不准确。</p>
 <h3 id="基本思想">基本思想<a class="headerlink" href="#基本思想" title="定位到这">&para;</a></h3>
-<p>找到一个函数<span class="arithmatex">\(q(x)\)</span>，且当<span class="arithmatex">\(f(x)p(x)\ne 0\)</span>时，<span class="arithmatex">\(q(x)\ne 0\)</span>，即当积分不为 0 时，<span class="arithmatex">\(q(x)\)</span>也不能为 0。</p>
-<p>这时，可以用下面的公式计算<span class="arithmatex">\(\mu\)</span>：</p>
+<p>找到一个函数 <span class="arithmatex">\(q(x)\)</span>，且当 <span class="arithmatex">\(f(x)p(x)\ne 0\)</span> 时，<span class="arithmatex">\(q(x)\ne 0\)</span>，即当积分不为 0 时，<span class="arithmatex">\(q(x)\)</span> 也不能为 0。</p>
+<p>这时，可以用下面的公式计算 <span class="arithmatex">\(\mu\)</span>：</p>
 <div class="arithmatex">\[
 \mu=\mathbb{E}_p f(X)=\int f(x) p(x) d x=\int f(x) \frac{p(x)}{q(x)} q(x) d x=\mathbb{E}_q f(X)\frac{p(x)}{q(x)}
 \]</div>
 <p>只需要对<span class="arithmatex">\(q(x)\)</span>进行随机抽样，就可以计算出<span class="arithmatex">\(\mu\)</span>。</p>
-<p>如果<span class="arithmatex">\(q(x)\)</span>抽样很容易，那么就可以让求<span class="arithmatex">\(\mu\)</span>的过程更加简单。</p>
-<p>用<span class="arithmatex">\(q(x)\)</span>来计算<span class="arithmatex">\(\mu\)</span>的公式为：</p>
+<p>如果 <span class="arithmatex">\(q(x)\)</span> 抽样很容易，那么就可以让求 <span class="arithmatex">\(\mu\)</span> 的过程更加简单。</p>
+<p>用 <span class="arithmatex">\(q(x)\)</span> 来计算 <span class="arithmatex">\(\mu\)</span> 的公式为：</p>
 <div class="arithmatex">\[
 \hat{\mu}_q=\frac{1}{n} \sum _{i=1}^{n} f\left(X_i\right) w\left(X_i\right)
-$$
-$\hat{\mu}_q$的方差为：
-$$
+\]</div>
+<p><span class="arithmatex">\(\hat{\mu}_q\)</span>的方差为：</p>
+<div class="arithmatex">\[
 \frac{\sigma_q^2}{n}
 \]</div>
 <p>并且，可以证明，</p>
@@ -3557,11 +3586,11 @@ $$
 \sigma_q^2=\int \frac{f^2(x) p^2(x)}{q(x)} d x-\mu^2=\int \frac{(f(x) p(x)-\mu q(x))^2}{q(x)} d x
 \]</div>
 <p><img alt="重要性抽样" src="../assets/2022-12-05-monte-carlo-method/index.zh-image/%E9%87%8D%E8%A6%81%E6%80%A7%E6%8A%BD%E6%A0%B7.jpg" /></p>
-<p>因此，当
-$$
+<p>因此，当</p>
+<div class="arithmatex">\[
 \bar{q}(x) \propto|f(x)| p(x) / c
-$$
-<span class="arithmatex">\(\hat{\mu}_q\)</span>的估计误差会较小。</p>
+\]</div>
+<p><span class="arithmatex">\(\hat{\mu}_q\)</span>的估计误差会较小。</p>
 <h3 id="选取试投密度时的三个要求">选取试投密度时的三个要求<a class="headerlink" href="#选取试投密度时的三个要求" title="定位到这">&para;</a></h3>
 <ol>
 <li>要求当 <span class="arithmatex">\(f(x)p(x) \ne 0\)</span> 时，<span class="arithmatex">\(q(x) \ne 0\)</span></li>
@@ -3580,10 +3609,10 @@ $$
 <div class="arithmatex">\[\sigma_q^2=\int \frac{f^2(x) p^2(x)}{q(x)} d x-\mu^2=\int \frac{(f(x) p(x)-\mu q(x))^2}{q(x)} d x\]</div>
 <p>若 <span class="arithmatex">\(p(x)\)</span> 比<span class="arithmatex">\(g(x)\)</span>更高阶，则<span class="arithmatex">\(\sigma_q^2\)</span>会趋于无穷大。</p>
 <h2 id="随机模拟法计算二重积分">随机模拟法计算二重积分<a class="headerlink" href="#随机模拟法计算二重积分" title="定位到这">&para;</a></h2>
-<p>用随机模拟法计算二重积分
-$$
-I=\int_0^1 \int_0^1 e<sup>{x</sup>2+y^2} d x d y
-$$</p>
+<p>用随机模拟法计算二重积分</p>
+<div class="arithmatex">\[
+I=\int_0^1 \int_0^1 e^{x^2+y^2} d x d y
+\]</div>
 <p>并给出相应的区间估计。</p>
 <div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># 设定随机种子</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -3720,7 +3749,7 @@ $$</p>
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024 年 3 月 23 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 10 月 16 日</span>
       </span>
     
     
