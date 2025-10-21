@@ -3046,6 +3046,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#梯度下降和-mcmc-实现逻辑回归的-lasso-形式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        梯度下降和 MCMC 实现逻辑回归的 LASSO 形式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#l1l2-正则化与贝叶斯先验" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3144,17 +3155,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#pytorch-dataloader-加载数据" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PyTorch DataLoader 加载数据
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3169,6 +3169,58 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-01-02 00:00:00">2023年1月2日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="梯度下降和-mcmc-实现逻辑回归的-lasso-形式"><a class="toclink" href="../logistic-regression-lasso/">梯度下降和 MCMC 实现逻辑回归的 LASSO 形式</a></h2>
+<p>本文使用梯度下降法、随机梯度下降法、坐标下降法和基于贝叶斯后验的 MCMC 采样法实现带有 L1 惩罚项的逻辑回归，并在银行客户流失数据集上进行实证检验。</p>
+<figure>
+<p><img alt="roc" src="../assets/2023-01-02-logistic-regression-lasso/index-image/logistic-regression-lasso-roc.svg" style="display:block; margin:0 auto;" width="50%" />
+  </p>
+<figcaption>逻辑回归的 ROC 曲线</figcaption>
+</figure>
+
+    <nav class="md-post__action">
+      <a href="../logistic-regression-lasso/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3605,59 +3657,13 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-17 00:00:00">2022年12月17日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pytorch-dataloader-加载数据"><a class="toclink" href="../pytorch-dataloader/">PyTorch DataLoader 加载数据</a></h2>
-<p>在 DataLoader 中指定 batch_size 后，可以将输入数据划分为多个 Batch，分批输入到网络中训练。</p>
-
-    <nav class="md-post__action">
-      <a href="../pytorch-dataloader/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12l4.58-4.59Z"/></svg></a> <a class="md-pagination__link" href="../15/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../14/">14</a> <a class="md-pagination__link" href="../15/">15</a> <span class="md-pagination__current">16</span> <a class="md-pagination__link" href="../17/">17</a> <a class="md-pagination__link" href="../18/">18</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../24/">24</a> <a class="md-pagination__link" href="../17/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../24/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12 5.59 7.41m6 0L13 6l6 6-6 6-1.41-1.41L16.17 12l-4.58-4.59Z"/></svg></a>
+  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12l4.58-4.59m-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12l4.58-4.59Z"/></svg></a> <a class="md-pagination__link" href="../15/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../14/">14</a> <a class="md-pagination__link" href="../15/">15</a> <span class="md-pagination__current">16</span> <a class="md-pagination__link" href="../17/">17</a> <a class="md-pagination__link" href="../18/">18</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../25/">25</a> <a class="md-pagination__link" href="../17/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42Z"/></svg></a> <a class="md-pagination__link" href="../25/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12 5.59 7.41m6 0L13 6l6 6-6 6-1.41-1.41L16.17 12l-4.58-4.59Z"/></svg></a>
 </nav>
       
     </div>
