@@ -3436,21 +3436,21 @@ s_i = \frac{\exp(z_i)}{Z}
 <ol>
 <li>当 <span class="arithmatex">\(i = j\)</span> 时，</li>
 </ol>
-<p>$$
-   \frac{\partial s_i}{\partial z_i}
-   = \frac{\exp(z_i) \cdot Z - \exp(z_i) \cdot \exp(z_i)}{Z^2}
-   = \frac{\exp(z_i)}{Z}\left(1 - \frac{\exp(z_i)}{Z}\right)
-   = s_i (1 - s_i)
-   $$</p>
+<div class="arithmatex">\[
+\frac{\partial s_i}{\partial z_i}
+= \frac{\exp(z_i) \cdot Z - \exp(z_i) \cdot \exp(z_i)}{Z^2}
+= \frac{\exp(z_i)}{Z}\left(1 - \frac{\exp(z_i)}{Z}\right)
+= s_i (1 - s_i)
+\]</div>
 <ol>
-<li>当 <span class="arithmatex">\(i \neq j\)</span> 时，
-   $$
-   \frac{\partial s_i}{\partial z_j}
-   = \frac{0 \cdot Z - \exp(z_i) \cdot \exp(z_j)}{Z^2}
-   = -\frac{\exp(z_i)}{Z} \cdot \frac{\exp(z_j)}{Z}
-   = -s_i s_j
-   $$</li>
+<li>当 <span class="arithmatex">\(i \neq j\)</span> 时，</li>
 </ol>
+<div class="arithmatex">\[
+\frac{\partial s_i}{\partial z_j}
+= \frac{0 \cdot Z - \exp(z_i) \cdot \exp(z_j)}{Z^2}
+= -\frac{\exp(z_i)}{Z} \cdot \frac{\exp(z_j)}{Z}
+= -s_i s_j
+\]</div>
 <p>将上述两种情况合并，可以写成更紧凑的形式：</p>
 <div class="arithmatex">\[
 \frac{\partial s_i}{\partial z_j} = s_i \left( \mathbf{1}\{i = j\} - s_j \right), \quad \forall i, j = 1, \ldots, n
