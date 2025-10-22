@@ -15,10 +15,8 @@
         <link rel="canonical" href="https://fengchao.pro/blog/why-attention-divide-by-sqrt-dk/">
       
       
-        <link rel="prev" href="../google-workshop-and-museum-of-art/">
+        <link rel="prev" href="../pycon-china-2025/">
       
-      
-        <link rel="next" href="../llm-study-mode-system-prompt/">
       
       
         
@@ -692,6 +690,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +729,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 10 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3196,7 +3224,7 @@
               <li class="md-nav__item">
                 <div class="md-nav__link">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                  <time datetime="2025-07-22 00:00:00" class="md-ellipsis">2025年7月22日</time>
+                  <time datetime="2025-10-22 00:00:00" class="md-ellipsis">2025年10月22日</time>
                 </div>
               </li>
               
@@ -3326,7 +3354,7 @@
 
 
   
-    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-07-22-why-attention-divide-by-sqrt-dk/index.md" title="Edit this page" class="md-content__button md-icon" target="_blank" rel="noopener">
+    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-10-22-why-attention-divide-by-sqrt-dk/index.md" title="Edit this page" class="md-content__button md-icon" target="_blank" rel="noopener">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -3433,18 +3461,18 @@ Z = \sum_{l=1}^{n} \exp(z_l)
 s_i = \frac{\exp(z_i)}{Z}
 \]</div>
 <p>对 <span class="arithmatex">\(z_j\)</span> 求偏导时分两种情况讨论：</p>
-<ol>
+<ul>
 <li>当 <span class="arithmatex">\(i = j\)</span> 时，</li>
-</ol>
+</ul>
 <div class="arithmatex">\[
 \frac{\partial s_i}{\partial z_i}
 = \frac{\exp(z_i) \cdot Z - \exp(z_i) \cdot \exp(z_i)}{Z^2}
 = \frac{\exp(z_i)}{Z}\left(1 - \frac{\exp(z_i)}{Z}\right)
 = s_i (1 - s_i)
 \]</div>
-<ol>
+<ul>
 <li>当 <span class="arithmatex">\(i \neq j\)</span> 时，</li>
-</ol>
+</ul>
 <div class="arithmatex">\[
 \frac{\partial s_i}{\partial z_j}
 = \frac{0 \cdot Z - \exp(z_i) \cdot \exp(z_j)}{Z^2}
@@ -3523,12 +3551,12 @@ s_1 (1 - s_1) &amp; -s_1 s_2 &amp; \cdots &amp; -s_1 s_n \\
 <a id="__codelineno-0-53" name="__codelineno-0-53"></a><a href="#__codelineno-0-53"><span class="linenos" data-linenos="53 "></span></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <figure>
-<p><img alt="Softmax 前" src="../assets/2025-07-22-why-attention-divide-by-sqrt-dk/image/index/1761068031006.png" />
+<p><img alt="Softmax 前" src="../assets/2025-10-22-why-attention-divide-by-sqrt-dk/image/index/1761068031006.png" />
   </p>
 <figcaption>Softmax 前</figcaption>
 </figure>
 <figure>
-<p><img alt="Softmax 后" src="../assets/2025-07-22-why-attention-divide-by-sqrt-dk/image/index/1761068121658.png" />
+<p><img alt="Softmax 后" src="../assets/2025-10-22-why-attention-divide-by-sqrt-dk/image/index/1761068121658.png" />
   </p>
 <figcaption>Softmax 后</figcaption>
 </figure>
@@ -3627,7 +3655,7 @@ s_1 (1 - s_1) &amp; -s_1 s_2 &amp; \cdots &amp; -s_1 s_n \\
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../google-workshop-and-museum-of-art/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Google 大模型工作坊&amp;奥赛大展" rel="prev">
+          <a href="../pycon-china-2025/" class="md-footer__link md-footer__link--prev" aria-label="上一页: PyCon China 2025" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -3636,26 +3664,11 @@ s_1 (1 - s_1) &amp; -s_1 s_2 &amp; \cdots &amp; -s_1 s_n \\
                 <span class="md-footer__direction">
                   上一页
                 </span>
-                Google 大模型工作坊&奥赛大展
+                PyCon China 2025
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../llm-study-mode-system-prompt/" class="md-footer__link md-footer__link--next" aria-label="下一页: 使用系统提示词为大模型开启学习模式" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  下一页
-                </span>
-                使用系统提示词为大模型开启学习模式
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
