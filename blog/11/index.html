@@ -3076,6 +3076,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#qlib-使用笔记" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qlib 使用笔记
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#基于-bert-的中文问答机器人" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3185,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#稀疏高维协方差矩阵的-thresholding-估计方法" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        稀疏高维协方差矩阵的 Thresholding 估计方法
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3199,51 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-19 00:00:00">2023年4月19日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="qlib-使用笔记"><a class="toclink" href="../qlib/">Qlib 使用笔记</a></h2>
+<p>记录使用 Qlib 的代码和经验。</p>
+
+    <nav class="md-post__action">
+      <a href="../qlib/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3691,60 +3736,6 @@ x_1, x_2 \geq 0
 
     <nav class="md-post__action">
       <a href="../cnn-from-scratch/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-03-27 00:00:00">2023年3月27日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 7 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="稀疏高维协方差矩阵的-thresholding-估计方法"><a class="toclink" href="../thresholding-for-sparse-covariance-matrix-estimation/">稀疏高维协方差矩阵的 Thresholding 估计方法</a></h2>
-<p>高维协方差矩阵的一个重要特征就是许多维度之间的协方差非常接近于 0，一个自然的想法就是将矩阵中绝对值太小的元素设为 0，这种方法就是 Thresholding（门限）：通过设定某个门限，将绝对值小于该门限的元素设为 0，只保留绝对值大于或等于该门限的元素。</p>
-<p>通过 Thresholding 估计方法，我们可以得到一个比样本协方差矩阵更稀疏的估计。学术界提出了两种设置 Thresholding 的方法：Universal thresholding（统一截断）和 Adaptive thresholding（自适应截断）。前者对矩阵中的每一个元素均采用相同的门限标准，而后者基于样本协方差估计的标准误自适应地为每个元素设定门槛。</p>
-<p>本文使用模拟的高斯分布数据和真实的高维 DNA 基因数据，比较了 Universal thresholding 和 Adaptive thresholding 的估计效果，所得结果与 Tony Cai &amp; Weidong Liu (2011) 中的结果基本一致。</p>
-<p><img alt="png" src="../assets/2023-03-27-thresholding-for-sparse-covariance-matrix-estimation/index-image/output_25_0.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">手动实现交叉验证的收获</p>
-<p>在实现交叉验证时，要清楚一共有几个循环。每一个候选的超参数，都要在所有折上做训练和验证！</p>
-<p>例如，一共有 10 个候选的超参数，进行 5 折交叉验证，那么需要对这 10 个超参数都训练、验证 5 次，一共训练、验证 50 次。</p>
-<p>在编码的过程中，我最开始误将一个参数在一个折上做训练和验证，这样做并不能达到交叉验证的效果。</p>
-</div>
-
-    <nav class="md-post__action">
-      <a href="../thresholding-for-sparse-covariance-matrix-estimation/">
         继续阅读
       </a>
     </nav>

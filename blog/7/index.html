@@ -3076,6 +3076,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#计算机教育中缺失的一课the-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算机教育中缺失的一课：The shell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#从-hugging-face-下载模型文件" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3185,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-进阶教程系列-5获取和修改被保护的属性" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 进阶教程系列 5：获取和修改被保护的属性
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3199,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-09-11 00:00:00">2023年9月11日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="计算机教育中缺失的一课the-shell"><a class="toclink" href="../the-missing-semester-the-shell/">计算机教育中缺失的一课：The shell</a></h2>
+<p>大学里的计算机课程通常专注于讲授从操作系统到机器学习这些学院派的课程或主题，而对于如何精通工具这一主题则往往会留给学生自行探索。在这个系列课程中，我们讲授命令行、强大的文本编辑器的使用、使用版本控制系统提供的多种特性等等。学生在他们受教育阶段就会和这些工具朝夕相处（在他们的职业生涯中更是这样）。</p>
+<p>因此，花时间打磨使用这些工具的能力并能够最终熟练地、流畅地使用它们是非常有必要的。</p>
+<p>精通这些工具不仅可以帮助您更快的使用工具完成任务，并且可以帮助您解决在之前看来似乎无比复杂的问题。</p>
+
+    <nav class="md-post__action">
+      <a href="../the-missing-semester-the-shell/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3635,62 +3682,6 @@
 
     <nav class="md-post__action">
       <a href="../advanced-python-6-type-hinting/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-07-31 00:00:00">2023年7月31日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 5 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-进阶教程系列-5获取和修改被保护的属性"><a class="toclink" href="../advanced-python-5-encapsulation/">Python 进阶教程系列 5：获取和修改被保护的属性</a></h2>
-<p>本文是 Python 进阶教程系列 5，主要介绍了 Python 私有化及 <code>_</code> 下划线命名用途，以及使用 <code>getter</code> 、 <code>setter</code> 和 <code>property</code> 来修改被保护的属性。</p>
-<p>本文部分转载了 <a href="https://juejin.cn/post/6955354672794173471" target="_blank" rel="noopener">Python 私有化及 <code>_</code> 下划线命名用途</a>，已获得原作者授权。</p>
-<p>Python 中没有真正的私有属性或方法，但有一些和命名有关的约定，让编程人员处理一些需要私有化的情况。我们常常需要区分私有方法、属性和公有方法、属性以方便管理和调用，在 Python 中如何做呢？</p>
-<p>在变量、方法命名中有下列几种情况：</p>
-<ul>
-<li><code>xx</code> 公有变量/方法</li>
-<li><code>_xx</code> 前置单下划线</li>
-<li><code>__xx</code> 前置双下划线</li>
-<li><code>__xx__</code> 前后双下划线</li>
-<li><code>xx_</code> 后置单下划线</li>
-</ul>
-<p>接下来分别介绍这几种带下划线命名的特性与区别。</p>
-
-    <nav class="md-post__action">
-      <a href="../advanced-python-5-encapsulation/">
         继续阅读
       </a>
     </nav>

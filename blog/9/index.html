@@ -3076,6 +3076,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-web-scraper-爬取私募排排网的基金数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 Web Scraper 爬取私募排排网的基金数据
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#深入理解-gru-及其-pytorch-实现" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3185,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-networkx-绘制二部图" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 Networkx 绘制二部图
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3199,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-07-11 00:00:00">2023年7月11日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-web-scraper-爬取私募排排网的基金数据"><a class="toclink" href="../web-scraper-simuwang/">使用 Web Scraper 爬取私募排排网的基金数据</a></h2>
+<p><a href="https://www.simuwang.com/" target="_blank" rel="noopener">私募排排网</a>的数据仅针对部分人群开放，因此在获取数据时有诸多不便。例如，网站需要用户登录才能访问、数据 CSS 样式类别名称被加密等，这些障碍使得我们无法通过常规的爬虫手段方便地获取数据。</p>
+<p>本文尝试了多种方法爬取私募排排网的数据，包括 <code>selenium</code>、浏览器工作流自动化的 Automa 插件和嵌入在浏览器开发者工具的 Web Scraper 插件。最终可行且易用的方法是使用 Web Scraper 插件，它在制作和使用爬虫程序时都十分简便。</p>
+<p><img alt="image-20230712014807756" src="../assets/2023-07-12-web-scraper-simuwang/index-image/image-20230712014807756.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../web-scraper-simuwang/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3737,53 +3784,6 @@ Your browser does not support the video tag.
 
     <nav class="md-post__action">
       <a href="../stock-factor-based-on-minute-return/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-05-06 00:00:00">2023年5月6日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-meta__link">数据可视化</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-networkx-绘制二部图"><a class="toclink" href="../bipartite-graph/">使用 Networkx 绘制二部图</a></h2>
-<p>本文以工厂 - 仓库的运输成本、仓库 - 商品的销量为背景，绘制了能清晰反映结点之间关系的二部图。</p>
-<p><img alt="dc_sku_network" src="../assets/2023-05-06-bipartite-graph/index-image/dc_sku_network.png" width="500px" /></p>
-
-    <nav class="md-post__action">
-      <a href="../bipartite-graph/">
         继续阅读
       </a>
     </nav>
