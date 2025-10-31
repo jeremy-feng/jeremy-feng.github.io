@@ -3805,9 +3805,10 @@ K \\
 <blockquote>
 <p>KL 散度是一个期望上的分布差距，目标函数里对 <span class="arithmatex">\(D_\pi^{\mathrm{RL}}\)</span> 取期望，而 <span class="arithmatex">\(\pi_\phi^{\mathrm{RL}}(y \mid x)\)</span> 放在 <span class="arithmatex">\(\log\)</span> 内的分子，因此这就是 KL 散度的定义。</p>
 </blockquote>
-<p>我们只知道刚刚开始强化学习的模型的输出的奖励分数是正确的，但随后模型继续进化，我们并不确定它的奖励分数是否能反映回答的质量。因此，我们希望两个输出的概率分布不要偏离太远，否则第一项的奖励分数可能并不能真正反映出当前进化的模型与人的偏好的接近程度。也就是说，我们希望第二项的 KL 散度越小越好，取相反数后 <mark>越大越好</mark> 。</p>
-<p>以上两项就构成了 PPO（Proximal Policy Optimization）算法。</p>
-<p>第三项是 <span class="arithmatex">\(\gamma E_{x \sim D_{\text {pretrain }}}\left[\log \left(\pi_\phi^{\mathrm{RL}}(x)\right)\right]\)</span>。它是语言模型的目标函数，即希望多偏向于原始 GPT-3 的输出，也是希望它 <mark>越大越好</mark> 。</p>
+<p>在强化学习开始时，Actor 模型与参考模型（SFT 模型）几乎一致，因此我们可以信任奖励模型给出的分数，认为它能反映人类偏好。但随着 Actor 模型不断更新，如果它的输出分布与参考模型相差过大，奖励模型可能会在分布外样本上表现不稳定，导致奖励分数不能可靠地反映人类偏好。因此，我们希望 Actor 模型的输出分布不要偏离参考模型太远，也就是让两者的 KL 散度保持较小。
+在目标函数中取相反数时，这意味着希望 KL 项的负号部分越大越好。</p>
+<p>以上两项就构成了 PPO（Proximal Policy Optimization）算法的 penalty 版本。</p>
+<p>第三项是 <span class="arithmatex">\(\gamma E_{x \sim D_{\text {pretrain }}}\left[\log \left(\pi_\phi^{\mathrm{RL}}(x)\right)\right]\)</span>。它是语言模型的目标函数，即希望不要太偏离原始 GPT-3 的输出，也是希望它 <mark>越大越好</mark> 。</p>
 <p>加上这一项后，就构成了 PPO-ptx 模型。</p>
 
   
@@ -3822,7 +3823,7 @@ K \\
         <span class="md-icon" title="最后更新">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
         </span>
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 10 月 16 日</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 10 月 31 日</span>
       </span>
     
     
