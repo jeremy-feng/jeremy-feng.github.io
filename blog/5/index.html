@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/10/">
+        <link rel="next" href="../2025/11/">
       
       
         
@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +731,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 11 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3076,6 +3106,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#jupyterlite在浏览器中运行-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JupyterLite：在浏览器中运行 Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#冬日的植物园" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3215,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#在-python-中调用在线大模型-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 Python 中调用在线大模型 API
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3229,55 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-09 00:00:00">2024年1月9日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="jupyterlite在浏览器中运行-python"><a class="toclink" href="../jupyterlite/">JupyterLite：在浏览器中运行 Python</a></h2>
+<p>JupyterLite 是一个轻量级的 Jupyter 笔记本环境，旨在为用户提供快速、便捷的交互式计算体验。与传统的 Jupyter 环境不同，JupyterLite 可以在不需要安装任何软件的情况下直接在浏览器中运行。</p>
+<p>有时我们希望快速测试一些简单的代码（例如得到 ChatGPT 给出的代码后），就可以用 JupyterLite 在浏览器中快速运行代码。</p>
+<p>本文记录了如何部署 JupyterLite 站点，以及参与开源项目贡献的心得。</p>
+<p><img alt="image-20240109210830896" src="../assets/2024-01-09-jupyterlite/index-image/image-20240109210830896.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../jupyterlite/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3626,53 +3705,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-11-01 00:00:00">2023年11月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/llm/" class="md-meta__link">LLM</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-python-中调用在线大模型-api"><a class="toclink" href="../call-llm-api-in-python/">在 Python 中调用在线大模型 API</a></h2>
-<p>许多大模型都提供了在线 API 接口服务，我们可以在 Python 中调用它们。本文使用 <code>openai</code>、<code>chatllm</code>、<code>dashscope</code> 等包实现了对 OpenAI、讯飞星火、智谱 AI、百度、阿里通义千问的调用。用户只需在本地用 <code>.env</code> 文件存储 API Key 即可快速调用这些大模型。</p>
-<p><img alt="image-20231031211003404" src="../assets/2023-11-01-call-llm-api-in-python/index-image/image-20231031211003404.png" width="500px" /></p>
-
-    <nav class="md-post__action">
-      <a href="../call-llm-api-in-python/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3721,13 +3753,13 @@
         
         
           
-          <a href="../2025/10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 10 月" rel="next">
+          <a href="../2025/11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 11 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 10 月
+                2025 年 11 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

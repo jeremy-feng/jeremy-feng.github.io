@@ -18,7 +18,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="2025/10/">
+        <link rel="next" href="2025/11/">
       
       
         
@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +731,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2025/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 11 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3076,6 +3106,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#大模型结构化输出的作用技术原理与实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型结构化输出的作用、技术原理与实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#24-岁站在人生的十字路口" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3215,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#学习-rust" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        学习 Rust
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3229,122 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-11-14 00:00:00">2025年11月14日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/llm/" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 5 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="大模型结构化输出的作用技术原理与实现"><a class="toclink" href="llm-structured-output-principles-and-implementation/">大模型结构化输出的作用、技术原理与实现</a></h2>
+<p>大语言模型（LLM）具有强大的文本生成能力，可以输出易于人类阅读的自由格式文本。但是，这一生成过程是概率性的，而不是确定性的。当我们在复杂的软件系统中使用 LLM 作为工作流的一部分时，我们可能需要确保 LLM 的输出符合一定的格式和类型等规范。例如，如果用 LLM 进行文本二分类，我们可能只需要得到  <code>True</code>  或  <code>False</code>  的布尔值，而不希望得到其他任何文本，这就要求 LLM 的输出是严格结构化的。</p>
+<p>结构化输出（Structured Output）技术可以解决这一问题，它确保 LLM 的输出严格遵守预定义格式和约束，从而极大地提升 LLM 在自动化工作流和程序化集成中的可靠性。LLM 有了结构化输出的能力后，就能从一个“对话工具”变成一个靠谱的“数据提供者”。</p>
+<p>本文讨论了大模型结构化输出的作用，以及实现结构化输出的一些原理和技术实现方案。</p>
+<table>
+<thead>
+<tr>
+<th>技术路径</th>
+<th>实现原理</th>
+<th>成本</th>
+<th>可靠性</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提示词导向生成</td>
+<td>依靠 Prompt 中的软规则与示例，让模型“自觉”输出符合格式的文本。</td>
+<td>极低</td>
+<td>低～中：模型可能偶尔多输出解释或漏字段。</td>
+<td>快速原型、轻量级应用、对格式要求不严的辅助任务。</td>
+</tr>
+<tr>
+<td>自动验证与修复</td>
+<td>模型生成后先做结构校验；如不合规，系统自动带着错误信息重新请求模型修正。</td>
+<td>中</td>
+<td>中：能兜底一次又一次修复错误，但仍非绝对稳固。</td>
+<td>需要容错但又不想写硬约束的生产系统，如数据抽取、轻量级结构化任务。</td>
+</tr>
+<tr>
+<td>约束解码</td>
+<td>在 token 级生成的每一步实时过滤非法 token，用 JSON Schema/CFG/FSM 硬性约束生成路径。</td>
+<td>中～高</td>
+<td>极高：能从源头保证输出完全合法。</td>
+<td>对格式要求极严格的任务，如复杂 JSON、代码生成、严苛 API 指令。</td>
+</tr>
+<tr>
+<td>草图引导 / 外部精炼</td>
+<td>黑盒模型自由生成草稿，再用可访问 logits 的本地模型按语法规则精炼修复。</td>
+<td>中</td>
+<td>中～高：依赖草稿质量，但最终输出能较好满足约束。</td>
+<td>黑盒模型不提供 logits 时的 JSON/DSL 生成，本地自动化管线。</td>
+</tr>
+<tr>
+<td>NL→Format 两阶段生成</td>
+<td>模型先自由推理完整答案，然后再将自然语言结果转换成结构化格式。</td>
+<td>低</td>
+<td>中～高：推理质量好，格式化环节仍可能需轻微兜底。</td>
+<td>推理复杂但格式规则简单的场景，如 Agent 思考链、任务规划。</td>
+</tr>
+<tr>
+<td>监督式微调</td>
+<td>用大规模样本直接把结构化输出范式“教进”模型参数中，形成稳定风格。</td>
+<td>高</td>
+<td>高：数据质量足够好时，模型能持续稳定地产生结构化格式。</td>
+<td>金融/医疗/法律等需要长期稳定抽取的领域任务。</td>
+</tr>
+<tr>
+<td>强化学习优化</td>
+<td>通过奖励模型给输出提供细粒度反馈，优化模型在结构与内容上的决策路径。</td>
+<td>极高</td>
+<td>极高：在复杂推理、深层结构生成等方面最稳定。</td>
+<td>多步骤推理、复杂 JSON、深度嵌套结构、需要持续优化策略的场景。</td>
+</tr>
+<tr>
+<td>原生 API 结构化输出能力</td>
+<td>服务商在 API 内部使用约束解码与安全机制，直接保证返回严格的结构。</td>
+<td>低～中</td>
+<td>极高：由 API 层完全托管，开发者不再接触底层复杂度。</td>
+<td>商业应用、智能体工具调用、生产级数据接口。</td>
+</tr>
+</tbody>
+</table>
+
+    <nav class="md-post__action">
+      <a href="llm-structured-output-principles-and-implementation/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3640,53 +3786,6 @@ Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-04-30 00:00:00">2025年4月30日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/rust/" class="md-meta__link">Rust</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="学习-rust"><a class="toclink" href="learn-rust/">学习 Rust</a></h2>
-<p>最近学习了 Rust。一直听说 Rust 效率高，从<code>ruff</code> 和 <code>uv</code> 这两个基于 Rust 实现的工具开始对 Rust 印象深刻，自己亲身体会过它的语法细节之后，对它为什么快、为什么“安全”，总算有了一点理解。</p>
-<p>推荐一下 <a href="https://github.com/rust-lang/rustlings" target="_blank" rel="noopener"><code>rustlings</code></a> 这个学习 Rust 的项目。每个文件就是解决一个小问题，这种在小练习中修改代码的过程比从头到尾读教程要有趣和有成就感得多。结合<a href="https://course.rs/about-book.html" target="_blank" rel="noopener">《Rust 语言圣经》</a>这个优秀的教程食用，效果甚佳。</p>
-<p><img alt="rustlings-finished" src="assets/2025-04-30-rustlings/index-image/rustlings-finished.png" /></p>
-
-    <nav class="md-post__action">
-      <a href="learn-rust/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3735,13 +3834,13 @@ Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
         
         
           
-          <a href="2025/10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 10 月" rel="next">
+          <a href="2025/11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 11 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 10 月
+                2025 年 11 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

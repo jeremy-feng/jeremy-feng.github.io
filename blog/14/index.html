@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/10/">
+        <link rel="next" href="../2025/11/">
       
       
         
@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +731,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 11 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3076,6 +3106,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#latex-模板" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        \(\LaTeX\) 模板
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#删除-latex-编译生成的附加文件" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3215,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#latex-设置字体时指定字体文件目录" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        \(\LaTeX\) 设置字体时指定字体文件目录
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3229,56 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-02-18 00:00:00">2023年2月18日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/latex/" class="md-meta__link">LaTeX</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="latex-模板"><a class="toclink" href="../latex-template/"><span class="arithmatex">\(\LaTeX\)</span> 模板</a></h2>
+<p>将常用的模板总结于此，方便快速书写文档。</p>
+<h3 id="作业模板"><a class="toclink" href="../latex-template/#%C3%A4%C2%BD%C2%9C%C3%A4%C2%B8%C2%9A%C3%A6%C2%A8%C2%A1%C3%A6%C2%9D%C2%BF">作业模板</a></h3>
+<details class="tip">
+<summary>使用效果</summary>
+<p><img alt="image-20230219165755211" src="../assets/2023-02-18-latex-template/index-image/image-20230219165755211.png" /></p>
+</details>
+
+    <nav class="md-post__action">
+      <a href="../latex-template/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3635,66 +3715,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-02-01 00:00:00">2023年2月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/latex/" class="md-meta__link">LaTeX</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="latex-设置字体时指定字体文件目录"><a class="toclink" href="../latex-setmainfont-external-location/"><span class="arithmatex">\(\LaTeX\)</span> 设置字体时指定字体文件目录</a></h2>
-<h3 id="问题与需求"><a class="toclink" href="../latex-setmainfont-external-location/#%C3%A9%C2%97%C2%AE%C3%A9%C2%A2%C2%98%C3%A4%C2%B8%C2%8E%C3%A9%C2%9C%C2%80%C3%A6%C2%B1%C2%82">问题与需求</a></h3>
-<p>在编写多个<span class="arithmatex">\(\TeX\)</span>文档时，我们可能会同时导入相同的外部字体文件。</p>
-<p>通常的做法是，将字体文件放在与当前文档所在的同级目录。</p>
-<div class="highlight"><span class="filename">重复存储多份 font.TTF</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>$<span class="w"> </span>tree
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>.
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">|</span>--<span class="w"> </span>tex_1
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="hll"><a href="../latex-setmainfont-external-location/#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>font.TTF
-</span><a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>tex_1.pdf
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>tex_1.tex
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="sb">`</span>--<span class="w"> </span>tex_2
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="hll"><a href="../latex-setmainfont-external-location/#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">|</span>--<span class="w"> </span>font.TTF
-</span><a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="p">|</span>--<span class="w"> </span>tex_2.pdf
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="../latex-setmainfont-external-location/#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="sb">`</span>--<span class="w"> </span>tex_2.tex
-</code></pre></div>
-<p>这样的做法会使得<code>font.TTF</code>同时存在于<code>tex_1.tex</code>和<code>tex_2.tex</code>两个文档所在的目录下，而同一份字体文件是没有必要存两遍的。我们希望能将<code>font.TTF</code>存在一个公共目录，使得<code>tex_1.tex</code>和<code>tex_2.tex</code>都可以导入其中的字体。</p>
-<h3 id="解决方法"><a class="toclink" href="../latex-setmainfont-external-location/#%C3%A8%C2%A7%C2%A3%C3%A5%C2%86%C2%B3%C3%A6%C2%96%C2%B9%C3%A6%C2%B3%C2%95">解决方法</a></h3>
-
-    <nav class="md-post__action">
-      <a href="../latex-setmainfont-external-location/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3743,13 +3763,13 @@
         
         
           
-          <a href="../2025/10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 10 月" rel="next">
+          <a href="../2025/11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 11 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 10 月
+                2025 年 11 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

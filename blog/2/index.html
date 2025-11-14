@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/10/">
+        <link rel="next" href="../2025/11/">
       
       
         
@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +731,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 11 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3076,6 +3106,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#学习-rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        学习 Rust
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#用照片留住记忆" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3215,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-nppolynomialpolynomial-进行一元线性回归的一个注意事项" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 np.polynomial.Polynomial 进行一元线性回归的一个注意事项
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3229,53 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-04-30 00:00:00">2025年4月30日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/rust/" class="md-meta__link">Rust</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="学习-rust"><a class="toclink" href="../learn-rust/">学习 Rust</a></h2>
+<p>最近学习了 Rust。一直听说 Rust 效率高，从<code>ruff</code> 和 <code>uv</code> 这两个基于 Rust 实现的工具开始对 Rust 印象深刻，自己亲身体会过它的语法细节之后，对它为什么快、为什么“安全”，总算有了一点理解。</p>
+<p>推荐一下 <a href="https://github.com/rust-lang/rustlings" target="_blank" rel="noopener"><code>rustlings</code></a> 这个学习 Rust 的项目。每个文件就是解决一个小问题，这种在小练习中修改代码的过程比从头到尾读教程要有趣和有成就感得多。结合<a href="https://course.rs/about-book.html" target="_blank" rel="noopener">《Rust 语言圣经》</a>这个优秀的教程食用，效果甚佳。</p>
+<p><img alt="rustlings-finished" src="../assets/2025-04-30-rustlings/index-image/rustlings-finished.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../learn-rust/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3665,52 +3742,6 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-06-12 00:00:00">2024年6月12日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-nppolynomialpolynomial-进行一元线性回归的一个注意事项"><a class="toclink" href="../numpy-polynomial-linear-regression/">使用 <code>np.polynomial.Polynomial</code> 进行一元线性回归的一个注意事项</a></h2>
-<p>在使用 <code>np.polynomial.Polynomial</code> 进行一元线性回归时，未能得到预期的结果。经检查发现， <a href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.Polynomial.fit.html#numpy.polynomial.polynomial.Polynomial.fit" target="_blank" rel="noopener"><code>Polynomial.fit()</code></a> 会将数据缩放和平移到 <code>window</code> 参数上后，再进行回归估计。如果需要得到未缩放和平移的估计量，可以用 <code>.convert().coef</code>。</p>
-<p><img alt="image-20240612203358068" src="../assets/2024-06-12-numpy-polynomial-linear-regression/index-image/image-20240612203358068.png" /></p>
-
-    <nav class="md-post__action">
-      <a href="../numpy-polynomial-linear-regression/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3759,13 +3790,13 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
         
         
           
-          <a href="../2025/10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 10 月" rel="next">
+          <a href="../2025/11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 11 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 10 月
+                2025 年 11 月
               </div>
             </div>
             <div class="md-footer__button md-icon">

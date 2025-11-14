@@ -18,7 +18,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../2025/10/">
+        <link rel="next" href="../2025/11/">
       
       
         
@@ -692,6 +692,8 @@
       
         
       
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -729,6 +731,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2025/11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2025 年 11 月
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3076,6 +3106,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#从零开始搭建卷积神经网络组件" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从零开始搭建卷积神经网络组件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#稀疏高维协方差矩阵的-thresholding-估计方法" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3174,17 +3215,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#腾讯云对象存储命令行工具" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        腾讯云对象存储命令行工具
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3199,6 +3229,59 @@
       <header class="md-typeset">
         <h1 id="所有文章"><a class="toclink" href="#所有文章">所有文章</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-03-28 00:00:00">2023年3月28日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 25 分钟
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="从零开始搭建卷积神经网络组件"><a class="toclink" href="../cnn-from-scratch/">从零开始搭建卷积神经网络组件</a></h2>
+<p>本文是深度学习课程的一次练习，使用 Numpy 实现了 CNN 中卷积层、池化层的前向传播与反向传播。</p>
+<p>以下是一个典型卷积层的计算过程：</p>
+<ul>
+<li>输入张量：<span class="arithmatex">\(X \in \mathbb{R}^{M \times N \times D}\)</span>。例：<span class="arithmatex">\(D=1\)</span> 时，输入的是 <span class="arithmatex">\(M \times N\)</span> 维的灰度图像； <span class="arithmatex">\(D=3\)</span> 时，输入的是 <span class="arithmatex">\(M \times N\)</span> 维的彩色图像。</li>
+<li>卷积核：<span class="arithmatex">\(W \in \mathbb{R}^{U \times V \times D \times P}\)</span>，其中每个切片矩阵 <span class="arithmatex">\(W^{d, p} \in \mathbb{R}^{U \times V}\)</span>, <span class="arithmatex">\(1 \leq d \leq D, 1 \leq p \leq P\)</span>。</li>
+<li>输出张量： <span class="arithmatex">\(Y \times \mathbb{R}^{M^{\prime} \times N^{\prime} \times P}\)</span>。</li>
+</ul>
+<p><img alt="conv_single_step" src="../assets/2023-03-28-cnn-from-scratch/index-image/conv_single_step.gif" /></p>
+
+    <nav class="md-post__action">
+      <a href="../cnn-from-scratch/">
+        继续阅读
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3631,51 +3714,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-03-13 00:00:00">2023年3月13日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="腾讯云对象存储命令行工具"><a class="toclink" href="../tencent-coscmd/">腾讯云对象存储命令行工具</a></h2>
-<p>使用命令行控制对象存储的上传与下载。</p>
-
-    <nav class="md-post__action">
-      <a href="../tencent-coscmd/">
-        继续阅读
-      </a>
-    </nav>
-  </div>
-</article>
-      
       
         
 
@@ -3724,13 +3762,13 @@
         
         
           
-          <a href="../2025/10/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 10 月" rel="next">
+          <a href="../2025/11/" class="md-footer__link md-footer__link--next" aria-label="下一页: 2025 年 11 月" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   下一页
                 </span>
-                2025 年 10 月
+                2025 年 11 月
               </div>
             </div>
             <div class="md-footer__button md-icon">
