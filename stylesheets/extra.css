@@ -48,3 +48,26 @@ img {
 .MathJax_Menu {
   display: none !important;
 }
+/* Floating popover widget */
+.float-popover { position: fixed; bottom: 24px; right: 24px; z-index: 1000; position: relative; }
+.float-trigger { display: inline-flex; width: 40px; height: 40px; color: #07c160; cursor: pointer; }
+.float-content { position: absolute; bottom: 48px; right: 0; display: none; width: 160px; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,.2); border-radius: 8px; }
+.float-popover:hover .float-content { display: block; }
+.float-popover:focus .float-content { display: block; }
+/* Social WeChat hover QR */
+.md-social__link[title="WeChat"] { position: relative; z-index: 1000; }
+.md-social__link[title="WeChat"]::after {
+  content: "";
+  position: absolute;
+  bottom: 170%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 220px;
+  background: url('/blog/WeChat.jpg') no-repeat center/contain;
+  display: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.md-social__link[title="WeChat"]:hover::after,
+.md-social__link[title="WeChat"]:focus::after { display: block; }
