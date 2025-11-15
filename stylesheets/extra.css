@@ -66,6 +66,8 @@ img {
   height: 220px;
   background: url('/blog/WeChat.jpg') no-repeat center/contain;
   display: none;
+  pointer-events: auto;
+  cursor: pointer;
   box-shadow: none;
   border-radius: 0;
 }
