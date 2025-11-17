@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-lru_cache-内置-lru-缓存" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python @lru_cache 内置 LRU 缓存
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pandas-向前与居中滚动计算" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-进阶教程系列-7工厂模式" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 进阶教程系列 7：工厂模式
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,57 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-09-14 00:00:00+00:00">2023年9月14日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-lru_cache-内置-lru-缓存"><a class="toclink" href="../lru-cache/">Python <code class="highlight"><span class="nd">@lru_cache</span></code> 内置 LRU 缓存</a></h2>
+<p>Python 内置模块 <code>functools</code> 的一个高阶函数 <code class="highlight"><span class="nd">@lru_cache</span></code> 是一个为函数提供缓存功能的装饰器，缓存 <code>maxsize</code> 组传入参数，在下次以相同参数调用时直接返回上一次的结果。用以节约高开销或 I/O 函数的调用时间。</p>
+<p>在递归计算斐波那契数列的第 30 项时，使用 <code class="highlight"><span class="nd">@lru_cache</span></code> 可使速度提升约 400 万倍。</p>
+<p><img alt="image-20230916231919961" src="../2023-09-14-lru-cache/index-image/image-20230916231919961.png" width="600px" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../lru-cache/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2948,57 +2999,6 @@
     
       <nav class="md-post__action">
         <a href="../advanced-python-8-proxy-design-pattern/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-08-02 00:00:00+00:00">2023年8月2日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-进阶教程系列-7工厂模式"><a class="toclink" href="../advanced-python-7-factory-design-pattern/">Python 进阶教程系列 7：工厂模式</a></h2>
-<p>本文是 Python 进阶教程系列 7，主要介绍了 Python 工厂模式。</p>
-<p>工厂模式是指调用方可以通过调用一个简单函数就可以创建不同的对象。工厂模式一般包含工厂方法和抽象工厂两种模式。</p>
-<p>本文转载了 <a href="https://mozillazg.com/2016/08/python-factory-pattern.html" target="_blank" rel="noopener">Python 设计模式：工厂模式（factory pattern）</a>。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../advanced-python-7-factory-design-pattern/">
           继续阅读
         </a>
       </nav>

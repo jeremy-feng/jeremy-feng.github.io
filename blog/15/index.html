@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#vs-code-加载-web-视图时出错的解决方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VS Code 加载 Web 视图时出错的解决方案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#latex-设置字体时指定字体文件目录" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#基于-xgboost-的音乐流行度预测与推荐" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        基于 XGBoost 的音乐流行度预测与推荐
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,63 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-02-02 00:00:00+00:00">2023年2月2日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/linux/" class="md-meta__link">Linux</a>, 
+              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="vs-code-加载-web-视图时出错的解决方案"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/">VS Code 加载 Web 视图时出错的解决方案</a></h2>
+<h3 id="报错原因"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/#报错原因">报错原因</a></h3>
+<p>在保存一个大型<code>jupyter notebook</code>文件时，自己突然关闭了标签页。再打开它时，VS Code 就报错：</p>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>加载 Web 视图时出错: Error: Could not register service workers: InvalidStateError: Failed to register a ServiceWorker: The document is in an invalid state..
+</code></pre></div>
+<p><img alt="image-20230203004334063" src="../2023-02-02-vscode-error-could-not-register-service-workers-invalid-state/index-image/image-20230203004334063.png" style="display:block; margin:0 auto;" /></p>
+<p>并且也不能打开其他任何<code>jupyter notebook</code>文件，推测是 VS Code 程序出了问题。</p>
+<h3 id="解决方案"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/#解决方案">解决方案</a></h3>
+<p>我自己曾经遇到过两次这个报错，第一次是在个人电脑 Windows 系统上，第二次是在 Linux 服务器上。下面分别介绍针对这两个系统的解决方案。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../vscode-error-could-not-register-service-workers-invalid-state/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2948,56 +3005,6 @@ $$</p>
     
       <nav class="md-post__action">
         <a href="../axis-in%20pandas/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-09 00:00:00+00:00">2023年1月9日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 13 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="基于-xgboost-的音乐流行度预测与推荐"><a class="toclink" href="../xgboost-spotify-track-popularity-and-recommendation/">基于 XGBoost 的音乐流行度预测与推荐</a></h2>
-<p>本文基于音乐平台 Spotify 中的 30 万余条音乐数据与 10 万余条歌手数据，分析并构造了音乐流派、音乐语言等特征，与歌手热度、音乐发行时间等特征共同建模预测音乐流行度，使用 XGBoost 内置的特征重要性计算函数和 SHAP 值评估各特征的重要性及其对预测结果的影响方向与大小，并构建了基于内容余弦相似度的音乐推荐系统。</p>
-<p><img alt="image-20230108215611641" src="../2023-01-09-xgboost-spotify-track-popularity-and-recommendation/index-image/image-20230108215611641.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../xgboost-spotify-track-popularity-and-recommendation/">
           继续阅读
         </a>
       </nav>

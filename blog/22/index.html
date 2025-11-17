@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#在-rmarkdown-中使用-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 Rmarkdown 中使用 Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#基于-spark-rdd-的电影点评数据分析" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#检验多因子模型" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        检验多因子模型
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,55 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-10-06 00:00:00+00:00">2022年10月6日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="在-rmarkdown-中使用-python"><a class="toclink" href="../use-python-in-r-markdown/">在 Rmarkdown 中使用 Python</a></h2>
+<p>在 Rmarkdown 中运行 Python 代码，并自主配置 Python 环境。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../use-python-in-r-markdown/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2865,66 +2914,6 @@
     
       <nav class="md-post__action">
         <a href="../generate-tree-chart-of-directory/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-08-26 00:00:00+00:00">2022年8月26日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="检验多因子模型"><a class="toclink" href="../test-for-multi-factor-model/">检验多因子模型</a></h2>
-<div class="arithmatex">\[
-R_{it}^e =\alpha_i+\beta_i ^\prime \lambda_t+\varepsilon_{it},\quad t=1,2,\dots, T
-\]</div>
-<p>多因子模型可以用时间序列回归、截面回归和 Fama-Macbeth 回归进行检验。它们的适用情景不同，所得到的结果也需要不同的解读。</p>
-<p>多因子模型反映的是资产的预期收益率和因子暴露在截面上的关系。它回答了这样的问题：在同一时刻，为什么有的资产收益率高，有的资产收益率低？</p>
-<p>多因子模型认为，每个因子有一个预期收益率，资产在某个因子上的暴露让该资产可以获得相应的预期收益。不同资产在各个因子上的暴露程度不同，导致了不同资产有着不同的预期收益。</p>
-<p>如果有一个多因子模型，它能很好地解释资产收益横截面差异，那么我们只需关心：</p>
-<ol>
-<li>各个资产在各个因子上的暴露程度（<span class="arithmatex">\(N\times K\)</span>）。它是一个矩阵，矩阵的每一行记为<span class="arithmatex">\(\beta_i^\prime\)</span>，其中<span class="arithmatex">\(i=1, 2, \dots, N\)</span>。</li>
-<li>各个因子的预期收益率（<span class="arithmatex">\(K\times 1\)</span>），记为<span class="arithmatex">\(\lambda\)</span>。它是一个列向量，第<span class="arithmatex">\(k\)</span>个元素是<span class="arithmatex">\(\lambda _k\)</span>，代表第<span class="arithmatex">\(k\)</span>个因子的预期收益率。</li>
-</ol>
-<p>下面梳理可以对多因子模型进行检验的三种方法。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../test-for-multi-factor-model/">
           继续阅读
         </a>
       </nav>

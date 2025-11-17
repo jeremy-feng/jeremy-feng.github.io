@@ -12,13 +12,13 @@
         <meta name="author" content="Jeremy Feng">
       
       
-        <link rel="canonical" href="https://fengchao.pro/blog/11/">
+        <link rel="canonical" href="https://fengchao.pro/blog/llm-alignment-1-pretraining-sft-rlhf/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../llm-structured-output-principles-and-implementation/">
       
       
-        <link rel="next" href="../category/computer-science/">
+        <link rel="next" href="../at-a-crossroads-at-24/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>所有文章 - Jeremy Feng's Blog</title>
+        <title>【LLM 对齐系列】（一）：大模型开发的三个阶段：预训练、监督微调和强化学习 - Jeremy Feng's Blog</title>
       
     
     
@@ -282,7 +282,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#所有文章" class="md-skip">
+        <a href="#llm-对齐系列一大模型开发的三个阶段预训练监督微调和强化学习" class="md-skip">
           跳转至
         </a>
       
@@ -323,7 +323,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              所有文章
+              【LLM 对齐系列】（一）：大模型开发的三个阶段：预训练、监督微调和强化学习
             
           </span>
         </div>
@@ -577,7 +577,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2282,6 +2284,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2301,10 +2305,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python-滚动回归" class="md-nav__link">
+  <a href="#1-预训练阶段" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Python 滚动回归
+        <span class="md-typeset">
+          1. 预训练阶段
+        </span>
       
     </span>
   </a>
@@ -2312,10 +2318,12 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#线性规划问题的对偶问题" class="md-nav__link">
+  <a href="#2-监督微调阶段" class="md-nav__link">
     <span class="md-ellipsis">
       
-        线性规划问题的对偶问题
+        <span class="md-typeset">
+          2. 监督微调阶段
+        </span>
       
     </span>
   </a>
@@ -2323,87 +2331,57 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#qlib-使用笔记" class="md-nav__link">
+  <a href="#3-强化学习阶段" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Qlib 使用笔记
+        <span class="md-typeset">
+          3. 强化学习阶段
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 强化学习阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#步骤一训练奖励模型reward-modeling训练裁判" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          <strong>步骤一：训练奖励模型（Reward Modeling）——“训练裁判”</strong>
+        </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#基于-bert-的中文问答机器人" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#步骤二策略优化policy-optimization根据反馈自我修正" class="md-nav__link">
     <span class="md-ellipsis">
       
-        基于 Bert 的中文问答机器人
+        <span class="md-typeset">
+          <strong>步骤二：策略优化（Policy Optimization）——“根据反馈自我修正”</strong>
+        </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#使用不同惩罚项的线性回归进行变量选择" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用不同惩罚项的线性回归进行变量选择
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#手动计算简单的反向传播算法" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     <span class="md-ellipsis">
       
-        手动计算简单的反向传播算法
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#神经网络中的激活函数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        神经网络中的激活函数
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#极大似然估计与最小均方误差的等价性" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        极大似然估计与最小均方误差的等价性
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#单纯形法求解线性规划问题" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        单纯形法求解线性规划问题
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#保持专注" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        保持专注
+        <span class="md-typeset">
+          总结
+        </span>
       
     </span>
   </a>
@@ -2419,591 +2397,308 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到首页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="/blog/avatar.jpg" alt="冯超">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          冯超
+                        
+                      </strong>
+                      <br>
+                      Jeremy Feng
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                     
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-11-18 00:00:00+00:00" class="md-ellipsis">2025年11月18日</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                             
+                            
+                              <a href="../category/llm/">LLM</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              阅读时间 2 分钟
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      相关链接
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://book.douban.com/subject/37331025/" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-24 00:00:00+00:00">2023年4月24日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-滚动回归"><a class="toclink" href="../rolling-ols/">Python 滚动回归</a></h2>
-<p>本文实现了多个资产分别在时间序列上进行滚动回归，并返回由最新系数计算得到的残差，最后将多个资产的残差结果重新聚合为多重索引的数据框。</p>
-<p><img alt="image-20230424173801905" src="../2023-04-24-rolling-ols/index-image/image-20230424173801905.png" /></p>
+  
+    百面大模型
+  
 
     
-      <nav class="md-post__action">
-        <a href="../rolling-ols/">
-          继续阅读
-        </a>
-      </nav>
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://book.douban.com/subject/37331056/" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-23 00:00:00+00:00">2023年4月23日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="线性规划问题的对偶问题"><a class="toclink" href="../lp-dual/">线性规划问题的对偶问题</a></h2>
-<p>本文推导了一般的线性规划问题的对偶形式，并补充了个人关于对偶问题的几何理解。</p>
-<p><img alt="image-20230423232302990" src="../2023-04-23-lp-dual/index-image/image-20230423232302990.png" /></p>
+  
+    大模型算法：强化学习、微调与对齐
+  
 
     
-      <nav class="md-post__action">
-        <a href="../lp-dual/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-19 00:00:00+00:00">2023年4月19日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="qlib-使用笔记"><a class="toclink" href="../qlib/">Qlib 使用笔记</a></h2>
-<p>记录使用 Qlib 的代码和经验。</p>
+  </span>
+  
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../qlib/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-18 00:00:00+00:00">2023年4月18日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
-              <a href="../category/llm/" class="md-meta__link">LLM</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 25 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="基于-bert-的中文问答机器人"><a class="toclink" href="../bert-qa/">基于 Bert 的中文问答机器人</a></h2>
-<p>最终训练的模型已经部署到 <a href="https://huggingface.co/spaces/JeremyFeng/chinese-question-answering" target="_blank" rel="noopener">Hugging Face</a>，请尝试输入一些简单的中文段落和相关问题 <img alt="🌝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f31d.svg" title=":full_moon_with_face:"></p>
-<p><iframe
-    src="https://jeremyfeng-chinese-question-answering.hf.space"
-    frameborder="0"
-    width="850"
-    height="650"
-></iframe>
-</p>
-<p>本文基于 Bert 的中文分词和问答的预训练模型，利用 10, 000 余条中文问答数据进行微调，构建了能够理解中文段落并回答相关问题的问答机器人。用自定义的数据进行测试，模型的效果基本能达到“正确回答小学三年级以下的阅读理解题”的水平。</p>
-<p><img alt="predict-james" src="../2023-04-18-bert-qa/index-image/predict-james.png" /></p>
-<p>这是我第一次完整地实现一个 NLP 项目。在这个过程中，我学习了如何使用预训练模型、中文分词、准备数据、文本编码与解码、设计问答机器的损失与优化目标、导出训练模型等技术，对问答领域的 NLP 有了更透彻的理解。</p>
-<p>理论部分可参考李沐老师的 <a href="https://www.bilibili.com/video/BV1pu411o7BE" target="_blank" rel="noopener">Transformer 论文逐段精读【论文精读】</a> 和 <a href="https://www.bilibili.com/video/BV1PL411M7eQ" target="_blank" rel="noopener">BERT 论文逐段精读【论文精读】</a>。当然，如果想要理解得更透彻一些，还是应该动手写代码，看看每一步到底在做什么，到真正实现出来看到模型结果的那一刻，是非常有成就感的。</p>
-<div class="admonition abstract">
-<p class="admonition-title">不同 GPU 平台的训练效率对比</p>
-<p>为对比不同平台上的 GPU 的训练效率的差异，我在 Kaggle、Google Colab、趋动云和本地的 Macbook Pro M1 Pro 四台机器上分别进行了训练。对于单个 Epoch：</p>
-<ol>
-<li>付费使用的趋动云使用 2 个 GPU 并行训练，效率最高，单个 Epoch 共耗时 4 分 40 秒；</li>
-<li>免费使用的 Kaggle 耗时 9 分钟，Google Colab 耗时 17 分钟；</li>
-<li>在 Macbook Pro M1 Pro 上运行效率最低，即使使用了 GPU，单个 Epoch 仍预计耗时 3 小时。</li>
-</ol>
-</div>
+      </a>
+    </li>
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../bert-qa/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-15 00:00:00+00:00">2023年4月15日</time></li>
-        
-          <li class="md-meta__item">
-             
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
             
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
+          </nav>
           
-          <li class="md-meta__item">
-            
-              阅读时间 8 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用不同惩罚项的线性回归进行变量选择"><a class="toclink" href="../variable-selection-via-nonconcave-penalized-likelihood/">使用不同惩罚项的线性回归进行变量选择</a></h2>
-<p>本文使用 SCAD、LASSO、Ridge 和 Garrote 惩罚项对线性回归进行了建模，在模拟数据下验证了不同惩罚项设计的对稀疏系数的选择能力。</p>
-<p>原始论文的标题叫做 Variable Selection via Nonconcave Penalized Likelihood and Its Oracle Properties。对于 Oracle Properties，在 <a href="https://d.cosx.org/d/104104-104104/18" target="_blank" rel="noopener">统计之都上有一个非常精彩的解释</a>：</p>
-<blockquote>
-<p>Oracle 这个词对应的中文翻译叫做“神谕”，就是神的启示，它是指通过媒介（男女祭司或器物）传达神的难以捉摸或谜一般的启示或言语。在罚函数（比如 LASSO) 的研究领域，Oracle 指的是以下的渐进性质：</p>
-<ol>
-<li>真值为 0 的参数的估计也为 0。</li>
-<li>真值不为 0 的参数的估计值一致收敛到真值，并且协方差矩阵不受那些真值为 0 的参数估计的影响。</li>
-</ol>
-<p>简而言之：罚函数的估计结果就好像事先已经得到了神的启示，知道哪些是真值为 0 的参数一样。</p>
-</blockquote>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../variable-selection-via-nonconcave-penalized-likelihood/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-10 00:00:00+00:00">2023年4月10日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="手动计算简单的反向传播算法"><a class="toclink" href="../backward-propagation-by-hand/">手动计算简单的反向传播算法</a></h2>
-<p>反向传播算法是深度学习进行参数优化的基础。本文手动计算了多层感知机中损失函数对权重、净输入值的梯度，并与 PyTorch 的计算结果进行了验证。</p>
-<p>反向传播算法的本质是矩阵微分和链式法则，这两个知识都不难理解，但刚接触反向传播算法时总容易被一些陌生的符号弄糊涂。理解反向传播算法的理论推导，最重要的是弄清楚各个向量、矩阵的维度，以及熟练它们之间的前向传播关系。最后多加练习，就能对反向传播算法的理解更加透彻。</p>
-<h3 id="理论推导"><a class="toclink" href="../backward-propagation-by-hand/#理论推导">理论推导</a></h3>
-<p><img alt="image-20230411003621789" src="../2023-04-10-backward-propagation-by-hand/index-image/image-20230411003621789.png" /></p>
 
+  <nav class="md-tags" >
     
-      <nav class="md-post__action">
-        <a href="../backward-propagation-by-hand/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-09 00:00:00+00:00">2023年4月9日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a></li>
+      
+      
         
         
           
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
         
-        
-      </ul>
       
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="神经网络中的激活函数"><a class="toclink" href="../activation-function/">神经网络中的激活函数</a></h2>
-<p>激活函数在神经元中是非常重要的。为了增强网络的表示能力和学习能力，激活函数需要具备以下几点性质：</p>
-<ol>
-<li>连续并可导（允许少数点上不可导）的 <mark>非线性函数</mark> （若激活函数仍是线性函数，那么再多层的神经网络都只能拟合一个线性函数）。可导的激活函数可以直接利用数值优化的方法来学习网络参数。</li>
-<li>激活函数及其导函数要尽可能的简单，有利于提高网络计算效率。</li>
-<li>激活函数的导函数的值域要在一个合适的区间内，不能太大也不能太小，否则会影响训练的效率和稳定性。</li>
-</ol>
-<p>本文总结了神经网络中常见的激活函数。</p>
-<p><img alt="activation_functions" src="../2023-04-09-activation-function/index-image/activation_functions.svg" /></p>
+      
+        <a href="../tags/#tag:llm" class="md-tag md-tag-icon md-tag--llm">LLM</a>
+      
+    
+  </nav>
 
-    
-      <nav class="md-post__action">
-        <a href="../activation-function/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-08 00:00:00+00:00">2023年4月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="极大似然估计与最小均方误差的等价性"><a class="toclink" href="../maximum-likelihood-and-least-square/">极大似然估计与最小均方误差的等价性</a></h2>
-<p>在使用最小二乘法估计线性模型的参数时，我们通常会将目标函数写成最小化均方误差的形式：
-$$
-\hat\beta = \min_{\beta} \sum_{i=1}^n
-{\color{red}{(y_i - x_i^T \beta)^2}}
-$$</p>
-<p>为什么我们要用 <mark>均方误差</mark> 作为损失函数？而不是绝对值误差、绝对值的三次方误差等其他形式？本文推导了极大似然估计与最小均方误差的等价性，说明最小均方误差是一种合理的做法。</p>
 
-    
-      <nav class="md-post__action">
-        <a href="../maximum-likelihood-and-least-square/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
+  
+    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-11-18-llm-alignment-1-pretraining-sft-rlhf/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit noopener" target="_blank">
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-08 00:00:00+00:00">2023年4月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 6 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="单纯形法求解线性规划问题"><a class="toclink" href="../simplex-for-linear-programming-problem/">单纯形法求解线性规划问题</a></h2>
-<h3 id="线性规划的一般形式"><a class="toclink" href="../simplex-for-linear-programming-problem/#线性规划的一般形式">线性规划的一般形式</a></h3>
-<p>在线性约束条件下，寻找目标函数 <span class="arithmatex">\(z\)</span> 的最大值：</p>
-<div class="arithmatex">\[
-\max \ z = x_1 + x_2
-\]</div>
-<div class="arithmatex">\[
-s.t \begin{cases}
-2x_1 + x_2 \leq 12 \\
-x_1 + 2x_2 \leq 9  \\
-x_1, x_2 \geq 0
-\end{cases}
-\]</div>
-<h3 id="线性规划的可行域"><a class="toclink" href="../simplex-for-linear-programming-problem/#线性规划的可行域">线性规划的可行域</a></h3>
-<p>满足线性规划问题约束条件的所有点组成的集合就是线性规划的可行域。若可行域有界（以下主要考虑有界可行域），线性规划问题的目标函数最优解必然在可行域的顶点上达到最优。</p>
-<p>单纯形法就是通过设置不同的基向量，经过矩阵的线性变换，求得基可行解（可行域顶点），并判断该解是否最优，否则继续设置另一组基向量，重复执行以上步骤，直到找到最优解。所以，单纯形法的求解过程是一个循环迭代的过程。</p>
-<p><img alt="kexingyu" src="../2023-04-08-simplex-for-linear-programming-problem/index-image/kexingyu.jpg" /></p>
-<p><center>图 1 可行域</center></p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../simplex-for-linear-programming-problem/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-05 00:00:00+00:00">2023年4月5日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="保持专注"><a class="toclink" href="../stay-focused/">保持专注</a></h2>
-<p>回顾过去一个多月的学习和求职，我感到自己过得并不够专注。课业的强度、求职的不顺利，让我总是感觉有很多事情需要做，但又有很多事情没做好。对我来说，这不是一个好的状态，我需要付出行动改变它。</p>
-<p>以下几点是我做出的改变，希望自己能长期坚持它们：</p>
+
+<h1 id="llm-对齐系列一大模型开发的三个阶段预训练监督微调和强化学习">【LLM 对齐系列】（一）：大模型开发的三个阶段：预训练、监督微调和强化学习<a class="headerlink" href="#llm-对齐系列一大模型开发的三个阶段预训练监督微调和强化学习" title="定位到这">&para;</a></h1>
+<p>大语言模型（LLM）的开发通常经历三个主要阶段：预训练（Pre-training）、监督微调（Supervised Fine-Tuning，SFT）和强化学习（Reinforcement Learning）。这三个阶段各自解决不同的问题，层层递进，最终使模型能够更好地理解和执行人类指令。</p>
+<p>本文作为强化学习数学推导系列的第一篇，介绍了这三个阶段的作用和必要性，为后续深入探讨 LLM 对齐技术及其数学原理打下基础。</p>
+<p><img alt="1763401216427" src="../2025-11-18-llm-alignment-1-pretraining-sft-rlhf/image/index/1763401216427.png" /></p>
+<!-- more -->
+
+<h2 id="1-预训练阶段">1. 预训练阶段<a class="headerlink" href="#1-预训练阶段" title="定位到这">&para;</a></h2>
+<p>预训练阶段的核心目标是将大规模语料库中的知识压缩到模型参数中。这个过程主要解决两个问题：如何利用大规模<strong>无标注语料</strong>进行有效训练，以及如何让模型捕捉语言的深层语义和计算机制。</p>
+<p>预训练采用的是自监督学习方式，最常见的任务是 next token prediction（预测下一个词）。模型通过学习预测文本序列中的下一个 token，逐渐理解语言的通用模式。在大模型时代之前，BERT、GPT-2 等模型就已经展现出了一定的语义理解能力，这些预训练模型在微调后能够很好地完成许多下游任务。在大模型时代，像 GPT 系列、Llama 这样的大模型在大规模数据上训练后，展现出了极强的语义建模能力，不仅能进行语义理解和文本生成，还具备了一定的零样本推断能力。</p>
+<p>大模型在预训练阶段可以<strong>获得强大的语义理解能力并储存大量知识</strong>，这些能力和知识为后续的监督微调提供了坚实的基础，使得模型能够通过较少的标注数据就能产生符合人类语言习惯的输出。</p>
+<h2 id="2-监督微调阶段">2. 监督微调阶段<a class="headerlink" href="#2-监督微调阶段" title="定位到这">&para;</a></h2>
+<p>尽管预训练模型具备了语言理解和生成能力，但它并不知道如何遵循人类的指令，生成的内容也可能不符合人类的交互习惯。监督微调阶段就是为了解决这个问题，让模型不仅仅会“续写”，也能够像人一样自然地“问答”。</p>
+<p>在这个阶段，我们需要收集高质量的“指令 - 回答”数据，然后用这些数据对预训练阶段得到的模型进行微调。这些数据的质量要求远高于预训练阶段。这些“指令 - 回答”数据通常需要大量的人工标注和筛选，获取成本相对较高，因此数量比预训练阶段的无标注语料少。通过学习这些高质量对话数据，模型可以更好地理解人类期望的交互方式（问答）、内容和风格，从而输出更符合人类预期的回答。</p>
+<p>通过监督微调，模型已经初步学会了<strong>如何听懂指令、如何规范地回答问题，能够规范输出格式与风格，且有一定的安全性等价值观偏好</strong>。</p>
+<h2 id="3-强化学习阶段">3. 强化学习阶段<a class="headerlink" href="#3-强化学习阶段" title="定位到这">&para;</a></h2>
+<p>虽然 SFT 让模型学会了“怎么说话”，但在“说得对”、“说得好”以及“什么不能说”等人类偏好的维度上，它依然存在局限性。为了进一步让模型对齐人类的偏好，我们需要引入基于人类反馈的强化学习（Reinforcement Learning from Human Feedback, RLHF），主要基于以下几个核心原因：</p>
 <ol>
 <li>
-<p><mark>不拖延。</mark> 写在任务清单上的事项，一有时间就应该立即完成。在截止日期之前将任务打上勾，我会很享受这种成就感。</p>
+<p><strong>解决“高质量示范数据”的稀缺性</strong>。写出满分答案很难，但判断答案的优劣很容易。SFT 依赖于人类专家撰写完美的“标准答案”，这既昂贵又有天花板（模型很难超越写答案的人）。而在强化学习阶段，可以通过采样来构造出几乎无限的样本，人类只需要对模型的回答进行质量排序。这允许模型利用人类的判别能力来优化自身，探索出甚至超越人类示范的更优解。</p>
 </li>
 <li>
-<p><mark>保持充足的睡眠。</mark> 这段时间我有时睡得很晚，投简历、刷算法题、整理面试经验、复习课业内容等等，让我感觉有很多事情要做。我通常到了 12 点之后才睡觉，超出的这段时间就好像是我捡来的一样，但这实际上影响了我第二天的睡眠。少做几道笔试题并不会怎么样，知识储备要靠长期的积累，而不是靠几个晚上就能快速提高的。是应该做些改变了：以饱满的精神迎接第二天的工作，工作效率的提高更像是我捡来了更多的时间。</p>
-</li>
-<li>
-<p><mark>珍惜让自己感到舒服的人和事。</mark> 求职无非就是加入一群人并和他们一起做一些事。能加入一个让自己感到舒服的团队、做让自己感到舒服的事情，是一件幸运的事，要珍惜。</p>
+<p><strong>强化负面约束与安全性，学会“什么不能做”</strong>。在 SFT 阶段，我们只提供了正向示范，因此很难教会模型“不要做什么”，例如不要产生幻觉、不要输出有害信息等。强化学习引入了惩罚机制，让模型在错误行为受到负反馈后，深刻记住安全边界。这是实现模型安全性的有效手段。</p>
 </li>
 </ol>
-<p>春天已经到来，愿自己保持专注，重新出发！</p>
-<figure>
-<p><img alt="flower-with-three-colors" src="../2023-04-05-stay-focused/index-image/flower-with-three-colors.jpeg" />
-  </p>
-<figcaption>这棵树开着三种不同颜色的花，据说是用嫁接技术实现的。</figcaption>
-</figure>
+<p>强化学习阶段与监督微调的目标是一致的——让模型更好地对齐人类偏好。但两者的实现机制有本质区别。</p>
+<h3 id="步骤一训练奖励模型reward-modeling训练裁判"><strong>步骤一：训练奖励模型（Reward Modeling）——“训练裁判”</strong><a class="headerlink" href="#步骤一训练奖励模型reward-modeling训练裁判" title="定位到这">&para;</a></h3>
+<p>既然人类不可能盯着模型生成的每一句话进行打分（效率太低），我们就需要训练一个 AI 模型来代替人类进行评分。我们收集人类对不同回答的排序数据，训练这个“奖励模型”去模仿人类的偏好。训练完成后，这个奖励模型就变成了一个不知疲倦的“裁判”，它能对大模型生成的任何回答给出一个分数（Reward）。</p>
+<h3 id="步骤二策略优化policy-optimization根据反馈自我修正"><strong>步骤二：策略优化（Policy Optimization）——“根据反馈自我修正”</strong><a class="headerlink" href="#步骤二策略优化policy-optimization根据反馈自我修正" title="定位到这">&para;</a></h3>
+<p>有了“裁判”（奖励模型）之后，就可以让 SFT 模型（现在的“学生”）进入“实战演练”阶段。这是一个循环迭代的过程：</p>
+<ol>
+<li>
+<p><strong>生成与打分：</strong> 模型针对某个问题生成回答，奖励模型根据人类偏好给这个回答打分（Reward）。</p>
+</li>
+<li>
+<p><strong>参数更新：</strong> 模型根据分数调整自身的参数。如果得分高，就强化生成这类回答的倾向；如果得分低，就降低这种倾向。本质上，这是在数学层面最大化预期奖励。</p>
+</li>
+<li>
+<p><strong>施加约束：</strong> 为了防止模型为了博取高分而“走捷径”（即 Reward Hacking，例如输出虽然得分高但不通顺的奇怪语句），或者偏离了原有的语言能力，通常会在优化过程中加入<strong>约束项</strong>（如 KL 散度）。这个约束就像一根“风筝线”，确保模型在根据奖励飞得更高（变聪明）的同时，不会断线飞走（遗忘预训练中获得的通用语言能力）。</p>
+</li>
+</ol>
+<p>我们将在接下来的系列文章中详细介绍这些步骤的技术原理与发展。</p>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
+<p>从整体来看，大模型开发在技术上可以分为预训练、监督微调和强化学习三个主要阶段。预训练主要是为了有效利用大规模无标注语料进行语言表达的学习，监督微调和强化学习则主要解决对齐人类偏好的问题。从流程上来说：预训练为监督微调提供冷启动，监督微调则为强化学习提供冷启动。</p>
+<p>强化学习在大模型能力提升方面展现出了突破性的价值。以 OpenAI o1 系列和 DeepSeek-R1 为代表的推理模型表明，强化学习能够显著增强模型的<strong>复杂推理能力</strong>（数学、编程、科学推理等）和<strong>工具调用能力</strong>（函数调用、多步规划、环境交互）。与监督学习相比，强化学习无需大量专家标注的"完美答案"，而是通过人类的判别能力来指导优化，从而能够探索出超越人类示范的更优解。</p>
+<p>正是由于强化学习在推动大模型进阶能力方面的核心作用，我们在后续将重点介绍强化学习的相关内容。在接下来的系列文章中，我们将介绍 REINFORCE、TRPO、PPO、GRPO 等强化学习算法的数学原理和直觉。值得一提的是，强化学习并不是对齐人类偏好的唯一方法。近年来还出现了直接偏好优化（Direct Preference Optimization，DPO）等方法，可以更直接地利用偏好数据进行优化，跳过复杂的强化学习训练过程。我们亦会在系列后期介绍这一方法。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 18 日</span>
+  </span>
+
     
     
-  </div>
-</article>
-      
-      
-        
-          
+    
+    
+  </aside>
 
 
 
-<nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../10/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../9/">9</a> <a class="md-pagination__link" href="../10/">10</a> <span class="md-pagination__current">11</span> <a class="md-pagination__link" href="../12/">12</a> <a class="md-pagination__link" href="../13/">13</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../25/">25</a> <a class="md-pagination__link" href="../12/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../25/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
-</nav>
-        
+  
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="jeremy-feng/giscus" data-repo-id="R_kgDOJ-MviA" data-category="Announcements" data-category-id="DIC_kwDOJ-MviM4CYC8Y" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
       
-    </div>
+    </article>
   </div>
 
           
@@ -3024,10 +2719,12 @@ x_1, x_2 \geq 0
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+          <a href="../llm-structured-output-principles-and-implementation/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 大模型结构化输出的作用、技术原理与实现">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3037,20 +2734,20 @@ x_1, x_2 \geq 0
                 上一页
               </span>
               <div class="md-ellipsis">
-                首页
+                大模型结构化输出的作用、技术原理与实现
               </div>
             </div>
           </a>
         
         
           
-          <a href="../category/computer-science/" class="md-footer__link md-footer__link--next" aria-label="下一页: Computer Science">
+          <a href="../at-a-crossroads-at-24/" class="md-footer__link md-footer__link--next" aria-label="下一页: 24 岁，站在人生的十字路口">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Computer Science
+                24 岁，站在人生的十字路口
               </div>
             </div>
             <div class="md-footer__button md-icon">
