@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#chat-data-基于大语言模型的数据分析应用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chat-data: 基于大语言模型的数据分析应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#jupyter-notebook-恢复历史执行信息与存储执行结果" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-pyflyby-自动管理导入包" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 pyflyby 自动管理导入包
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,57 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-11-13 00:00:00+00:00">2023年11月13日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="chat-data-基于大语言模型的数据分析应用"><a class="toclink" href="../chat-data/">chat-data: 基于大语言模型的数据分析应用</a></h2>
+<p>在数据分析领域，<code>Pandas</code> 是最受欢迎的 Python 库之一。然而，许多数据分析任务可以利用人工智能模型进行自动化。<code>PandasAI</code> 库为流行的数据分析和处理工具 Pandas 添加了生成式人工智能功能，你可以与 <code>DataFrame</code> 进行对话，并得到想要的数据分析结果。</p>
+<p>本文使用 <code>Streamlit</code> 构建了一个在线应用，用户可以上传 Excel/CSV 数据，在输入想要执行的数据分析任务后，便可得到图表等结果，以及生成该结果的相应代码。</p>
+<p><img alt="chat-data" src="../2023-11-13-chat-data/index-image/chat-data.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../chat-data/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2889,65 +2940,6 @@
     
       <nav class="md-post__action">
         <a href="../the-missing-semester-Shell-tools-and-scripting/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-09-16 00:00:00+00:00">2023年9月16日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-pyflyby-自动管理导入包"><a class="toclink" href="../pyflyby/">使用 <code>pyflyby</code> 自动管理导入包</a></h2>
-<p>在编写 <code>Python</code> 代码时，尤其是在构建复杂的项目时，你是否遇到过这些问题：</p>
-<ul>
-<li>
-<p>忘记 <code>import</code> 某个包了；</p>
-</li>
-<li>
-<p><code>import</code> 了很多包，但不知道哪些是可以删掉的？</p>
-</li>
-</ul>
-<p>在 <code>Python</code> 开发过程中，我们经常需要导入一些第三方包或自定义的模块。但是，手动导入这些包和模块有时候会变得非常繁琐和冗长。由 <a href="https://www.deshaw.com/" target="_blank" rel="noopener">D. E. Shaw group</a> 贡献的开源工具 <a href="https://github.com/deshaw/pyflyby" target="_blank" rel="noopener"><code>pyflyby</code></a> 可以自动为我们管理这些导入，帮助我们轻松解决这些问题！</p>
-<p><img alt="Kapture 2023-09-16 at 13.23.00" src="../2023-09-16-pyflyby/index-image/Kapture%202023-09-16%20at%2013.23.00.gif" width="600px" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../pyflyby/">
           继续阅读
         </a>
       </nav>

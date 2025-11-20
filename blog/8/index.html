@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-进阶教程系列-8代理模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 进阶教程系列 8：代理模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-进阶教程系列-7工厂模式" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-ruff-自动检查代码错误" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 Ruff 自动检查代码错误
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,63 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-08-03 00:00:00+00:00">2023年8月3日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-进阶教程系列-8代理模式"><a class="toclink" href="../advanced-python-8-proxy-design-pattern/">Python 进阶教程系列 8：代理模式</a></h2>
+<p>本文是 Python 进阶教程系列 8，主要介绍了 Python 代理模式。</p>
+<h3 id="什么是代理模式"><a class="toclink" href="../advanced-python-8-proxy-design-pattern/#什么是代理模式">什么是代理模式？</a></h3>
+<p>代理模式是一种结构型设计模式，它允许通过创建一个代理对象来控制对另一个对象的访问。在软件开发中，代理是对象的一种封装，它可以隐藏实际对象的复杂性，并提供简洁的接口供其他对象使用。</p>
+<p>代理模式有以下几个优点：</p>
+<ul>
+<li>通过使用代理对象，可以对真实对象进行封装和控制，从而隐藏了真实对象的复杂性。</li>
+<li>可以通过代理对象实现一些额外的功能，如记录日志、缓存数据、实现懒加载等。</li>
+<li>代理模式符合单一职责原则，将对象的职责分离，使得每个对象都可以专注于自己的功能。</li>
+</ul>
+
+    
+      <nav class="md-post__action">
+        <a href="../advanced-python-8-proxy-design-pattern/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2895,58 +2952,6 @@
     
       <nav class="md-post__action">
         <a href="../git/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-07-24 00:00:00+00:00">2023年7月24日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-ruff-自动检查代码错误"><a class="toclink" href="../ruff/">使用 <code>Ruff</code> 自动检查代码错误</a></h2>
-<p>在编写大型项目时，一些细节代码容易影响代码的正常运行。若花费太多时间检查变量命名、导入包等细节问题，则会大幅影响工作效率和心情。</p>
-<p><code>Ruff</code> 是一个代码分析工具，即 Linter，它可以用于检查代码中的语法错误、编码规范问题、潜在的逻辑问题和代码质量问题等，可以提供实时反馈和自动修复建议。</p>
-<p><code>Ruff</code> 的优点是速度非常快，且安装和使用都非常简单。使用 <code>Ruff</code> 可以帮助我们自动检查代码存在的错误（如变量未定义、缺失外部依赖包等），这一切都不需要真正花时间运行代码。</p>
-<p><img alt="Shows a bar chart with benchmark results." src="../2023-07-24-ruff/index-image/232603516-4fb4892d-585c-4b20-b810-3db9161831e4.svg" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../ruff/">
           继续阅读
         </a>
       </nav>

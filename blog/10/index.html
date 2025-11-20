@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dijkstra-算法求解最短路径问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra 算法求解最短路径问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conformal-learning-求解回归问题和多标签分类问题" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#安装-gurobi-优化器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装 Gurobi 优化器
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,107 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-05-26 00:00:00+00:00">2023年5月26日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a>, 
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="dijkstra-算法求解最短路径问题"><a class="toclink" href="../dijkstra-algorithm/">Dijkstra 算法求解最短路径问题</a></h2>
+<p>本文使用 Python 实现了 Dijkstra 算法求解最短路径问题。在算法实现中，使用数组存储网络中各结点之间的距离，使用二叉堆存储 T 集合，并尽量使用向量化计算加快运行速度。</p>
+<p>最终在三种网络结构下的运行时间为：</p>
+<table>
+<thead>
+<tr>
+<th>输入文件</th>
+<th>grid_150_150</th>
+<th>random_20000_40000</th>
+<th>dense_1000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行时间</td>
+<td>302.93ms</td>
+<td>292.14ms</td>
+<td>135.29ms</td>
+</tr>
+</tbody>
+</table>
+<p>但在最开始实现 Dijkstra 算法时，我的程序需要花 5 秒才能完成计算。经过逐步优化，运行时间可以降为 3 秒甚至 0.13 秒。把算法效率优化到极致的过程是非常有收获的，既加深了对算法本身的理解，又学习了许多优化算法的经验。</p>
+<div class="admonition tip">
+<p class="admonition-title">优化算法的经验</p>
+<ol>
+<li>多考虑用向量化计算，尽量避免使用 for 循环。</li>
+<li>想清楚算法的终止条件是什么。例如，在 One-to-all 问题中，可以把“遍历完T集合中的所有元素，直到 T 集合为空集”作为终止条件，也可以把“ P 集合中的元素个数等于网络中的结点个数”作为终止条件。虽然两者都能得到正确的结果，但当 P 集合中的元素个数等于网络中的结点个数时，T 集合中的元素是不需要再更新的，所以后者比前者所需要的运算次数少得多。</li>
+<li>熟悉 <code>NumPy</code> 等科学计算库的实现细节。例如，在 <code>NumPy</code> 中，<code>np.ones</code> 和 <code>np.empty</code> 都可以用来创建指定形状的数组，其中 <code>np.ones</code> 会创建一个填充 1 的数组，而 <code>np.empty</code> 会在一块内存上创建一个未初始化的数组。由于 <code>np.empty</code> 不会进行初始化，因此生成速度要比 <code>np.ones</code> 更快。</li>
+<li>使用合适的数据类型。例如，若问题中的变量可以肯定为整数，则可以考虑用 <code>dtype=np.int32</code> 或者 <code>dtype=np.int16</code>，节约内存空间。不同整数数据类型所能表示的整数范围如下：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int16</td>
+<td>(-32,768 to +32,767)</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>(-2,147,483,648 to +2,147,483,647)</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>(-9,223,372,036,854,775,808 to +9,223,372,036,854,775,807)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    
+      <nav class="md-post__action">
+        <a href="../dijkstra-algorithm/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3011,56 +3112,6 @@ P E(p o s, 2 i)&amp;=\sin \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right)
     
       <nav class="md-post__action">
         <a href="../positional-encoding-in-transformer/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-24 00:00:00+00:00">2023年4月24日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E8%BF%90%E7%AD%B9%E5%AD%A6/" class="md-meta__link">运筹学</a>, 
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="安装-gurobi-优化器"><a class="toclink" href="../install-gurobi/">安装 Gurobi 优化器</a></h2>
-<p>本文记录了 Mac 安装 Gurobi 优化器的过程。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../install-gurobi/">
           继续阅读
         </a>
       </nav>

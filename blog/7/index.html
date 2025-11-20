@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-pyflyby-自动管理导入包" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 pyflyby 自动管理导入包
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-lru_cache-内置-lru-缓存" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-进阶教程系列-8代理模式" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 进阶教程系列 8：代理模式
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,65 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-09-16 00:00:00+00:00">2023年9月16日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-pyflyby-自动管理导入包"><a class="toclink" href="../pyflyby/">使用 <code>pyflyby</code> 自动管理导入包</a></h2>
+<p>在编写 <code>Python</code> 代码时，尤其是在构建复杂的项目时，你是否遇到过这些问题：</p>
+<ul>
+<li>
+<p>忘记 <code>import</code> 某个包了；</p>
+</li>
+<li>
+<p><code>import</code> 了很多包，但不知道哪些是可以删掉的？</p>
+</li>
+</ul>
+<p>在 <code>Python</code> 开发过程中，我们经常需要导入一些第三方包或自定义的模块。但是，手动导入这些包和模块有时候会变得非常繁琐和冗长。由 <a href="https://www.deshaw.com/" target="_blank" rel="noopener">D. E. Shaw group</a> 贡献的开源工具 <a href="https://github.com/deshaw/pyflyby" target="_blank" rel="noopener"><code>pyflyby</code></a> 可以自动为我们管理这些导入，帮助我们轻松解决这些问题！</p>
+<p><img alt="Kapture 2023-09-16 at 13.23.00" src="../2023-09-16-pyflyby/index-image/Kapture%202023-09-16%20at%2013.23.00.gif" width="600px" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../pyflyby/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2942,63 +3001,6 @@
     
       <nav class="md-post__action">
         <a href="../advanced-python-9-singleton-design-pattern/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-08-03 00:00:00+00:00">2023年8月3日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-进阶教程系列-8代理模式"><a class="toclink" href="../advanced-python-8-proxy-design-pattern/">Python 进阶教程系列 8：代理模式</a></h2>
-<p>本文是 Python 进阶教程系列 8，主要介绍了 Python 代理模式。</p>
-<h3 id="什么是代理模式"><a class="toclink" href="../advanced-python-8-proxy-design-pattern/#什么是代理模式">什么是代理模式？</a></h3>
-<p>代理模式是一种结构型设计模式，它允许通过创建一个代理对象来控制对另一个对象的访问。在软件开发中，代理是对象的一种封装，它可以隐藏实际对象的复杂性，并提供简洁的接口供其他对象使用。</p>
-<p>代理模式有以下几个优点：</p>
-<ul>
-<li>通过使用代理对象，可以对真实对象进行封装和控制，从而隐藏了真实对象的复杂性。</li>
-<li>可以通过代理对象实现一些额外的功能，如记录日志、缓存数据、实现懒加载等。</li>
-<li>代理模式符合单一职责原则，将对象的职责分离，使得每个对象都可以专注于自己的功能。</li>
-</ul>
-
-    
-      <nav class="md-post__action">
-        <a href="../advanced-python-8-proxy-design-pattern/">
           继续阅读
         </a>
       </nav>

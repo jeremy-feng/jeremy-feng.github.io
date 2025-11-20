@@ -2301,6 +2301,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pandas-rolling-exponential-滚动计算指数加权标准差会受起点影响" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pandas rolling exponential 滚动计算指数加权标准差会受起点影响
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#生活存档" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2410,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#在-pypika-中自定义-sql-函数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 pypika 中自定义 SQL 函数
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2424,57 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-06-02 00:00:00+00:00">2025年6月2日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="pandas-rolling-exponential-滚动计算指数加权标准差会受起点影响"><a class="toclink" href="../pandas-rolling-exponential-weighted-standard-deviation/">pandas rolling exponential 滚动计算指数加权标准差会受起点影响</a></h2>
+<p>在使用 <code>rolling(win_type="exponential").std()</code> 计算标准差时，结果可能会受数据起点的影响。</p>
+<p>本文将通过几个简单的代码示例，探究数据具有<strong>不同数据起点</strong>（通过 <code>iloc[1:]</code> 手动构造不同的数据起点进行模拟）对 Pandas <code>rolling(win_type="exponential").std()</code> 计算结果的影响，并提供了一个自定义函数实现严格控制滚动回看窗口，以获得一致的结果。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../pandas-rolling-exponential-weighted-standard-deviation/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2921,58 +2972,6 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
     
       <nav class="md-post__action">
         <a href="../pypika-criterion-all/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-07-10 00:00:00+00:00">2024年7月10日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-meta__link">数据库</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-pypika-中自定义-sql-函数"><a class="toclink" href="../pypika-function/">在 <code>pypika</code> 中自定义 SQL 函数</a></h2>
-<p><code>pypika</code> 是一个在 Python 中构建 SQL 语句的工具。<a href="https://mp.weixin.qq.com/s/lzJpqdGekMUFxyr3E5PoZA" target="_blank" rel="noopener">这篇文章</a>提供了一个很棒的入门教程，介绍了许多 <code>pypika</code> 的基本用法。</p>
-<p>本文以 ClickHouse 中的 <code>quantileExact</code> 函数为例，介绍如何在 <code>pypika</code> 中自定义函数，尤其是自定义字符串拼接方式的实现方法。</p>
-<p><img alt="image-20240711001853859" src="../2024-07-10-pypika-function/index-image/image-20240711001853859.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../pypika-function/">
           继续阅读
         </a>
       </nav>

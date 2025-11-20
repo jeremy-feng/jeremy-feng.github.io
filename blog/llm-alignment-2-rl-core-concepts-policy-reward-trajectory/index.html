@@ -12,13 +12,13 @@
         <meta name="author" content="Jeremy Feng">
       
       
-        <link rel="canonical" href="https://fengchao.pro/blog/15/">
+        <link rel="canonical" href="https://fengchao.pro/blog/llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../llm-alignment-1-pretraining-sft-rlhf/">
       
       
-        <link rel="next" href="../category/computer-science/">
+        <link rel="next" href="../at-a-crossroads-at-24/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>所有文章 - Jeremy Feng's Blog</title>
+        <title>【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹 - Jeremy Feng's Blog</title>
       
     
     
@@ -282,7 +282,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#所有文章" class="md-skip">
+        <a href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" class="md-skip">
           跳转至
         </a>
       
@@ -323,7 +323,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              所有文章
+              【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹
             
           </span>
         </div>
@@ -577,7 +577,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2282,6 +2284,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2301,109 +2305,140 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#latex-笔记" class="md-nav__link">
+  <a href="#策略policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(\LaTeX\) 笔记
+        <span class="md-typeset">
+          策略（Policy）
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="策略（Policy）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#状态动作策略参数的符号表示" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          状态、动作、策略参数的符号表示
+        </span>
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#vs-code-加载-web-视图时出错的解决方案" class="md-nav__link">
+  <a href="#奖励reward回报和折扣因子" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VS Code 加载 Web 视图时出错的解决方案
+        <span class="md-typeset">
+          奖励（Reward）、回报和折扣因子
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="奖励（Reward）、回报和折扣因子">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#单步奖励" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          单步奖励
+        </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#latex-设置字体时指定字体文件目录" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#回报return" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(\LaTeX\) 设置字体时指定字体文件目录
+        <span class="md-typeset">
+          回报（Return）
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回报（Return）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#折扣回报" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          折扣回报
+        </span>
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#普通最小二乘估计的假设条件" class="md-nav__link">
+  <a href="#轨迹trajectory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        普通最小二乘估计的假设条件
+        <span class="md-typeset">
+          轨迹（Trajectory）
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="轨迹（Trajectory）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#轨迹发生的概率" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          轨迹发生的概率
+        </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#普通最小二乘估计的方差与高斯---马尔可夫定理" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        普通最小二乘估计的方差与高斯 - 马尔可夫定理
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#普通最小二乘估计的无偏性和一致性" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     <span class="md-ellipsis">
       
-        普通最小二乘估计的无偏性和一致性
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#线性回归的普通最小二乘估计" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        线性回归的普通最小二乘估计
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python-实现多列滚动计算以更优波动率为例" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 实现多列滚动计算——以“更优波动率”为例
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#修改-jupyter-notebook-的默认-python-解释器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        修改 Jupyter Notebook 的默认 Python 解释器
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#中文技术文档的写作规范" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        中文技术文档的写作规范
+        <span class="md-typeset">
+          总结
+        </span>
       
     </span>
   </a>
@@ -2419,603 +2454,381 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到首页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="/blog/avatar.jpg" alt="冯超">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          冯超
+                        
+                      </strong>
+                      <br>
+                      Jeremy Feng
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                     
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-11-21 00:00:00+00:00" class="md-ellipsis">2025年11月21日</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                             
+                            
+                              <a href="../category/llm/">LLM</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              阅读时间 3 分钟
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      相关链接
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://zhuanlan.zhihu.com/p/7461863937" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-02-03 00:00:00+00:00">2023年2月3日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/latex/" class="md-meta__link">LaTeX</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 8 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="latex-笔记"><a class="toclink" href="../latex-note/"><span class="arithmatex">\(\LaTeX\)</span> 笔记</a></h2>
-<p><span class="arithmatex">\(\LaTeX\)</span>使用笔记及格式约定。</p>
-<p>转载自：</p>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><a href="#__codelineno-43-1"><span class="linenos" data-linenos="1 "></span></a>作者：zxl19
-<a id="__codelineno-43-2" name="__codelineno-43-2"></a><a href="#__codelineno-43-2"><span class="linenos" data-linenos="2 "></span></a>原文链接：https://zxl19.github.io
-</code></pre></div>
+  
+    人人都能看懂的 RL-PPO 理论知识
+  
 
     
-      <nav class="md-post__action">
-        <a href="../latex-note/">
-          继续阅读
-        </a>
-      </nav>
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://book.douban.com/subject/37331056/" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-02-02 00:00:00+00:00">2023年2月2日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/linux/" class="md-meta__link">Linux</a>, 
-              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="vs-code-加载-web-视图时出错的解决方案"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/">VS Code 加载 Web 视图时出错的解决方案</a></h2>
-<h3 id="报错原因"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/#报错原因">报错原因</a></h3>
-<p>在保存一个大型<code>jupyter notebook</code>文件时，自己突然关闭了标签页。再打开它时，VS Code 就报错：</p>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>加载 Web 视图时出错: Error: Could not register service workers: InvalidStateError: Failed to register a ServiceWorker: The document is in an invalid state..
-</code></pre></div>
-<p><img alt="image-20230203004334063" src="../2023-02-02-vscode-error-could-not-register-service-workers-invalid-state/index-image/image-20230203004334063.png" style="display:block; margin:0 auto;" /></p>
-<p>并且也不能打开其他任何<code>jupyter notebook</code>文件，推测是 VS Code 程序出了问题。</p>
-<h3 id="解决方案"><a class="toclink" href="../vscode-error-could-not-register-service-workers-invalid-state/#解决方案">解决方案</a></h3>
-<p>我自己曾经遇到过两次这个报错，第一次是在个人电脑 Windows 系统上，第二次是在 Linux 服务器上。下面分别介绍针对这两个系统的解决方案。</p>
+  
+    大模型算法：强化学习、微调与对齐
+  
 
     
-      <nav class="md-post__action">
-        <a href="../vscode-error-could-not-register-service-workers-invalid-state/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-02-01 00:00:00+00:00">2023年2月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/latex/" class="md-meta__link">LaTeX</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="latex-设置字体时指定字体文件目录"><a class="toclink" href="../latex-setmainfont-external-location/"><span class="arithmatex">\(\LaTeX\)</span> 设置字体时指定字体文件目录</a></h2>
-<h3 id="问题与需求"><a class="toclink" href="../latex-setmainfont-external-location/#问题与需求">问题与需求</a></h3>
-<p>在编写多个<span class="arithmatex">\(\TeX\)</span>文档时，我们可能会同时导入相同的外部字体文件。</p>
-<p>通常的做法是，将字体文件放在与当前文档所在的同级目录。</p>
-<div class="highlight"><span class="filename">重复存储多份 font.TTF</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a>$<span class="w"> </span>tree
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a>.
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">|</span>--<span class="w"> </span>tex_1
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="hll"><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>font.TTF
-</span><a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">|</span><span class="w">   </span><span class="p">|</span>--<span class="w"> </span>tex_1.pdf
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="p">|</span><span class="w">   </span><span class="sb">`</span>--<span class="w"> </span>tex_1.tex
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="sb">`</span>--<span class="w"> </span>tex_2
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="hll"><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">|</span>--<span class="w"> </span>font.TTF
-</span><a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="p">|</span>--<span class="w"> </span>tex_2.pdf
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="sb">`</span>--<span class="w"> </span>tex_2.tex
-</code></pre></div>
-<p>这样的做法会使得<code>font.TTF</code>同时存在于<code>tex_1.tex</code>和<code>tex_2.tex</code>两个文档所在的目录下，而同一份字体文件是没有必要存两遍的。我们希望能将<code>font.TTF</code>存在一个公共目录，使得<code>tex_1.tex</code>和<code>tex_2.tex</code>都可以导入其中的字体。</p>
-<h3 id="解决方法"><a class="toclink" href="../latex-setmainfont-external-location/#解决方法">解决方法</a></h3>
+  </span>
+  
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../latex-setmainfont-external-location/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-30 00:00:00+00:00">2023年1月30日</time></li>
-        
-          <li class="md-meta__item">
-             
+      </a>
+    </li>
+  
+
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
             
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
         
         
           
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
         
-        
-      </ul>
       
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="普通最小二乘估计的假设条件"><a class="toclink" href="../ols-estimator-assumptions/">普通最小二乘估计的假设条件</a></h2>
+      
+        <a href="../tags/#tag:llm" class="md-tag md-tag-icon md-tag--llm">LLM</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-11-21-llm-alignment-2-rl-core-concepts-policy-reward-trajectory/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit noopener" target="_blank">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="llm-对齐系列二强化学习的核心概念策略奖励和轨迹">【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹<a class="headerlink" href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" title="定位到这">&para;</a></h1>
+<p>在上一篇文章中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
+<p>要深入理解强化学习算法的工作原理，我们首先需要建立一套完整的符号体系。本文作为 LLM 对齐系列的第二篇，将介绍强化学习中的核心概念，策略、奖励和轨迹。</p>
+<p><img alt="image.png" src="https://cdn.gooo.ai/web-images/ba0f7b067f626a9f1ec67404e7b017dbcfd146bd091282e6621cc160d3445e0c"></p>
+<!-- more -->
+
+<h2 id="策略policy">策略（Policy）<a class="headerlink" href="#策略policy" title="定位到这">&para;</a></h2>
+<p>当我们与 LLM 进行对话时，模型需要在每一步决定生成哪个词（token）。比如，当前对话上下文是“今天的天气”，模型可能会生成“很好”、“不错”或“怎么样”等不同的词。</p>
+<p>在自动驾驶场景中也是类似的：汽车的智能系统需要根据当前的路况（前方有车、红绿灯状态等）决定做出加速、减速还是转向等动作。</p>
+<p>这种“在给定状态下决定做什么动作”的规则，在强化学习中被称为<strong>策略（Policy）</strong>。</p>
+<h3 id="状态动作策略参数的符号表示">状态、动作、策略参数的符号表示<a class="headerlink" href="#状态动作策略参数的符号表示" title="定位到这">&para;</a></h3>
+<p>我们用希腊字母 <span class="arithmatex">\(\pi\)</span> 来表示策略（读作 /pai/），这个符号的选择来源于“Policy”这个词的前缀。在现代强化学习中，策略通常由带参数的深度神经网络来实现，我们用 <span class="arithmatex">\(\pi_\theta\)</span> 表示参数化的策略：</p>
+<div class="arithmatex">\[
+\pi_\theta(a \mid s)
+\]</div>
+<p>这个符号的含义是：在状态 <span class="arithmatex">\(s\)</span> 下，策略 <span class="arithmatex">\(\pi_\theta\)</span> 选择动作 <span class="arithmatex">\(a\)</span> 的概率。其中：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(s\)</span>（state）：当前的状态，描述了智能体所处的环境信息。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(a\)</span>（action）：智能体可以执行的动作。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\theta\)</span>（theta）：策略模型的所有参数，比如神经网络的权重和偏置。</p>
+</li>
+</ul>
+<p>本质上，<span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 就是一个<strong>概率分布</strong>，它告诉我们在状态 <span class="arithmatex">\(s\)</span> 下各个动作被选中的概率。对于大语言模型来说，状态 <span class="arithmatex">\(s\)</span> 就是当前的对话上下文，也就是已有的文本序列。动作 <span class="arithmatex">\(a\)</span> 就是下一个要生成的 token。策略参数 <span class="arithmatex">\(\theta\)</span> 就是语言模型的所有参数。<span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 就是模型预测下一个 token 的概率分布。</p>
+<h2 id="奖励reward回报和折扣因子">奖励（Reward）、回报和折扣因子<a class="headerlink" href="#奖励reward回报和折扣因子" title="定位到这">&para;</a></h2>
+<p>在强化学习中，当智能体做出一个动作后，如何知道这个动作的好坏呢？在日常生活中，这个反馈可能是老师的作业评分、游戏中的得分等。在强化学习中，这种反馈被称为<strong>奖励（Reward）</strong>。</p>
+<p>想象智能体玩一个游戏：每次击败敌人 +10 分，被击中 -5 分，完成关卡 +100 分。这些分数就是奖励，它们告诉智能体：刚才的动作是好还是坏。类似地，在自动驾驶中，安全行驶可能获得正奖励，而偏离车道、闯红灯等错误行为则获得负奖励。</p>
+<h3 id="单步奖励">单步奖励<a class="headerlink" href="#单步奖励" title="定位到这">&para;</a></h3>
+<p>我们用 <span class="arithmatex">\(r_t\)</span> 表示在第 <span class="arithmatex">\(t\)</span> 步获得的<strong>即时奖励</strong>，它是一个标量（实数）。更完整地，奖励可以表示为由当前状态、已经执行的动作和下一步的状态共同决定的函数：</p>
+<div class="arithmatex">\[
+r_t = R(s_t, a_t, s_{t+1})
+\]</div>
+<p>这个符号的含义是：在状态 <span class="arithmatex">\(s_t\)</span> 下执行动作 <span class="arithmatex">\(a_t\)</span>，转移到新状态 <span class="arithmatex">\(s_{t+1}\)</span> 后获得的奖励。</p>
+<p>需要注意的是，奖励函数 <span class="arithmatex">\(R\)</span> 由环境决定，而与策略 <span class="arithmatex">\(\pi\)</span> 无关。策略 <span class="arithmatex">\(\pi\)</span> 可以决定做出什么动作，但这个动作会获得多少奖励，完全取决于环境本身的奖励机制。智能体无法改变奖励函数本身，只能通过选择更好的动作来获得更高的奖励。</p>
+<p>以刚才的游戏为例，游戏程序本身就是环境。“击败敌人 +10 分”这条规则是写在游戏程序代码里的固有机制。无论智能体采取什么策略（比如是激进进攻还是保守防守），这个奖励规则都不会改变。策略只能决定动作 <span class="arithmatex">\(a_t\)</span> ——奖励函数的输入之一，而无法改变奖励函数 <span class="arithmatex">\(R\)</span> 本身。</p>
+<h3 id="回报return">回报（Return）<a class="headerlink" href="#回报return" title="定位到这">&para;</a></h3>
+<p>回报（Return），通常用符号 <span class="arithmatex">\(G_t\)</span> 表示（Gain 的首字母），是指从当前时间步 <span class="arithmatex">\(t\)</span> 开始，直到轨迹结束所获得的所有奖励的总和，可用于评估智能体策略的长期优劣。</p>
+<p>根据前文的定义，我们在 <span class="arithmatex">\(t\)</span> 时刻执行动作 <span class="arithmatex">\(a_t\)</span> 后获得的奖励为 <span class="arithmatex">\(r_t\)</span>。那么，从 <span class="arithmatex">\(t\)</span> 时刻开始的累积回报可以表示为：</p>
+<div class="arithmatex">\[
+G_t = r_t + r_{t+1} + r_{t+2} + \dots + r_T
+\]</div>
+<p>需要特别注意的是，回报 <span class="arithmatex">\(G_t\)</span> 是一个随机变量，而不是一个固定的数值。这种随机性主要来源于两个方面：</p>
 <ol>
-<li>因变量<span class="arithmatex">\(Y\)</span>与自变量<span class="arithmatex">\(X\)</span>之间是 <mark>线性</mark> 关系。</li>
-<li>自变量之间 <mark>不存在多重共线性</mark> ，即<span class="arithmatex">\(\left(X^{\prime} X\right)^{-1}\)</span>存在。</li>
-<li>误差项的 <mark>条件均值为<span class="arithmatex">\(0\)</span></mark> ，即<span class="arithmatex">\(E\left[u \mid X\right]=0\)</span>。</li>
-<li>误差项之间 <mark>同方差且不相关</mark> ，即<span class="arithmatex">\(E\left[u u^{\prime} \mid X\right]=\sigma^2 I_T\)</span>。</li>
-<li><span class="arithmatex">\(\left(Y_t, X_t\right)\)</span> <mark>独立同分布</mark> 。</li>
-<li>误差项是 <mark>正态分布</mark> 的。</li>
+<li>
+<p><strong>动作的随机性</strong>：策略 <span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 给出的动作可能是随机的。在相同的状态下，智能体也可能做出不同的动作。</p>
+</li>
+<li>
+<p><strong>状态转移的随机性</strong>：环境的状态转移概率 <span class="arithmatex">\(P(s_{t+1} \mid s_t, a_t)\)</span> 可能是随机的。在相同的状态下，即使执行了相同的动作，环境也可能转移到不同的新状态。</p>
+</li>
 </ol>
-<p>假设 1-4 可推出：普通最小二乘估计是<u>最小方差线性无偏估计</u>（BLUE）。</p>
-<p>假设 1-3 与假设 5 可推出：普通最小二乘估计具有<u>一致性</u>。</p>
-<p>假设 6 并不影响普通最小二乘估计是最小方差线性无偏估计，它是为了便于在有限样本下对回归系数进行统计检验。</p>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-25 00:00:00+00:00">2023年1月25日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 4 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="普通最小二乘估计的方差与高斯---马尔可夫定理"><a class="toclink" href="../ols-estimator-variance-and-gauss-markov-theorem/">普通最小二乘估计的方差与高斯 - 马尔可夫定理</a></h2>
-<p>本文计算了普通最小二乘估计的方差，并证明了高斯 - 马尔可夫定理。</p>
-<p>普通最小二乘估计的方差：</p>
+<p>因此，当我们说“最大化回报”时，实际上是指最大化回报的<strong>期望值</strong>。</p>
+<h4 id="折扣回报">折扣回报<a class="headerlink" href="#折扣回报" title="定位到这">&para;</a></h4>
+<p>在实际应用中，我们通常会引入一个<strong>折扣</strong>因子（Discount Factor） <span class="arithmatex">\(\gamma\)</span>（读作 gamma），其取值范围通常为 <span class="arithmatex">\([0, 1]\)</span>。引入折扣因子后的回报被称为折扣回报：</p>
+<div class="arithmatex">\[
+G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots = \sum_{k=0}^{\infty} \gamma^k r_{t+k}
+\]</div>
+<p>为什么要引入折扣因子 <span class="arithmatex">\(\gamma\)</span> 呢？主要有以下三个原因：</p>
+<ol>
+<li>
+<p><strong>数学收敛性</strong>：对于无限长的交互过程，如果不加折扣，累积奖励可能会趋于无穷大，数学上的反散导致无法计算。引入 <span class="arithmatex">\(\gamma &lt; 1\)</span> 可以保证回报是一个有限值。</p>
+</li>
+<li>
+<p><strong>权衡近期和远期的利益</strong>：<span class="arithmatex">\(\gamma\)</span> 决定了智能体对未来的重视程度。</p>
+</li>
+<li>
+<p>当 <span class="arithmatex">\(\gamma\)</span> 接近 0 时，未来的奖励会被大幅折扣，导致模型变得“短视”，只关注当前的即时奖励。</p>
+</li>
+<li>
+<p>当 <span class="arithmatex">\(\gamma\)</span> 接近 1 时，模型变得“远视”，更愿意为了长远的重大利益而牺牲眼前的微小收益。</p>
+</li>
+<li>
+<p><strong>训练稳定性</strong>：未来的奖励往往具有更大的不确定性，即方差更大。通过折扣因子降低未来奖励的权重，可以减少估计误差，使模型的训练过程更加稳定。</p>
+</li>
+</ol>
+<h2 id="轨迹trajectory">轨迹（Trajectory）<a class="headerlink" href="#轨迹trajectory" title="定位到这">&para;</a></h2>
+<p>有了单步的决策，我们需要描述智能体与环境的完整交互过程。LLM 生成一段完整回答的过程 是：从接收到用户问题开始，一步步生成词语，直到回答结束。这整个过程就是一条<strong>轨迹（Trajectory）</strong>。</p>
+<p>我们用希腊字母 <span class="arithmatex">\(\tau\)</span>（读作 /taʊ/，中文谐音“套”）来表示一条轨迹。一条完整的轨迹包含了从开始到结束的所有状态、动作和奖励的链条：</p>
+<div class="arithmatex">\[
+\tau = {s_0, a_0, r_0, s_1, a_1, r_1, \dots, s_T}
+\]</div>
+<p>这里的下标对应关系是：在状态 <span class="arithmatex">\(s_t\)</span> 采取动作 <span class="arithmatex">\(a_t\)</span>，环境反馈奖励 <span class="arithmatex">\(r_t\)</span> 并转移到下一状态 <span class="arithmatex">\(s_{t+1}\)</span>。</p>
+<h3 id="轨迹发生的概率">轨迹发生的概率<a class="headerlink" href="#轨迹发生的概率" title="定位到这">&para;</a></h3>
+<p>在强化学习中，一条特定轨迹 <span class="arithmatex">\(\tau\)</span> 的发生是有概率的，其概率取决于两个因素：智能体的<strong>策略</strong>和环境的<strong>状态转移概率</strong>。我们可以将其写成如下公式：</p>
 <div class="arithmatex">\[
 \begin{aligned}
- \operatorname{Var}(\underbrace{\beta^{O L S}}_ {(K+1) \times 1} \mid X)&amp;=\sigma^2 \underbrace{\left(X^{\prime} X\right)^{-1}} _ {(K+1) \times (K+1)}
+p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1}, r_{T-1}, s_T \}; \theta) \\
+&amp;= \prod_{t=0}^{T-1} \underbrace{\pi_\theta(a_t \mid s_t)}_{\text{动作选择概率}} \cdot \underbrace{P(s_{t+1} \mid s_t, a_t)}_{\text{状态转移概率}}
 \end{aligned}
 \]</div>
-<div class="admonition quote">
-<p class="admonition-title">高斯 - 马尔可夫定理（Gauss-Markov Theorem）</p>
-<p>在线性回归模型中，如果线性模型满足高斯马尔可夫假定，则回归系数的最佳线性无偏估计（BLUE, Best Linear Unbiased Estimator）就是普通最小二乘法估计。</p>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../ols-estimator-variance-and-gauss-markov-theorem/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-24 00:00:00+00:00">2023年1月24日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="普通最小二乘估计的无偏性和一致性"><a class="toclink" href="../ols-estimator-unbiasedness-and-consistency/">普通最小二乘估计的无偏性和一致性</a></h2>
-<p>本文证明了普通最小二乘估计的无偏性和一致性。</p>
-<p>无偏性：</p>
-<div class="arithmatex">\[
-E\left[\beta^{O L S}\right]=\beta
-\]</div>
-<p>一致性</p>
-<div class="arithmatex">\[
-\beta^{O L S}-\beta=\left(X^{\prime} X\right)^{-1} X^{\prime} u \stackrel{p}{\rightarrow} 0  \text { as } T \rightarrow \infty
-\]</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../ols-estimator-unbiasedness-and-consistency/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-23 00:00:00+00:00">2023年1月23日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 4 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="线性回归的普通最小二乘估计"><a class="toclink" href="../ols-estimator/">线性回归的普通最小二乘估计</a></h2>
-<p><img alt="ols" src="../2023-01-23-ols-estimator/index-image/ols.png" width="60%" /></p>
-<p>本文推导了线性回归的普通最小二乘估计量的矩阵形式，并在一元线性回归的情境下给出了求和形式的表达式。
-$$
-Y=X \widehat{\beta}+e
-$$</p>
-<div class="arithmatex">\[
-\beta^{O L S}=\left(X^{\prime} X\right)^{-1} X^{\prime} Y
-\]</div>
-<p>在一元线性回归的情境下：</p>
-<div class="arithmatex">\[
-\beta_1^{O L S} =\frac{\overline{X Y}-\overline{X} * \overline{Y}}{\overline{X^2}-\left(\overline{X}\right)^2}
-\]</div>
-<div class="arithmatex">\[
-\beta_0^{O L S} =\frac{\overline{X^2} * \overline{Y}-\overline{X} * \overline{X Y}}{\overline{X^2}-\left(\overline{X}\right)^2}
-\]</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../ols-estimator/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-22 00:00:00+00:00">2023年1月22日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-实现多列滚动计算以更优波动率为例"><a class="toclink" href="../rolling-in-python/">Python 实现多列滚动计算——以“更优波动率”为例</a></h2>
-<p>对单列数据进行滚动计算，可以使用常规的<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>。</p>
-<p>如果需要对多列数据进行滚动计算，可以考虑下面两种方法：</p>
+<p>这个公式表明，轨迹的生成由两个因素共同决定：</p>
 <ol>
-<li>引入外部包<code>numpy_ext</code>，使用其中的<code class="highlight"><span class="n">rollling_apply</span><span class="p">()</span></code>方法。</li>
-<li>在<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>中加入参数<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>。</li>
+<li>
+<p>策略：智能体决定动作选择的概率。这是我们可以通过训练参数 <span class="arithmatex">\(\theta\)</span> 来改变的。</p>
+</li>
+<li>
+<p>环境：环境决定状态转移的概率。这通常是客观设置好的，智能体无法直接改变。</p>
+</li>
 </ol>
-<p>本文以方正金工发表的一篇研报中提出的计算“更优波动率”为例，实现了对多列数据进行滚动计算，并对上述两种方法总结如下：</p>
-<ol>
-<li><code class="highlight"><span class="n">numpy_ext</span><span class="o">.</span><span class="n">rollling_apply</span><span class="p">()</span></code>需要引入外部包<code class="highlight"><span class="n">numpy_ext</span></code>，该方法接受需要进行滚动计算的多个 Series，并返回计算出的一个数组。</li>
-<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>是 Pandas 内置的函数（需要升级到较新的版本），指定<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>后，就可以对数据框中的多列进行滚动计算，并返回一个数据框。若返回的多列结果相同，我们只需要取出其中一列即可。</li>
-<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>使用了<code class="highlight"><span class="n">engine</span><span class="o">=</span><span class="s1">&#39;numba&#39;</span></code>，计算速度更快。</li>
-</ol>
-
-    
-      <nav class="md-post__action">
-        <a href="../rolling-in-python/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-19 00:00:00+00:00">2023年1月19日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="修改-jupyter-notebook-的默认-python-解释器"><a class="toclink" href="../change-python-interpreter-in-vscode-jupyter-notebook/">修改 Jupyter Notebook 的默认 Python 解释器</a></h2>
-<p>Conda 可以十分方便地创建虚拟环境，便于在不同的项目中使用不同的 Python 版本、外部包等。今天在创建新的虚拟 Conda 环境后，在 VS Code 中没有找到刚刚创建的 Python 解释器。</p>
-<p>解决方案是：</p>
-<ol>
-<li>先按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Select Interpreter</code>选项，这里应该可以看到最新创建的 Conda 环境；</li>
-<li>再按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Clear Cache and Reload Window</code>选项，重新加载窗口；</li>
-<li>最后点击右上角的“选择内核”，可以看到刚才创建的环境。</li>
-</ol>
-
-    
-      <nav class="md-post__action">
-        <a href="../change-python-interpreter-in-vscode-jupyter-notebook/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-19 00:00:00+00:00">2023年1月19日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 4 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="中文技术文档的写作规范"><a class="toclink" href="../document-style-guide/">中文技术文档的写作规范</a></h2>
-<p>本文转载了阮一峰的《中文技术文档的写作规范》。</p>
-<p>本站之前发布的文章有许多并没有遵循这一规范（例如中英文之间应有空格）。在今后的工作和写作中，我会尽量书写规范的文档，提高文章的易读性。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../document-style-guide/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-      
-        
-          
+<p>以 LLM 生成句子“你好，世界”为例：状态 <span class="arithmatex">\(s_t\)</span> 是当前的文本上下文（如“你好，”）；动作 <span class="arithmatex">\(a_t\)</span> 是模型生成的下一个 token（如“世界”）；策略 <span class="arithmatex">\(\pi_\theta\)</span> 是模型预测出“世界”的概率。值得注意的是，在 LLM 文本生成场景下，状态转移 <span class="arithmatex">\(P\)</span> 通常是确定性的：一旦选择了 token“世界”，新的状态必然变成“你好，世界”。虽然状态转移是确定的，但由于策略 <span class="arithmatex">\(\pi_\theta\)</span> 的采样过程具有随机性，所以整条轨迹的生成是随机的。</p>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
+<p>本文介绍了强化学习的三个重要概念：</p>
+<ul>
+<li>
+<p>策略（Policy）定义了智能体在特定状态下如何选择动作的概率分布；</p>
+</li>
+<li>
+<p>奖励（Reward）和回报（Return）提供了评估动作好坏的标尺，并通过折扣因子平衡了短期与长期利益；</p>
+</li>
+<li>
+<p>轨迹（Trajectory）则描述了智能体与环境交互的完整过程，我们还拆解了一条轨迹发生的概率。</p>
+</li>
+</ul>
+<p>这套符号体系的建立至关重要，它将抽象的“智能体学习”过程转化为可计算、可优化的数学问题。理解了这些概念，我们就具备了推导强化学习算法的前提条件。</p>
+<p>在接下来的系列文章中，我们将把这些概念串联起来，理解强化学习的优化目标，并介绍实现优化目标的相关算法。</p>
 
 
 
-<nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../14/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../13/">13</a> <a class="md-pagination__link" href="../14/">14</a> <span class="md-pagination__current">15</span> <a class="md-pagination__link" href="../16/">16</a> <a class="md-pagination__link" href="../17/">17</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../25/">25</a> <a class="md-pagination__link" href="../16/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../25/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
-</nav>
-        
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 21 日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="jeremy-feng/giscus" data-repo-id="R_kgDOJ-MviA" data-category="Announcements" data-category-id="DIC_kwDOJ-MviM4CYC8Y" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
   </div>
 
           
@@ -3036,10 +2849,12 @@ $$</p>
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+          <a href="../llm-alignment-1-pretraining-sft-rlhf/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 【LLM 对齐系列】（一）：大模型开发的三个阶段：预训练、监督微调和强化学习">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3049,20 +2864,20 @@ $$</p>
                 上一页
               </span>
               <div class="md-ellipsis">
-                首页
+                【LLM 对齐系列】（一）：大模型开发的三个阶段：预训练、监督微调和强化学习
               </div>
             </div>
           </a>
         
         
           
-          <a href="../category/computer-science/" class="md-footer__link md-footer__link--next" aria-label="下一页: Computer Science">
+          <a href="../at-a-crossroads-at-24/" class="md-footer__link md-footer__link--next" aria-label="下一页: 24 岁，站在人生的十字路口">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Computer Science
+                24 岁，站在人生的十字路口
               </div>
             </div>
             <div class="md-footer__button md-icon">
