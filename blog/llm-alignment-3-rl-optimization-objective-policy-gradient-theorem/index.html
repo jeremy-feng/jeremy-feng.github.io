@@ -2573,7 +2573,7 @@
 <h1 id="llm-对齐系列三强化学习的优化目标与策略梯度定理">【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理<a class="headerlink" href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" title="定位到这">&para;</a></h1>
 <p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们介绍了强化学习的三个重要概念：策略（Policy）是智能体的行动指南，奖励（Reward）是评价行动好坏的标尺，而轨迹（Trajectory）则是智能体与环境交互的全过程。</p>
 <p>有了这些概念，我们就可以正式进入强化学习的核心问题：如何训练智能体？换句话说，我们已经有了“运动员”（策略）和“裁判”（奖励函数），现在的任务是：如何调整运动员的动作参数 <span class="arithmatex">\(\theta\)</span>，让他的得分越来越高？</p>
-<p>本文将介绍强化学习需要优化的目标函数，并推导出指导优化目标函数的策略梯度定理。</p>
+<p>本文作为 LLM 对齐系列的第三篇，将介绍强化学习需要优化的目标函数，并推导出指导优化目标函数的策略梯度定理。</p>
 <p><img alt="1763749183306" src="../2025-11-22-llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/image/index/1763749183306.png" /></p>
 <!-- more -->
 
@@ -2657,10 +2657,10 @@ p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1
 <p>公式 <span class="arithmatex">\(\eqref{1}\)</span> 的直觉含义十分朴素，可以用一句话概括：动作带来的期望回报越高，越要增大这个动作出现的概率。</p>
 <ol>
 <li>
-<p><span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 告诉我们如何调整参数 <span class="arithmatex">\(\theta\)</span>，才能让智能体在状态 <span class="arithmatex">\(s_t\)</span> 下更有可能选出动作 $a，即“增加当前动作出现概率”的梯度方向。</p>
+<p><span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 告诉我们如何调整参数 <span class="arithmatex">\(\theta\)</span>，才能让智能体在状态 <span class="arithmatex">\(s_t\)</span> 下更有可能选出动作 <span class="arithmatex">\(a\)</span>，即“增加当前动作出现概率”的梯度方向。</p>
 </li>
 <li>
-<p><span class="arithmatex">\(R(\tau)\)</span> 则充当了一个方向和权重系数的作用。</p>
+<p><span class="arithmatex">\(R(\tau)\)</span> 则充当了一个方向和权重系数的角色。</p>
 <ul>
 <li>
 <p>如果 <span class="arithmatex">\(R(\tau)\)</span> 是一个很大的正数，说明这个策略得到的轨迹的回报很高。我们就会沿着“增加当前动作出现概率”的梯度方向迈出一大步。这意味着我们要大幅增加这条轨迹中所有动作出现的概率。即：“刚才这么做既然得分了，下次遇到这种情况，还要这么做！”</p>
@@ -2671,7 +2671,7 @@ p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1
 </ul>
 </li>
 </ol>
-<p>这就是策略梯度最核心的思想：通过不断地试错（采样），利用最终的回报 <span class="arithmatex">\(R(\tau)\)</span> 作为参考，去放大那些导致高回报的动作的概率，同时抑制导致低回报的动作。即使我们不知道客观的环境模型，只要盯着“回报”这个指挥棒，智能体就能一步步学会正确的策略。</p>
+<p>这就是策略梯度定理最核心的思想：通过不断地试错（采样），利用最终的回报 <span class="arithmatex">\(R(\tau)\)</span> 作为参考，去放大那些导致高回报的动作的概率，同时抑制导致低回报的动作。即使我们不知道客观的环境模型，只要盯着“回报”这个指挥棒，智能体就能一步步学会正确的策略。</p>
 <h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
 <p>本文介绍了强化学习的优化目标——最大化期望回报，并推导出了著名的策略梯度定理。</p>
 <p>这一定理的推导过程展示了一个精妙的变换：通过对数导数技巧，我们将难以直接计算的目标函数梯度，转化为可以通过采样近似的“对数概率梯度的期望”。更重要的是，推导结果证明了我们不需要知道环境模型（状态转移概率），只需要根据策略网络的梯度和采样得到的轨迹回报，就能指导智能体不断进化。这为 Model-free 强化学习奠定了坚实的理论基础。</p>
