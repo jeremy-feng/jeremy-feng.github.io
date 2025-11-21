@@ -2312,6 +2312,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2393,17 +2404,6 @@
     <span class="md-ellipsis">
       
         Docker 中的 CMD 和 ENTRYPOINT
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#国内服务器安装-dokploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        国内服务器安装 Dokploy
       
     </span>
   </a>
@@ -2497,6 +2497,58 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2025-11-22 00:00:00+00:00">2025年11月22日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/llm/" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llm-对齐系列三强化学习的优化目标与策略梯度定理"><a class="toclink" href="llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理</a></h2>
+<p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们介绍了强化学习的三个重要概念：策略（Policy）是智能体的行动指南，奖励（Reward）是评价行动好坏的标尺，而轨迹（Trajectory）则是智能体与环境交互的全过程。</p>
+<p>有了这些概念，我们就可以正式进入强化学习的核心问题：如何训练智能体？换句话说，我们已经有了“运动员”（策略）和“裁判”（奖励函数），现在的任务是：如何调整运动员的动作参数 <span class="arithmatex">\(\theta\)</span>，让他的得分越来越高？</p>
+<p>本文将介绍强化学习需要优化的目标函数，并推导出指导优化目标函数的策略梯度定理。</p>
+<p><img alt="1763749183306" src="2025-11-22-llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/image/index/1763749183306.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2025-11-21 00:00:00+00:00">2025年11月21日</time></li>
         
           <li class="md-meta__item">
@@ -2519,7 +2571,7 @@
   </header>
   <div class="md-post__content md-typeset">
     <h2 id="llm-对齐系列二强化学习的核心概念策略奖励和轨迹"><a class="toclink" href="llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹</a></h2>
-<p>在上一篇文章中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
+<p>在<a href="../llm-alignment-1-pretraining-sft-rlhf/">上一篇文章</a>中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
 <p>要深入理解强化学习算法的工作原理，我们首先需要建立一套完整的符号体系。本文作为 LLM 对齐系列的第二篇，将介绍强化学习中的核心概念：策略、奖励和轨迹。</p>
 <p><img alt="image.png" src="https://cdn.gooo.ai/web-images/ba0f7b067f626a9f1ec67404e7b017dbcfd146bd091282e6621cc160d3445e0c"></p>
 
@@ -2967,57 +3019,6 @@ Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
     
       <nav class="md-post__action">
         <a href="docker-cmd-and-entrypoint/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-06-15 00:00:00+00:00">2025年6月15日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/computer-science/" class="md-meta__link">Computer Science</a>, 
-              <a href="category/indiedev/" class="md-meta__link">IndieDev</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="国内服务器安装-dokploy"><a class="toclink" href="install-dokploy/">国内服务器安装 Dokploy</a></h2>
-<p>使用国内服务器安装 Dokploy 时，可能由于网络问题无法顺利下载某些 Docker 镜像而卡住。本文记录了修改 <code>install.sh</code> 并成功在一台国内服务器上安装 Dokploy 的过程。</p>
-<p><img alt="image-20250615150048780" src="2025-06-15-install-dokploy/index-image/image-20250615150048780.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="install-dokploy/">
           继续阅读
         </a>
       </nav>

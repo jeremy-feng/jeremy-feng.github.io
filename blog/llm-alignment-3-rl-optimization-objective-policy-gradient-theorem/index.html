@@ -12,13 +12,13 @@
         <meta name="author" content="Jeremy Feng">
       
       
-        <link rel="canonical" href="https://fengchao.pro/blog/17/">
+        <link rel="canonical" href="https://fengchao.pro/blog/llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">
       
       
-        <link rel="next" href="../category/computer-science/">
+        <link rel="next" href="../at-a-crossroads-at-24/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>所有文章 - Jeremy Feng's Blog</title>
+        <title>【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理 - Jeremy Feng's Blog</title>
       
     
     
@@ -282,7 +282,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#所有文章" class="md-skip">
+        <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-skip">
           跳转至
         </a>
       
@@ -323,7 +323,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              所有文章
+              【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理
             
           </span>
         </div>
@@ -577,7 +577,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2282,6 +2284,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -2301,10 +2305,12 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alphanet-v3调整网络结构和预测目标" class="md-nav__link">
+  <a href="#强化学习的优化目标" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AlphaNet-V3——调整网络结构和预测目标
+        <span class="md-typeset">
+          强化学习的优化目标
+        </span>
       
     </span>
   </a>
@@ -2312,10 +2318,12 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alphanet基于深度学习的量价因子挖掘" class="md-nav__link">
+  <a href="#如何最大化目标梯度上升" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AlphaNet——基于深度学习的量价因子挖掘
+        <span class="md-typeset">
+          如何最大化目标？——梯度上升
+        </span>
       
     </span>
   </a>
@@ -2323,87 +2331,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pytorch-处理二分类问题" class="md-nav__link">
+  <a href="#策略梯度定理policy-gradient-theorem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PyTorch 处理二分类问题
+        <span class="md-typeset">
+          策略梯度定理（Policy Gradient Theorem）
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="策略梯度定理（Policy Gradient Theorem）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#策略梯度定理的直观解释" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          策略梯度定理的直观解释
+        </span>
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#pytorch-查看模型结构输出张量维度参数个数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PyTorch 查看模型结构：输出张量维度、参数个数
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#查看-pytorch-是否使用-gpu" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     <span class="md-ellipsis">
       
-        查看 PyTorch 是否使用 GPU
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pytorch-dataloader-加载数据" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        PyTorch DataLoader 加载数据
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#样本方差的无偏性" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        样本方差的无偏性
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#在-pandas-中计算方差" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 pandas 中计算方差
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#在-jupyter-notebook-中插入本地图片并导出带有图片的-pdf-文件" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        在 Jupyter Notebook 中插入本地图片并导出带有图片的 PDF 文件
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#随机抽样之-mcmc-算法" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        随机抽样之 MCMC 算法
+        <span class="md-typeset">
+          总结
+        </span>
       
     </span>
   </a>
@@ -2419,542 +2384,369 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    回到首页
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="/blog/avatar.jpg" alt="冯超">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          冯超
+                        
+                      </strong>
+                      <br>
+                      Jeremy Feng
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                     
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-11-22 00:00:00+00:00" class="md-ellipsis">2025年11月22日</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                             
+                            
+                              <a href="../category/llm/">LLM</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              阅读时间 3 分钟
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      相关链接
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://zhuanlan.zhihu.com/p/7461863937" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-22 00:00:00+00:00">2022年12月22日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 11 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="alphanet-v3调整网络结构和预测目标"><a class="toclink" href="../alphanet-v3/">AlphaNet-V3——调整网络结构和预测目标</a></h2>
-<p>在 AlphaNet-V1 加入多步长的特征提取层，将池化层替换为门控循环单元（GRU），并尝试预测收益率和超额收益的方向。最后将随机森林模型作为 baseline 进行比较。</p>
-<figure>
-<p><img alt="TensorBoard 模型结构" src="../2022-12-22-alphanet-v3/index-image/TensorBoard.png" width="300" />
-  </p>
-<figcaption>AlphaNet-V3 模型结构</figcaption>
-</figure>
+  
+    人人都能看懂的 RL-PPO 理论知识
+  
 
     
-      <nav class="md-post__action">
-        <a href="../alphanet-v3/">
-          继续阅读
-        </a>
-      </nav>
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://book.douban.com/subject/37331056/" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
     
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-21 00:00:00+00:00">2022年12月21日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 16 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="alphanet基于深度学习的量价因子挖掘"><a class="toclink" href="../alphanet/">AlphaNet——基于深度学习的量价因子挖掘</a></h2>
-<p>借鉴卷积神经网络的思想，通过自定义运算符函数，构造类似卷积层的特征提取层。结合批标准化层、池化层、全连接层，搭建 AlphaNet-V1，实现从量价数据到收益率预测的自动挖掘。</p>
-<p><img alt="image-20221221154708292" src="../2022-12-21-alphanet/index-image/image-20221221154708292.png" /></p>
+  
+    大模型算法：强化学习、微调与对齐
+  
 
     
-      <nav class="md-post__action">
-        <a href="../alphanet/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-20 00:00:00+00:00">2022年12月20日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pytorch-处理二分类问题"><a class="toclink" href="../binary-classification-in-pytorch/">PyTorch 处理二分类问题</a></h2>
-<p>在量化研究中，将预测收益率数值的回归问题转换为预测涨跌、预测超额收益的正负等二分类问题是十分常见的。在 PyTorch 中可以修改部分代码，让回归问题的网络结构在二分类问题中也同样适用。</p>
+  </span>
+  
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../binary-classification-in-pytorch/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-19 00:00:00+00:00">2022年12月19日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pytorch-查看模型结构输出张量维度参数个数"><a class="toclink" href="../pytorch-summary/">PyTorch 查看模型结构：输出张量维度、参数个数</a></h2>
-<p>使用<code>pytorch-summary</code>实现<code>Keras</code>中<code>model.summary()</code>的类似效果。</p>
+      </a>
+    </li>
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../pytorch-summary/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-18 00:00:00+00:00">2022年12月18日</time></li>
-        
-          <li class="md-meta__item">
-             
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
             
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
+          </nav>
           
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="查看-pytorch-是否使用-gpu"><a class="toclink" href="../check-device-in-pytorch/">查看 PyTorch 是否使用 GPU</a></h2>
-<p>借助 torch.cuda 中的命令，可以帮助我们查看 PyTorch 是否使用 GPU。</p>
-<p><img alt="image-20221218225825151" src="../2022-12-18-check-device-in-pytorch/index-image/image-20221218225825151.png" /></p>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
 
-    
-      <nav class="md-post__action">
-        <a href="../check-device-in-pytorch/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-17 00:00:00+00:00">2022年12月17日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="pytorch-dataloader-加载数据"><a class="toclink" href="../pytorch-dataloader/">PyTorch DataLoader 加载数据</a></h2>
-<p>在 DataLoader 中指定 batch_size 后，可以将输入数据划分为多个 Batch，分批输入到网络中训练。</p>
 
+  <nav class="md-tags" >
     
-      <nav class="md-post__action">
-        <a href="../pytorch-dataloader/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-17 00:00:00+00:00">2022年12月17日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
+      
+      
         
         
           
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
         
-        
-      </ul>
       
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="样本方差的无偏性"><a class="toclink" href="../unbiasness-of-sample-variance/">样本方差的无偏性</a></h2>
-<p>样本方差的分母是 n-1，这使得样本方差是总体方差的无偏估计。</p>
+      
+        <a href="../tags/#tag:llm" class="md-tag md-tag-icon md-tag--llm">LLM</a>
+      
+    
+  </nav>
 
-    
-      <nav class="md-post__action">
-        <a href="../unbiasness-of-sample-variance/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
+
+  
+    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-11-22-llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit noopener" target="_blank">
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-16 00:00:00+00:00">2022年12月16日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a>, 
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-pandas-中计算方差"><a class="toclink" href="../calculate-variance-in-pandas/">在 pandas 中计算方差</a></h2>
-<p class="annotate">pandas 默认的<code>.var()</code>方法计算的是样本方差，即自由度为<span class="arithmatex">\(N-1\)</span>。若想计算总体方差，需指定参数<code>ddof=0</code>(1)。</p>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="llm-对齐系列三强化学习的优化目标与策略梯度定理">【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理<a class="headerlink" href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" title="定位到这">&para;</a></h1>
+<p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们介绍了强化学习的三个重要概念：策略（Policy）是智能体的行动指南，奖励（Reward）是评价行动好坏的标尺，而轨迹（Trajectory）则是智能体与环境交互的全过程。</p>
+<p>有了这些概念，我们就可以正式进入强化学习的核心问题：如何训练智能体？换句话说，我们已经有了“运动员”（策略）和“裁判”（奖励函数），现在的任务是：如何调整运动员的动作参数 <span class="arithmatex">\(\theta\)</span>，让他的得分越来越高？</p>
+<p>本文将介绍强化学习需要优化的目标函数，并推导出指导优化目标函数的策略梯度定理。</p>
+<p><img alt="1763749183306" src="../2025-11-22-llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/image/index/1763749183306.png" /></p>
+<!-- more -->
+
+<h2 id="强化学习的优化目标">强化学习的优化目标<a class="headerlink" href="#强化学习的优化目标" title="定位到这">&para;</a></h2>
+<p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们介绍了轨迹 <span class="arithmatex">\(\tau\)</span> 及其概率 <span class="arithmatex">\(p(\tau; \theta)\)</span> 的概念。我们知道，对于任意一条轨迹，环境都会反馈一个回报 <span class="arithmatex">\(R(\tau)\)</span>。由于策略 <span class="arithmatex">\(\pi_\theta\)</span> 的随机性，每次交互产生的轨迹可能都不相同，获得的回报自然也会有波动。因此，要衡量一个策略到底“好不好”，我们不能只看单次结果，而应该看它在统计意义上的平均表现，即期望回报。</p>
+<p>强化学习的优化目标，就是要找到一组参数 <span class="arithmatex">\(\theta\)</span>，使得策略 <span class="arithmatex">\(\pi_{\theta}\)</span> 的期望回报最大化。数学上，我们将优化目标函数 <span class="arithmatex">\(J(\theta)\)</span> 定义为：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+J(\theta) &amp;= \underbrace{\mathbb{E}_{\tau \sim p(\tau; \theta)}[R(\tau)]}_{\text{期望回报}}\\
+&amp;= \sum_{\tau} \underbrace{p(\tau; \theta)}_{\text{轨迹出现的概率}} \cdot \underbrace{R(\tau)}_{\text{轨迹回报}}
+\end{aligned}
+\]</div>
+<p>直观上看，如果我们希望 <span class="arithmatex">\(J(\theta)\)</span> 变大，则需要调整参数 <span class="arithmatex">\(\theta\)</span>，使得那些获得高回报 <span class="arithmatex">\(R(\tau)\)</span> 的轨迹 <span class="arithmatex">\(\tau\)</span> 出现的概率 <span class="arithmatex">\(p(\tau; \theta)\)</span> 变大，而低回报轨迹出现的概率变小。</p>
+<h2 id="如何最大化目标梯度上升">如何最大化目标？——梯度上升<a class="headerlink" href="#如何最大化目标梯度上升" title="定位到这">&para;</a></h2>
+<p>为了最大化 <span class="arithmatex">\(J(\theta)\)</span>，最直接的方法是梯度上升（Gradient Ascent）。我们需要计算目标函数关于参数 <span class="arithmatex">\(\theta\)</span> 的梯度 <span class="arithmatex">\(\nabla_\theta J(\theta)\)</span>，然后沿着梯度的方向更新参数：</p>
+<div class="arithmatex">\[
+\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)
+\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 是学习率。</p>
+<p>然而，计算 <span class="arithmatex">\(J(\theta)\)</span> 梯度并不容易。让我们试着直接对目标函数求导，看看会发生什么：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \nabla_\theta \sum_{\tau} p(\tau; \theta) R(\tau)
+\]</div>
+<p>由于求和与求导是线性的，我们可以把梯度符号移到求和符号内部：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \sum_{\tau} \nabla_\theta p(\tau; \theta) R(\tau)
+\]</div>
+<p>这里我们遇到了一个棘手的问题：现在的公式变成了所有轨迹的“概率梯度”乘以“回报”的总和。但是，在强化学习中，我们无法遍历所有可能的轨迹 <span class="arithmatex">\(\tau\)</span>，只能通过通过环境交互来采样。为了利用采样来近似计算，我们必须把公式凑成“期望”的形式，也就是 <span class="arithmatex">\(\mathbb{E}_{p}[\dots] = \sum p(\tau) \times (\dots)\)</span> 的形式。遗憾的是，上面的公式里只有 <span class="arithmatex">\(\nabla_\theta p(\tau; \theta)\)</span>，缺少了关键的概率项 <span class="arithmatex">\(p(\tau; \theta)\)</span>。</p>
+<p>为了解决这个问题，我们需要做一个巧妙的恒等变换：在公式中人为地乘以并除以 <span class="arithmatex">\(p(\tau; \theta)\)</span>，这样就能获得 <span class="arithmatex">\(p(\tau; \theta)\)</span> 这一项。这个操作并不改变原式的值：</p>
+<div class="arithmatex">\[
+\nabla_\theta p(\tau; \theta) = p(\tau; \theta) \frac{\nabla_\theta p(\tau; \theta)}{p(\tau; \theta)}
+\]</div>
+<p>此时，我们观察到分数部分 <span class="arithmatex">\(\frac{\nabla_\theta p(\tau; \theta)}{p(\tau; \theta)}\)</span> 正好符合对数求导法则（Log-Derivative Rule），即 <span class="arithmatex">\((\log x)' = x' / x\)</span>。所以：</p>
+<div class="arithmatex">\[
+\frac{\nabla_\theta p(\tau; \theta)}{p(\tau; \theta)} = \nabla_\theta \log p(\tau; \theta)
+\]</div>
+<p>将这个替换代回原公式：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \sum_{\tau} p(\tau; \theta) \nabla_\theta \log p(\tau; \theta) R(\tau)
+\]</div>
+<p>现在，公式开头出现了 <span class="arithmatex">\(p(\tau; \theta)\)</span>，这正是我们想要的期望形式：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p(\tau; \theta)} [\nabla_\theta \log p(\tau; \theta) R(\tau)]
+\]</div>
+<p>至此，我们将难以计算的梯度，成功转化为了“对数概率梯度的期望”。这意味着我们可以通过采样轨迹，计算 <span class="arithmatex">\(\nabla_\theta \log p(\tau; \theta) R(\tau)\)</span> 的平均值来近似真正的梯度。</p>
+<h2 id="策略梯度定理policy-gradient-theorem">策略梯度定理（Policy Gradient Theorem）<a class="headerlink" href="#策略梯度定理policy-gradient-theorem" title="定位到这">&para;</a></h2>
+<p><span class="arithmatex">\(\nabla_\theta J(\theta)\)</span> 的公式看起来已经很简洁了，但在实际计算中，我们仍然面临一个障碍：<span class="arithmatex">\(\nabla_\theta \log p(\tau; \theta)\)</span> 到底怎么算？</p>
+<p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们知道，一条特定的轨迹 <span class="arithmatex">\(\tau\)</span> 的发生概率 <span class="arithmatex">\(p(\tau; \theta)\)</span> 是由环境和策略这两个对象共同决定的。</p>
+<div class="arithmatex">\[
+\begin{aligned}
+p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1}, r_{T-1}, s_T \}; \theta) \\
+&amp;= \underbrace{p(s_0)}_{\text{初始状态概率}} \cdot \prod_{t=0}^{T-1} \left( \underbrace{\pi_\theta(a_t \mid s_t)}_{\text{动作选择概率}} \cdot \underbrace{P(s_{t+1} \mid s_t, a_t)}_{\text{状态转移概率}} \right)
+\end{aligned}
+\]</div>
+<p><span class="arithmatex">\(p(\tau; \theta)\)</span> 是一个累乘的形式。因此，对于 <span class="arithmatex">\(\nabla_\theta J(\theta)\)</span> 中的 <span class="arithmatex">\(\log p(\tau; \theta)\)</span> 这一项，在取对数后就变成了累加的形式：</p>
+<div class="arithmatex">\[
+\log p(\tau; \theta) = \log p(s_0) + \sum_{t=0}^{T-1} \log \pi_\theta(a_t|s_t) + \sum_{t=0}^{T-1} \log p(s_{t+1}|s_t, a_t)
+\]</div>
+<p>我们需要求 <span class="arithmatex">\(\log p(\tau; \theta)\)</span> 关于 <span class="arithmatex">\(\theta\)</span> 的梯度，可以逐个分析这三部分对 <span class="arithmatex">\(\theta\)</span> 求梯度的结果。</p>
 <ol>
-<li>Delta Degrees of Freedom。当指定<code>ddof</code>时，计算方差的分母为<code>N-ddof</code>。</li>
+<li>
+<p>初始状态分布 <span class="arithmatex">\(p(s_0)\)</span> 来源于环境，与 <span class="arithmatex">\(\theta\)</span> 无关，因此第一项的梯度为 0。</p>
+</li>
+<li>
+<p>对第二项直接添加梯度符号，变成 <span class="arithmatex">\(\sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)\)</span>。</p>
+</li>
+<li>
+<p>状态转移概率 <span class="arithmatex">\(p(s_{t+1}|s_t, a_t)\)</span> 取决于客观环境，也与 <span class="arithmatex">\(\theta\)</span> 无关，因此第三项的梯度也为 0。</p>
+</li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">总结</p>
+<p>因此，公式中所有涉及环境的项在求梯度后全部消失！只剩下与策略有关的项：</p>
+<div class="arithmatex">\[
+\nabla_\theta \log p(\tau; \theta) = \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t)
+\]</div>
+<p>这就是策略梯度定理的基础形式。它告诉我们：即使我们完全不知道客观的环境模型（Model-free），只要我们能计算策略网络的梯度，就可以对智能体进行优化。</p>
+<p>最后，将这个结果代回我们的目标函数梯度公式中：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p(\tau; \theta)} \left[ \left( \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t) \right) \cdot R(\tau) \right] \tag{1}\label{1}
+\]</div>
+<h3 id="策略梯度定理的直观解释">策略梯度定理的直观解释<a class="headerlink" href="#策略梯度定理的直观解释" title="定位到这">&para;</a></h3>
+<p>公式 <span class="arithmatex">\(\eqref{1}\)</span> 的直觉含义十分朴素，可以用一句话概括：动作带来的期望回报越高，越要增大这个动作出现的概率。</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 告诉我们如何调整参数 <span class="arithmatex">\(\theta\)</span>，才能让智能体在状态 <span class="arithmatex">\(s_t\)</span> 下更有可能选出动作 $a，即“增加当前动作出现概率”的梯度方向。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(R(\tau)\)</span> 则充当了一个方向和权重系数的作用。</p>
 <ul>
-<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n-1，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>；</li>
-<li>NumPy 中的<code class="highlight"><span class="n">var</span><span class="p">()</span></code>默认的自由度是 n，即<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>；</li>
-<li>pandas 中的<code class="highlight"><span class="n">var</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>相当于 NumPy 中的 <code class="highlight"><span class="n">var</span><span class="p">()</span></code>。</li>
+<li>
+<p>如果 <span class="arithmatex">\(R(\tau)\)</span> 是一个很大的正数，说明这个策略得到的轨迹的回报很高。我们就会沿着“增加当前动作出现概率”的梯度方向迈出一大步。这意味着我们要大幅增加这条轨迹中所有动作出现的概率。即：“刚才这么做既然得分了，下次遇到这种情况，还要这么做！”</p>
+</li>
+<li>
+<p>如果 <span class="arithmatex">\(R(\tau)\)</span> 是一个很小的负数，说明这个策略得到的轨迹的回报很低。将 <span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 乘以一个负数后，原本“增加当前动作出现概率”的方向就会变成“减少当前动作出现概率”的方向。这意味着我们要抑制这些动作再次出现。即：“刚才这么做扣分了，下次千万别这么干了！”</p>
+</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../calculate-variance-in-pandas/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-16 00:00:00+00:00">2022年12月16日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="在-jupyter-notebook-中插入本地图片并导出带有图片的-pdf-文件"><a class="toclink" href="../converting-jupyter-notebooks-with-embedded-images-to-pdf/">在 Jupyter Notebook 中插入本地图片并导出带有图片的 PDF 文件</a></h2>
-<p>将 Notebook 转为 PDF 时通常都嵌有本地图片，本文转载了一个可以成功将图片嵌入 PDF 的方法。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../converting-jupyter-notebooks-with-embedded-images-to-pdf/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-16 00:00:00+00:00">2022年12月16日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 6 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="随机抽样之-mcmc-算法"><a class="toclink" href="../markov-chain-monte-carlo/">随机抽样之 MCMC 算法</a></h2>
-<p>MCMC 算法是一种随机抽样算法。借助建议分布，可以在各个样本状态之间进行转移，最终得到目标分布的样本。本文使用了逐分量 MCMC、随机游走和独立性抽样构造 Ising 分布和二元正态分布的随机样本。</p>
-<p><img alt="png" src="../2022-12-16-markov-chain-monte-carlo/index-image/output_58_0.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../markov-chain-monte-carlo/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-      
-        
-          
+</li>
+</ol>
+<p>这就是策略梯度最核心的思想：通过不断地试错（采样），利用最终的回报 <span class="arithmatex">\(R(\tau)\)</span> 作为参考，去放大那些导致高回报的动作的概率，同时抑制导致低回报的动作。即使我们不知道客观的环境模型，只要盯着“回报”这个指挥棒，智能体就能一步步学会正确的策略。</p>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
+<p>本文介绍了强化学习的优化目标——最大化期望回报，并推导出了著名的策略梯度定理。</p>
+<p>这一定理的推导过程展示了一个精妙的变换：通过对数导数技巧，我们将难以直接计算的目标函数梯度，转化为可以通过采样近似的“对数概率梯度的期望”。更重要的是，推导结果证明了我们不需要知道环境模型（状态转移概率），只需要根据策略网络的梯度和采样得到的轨迹回报，就能指导智能体不断进化。这为 Model-free 强化学习奠定了坚实的理论基础。</p>
+<p>策略梯度定理是现代强化学习算法的基石。在接下来的文章中，我们将基于这一理论，介绍具体的算法实现，从最基础的 REINFORCE 算法开始，一步步走进 PPO 等在大模型对齐中广泛应用的高级算法。</p>
 
 
 
-<nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../16/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../15/">15</a> <a class="md-pagination__link" href="../16/">16</a> <span class="md-pagination__current">17</span> <a class="md-pagination__link" href="../18/">18</a> <a class="md-pagination__link" href="../19/">19</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../25/">25</a> <a class="md-pagination__link" href="../18/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../25/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
-</nav>
-        
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 22 日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="jeremy-feng/giscus" data-repo-id="R_kgDOJ-MviA" data-category="Announcements" data-category-id="DIC_kwDOJ-MviM4CYC8Y" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
   </div>
 
           
@@ -2975,10 +2767,12 @@
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页">
+          <a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2988,20 +2782,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                首页
+                【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹
               </div>
             </div>
           </a>
         
         
           
-          <a href="../category/computer-science/" class="md-footer__link md-footer__link--next" aria-label="下一页: Computer Science">
+          <a href="../at-a-crossroads-at-24/" class="md-footer__link md-footer__link--next" aria-label="下一页: 24 岁，站在人生的十字路口">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Computer Science
+                24 岁，站在人生的十字路口
               </div>
             </div>
             <div class="md-footer__button md-icon">

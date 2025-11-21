@@ -1125,6 +1125,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1217,17 +1228,6 @@
     <span class="md-ellipsis">
       
         GPT 论文精读笔记
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Transformer 中的 Positional Encoding Layer
       
     </span>
   </a>
@@ -2462,6 +2462,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2560,17 +2571,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Transformer 中的 Positional Encoding Layer
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2585,6 +2585,58 @@
       <header class="md-typeset">
         <h1 id="llm">LLM<a class="headerlink" href="#llm" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-11-22 00:00:00+00:00">2025年11月22日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="./" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llm-对齐系列三强化学习的优化目标与策略梯度定理"><a class="toclink" href="../../llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">【LLM 对齐系列】（三）：强化学习的优化目标与策略梯度定理</a></h2>
+<p>在<a href="../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">上一篇文章</a>中，我们介绍了强化学习的三个重要概念：策略（Policy）是智能体的行动指南，奖励（Reward）是评价行动好坏的标尺，而轨迹（Trajectory）则是智能体与环境交互的全过程。</p>
+<p>有了这些概念，我们就可以正式进入强化学习的核心问题：如何训练智能体？换句话说，我们已经有了“运动员”（策略）和“裁判”（奖励函数），现在的任务是：如何调整运动员的动作参数 <span class="arithmatex">\(\theta\)</span>，让他的得分越来越高？</p>
+<p>本文将介绍强化学习需要优化的目标函数，并推导出指导优化目标函数的策略梯度定理。</p>
+<p><img alt="1763749183306" src="../../2025-11-22-llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/image/index/1763749183306.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2622,7 +2674,7 @@
   </header>
   <div class="md-post__content md-typeset">
     <h2 id="llm-对齐系列二强化学习的核心概念策略奖励和轨迹"><a class="toclink" href="../../llm-alignment-2-rl-core-concepts-policy-reward-trajectory/">【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹</a></h2>
-<p>在上一篇文章中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
+<p>在<a href="../llm-alignment-1-pretraining-sft-rlhf/">上一篇文章</a>中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
 <p>要深入理解强化学习算法的工作原理，我们首先需要建立一套完整的符号体系。本文作为 LLM 对齐系列的第二篇，将介绍强化学习中的核心概念：策略、奖励和轨迹。</p>
 <p><img alt="image.png" src="https://cdn.gooo.ai/web-images/ba0f7b067f626a9f1ec67404e7b017dbcfd146bd091282e6621cc160d3445e0c"></p>
 
@@ -3120,65 +3172,6 @@ Your browser does not support the video tag.
     
       <nav class="md-post__action">
         <a href="../../gpt/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-30 00:00:00+00:00">2023年4月30日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="./" class="md-meta__link">LLM</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="transformer-中的-positional-encoding-layer"><a class="toclink" href="../../positional-encoding-in-transformer/">Transformer 中的 Positional Encoding Layer</a></h2>
-<p>在 Transformer 的模型结构中，Positional Encoding Layer 是将输入文本进行位置编码，使得模型知道每个词在文本中的绝对位置和相对位置。有时，当一个词的位置发生变化后，语义会发生巨大的变化，因此 Positional Encoding Layer 是至关重要的。</p>
-<p>Transformer 原始论文中只给出了关键的编码公式，而我第一次看到这个公式时觉得晦涩难懂。深度学习课程的老师在课上讲解了之后，我还是不太明白。</p>
-<div class="arithmatex">\[
-\begin{aligned}
-P E(p o s, 2 i+1)&amp;=\cos \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right) \\
-P E(p o s, 2 i)&amp;=\sin \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right)
-\end{aligned}
-\]</div>
-<p>终于，我找到了写得非常好的资料。作者从最简单的绝对位置编码（也就是将第一个位置编码为 1，第二个位置编码为 2，以此类推。这当然是最容易想到的方法。）开始介绍，一步一步引导我们为什么要用上面的公式。</p>
-<p><img alt="image-20230430211441325" src="../../2023-04-30-positional-encoding-in-transformer/index-image/image-20230430211441325.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../positional-encoding-in-transformer/">
           继续阅读
         </a>
       </nav>

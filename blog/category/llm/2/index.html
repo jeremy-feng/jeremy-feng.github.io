@@ -1123,6 +1123,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer 中的 Positional Encoding Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#基于-bert-的中文问答机器人" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2361,6 +2372,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer 中的 Positional Encoding Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#基于-bert-的中文问答机器人" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2385,6 +2407,65 @@
       <header class="md-typeset">
         <h1 id="llm">LLM<a class="headerlink" href="#llm" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-30 00:00:00+00:00">2023年4月30日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
+              <a href="../" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="transformer-中的-positional-encoding-layer"><a class="toclink" href="../../../positional-encoding-in-transformer/">Transformer 中的 Positional Encoding Layer</a></h2>
+<p>在 Transformer 的模型结构中，Positional Encoding Layer 是将输入文本进行位置编码，使得模型知道每个词在文本中的绝对位置和相对位置。有时，当一个词的位置发生变化后，语义会发生巨大的变化，因此 Positional Encoding Layer 是至关重要的。</p>
+<p>Transformer 原始论文中只给出了关键的编码公式，而我第一次看到这个公式时觉得晦涩难懂。深度学习课程的老师在课上讲解了之后，我还是不太明白。</p>
+<div class="arithmatex">\[
+\begin{aligned}
+P E(p o s, 2 i+1)&amp;=\cos \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right) \\
+P E(p o s, 2 i)&amp;=\sin \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right)
+\end{aligned}
+\]</div>
+<p>终于，我找到了写得非常好的资料。作者从最简单的绝对位置编码（也就是将第一个位置编码为 1，第二个位置编码为 2，以此类推。这当然是最容易想到的方法。）开始介绍，一步一步引导我们为什么要用上面的公式。</p>
+<p><img alt="image-20230430211441325" src="../../../2023-04-30-positional-encoding-in-transformer/index-image/image-20230430211441325.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../positional-encoding-in-transformer/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
