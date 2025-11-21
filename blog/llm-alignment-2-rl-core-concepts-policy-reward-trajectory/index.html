@@ -2642,7 +2642,7 @@
 
 <h1 id="llm-对齐系列二强化学习的核心概念策略奖励和轨迹">【LLM 对齐系列】（二）：强化学习的核心概念：策略、奖励和轨迹<a class="headerlink" href="#llm-对齐系列二强化学习的核心概念策略奖励和轨迹" title="定位到这">&para;</a></h1>
 <p>在上一篇文章中，我们介绍了大模型开发的三个主要阶段：预训练、监督微调和强化学习。我们了解到，强化学习阶段是让模型真正对齐人类偏好的关键环节，它通过奖励模型的反馈来指导模型的优化，使模型不仅能“说话”，还能“说得好”、“说得对”。</p>
-<p>要深入理解强化学习算法的工作原理，我们首先需要建立一套完整的符号体系。本文作为 LLM 对齐系列的第二篇，将介绍强化学习中的核心概念，策略、奖励和轨迹。</p>
+<p>要深入理解强化学习算法的工作原理，我们首先需要建立一套完整的符号体系。本文作为 LLM 对齐系列的第二篇，将介绍强化学习中的核心概念：策略、奖励和轨迹。</p>
 <p><img alt="image.png" src="https://cdn.gooo.ai/web-images/ba0f7b067f626a9f1ec67404e7b017dbcfd146bd091282e6621cc160d3445e0c"></p>
 <!-- more -->
 
@@ -2707,14 +2707,12 @@ G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots = \sum_{k=0}^{\infty} \gam
 </li>
 <li>
 <p><strong>权衡近期和远期的利益</strong>：<span class="arithmatex">\(\gamma\)</span> 决定了智能体对未来的重视程度。</p>
-<ul>
+</li>
 <li>
 <p>当 <span class="arithmatex">\(\gamma\)</span> 接近 0 时，未来的奖励会被大幅折扣，导致模型变得“短视”，只关注当前的即时奖励。</p>
 </li>
 <li>
 <p>当 <span class="arithmatex">\(\gamma\)</span> 接近 1 时，模型变得“远视”，更愿意为了长远的重大利益而牺牲眼前的微小收益。</p>
-</li>
-</ul>
 </li>
 <li>
 <p><strong>训练稳定性</strong>：未来的奖励往往具有更大的不确定性，即方差更大。通过折扣因子降低未来奖励的权重，可以减少估计误差，使模型的训练过程更加稳定。</p>
@@ -2728,20 +2726,27 @@ G_t = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \dots = \sum_{k=0}^{\infty} \gam
 \]</div>
 <p>这里的下标对应关系是：在状态 <span class="arithmatex">\(s_t\)</span> 采取动作 <span class="arithmatex">\(a_t\)</span>，环境反馈奖励 <span class="arithmatex">\(r_t\)</span> 并转移到下一状态 <span class="arithmatex">\(s_{t+1}\)</span>。</p>
 <h3 id="轨迹发生的概率">轨迹发生的概率<a class="headerlink" href="#轨迹发生的概率" title="定位到这">&para;</a></h3>
-<p>在强化学习中，一条特定轨迹 <span class="arithmatex">\(\tau\)</span> 的发生是有概率的，其概率取决于两个因素：智能体的<strong>策略</strong>和环境的<strong>状态转移概率</strong>。我们可以将其写成如下公式：</p>
+<p>在强化学习中，一条特定轨迹 <span class="arithmatex">\(\tau = \{s_0, a_0, r_0, s_1, a_1, \dots, s_T\}\)</span> 的发生是有概率的。依据贝叶斯链式法则，我们可以将该概率分解为<strong>初始状态概率</strong>、<strong>策略</strong>和<strong>环境状态转移概率</strong>的乘积。</p>
 <div class="arithmatex">\[
 \begin{aligned}
 p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1}, r_{T-1}, s_T \}; \theta) \\
-&amp;= \prod_{t=0}^{T-1} \underbrace{\pi_\theta(a_t \mid s_t)}_{\text{动作选择概率}} \cdot \underbrace{P(s_{t+1} \mid s_t, a_t)}_{\text{状态转移概率}}
+&amp;= \underbrace{p(s_0)}_{\text{初始状态概率}} \cdot \prod_{t=0}^{T-1} \left( \underbrace{\pi_\theta(a_t \mid s_t)}_{\text{动作选择概率}} \cdot \underbrace{P(s_{t+1} \mid s_t, a_t)}_{\text{状态转移概率}} \right)
 \end{aligned}
 \]</div>
-<p>这个公式表明，轨迹的生成由两个因素共同决定：</p>
+<p>这个公式表明，轨迹的生成由三部分共同决定，且分属于两个不同的对象：</p>
 <ol>
 <li>
-<p>策略：智能体决定动作选择的概率。这是我们可以通过训练参数 <span class="arithmatex">\(\theta\)</span> 来改变的。</p>
+<p>环境 (Environment)：</p>
+<ul>
+<li><span class="arithmatex">\(p(s_0)\)</span>：初始状态分布。决定了智能体“出生”在哪个状态（例如游戏的开局画面）。这是客观存在的，智能体无法控制。</li>
+<li><span class="arithmatex">\(P(s_{t+1} \mid s_t, a_t)\)</span>：状态转移概率。决定了在当前状态做出某个动作后，环境如何变化。这同样是客观规则，不含参数 <span class="arithmatex">\(\theta\)</span>。</li>
+</ul>
 </li>
 <li>
-<p>环境：环境决定状态转移的概率。这通常是客观设置好的，智能体无法直接改变。</p>
+<p>智能体 (Agent)：</p>
+<ul>
+<li><span class="arithmatex">\(\pi_\theta(a_t \mid s_t)\)</span>：策略函数。决定了智能体在某个状态下选择特定动作的概率。这是唯一包含可训练参数 <span class="arithmatex">\(\theta\)</span> 的部分，也是我们优化的对象。</li>
+</ul>
 </li>
 </ol>
 <p>以 LLM 生成句子“你好，世界”为例：状态 <span class="arithmatex">\(s_t\)</span> 是当前的文本上下文（如“你好，”）；动作 <span class="arithmatex">\(a_t\)</span> 是模型生成的下一个 token（如“世界”）；策略 <span class="arithmatex">\(\pi_\theta\)</span> 是模型预测出“世界”的概率。值得注意的是，在 LLM 文本生成场景下，状态转移 <span class="arithmatex">\(P\)</span> 通常是确定性的：一旦选择了 token“世界”，新的状态必然变成“你好，世界”。虽然状态转移是确定的，但由于策略 <span class="arithmatex">\(\pi_\theta\)</span> 的采样过程具有随机性，所以整条轨迹的生成是随机的。</p>
@@ -2780,7 +2785,7 @@ p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 21 日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 22 日</span>
   </span>
 
     
