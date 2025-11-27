@@ -2657,7 +2657,7 @@ p(\tau; \theta) &amp;= p(\{s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_{T-1}, a_{T-1
 <p>公式 <span class="arithmatex">\(\eqref{1}\)</span> 的直觉含义十分朴素，可以用一句话概括：动作带来的期望回报越高，越要增大这个动作出现的概率。</p>
 <ol>
 <li>
-<p><span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 告诉我们如何调整参数 <span class="arithmatex">\(\theta\)</span>，才能让智能体在状态 <span class="arithmatex">\(s_t\)</span> 下更有可能选出动作 <span class="arithmatex">\(a\)</span>，即“增加当前动作出现概率”的梯度方向。</p>
+<p><span class="arithmatex">\(\nabla_\theta \log \pi_\theta(a_t|s_t)\)</span> 告诉我们如何调整参数 <span class="arithmatex">\(\theta\)</span>，才能让智能体在状态 <span class="arithmatex">\(s_t\)</span> 下更有可能选出动作 <span class="arithmatex">\(a_t\)</span>，即“增加当前动作出现概率”的梯度方向。</p>
 </li>
 <li>
 <p><span class="arithmatex">\(R(\tau)\)</span> 则充当了一个方向和权重系数的角色。</p>
