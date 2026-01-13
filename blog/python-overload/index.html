@@ -2612,7 +2612,8 @@
 <h1 id="python-overload-装饰器约束函数签名">Python @overload 装饰器约束函数签名<a class="headerlink" href="#python-overload-装饰器约束函数签名" title="定位到这">&para;</a></h1>
 <p>Python 中的 <code>@overload</code> 装饰器用于向类型检查器声明：<strong>同一函数拥有不同的参数和返回值类型组合</strong>。其核心作用是让类型检查器能够根据调用时的实际参数值，推断出更精确的返回类型，从而避免不必要的类型断言或空值检查。它仅作用于静态类型分析阶段，不影响运行时行为。</p>
 <p>本文介绍了 <code>@overload</code> 的使用动机、正确写法及类型检查效果对比。</p>
-<hr />
+<!-- more -->
+
 <h2 id="问题场景">问题场景<a class="headerlink" href="#问题场景" title="定位到这">&para;</a></h2>
 <p>考虑一个用户查询函数：根据传入的参数类型决定返回类型。传入单个 <code>int</code> ID 时返回单个 <code>User</code> 对象；传入 <code>list[int]</code> ID 列表时返回 <code>list[User]</code> 对象列表。</p>
 <h3 id="不使用-overload-的写法">不使用 @overload 的写法<a class="headerlink" href="#不使用-overload-的写法" title="定位到这">&para;</a></h3>
