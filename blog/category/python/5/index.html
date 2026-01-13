@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -1283,6 +1317,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-进阶教程系列-5获取和修改被保护的属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 进阶教程系列 5：获取和修改被保护的属性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-进阶教程系列-4命令行参数" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1375,17 +1420,6 @@
     <span class="md-ellipsis">
       
         安装 Gurobi 优化器
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#python-滚动回归" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 滚动回归
       
     </span>
   </a>
@@ -2460,6 +2494,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-进阶教程系列-5获取和修改被保护的属性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 进阶教程系列 5：获取和修改被保护的属性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-进阶教程系列-4命令行参数" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2558,17 +2603,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-滚动回归" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 滚动回归
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2583,6 +2617,66 @@
       <header class="md-typeset">
         <h1 id="python">Python<a class="headerlink" href="#python" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-07-31 00:00:00+00:00">2023年7月31日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 5 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-进阶教程系列-5获取和修改被保护的属性"><a class="toclink" href="../../../advanced-python-5-encapsulation/">Python 进阶教程系列 5：获取和修改被保护的属性</a></h2>
+<p>本文是 Python 进阶教程系列 5，主要介绍了 Python 私有化及 <code>_</code> 下划线命名用途，以及使用 <code>getter</code> 、 <code>setter</code> 和 <code>property</code> 来修改被保护的属性。</p>
+<p>本文部分转载了 <a href="https://juejin.cn/post/6955354672794173471" target="_blank" rel="noopener">Python 私有化及 <code>_</code> 下划线命名用途</a>，已获得原作者授权。</p>
+<p>Python 中没有真正的私有属性或方法，但有一些和命名有关的约定，让编程人员处理一些需要私有化的情况。我们常常需要区分私有方法、属性和公有方法、属性以方便管理和调用，在 Python 中如何做呢？</p>
+<p>在变量、方法命名中有下列几种情况：</p>
+<ul>
+<li><code>xx</code> 公有变量/方法</li>
+<li><code>_xx</code> 前置单下划线</li>
+<li><code>__xx</code> 前置双下划线</li>
+<li><code>__xx__</code> 前后双下划线</li>
+<li><code>xx_</code> 后置单下划线</li>
+</ul>
+<p>接下来分别介绍这几种带下划线命名的特性与区别。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../advanced-python-5-encapsulation/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3098,57 +3192,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-24 00:00:00+00:00">2023年4月24日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../" class="md-meta__link">Python</a>, 
-              <a href="../../%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-滚动回归"><a class="toclink" href="../../../rolling-ols/">Python 滚动回归</a></h2>
-<p>本文实现了多个资产分别在时间序列上进行滚动回归，并返回由最新系数计算得到的残差，最后将多个资产的残差结果重新聚合为多重索引的数据框。</p>
-<p><img alt="image-20230424173801905" src="../../../2023-04-24-rolling-ols/index-image/image-20230424173801905.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../../rolling-ols/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -3156,7 +3199,7 @@
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../4/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <span class="md-pagination__current">5</span> <a class="md-pagination__link" href="../6/">6</a> <a class="md-pagination__link" href="../7/">7</a> <a class="md-pagination__link" href="../8/">8</a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../8/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
+  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../4/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../3/">3</a> <a class="md-pagination__link" href="../4/">4</a> <span class="md-pagination__current">5</span> <a class="md-pagination__link" href="../6/">6</a> <a class="md-pagination__link" href="../7/">7</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../9/">9</a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../9/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
 </nav>
         
       

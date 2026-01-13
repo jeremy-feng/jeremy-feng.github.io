@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#在-python-中使用大语言模型进行文本分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        在 Python 中使用大语言模型进行文本分类
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#断开-ssh-连接后继续执行任务" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#批量修改-jupyter-notebook-的内容" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        批量修改 Jupyter Notebook 的内容
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,61 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-01-20 00:00:00+00:00">2024年1月20日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="在-python-中使用大语言模型进行文本分类"><a class="toclink" href="../text-classification-using-llm-with-marvin/">在 Python 中使用大语言模型进行文本分类</a></h2>
+<p>大语言模型可以做很多事情：给它一个提示词，它就能给出聪明的回复。但是，我们有时需要得到结构化的、具有严格类型要求的回答。例如我们需要判断一句话的情感得分，那么我们只需要得到一个数值，而不需要任何其他的元素。即使我们每次都在提示词中写上“请返回一个数值，例如 1.0。不要包含任何其他元素，只要一个数值，求你了”，模型仍然可能会返回各种奇怪的文本，这些文本在后续代码中极有可能出错。</p>
+<p><code>marvin</code> 是一个非常实用的 Python 包，它使用简单的代码和类型提示就能获取特定数据类型的返回。它的官网介绍说：</p>
+<blockquote>
+<p>This lets you focus on what you've always focused on: writing clean, versioned, reusable <em>code</em> and <em>data models</em>, and not scrutinizing whether you begged your LLM hard enough to output JSON or needed to offer it a bigger tip for the right answer.</p>
+</blockquote>
+<p>本文借助 <code>marvin</code> 用 <code>gpt-3.5-turbo</code> 对文本进行二分类，判断一段文本是否由大语言模型生成，而不是人类生成。</p>
+<p><img alt="image-20240120232958730" src="../2024-01-20-text-classification-using-llm-with-marvin/index-image/image-20240120232958730.png" width="500px" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../text-classification-using-llm-with-marvin/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2876,57 +2965,6 @@
     
       <nav class="md-post__action">
         <a href="../randomness-when-convert-set-to-list/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-12-12 00:00:00+00:00">2023年12月12日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="批量修改-jupyter-notebook-的内容"><a class="toclink" href="../nbformat/">批量修改 Jupyter Notebook 的内容</a></h2>
-<p>有时需要批量替换许多 Jupyter Notebook 的内容，由于 Jupyter Notebook 并不是简单的文本文件，在读取和替换时并不像批量修改 Python 脚本那样方便。</p>
-<p>本文介绍了使用 <code>nbformat</code> 批量修改 Jupyter Notebook 的内容的方法。</p>
-<p><img alt="20231207155702" src="../2023-12-12-nbformat/index-image/20231207155702.gif" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../nbformat/">
           继续阅读
         </a>
       </nav>

@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -1283,6 +1317,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-实现多列滚动计算以更优波动率为例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 实现多列滚动计算——以“更优波动率”为例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#修改-jupyter-notebook-的默认-python-解释器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1375,17 +1420,6 @@
     <span class="md-ellipsis">
       
         为静态网页生成文件目录
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#使用-selenium-爬取豆瓣小组讨论信息" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 selenium 爬取豆瓣小组讨论信息
       
     </span>
   </a>
@@ -2460,6 +2494,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#python-实现多列滚动计算以更优波动率为例" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Python 实现多列滚动计算——以“更优波动率”为例
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#修改-jupyter-notebook-的默认-python-解释器" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2558,17 +2603,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#使用-selenium-爬取豆瓣小组讨论信息" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用 selenium 爬取豆瓣小组讨论信息
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2583,6 +2617,67 @@
       <header class="md-typeset">
         <h1 id="python">Python<a class="headerlink" href="#python" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-01-22 00:00:00+00:00">2023年1月22日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../" class="md-meta__link">Python</a>, 
+              <a href="../../%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-实现多列滚动计算以更优波动率为例"><a class="toclink" href="../../../rolling-in-python/">Python 实现多列滚动计算——以“更优波动率”为例</a></h2>
+<p>对单列数据进行滚动计算，可以使用常规的<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>。</p>
+<p>如果需要对多列数据进行滚动计算，可以考虑下面两种方法：</p>
+<ol>
+<li>引入外部包<code>numpy_ext</code>，使用其中的<code class="highlight"><span class="n">rollling_apply</span><span class="p">()</span></code>方法。</li>
+<li>在<code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">()</span></code>中加入参数<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>。</li>
+</ol>
+<p>本文以方正金工发表的一篇研报中提出的计算“更优波动率”为例，实现了对多列数据进行滚动计算，并对上述两种方法总结如下：</p>
+<ol>
+<li><code class="highlight"><span class="n">numpy_ext</span><span class="o">.</span><span class="n">rollling_apply</span><span class="p">()</span></code>需要引入外部包<code class="highlight"><span class="n">numpy_ext</span></code>，该方法接受需要进行滚动计算的多个 Series，并返回计算出的一个数组。</li>
+<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>是 Pandas 内置的函数（需要升级到较新的版本），指定<code class="highlight"><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span></code>后，就可以对数据框中的多列进行滚动计算，并返回一个数据框。若返回的多列结果相同，我们只需要取出其中一列即可。</li>
+<li><code class="highlight"><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">)</span></code>使用了<code class="highlight"><span class="n">engine</span><span class="o">=</span><span class="s1">&#39;numba&#39;</span></code>，计算速度更快。</li>
+</ol>
+
+    
+      <nav class="md-post__action">
+        <a href="../../../rolling-in-python/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3067,56 +3162,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-04 00:00:00+00:00">2022年12月4日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用-selenium-爬取豆瓣小组讨论信息"><a class="toclink" href="../../../crawl-web-using-selenium/">使用 selenium 爬取豆瓣小组讨论信息</a></h2>
-<p>使用 selenium 模拟浏览器访问网页，解析并提取需要的信息，实现网络爬虫。</p>
-<p><img alt="image-20230115235227306" src="../../../2022-12-04-crawl-web-using-selenium/index.zh-image/image-20230115235227306.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../../crawl-web-using-selenium/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -3124,7 +3169,7 @@
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../5/">5</a> <a class="md-pagination__link" href="../6/">6</a> <span class="md-pagination__current">7</span> <a class="md-pagination__link" href="../8/">8</a> <a class="md-pagination__link" href="../8/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../8/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
+  <a class="md-pagination__link" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.41 7.41 17 6l-6 6 6 6 1.41-1.41L13.83 12zm-6 0L11 6l-6 6 6 6 1.41-1.41L7.83 12z"/></svg></a> <a class="md-pagination__link" href="../6/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg></a> <a class="md-pagination__link" href="../">1</a> <span class="md-pagination__dots">..</span> <a class="md-pagination__link" href="../5/">5</a> <a class="md-pagination__link" href="../6/">6</a> <span class="md-pagination__current">7</span> <a class="md-pagination__link" href="../8/">8</a> <a class="md-pagination__link" href="../9/">9</a> <a class="md-pagination__link" href="../8/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a> <a class="md-pagination__link" href="../9/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></a>
 </nav>
         
       

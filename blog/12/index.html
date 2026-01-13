@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#极大似然估计与最小均方误差的等价性" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极大似然估计与最小均方误差的等价性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#单纯形法求解线性规划问题" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#量化投资策略设计与分析---事件驱动策略" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        量化投资策略设计与分析 - 事件驱动策略
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,60 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-04-08 00:00:00+00:00">2023年4月8日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="极大似然估计与最小均方误差的等价性"><a class="toclink" href="../maximum-likelihood-and-least-square/">极大似然估计与最小均方误差的等价性</a></h2>
+<p>在使用最小二乘法估计线性模型的参数时，我们通常会将目标函数写成最小化均方误差的形式：
+$$
+\hat\beta = \min_{\beta} \sum_{i=1}^n
+{\color{red}{(y_i - x_i^T \beta)^2}}
+$$</p>
+<p>为什么我们要用 <mark>均方误差</mark> 作为损失函数？而不是绝对值误差、绝对值的三次方误差等其他形式？本文推导了极大似然估计与最小均方误差的等价性，说明最小均方误差是一种合理的做法。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../maximum-likelihood-and-least-square/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2912,58 +3000,6 @@ x_1, x_2 \geq 0
     
       <nav class="md-post__action">
         <a href="../quantitative-investment-lecture-cta/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-03-18 00:00:00+00:00">2023年3月18日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="量化投资策略设计与分析---事件驱动策略"><a class="toclink" href="../quantitative-investment-lecture-event-driven-strategy/">量化投资策略设计与分析 - 事件驱动策略</a></h2>
-<p>本文是 2023 年 3 月 18 日的量化投资策略设计与分析的课程笔记，本节课介绍了常见的事件驱动策略以及实践中的注意事项。</p>
-<h3 id="事件驱动策略简介"><a class="toclink" href="../quantitative-investment-lecture-event-driven-strategy/#事件驱动策略简介">事件驱动策略简介</a></h3>
-<p>事件驱动（Event Driven）属于量化投资之中的一个重要类别，涵盖投资机会广泛。广义上说，市场上任何发生的有可能与股票市场相关的新闻、事件、公告均有可能成为事件驱动的投资机会。常见重大事件包括：</p>
-<p><img alt="image-20230318091012544" src="../2023-03-18-quantitative-investment-lecture-event-driven-strategy/index-image/image-20230318091012544.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="../quantitative-investment-lecture-event-driven-strategy/">
           继续阅读
         </a>
       </nav>

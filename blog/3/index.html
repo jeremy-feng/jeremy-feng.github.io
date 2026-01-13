@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用-papermill-运行-jupyter-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用 papermill 运行 Jupyter Notebook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#在-pypika-中使用-criterionall-作为筛选条件占位符及其注意事项" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#多线程下调试-python-代码" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        多线程下调试 Python 代码
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,64 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-08-20 00:00:00+00:00">2024年8月20日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用-papermill-运行-jupyter-notebook"><a class="toclink" href="../papermill-execute-notebook/">使用 <code>papermill</code> 运行 Jupyter Notebook</a></h2>
+<p>当执行两个具有前后依赖关系的 Jupyter Notebook 时，我们需要等待第一个 Notebook 运行完成，再开始运行第二个 Notebook。</p>
+<p>一个笨拙的方法是，先预估好第一个 Notebook 运行需要的时间（例如 1 小时），然后在第二个 Notebook 的第一个 Cell 添加：</p>
+<div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+<p>这将使第二个 Notebook 运行 1 小时后，再运行后续的 Cell。</p>
+<p>上述方法需要事先预估第一个 Notebook 运行需要的时间，预估时间过短会导致第二个 Notebook 提前运行，预估时间过长又会导致第二个 Notebook 浪费很多时间在 <code>time.sleep()</code> 上。</p>
+<p>本文介绍了如何使用 <code>papermill</code> 运行 Jupyter Notebook，实现控制先后运行两个 Notebook 的功能。</p>
+<p><img alt="screen-capture" src="../2024-08-20-papermill-execute-notebook/index-image/screen-capture.gif" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../papermill-execute-notebook/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2876,57 +2968,6 @@
     
       <nav class="md-post__action">
         <a href="../beartype/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-03-25 00:00:00+00:00">2024年3月25日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="多线程下调试-python-代码"><a class="toclink" href="../debug-multiple-n-jobs/">多线程下调试 Python 代码</a></h2>
-<p>当启用 <code>n_jobs</code> 超过 1 时，直接调试 Python 代码可能会报错 <code>"Couldn't find a debug adapter descriptor for debug type 'Python Kernel Debug Adapter' (extension might have failed to activate)"</code>。</p>
-<p><img alt="image-20240325190005418" src="../2024-03-25-debug-multiple-n-jobs/index-image/image-20240325190005418.png" /></p>
-<p>本文记录了一个解决方案，可以在 <code>n_jobs</code> 超过 1 的多线程环境下调试 Python 代码。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../debug-multiple-n-jobs/">
           继续阅读
         </a>
       </nav>

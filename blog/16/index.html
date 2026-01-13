@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#修改-jupyter-notebook-的默认-python-解释器" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        修改 Jupyter Notebook 的默认 Python 解释器
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#中文技术文档的写作规范" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#交叉熵损失函数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        交叉熵损失函数
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,61 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-01-19 00:00:00+00:00">2023年1月19日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="修改-jupyter-notebook-的默认-python-解释器"><a class="toclink" href="../change-python-interpreter-in-vscode-jupyter-notebook/">修改 Jupyter Notebook 的默认 Python 解释器</a></h2>
+<p>Conda 可以十分方便地创建虚拟环境，便于在不同的项目中使用不同的 Python 版本、外部包等。今天在创建新的虚拟 Conda 环境后，在 VS Code 中没有找到刚刚创建的 Python 解释器。</p>
+<p>解决方案是：</p>
+<ol>
+<li>先按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Select Interpreter</code>选项，这里应该可以看到最新创建的 Conda 环境；</li>
+<li>再按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Clear Cache and Reload Window</code>选项，重新加载窗口；</li>
+<li>最后点击右上角的“选择内核”，可以看到刚才创建的环境。</li>
+</ol>
+
+    
+      <nav class="md-post__action">
+        <a href="../change-python-interpreter-in-vscode-jupyter-notebook/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2905,60 +2994,6 @@
     
       <nav class="md-post__action">
         <a href="../gradient-descent-local-minimum/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-12-27 00:00:00+00:00">2022年12月27日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="交叉熵损失函数"><a class="toclink" href="../cross-entropy/">交叉熵损失函数</a></h2>
-<p>摘录微软 AI-Edu 中关于交叉熵损失函数的教程，并添加了部分学习注解。<a href="https://github.com/microsoft/ai-edu/blob/master/LICENSE.md" target="_blank" rel="noopener">开源许可</a>。</p>
-<figure>
-<p><img alt="image-20230116235655470" src="../2022-12-27-cross-entropy/index-image/image-20230116235655470.png" width="300" />
-  </p>
-<figcaption>`y=0` 和 `y=1` 时，不同预测值的交叉熵损失</figcaption>
-</figure>
-
-    
-      <nav class="md-post__action">
-        <a href="../cross-entropy/">
           继续阅读
         </a>
       </nav>

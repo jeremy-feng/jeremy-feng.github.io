@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#修改-vs-code-键盘快捷键" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        修改 VS Code 键盘快捷键
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#立春" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#修改-jupyter-notebook-的默认-python-解释器" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        修改 Jupyter Notebook 的默认 Python 解释器
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,57 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-02-05 00:00:00+00:00">2023年2月5日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/computer-science/" class="md-meta__link">Computer Science</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="修改-vs-code-键盘快捷键"><a class="toclink" href="../vscode-keyboard-shortcuts/">修改 VS Code 键盘快捷键</a></h2>
+<p><code>文件</code> &rarr; <code>首选项</code> &rarr; <code>键盘快捷方式</code></p>
+<p><img alt="image-20230205110411486" src="../2023-02-05-vscode-keyboard-shortcuts/index-image/image-20230205110411486.png" width="400px" /></p>
+<p>或者用快捷键<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-k">K</kbd><span>+</span><kbd class="key-s">S</kbd></span> 呼出。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../vscode-keyboard-shortcuts/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2945,61 +3030,6 @@ $$</p>
     
       <nav class="md-post__action">
         <a href="../rolling-in-python/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-01-19 00:00:00+00:00">2023年1月19日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="修改-jupyter-notebook-的默认-python-解释器"><a class="toclink" href="../change-python-interpreter-in-vscode-jupyter-notebook/">修改 Jupyter Notebook 的默认 Python 解释器</a></h2>
-<p>Conda 可以十分方便地创建虚拟环境，便于在不同的项目中使用不同的 Python 版本、外部包等。今天在创建新的虚拟 Conda 环境后，在 VS Code 中没有找到刚刚创建的 Python 解释器。</p>
-<p>解决方案是：</p>
-<ol>
-<li>先按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Select Interpreter</code>选项，这里应该可以看到最新创建的 Conda 环境；</li>
-<li>再按<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-p">P</kbd></span>，调出<code>Clear Cache and Reload Window</code>选项，重新加载窗口；</li>
-<li>最后点击右上角的“选择内核”，可以看到刚才创建的环境。</li>
-</ol>
-
-    
-      <nav class="md-post__action">
-        <a href="../change-python-interpreter-in-vscode-jupyter-notebook/">
           继续阅读
         </a>
       </nav>

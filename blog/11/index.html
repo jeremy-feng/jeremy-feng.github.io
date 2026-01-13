@@ -717,6 +717,8 @@
       
         
       
+        
+      
     
     
     
@@ -780,6 +782,38 @@
   
     <span class="md-typeset">
       2025 年
+    </span>
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../2026/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    <span class="md-typeset">
+      2026 年
     </span>
   
 
@@ -2301,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#为什么-p-值是均匀分布的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么 P 值是均匀分布的？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transformer-中的-positional-encoding-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2399,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#极大似然估计与最小均方误差的等价性" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        极大似然估计与最小均方误差的等价性
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2424,6 +2458,66 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2023-05-01 00:00:00+00:00">2023年5月1日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 1 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="为什么-p-值是均匀分布的"><a class="toclink" href="../proof-that-p-values-under-the-null-are-uniformly-distributed/">为什么 P 值是均匀分布的？</a></h2>
+<p>在学习多重假设检验时，提到了“P 值是均匀分布的”这个结论。本文对“单边检验”和“双边检验”的情形，证明了 P 值是均匀分布的。</p>
+<h3 id="直觉理解"><a class="toclink" href="../proof-that-p-values-under-the-null-are-uniformly-distributed/#直觉理解">直觉理解</a></h3>
+<div class="admonition note">
+<p class="admonition-title">直觉理解</p>
+<p>以单边左侧检验为例（单边检验最好理解，不用考虑两侧的情况），可以这样想：</p>
+<p>P 值小于 <span class="arithmatex">\(0.25\)</span> 意味着什么？意味着观测到的统计量要小于 <span class="arithmatex">\(0.25\)</span> 分位数。</p>
+<p>观测到的统计量小于 <span class="arithmatex">\(0.25\)</span> 分位数的概率是多少？就是 <span class="arithmatex">\(0.25\)</span>。</p>
+<p>也就是说，P 值小于 <span class="arithmatex">\(0.25\)</span> 的概率就是 <span class="arithmatex">\(0.25\)</span>。</p>
+<p>把 <span class="arithmatex">\(0.25\)</span> 换成任何一个 <span class="arithmatex">\(0\)</span> 到 <span class="arithmatex">\(1\)</span> 之间的值，都可以得到：P 值小于某个数的概率就是这个数本身。这就是均匀分布。</p>
+</div>
+<h3 id="证明"><a class="toclink" href="../proof-that-p-values-under-the-null-are-uniformly-distributed/#证明">证明</a></h3>
+<h4 id="单边检验"><a class="toclink" href="../proof-that-p-values-under-the-null-are-uniformly-distributed/#单边检验">单边检验</a></h4>
+
+    
+      <nav class="md-post__action">
+        <a href="../proof-that-p-values-under-the-null-are-uniformly-distributed/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2914,60 +3008,6 @@ P E(p o s, 2 i)&amp;=\sin \left(\frac{p o s}{10000^{2 i / d m o d e l}}\right)
     
       <nav class="md-post__action">
         <a href="../activation-function/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-04-08 00:00:00+00:00">2023年4月8日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/%E7%BB%9F%E8%AE%A1/" class="md-meta__link">统计</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 1 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="极大似然估计与最小均方误差的等价性"><a class="toclink" href="../maximum-likelihood-and-least-square/">极大似然估计与最小均方误差的等价性</a></h2>
-<p>在使用最小二乘法估计线性模型的参数时，我们通常会将目标函数写成最小化均方误差的形式：
-$$
-\hat\beta = \min_{\beta} \sum_{i=1}^n
-{\color{red}{(y_i - x_i^T \beta)^2}}
-$$</p>
-<p>为什么我们要用 <mark>均方误差</mark> 作为损失函数？而不是绝对值误差、绝对值的三次方误差等其他形式？本文推导了极大似然估计与最小均方误差的等价性，说明最小均方误差是一种合理的做法。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../maximum-likelihood-and-least-square/">
           继续阅读
         </a>
       </nav>
