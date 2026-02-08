@@ -2335,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#二分类任务的性能评估指标之-fprtprrecall-和-auc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二分类任务的性能评估指标之 FPR、TPR、Recall 和 AUC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#使用-papermill-运行-jupyter-notebook" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2433,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#python-类型检查工具-beartype" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 类型检查工具 beartype
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2458,6 +2458,55 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-10-16 00:00:00+00:00">2024年10月16日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-meta__link">机器学习</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 2 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="二分类任务的性能评估指标之-fprtprrecall-和-auc"><a class="toclink" href="../fpr-tpr-recall-and-auc/">二分类任务的性能评估指标之 FPR、TPR、Recall 和 AUC</a></h2>
+<p>在机器学习的二分类任务中，常用的评估指标有 <strong>FPR</strong>（假阳性率）、<strong>TPR</strong>（真正率，也叫 Recall）以及 <strong>AUC</strong>（曲线下面积）。本文将简要介绍这些指标的定义，并展示如何使用 Python 计算这些指标，并绘制 ROC 曲线。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../fpr-tpr-recall-and-auc/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2915,59 +2964,6 @@
     
       <nav class="md-post__action">
         <a href="../makefile/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-03-26 00:00:00+00:00">2024年3月26日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="python-类型检查工具-beartype"><a class="toclink" href="../beartype/">Python 类型检查工具 <code>beartype</code></a></h2>
-<p>Python 代码中的类型提示并不是需要强制满足的。如果我们希望代码使用者严格遵循类型提示，在类型不符时抛出错误，可以使用 <code>beartype</code> 进行类型检查。</p>
-<div class="admonition tip">
-<p class="admonition-title">静态类型检查推荐使用 <code>pyright</code></p>
-<p><code>beartype</code> 的功能是：当你真正调用函数时，才进行参数和返回值的类型检查。若我们不想真正运行代码，而只希望进行静态类型检查，可以使用 <a href="https://github.com/microsoft/pyright" target="_blank" rel="noopener"><code>pyright</code></a>。</p>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../beartype/">
           继续阅读
         </a>
       </nav>

@@ -12,11 +12,13 @@
         <meta name="author" content="Jeremy Feng">
       
       
-        <link rel="canonical" href="https://fengchao.pro/blog/at-a-crossroads-at-24/">
+        <link rel="canonical" href="https://fengchao.pro/blog/llm-alignment-4-reinforce-monte-carlo-policy-gradient/">
       
       
-        <link rel="prev" href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">
+        <link rel="prev" href="../python-overload/">
       
+      
+        <link rel="next" href="../at-a-crossroads-at-24/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>24 岁，站在人生的十字路口 - Jeremy Feng's Blog</title>
+        <title>【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现 - Jeremy Feng's Blog</title>
       
     
     
@@ -280,7 +282,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#24-岁站在人生的十字路口" class="md-skip">
+        <a href="#llm-对齐系列四reinforce-算法策略梯度的最简实现" class="md-skip">
           跳转至
         </a>
       
@@ -321,7 +323,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              24 岁，站在人生的十字路口
+              【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现
             
           </span>
         </div>
@@ -2337,11 +2339,75 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#数据与代码在量化中找到热爱" class="md-nav__link">
+  <a href="#从策略梯度定理到-reinforce" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          数据与代码：在量化中找到热爱
+          从策略梯度定理到 REINFORCE
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="从策略梯度定理到 REINFORCE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#蒙特卡洛估计" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          蒙特卡洛估计
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinforce-算法流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          REINFORCE 算法流程
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="REINFORCE 算法流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#为什么用-g_t-而不是-rtau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          为什么用 <span class="arithmatex">\(G_t\)</span> 而不是 <span class="arithmatex">\(R(\tau)\)</span>？
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-场景下的-reinforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          LLM 场景下的 REINFORCE
         </span>
       
     </span>
@@ -2350,11 +2416,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#春节里爆火的-ai我要继续做一个旁观者吗" class="md-nav__link">
+  <a href="#reinforce-的核心问题与关键改进" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          春节里爆火的 AI，我要继续做一个旁观者吗？
+          REINFORCE 的核心问题与关键改进
+        </span>
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="REINFORCE 的核心问题与关键改进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#核心问题高方差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          核心问题：高方差
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#关键改进引入基线baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          关键改进：引入基线（Baseline）
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#改进方向" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          改进方向
         </span>
       
     </span>
@@ -2363,37 +2474,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#我看见那些眼里有光的人们" class="md-nav__link">
+  <a href="#总结" class="md-nav__link">
     <span class="md-ellipsis">
       
         <span class="md-typeset">
-          我看见那些眼里有光的人们
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#当你想做一件事情的时候全世界都会来帮你" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          当你想做一件事情的时候，全世界都会来帮你
-        </span>
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#迈出去而不是一直模拟未来" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        <span class="md-typeset">
-          迈出去，而不是一直模拟未来
+          总结
         </span>
       
     </span>
@@ -2457,7 +2542,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-10-25 00:00:00+00:00" class="md-ellipsis">2025年10月25日</time>
+                        <time datetime="2026-02-08 00:00:00+00:00" class="md-ellipsis">2026年2月8日</time>
                       </div>
                     </li>
                     
@@ -2468,7 +2553,7 @@
                           <span class="md-ellipsis">
                              
                             
-                              <a href="../category/%E7%94%9F%E6%B4%BB/">生活</a></span>
+                              <a href="../category/llm/">LLM</a></span>
                         </div>
                       </li>
                     
@@ -2489,6 +2574,102 @@
                 </nav>
               </li>
             </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      相关链接
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://zhuanlan.zhihu.com/p/7461863937" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人人都能看懂的 RL-PPO 理论知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://book.douban.com/subject/37331056/" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型算法：强化学习、微调与对齐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://link.springer.com/article/10.1007/BF00992696" class="md-nav__link" target="_blank" rel="noopener">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple statistical gradient-following algorithms for connectionist reinforcement learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
             
           </nav>
           
@@ -2512,14 +2693,14 @@
         
       
       
-        <a href="../tags/#tag:生活" class="md-tag md-tag-icon md-tag--life">生活</a>
+        <a href="../tags/#tag:llm" class="md-tag md-tag-icon md-tag--llm">LLM</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2025-10-25-at-a-crossroads-at-24/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit noopener" target="_blank">
+    <a href="https://github.com/jeremy-feng/blog/edit/master/docs/blog/posts/2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit noopener" target="_blank">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2527,101 +2708,107 @@
   
 
 
-<h1 id="24-岁站在人生的十字路口">24 岁，站在人生的十字路口<a class="headerlink" href="#24-岁站在人生的十字路口" title="定位到这">&para;</a></h1>
-<p>2025 年 10 月 9 日，我按下发送键，将辞职信发给了领导。那一刻，我在人生的十字路口转了个弯。</p>
-<p>一年多前刚毕业的我，大概想不到自己会在一年后选择离开公司，甚至离开陪伴了我数年的量化行业。从 2020 年接触量化开始，到实习、全职工作至今，我曾经期待过自己会在这条路上一直走下去。</p>
-<p>改变并不是某个瞬间的决定，而是一个缓慢的积累过程。一些念头在心中生长得很隐秘，最初只是微弱的疑问，后来逐渐变成了无法忽视的声音。我想在 24 岁的十字路口，用这篇博客记录下这场重要的“改变”——记录我走过的路，也记录路上遇到的那些珍贵的人和事。</p>
-<figure>
-<p><img alt="illustration" src="../2025-10-25-at-a-crossroads-at-24/index-image/illustration.png" width="500px" /></p>
-</figure>
+<h1 id="llm-对齐系列四reinforce-算法策略梯度的最简实现">【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现<a class="headerlink" href="#llm-对齐系列四reinforce-算法策略梯度的最简实现" title="定位到这">&para;</a></h1>
+<p>在<a href="../llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">上一篇文章</a>中，我们推导出了策略梯度定理，它告诉我们如何计算目标函数的梯度，从而指导智能体不断进化。我们该如何将这个包含期望的梯度公式，转化为可以一行行写出的代码呢？本文作为 LLM 对齐系列的第四篇，将介绍策略梯度定理的一个算法实现：REINFORCE 算法。</p>
+<p>REINFORCE 算法由 Ronald J. Williams 在 1992 年提出，是最简单、最直接的策略梯度算法。它的核心思想可以用一句话概括：<strong>通过采样轨迹来估计梯度，然后更新策略</strong>。理解 REINFORCE 是理解后续高级算法（如 PPO、GRPO）的基础。</p>
+<p><img alt="REINFORCE 算法插画" src="../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-algorithm.jpg" /></p>
 <!-- more -->
 
-<h2 id="数据与代码在量化中找到热爱">数据与代码：在量化中找到热爱<a class="headerlink" href="#数据与代码在量化中找到热爱" title="定位到这">&para;</a></h2>
-<p>2020 年的那个夏天，一整个学期都没能回到厦大校园上课的我，和大多数商科生一样，正忙着寻找行研、投行、咨询公司的实习机会。那时我还在读大二，疫情让线下实习几乎停摆，我一次次投出简历，却始终没有回音。就在我为没有实习而焦虑的时候，一位比我大两届的厦大学长给我打了个电话，问我愿不愿意跟他一起做量化项目。</p>
-<p>那时我对“量化”并没有太多概念，但在投资学和数理统计的课上，教科书里的数值模拟和编程习题让我感受到，学校里教的知识和技能，真的能运用到真实的世界里并产生价值。于是，我在学长的指导下开始了第一个量化项目。最开始是做数据处理和复现金工研报，有一天晚上的工作深深地影响了我。那天我在宿舍写代码分析数据，遇到了一个技术难题，明明已是深夜，但我完全没有困意。我就是想把代码跑通，想分析结果。直到凌晨一两点，当问题终于被解决，看到结果的那一刻，内心的兴奋和成就感让我感到踏实、满足。我享受用代码、用数据、用数学模型去探索和验证的过程，这也让我认为自己找到了值得热爱的事业。</p>
-<p>正是这份热爱，让我在大三申请保研时有意识地选择了更偏理工科的专业，因为量化行业更偏好数理等技术背景的同学，纯商科背景并不具备优势。作为“跨保”的同学，能收获复旦大学管理学院数据科学与商务分析硕士项目的 offer，到最心仪的院校念书，实在是一件幸运的事。</p>
-<p>从那以后，我的职业路径变得越来越清晰：本科开始补充数理和编程知识，并持续在量化行业实习。研究生入学不久，又通过班级的 Capstone 项目加入了一家量化私募公司。班级规定的项目实习期本来只有三个月，但我和同事们互相都觉得适合继续做下去，就一直留了下来。2023 年 8 月，我顺利获得了 return offer，此后几乎全勤实习。</p>
-<p>直到 2024 年 6 月硕士毕业后，我正式成为了一名量化分析师。我参与了很多 0 到 1 的项目，创造的过程让我接触和学习了不少优秀的研究方法论、工程经验和工作习惯，这些收获也符合学生时代的我对进入职场后的成长期待。那时的我对自己的工作很满意，也充满热情。</p>
-<h2 id="春节里爆火的-ai我要继续做一个旁观者吗">春节里爆火的 AI，我要继续做一个旁观者吗？<a class="headerlink" href="#春节里爆火的-ai我要继续做一个旁观者吗" title="定位到这">&para;</a></h2>
-<p>2025 年春节期间，DeepSeek R1 的发布引爆了全球。但真正让我震撼的，并不是这个模型有多强大。作为 AI 的重度用户，我很早就关注过 DeepSeek 这家公司，也熟悉他们的产品。见多了各家科技公司发布新模型、新产品，人工智能领域的技术进步对我来说并不意外。</p>
-<p>真正让我感到震撼的，是在春节拜年时，我发现连那些文化程度不高、甚至不懂英文的中老年亲戚，都在使用各种各样的 AI 产品。他们能准确读出“DeepSeek“这个词，知道它能做什么，甚至真的在用它解决生活中的问题。那一刻我意识到，AI 的普及速度超出了我的想象，它正在实实在在地改善着千千万万普通人的生活。</p>
-<p>这让我开始反思自己的工作。量化行业主要服务机构和高净值人群，我很难说自己的工作对更多普通人产生了什么积极影响。我似乎没有资格像那些 AI 技术的推动者和产品的创造者一样，自豪地说“我的工作改变了世界，让很多人的生活变得更美好”。</p>
-<p>这种价值观的错位让我感到焦虑。我想，也许我该去做一些能影响更多人的事情。AI 让我看到了这种可能性，但我还没有勇气做出改变。那时我才工作半年多，担心经验不够、机会太少，也害怕自己对 AI 的兴趣只是短暂的冲动。那时我还不确定，这到底是热血，还是热爱。若只是热血，我该冷静下来；可如果是真正的热爱，那它足以支撑我做出重大的改变，从一个旁观者变成参与者。</p>
-<h2 id="我看见那些眼里有光的人们">我看见那些眼里有光的人们<a class="headerlink" href="#我看见那些眼里有光的人们" title="定位到这">&para;</a></h2>
-<p>生活在上海这座国际大都市，我有机会参加许多高质量的 AI 社区活动。在微软 Dev Day、谷歌 Gemini 工作坊、AI Hacker House、外滩大会、PyCon China 等等，线上线下大大小小的活动里，我看到了许多积极拥抱 AI、正在或即将改变世界的人们。</p>
-<p>第一次让我触动的是今年 5 月份在微软 VS Code &amp; Agent Dev Day。一个微软中国团队的产品经理站在台上，和他的同事一起现场演示 GitHub Copilot 的功能和效果。当他说“这是我们微软中国区的团队做的，就在上海。你可以用它做这个，效果会是这样...”，我羡慕他们的眼里是有光的。</p>
-<figure>
-<p><img alt="vscode-agents-dev-day" src="../2025-10-25-at-a-crossroads-at-24/index-image/vscode-agents-dev-day.png" width="500px" />
-  </p>
-<figcaption>VS Code &amp; Agent Dev Day</figcaption>
-</figure>
-<p>我想起 2021 年大四的那个冬天，我第一次使用 GitHub Copilot 时给我带来的惊喜和神奇。我在代码编辑器里写了一行注释，按下回车后，它居然真的帮我生成了几行正确的代码，再按下 Tab 键就自动补全。我兴奋地叫上同学，向他介绍这个神奇的东西。那时我并不知道这个神奇的东西叫做“生成式模型”，也不知道它在未来会有多么迅猛的发展，继续变得更加强大、更加神奇。</p>
-<p>我记得 GitHub Copilot 最初发布时有一句口号叫做“Don't fly solo”。那时 ChatGPT 都还没有问世，AI 的角色还只能是一个辅助人类的“副驾驶”。短短几年后，AI 编程领域已经发生了翻天覆地的变化，Cursor、Claude Code、Codex 等先进工具已经极大地提高了生产效率，甚至彻底改变了许多行业的工作流程和生产方式。编程本身不再是稀缺的技能，好奇心和想象力才是。2025 年夏天，字节跳动的 AI 编程软件 Trae 推出“Solo 模式”，似乎在与几年前的口号呼应：现在 AI 已经坐在了主驾驶，人类才是副驾驶。</p>
-<figure>
-<p><img alt="ai-coding" src="../2025-10-25-at-a-crossroads-at-24/index-image/ai-coding.png" />
-  </p>
-<figcaption>Don't fly solo -&gt; Solo mode</figcaption>
-</figure>
-<p>随着接触的人和事越来越多，看到这些 AI 领域的人们在分享他们创造的技术和产品时，那种自豪、兴奋和成就感是如此真实。我看到了许许多多眼里有光的人，我梦想着自己也能成为这样的人。</p>
-<p>这样的想法越来越强烈，我也逐渐确认：我对 AI 的兴趣不是一时冲动，而是真正的热爱。在 AI 改变世界的进程中，我不想只做一个旁观者，更渴望去做一个参与者。</p>
-<h2 id="当你想做一件事情的时候全世界都会来帮你">当你想做一件事情的时候，全世界都会来帮你<a class="headerlink" href="#当你想做一件事情的时候全世界都会来帮你" title="定位到这">&para;</a></h2>
-<p>虽然内心有做 AI 的想法和计划，但我却一直没有勇气向外界表达。我担心家人朋友们会泼冷水，会劝退我，会阻挠我。我自己也不确定这个改变是不是一个好的选择，未来遇到不顺利时该怎么办，我似乎都没有准备好。直到国庆节前一周，一连串宿命感极强的事件，让我坚定了内心的想法，也鼓起了做出改变的勇气。</p>
-<p>9 月 22 日周一晚上，我像平常一样去健身房上搏击操课，也像平常一样遇到了那位经常一起上团课的大姐姐。我和她之前只是点头之交，但下课后我和她在电梯里，我突然说出了一句连自己都意外的话：“我最近感觉好焦虑啊。”</p>
-<p>我至今无法解释为什么会说出这句话，但它似乎成为了改变一切的开始。那位大姐姐关心地问我怎么了，我就把憋在心里许久的想法说了出来：“我想辞职去做 AI，我想追寻自己的热爱。”出乎意料的是，她的第一反应是：“那很好啊！AI 就是未来啊，你们年轻人就应该敢于尝试，去做自己热爱的事情。我很支持你！”</p>
-<p>这是我第一次向外界表达自己的想法，我没有期待过能够得到如此正面的反馈。这给了我巨大的鼓励，于是我开始主动找其他人聊这个话题，同样也得到了许多正反馈。一位朋友在跟我通了 2 小时电话后，对我鼓励说“只要你想做一件事情，全世界都会来帮你”。</p>
-<figure>
-<p><img alt="the-world-will-help-you" src="../2025-10-25-at-a-crossroads-at-24/index-image/the-world-will-help-you.png" width="500px" />
-  </p>
-<figcaption>当你想做一件事情的时候，全世界都会来帮你</figcaption>
-</figure>
-<p>接下来就是一件件全世界都来帮我的事情。</p>
-<p>一位许久未联系的硕士同学突然找我聊天，说自己对工作现状有些迷茫。我们约了一起吃饭，聊了许多关于工作、理想的话题，我也诉说了我打算转行做 AI 的想法。晚上这位同学给我发了一条微信：</p>
-<figure>
-<p><img alt="warm-wechat-message" src="../2025-10-25-at-a-crossroads-at-24/index-image/warm-wechat-message.png" width="500px" />
-  </p>
-<figcaption>原来我有些时刻也是眼里有光的</figcaption>
-</figure>
-<p>读完这段话后我非常感动。我好像只见过别人眼里有光，但很久没有人说过我眼里有光了。原来我在表达想做 AI 的时候，在别人看来，我也是眼里有光的。这位同学的支持与鼓励，恰恰在我最需要的“特殊时期”出现了。</p>
-<p>周二晚上，我在 B 站上刷到雷军将要做年度演讲，今年的主题是“改变”。看到海报的那一刻，我好像被击中了一样。“面对挑战，原地彷徨，不解决任何问题。唯一的出路，就是改变。”似乎这是命运的安排，让雷军在我正需要解答“要不要改变”这一问题的时候，给我的一些参考答案。</p>
-<figure>
-<p><img alt="2025-leijun-annual-speech" src="../2025-10-25-at-a-crossroads-at-24/index-image/2025-leijun-annual-speech.png" width="500px" />
-  </p>
-<figcaption>雷军 2025 年度演讲——改变</figcaption>
-</figure>
-<p>我认真看完了雷军今年的年度演讲，其中有两句话让我印象特别深刻。</p>
-<p>雷军说：“50 岁正是闯的年纪”。虽然我并不完全认同和相信 50 岁这个时间节点，因为我爸妈就是 50 岁，现在叫他们去闯，我是不太相信也不太乐意的。但我才 24 岁，应该完全有资格、有勇气去尝试、去闯！</p>
-<p>雷军还分享了一句鸡汤：“你只管努力，其他的交给天意”。我心中关于“要不要改变”、“改变后的未来要是不顺利的话怎么办”的种种困惑都被这一句鸡汤给解答：既然一直空想是没有用的，那就大胆努力去做，其他的交给天意，顺其自然就好了。想到就做，不会就学，错了就改。所有这些后果都没什么大不了的，既然可以接受后果，那就只管努力去做。</p>
-<p>一天晚上入睡前，我和往常一样打开小宇宙听播客。在《代码之外》的一期听众来信节目中，几位主播在讨论这样一个话题：”你是否活成了自己想要的样子“，他们用这五个问题衡量一个人是否成功：</p>
-<ol>
+<h2 id="从策略梯度定理到-reinforce">从策略梯度定理到 REINFORCE<a class="headerlink" href="#从策略梯度定理到-reinforce" title="定位到这">&para;</a></h2>
+<p>让我们回顾上一篇推导出的策略梯度定理：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p(\tau; \theta)} \left[ \left( \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t) \right) \cdot R(\tau) \right]
+\]</div>
+<p>这个公式告诉我们：目标函数的梯度等于“对数概率梯度乘以回报”的期望值。问题是，我们如何计算这个期望呢？</p>
+<p>在数学上，期望的定义涉及对所有可能轨迹的求和。我们无法穷举所有轨迹来精确计算它。REINFORCE 算法的核心贡献，就是将这个理论公式通过蒙特卡洛采样转化为一个可执行的算法。</p>
+<h3 id="蒙特卡洛估计">蒙特卡洛估计<a class="headerlink" href="#蒙特卡洛估计" title="定位到这">&para;</a></h3>
+<p><img alt="reinforce-monte-carlo" src="../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-monte-carlo.png" width="500px" /></p>
+<p>蒙特卡洛方法的核心思想是：<strong>用样本均值来近似期望值</strong>。如果我们从分布 <span class="arithmatex">\(p(\tau; \theta)\)</span> 中采样 <span class="arithmatex">\(N\)</span> 条轨迹 <span class="arithmatex">\(\{\tau_1, \tau_2, \dots, \tau_N\}\)</span>，那么期望可以近似为：</p>
+<div class="arithmatex">\[
+\mathbb{E}_{\tau \sim p(\tau; \theta)}[f(\tau)] \approx \frac{1}{N} \sum_{i=1}^{N} f(\tau_i)
+\]</div>
+<p>将这个思想应用到策略梯度公式中，我们得到：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^{N} \left[ \left( \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t^{(i)}|s_t^{(i)}) \right) \cdot R(\tau_i) \right]
+\]</div>
+<p>这是“整轨迹总回报”写法。实际实现中，更常用的等价形式是 reward-to-go 写法：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^{N}\sum_{t=0}^{T-1}\nabla_\theta \log \pi_\theta(a_t^{(i)}|s_t^{(i)}) \cdot G_t^{(i)}, \quad
+G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
+\]</div>
+<p>两种写法在期望上等价；区别在于方差。直觉上，时刻 <span class="arithmatex">\(t\)</span> 的动作只会影响未来奖励，因此用 <span class="arithmatex">\(G_t\)</span> 可以去掉“过去奖励”带来的无关噪声，通常更稳定。</p>
+<p>它的含义很直观：</p>
+<ul>
+<li>让智能体与环境交互，采样 <span class="arithmatex">\(N\)</span> 条轨迹；</li>
+<li>对每条轨迹，计算回报信号（可写成 <span class="arithmatex">\(R(\tau_i)\)</span>，也可写成逐时刻的 <span class="arithmatex">\(G_t^{(i)}\)</span>）和对数概率梯度；</li>
+<li>将所有轨迹的“梯度 × 回报”取平均，作为真实梯度的估计；</li>
+<li>用这个估计值更新参数 <span class="arithmatex">\(\theta\)</span>。</li>
+</ul>
+<h2 id="reinforce-算法流程">REINFORCE 算法流程<a class="headerlink" href="#reinforce-算法流程" title="定位到这">&para;</a></h2>
+<p><img alt="REINFORCE 算法流程图" src="../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-algorithm-flow.png" /></p>
+<h3 id="为什么用-g_t-而不是-rtau">为什么用 <span class="arithmatex">\(G_t\)</span> 而不是 <span class="arithmatex">\(R(\tau)\)</span>？<a class="headerlink" href="#为什么用-g_t-而不是-rtau" title="定位到这">&para;</a></h3>
+<p>在算法流程中，我们用的是从时刻 <span class="arithmatex">\(t\)</span> 开始至轨迹结束的回报 <span class="arithmatex">\(G_t\)</span>，而不是整条轨迹的总回报 <span class="arithmatex">\(R(\tau)\)</span>。</p>
+<p>直觉上，时刻 <span class="arithmatex">\(t\)</span> 的动作 <span class="arithmatex">\(a_t\)</span> 只能影响时刻 <span class="arithmatex">\(t\)</span> 及之后获得的奖励，无法影响过去。如果我们用整条轨迹的回报 <span class="arithmatex">\(R(\tau)\)</span> 来加权，就会把时刻 <span class="arithmatex">\(t\)</span> 之前的奖励也认为受到了动作 <span class="arithmatex">\(a_t\)</span> 的影响，这些信息对于评价动作 <span class="arithmatex">\(a_t\)</span> 是无用的“噪声”。</p>
+<p>举个例子：你正在玩一个游戏，分为三个阶段。你在第一阶段犯了个错，导致扣了 50 分。但在第二阶段，你通过一个神级操作获得了 100 分。在评估第二阶段的这个神级操作的好坏时，我们应该关注它带来了多少未来的收益（100 分），而不应该让它背负第一阶段的“历史包袱”（-50 分）。使用 <span class="arithmatex">\(G_t\)</span> 就是为了实现这种“功过分明”的评估，让每个动作只对它能影响的未来负责，从而降低了无关信息带来的噪声。</p>
+<p>从分解关系也能看出这一点：<span class="arithmatex">\(R(\tau)=\sum_{k=0}^{t-1}\gamma^k r_k+\gamma^t G_t\)</span>。前半项是“过去奖励”，与当前动作 <span class="arithmatex">\(a_t\)</span> 无关，对期望梯度不贡献有效信号；保留 <span class="arithmatex">\(G_t\)</span> 只会去掉噪声而不改变期望，因此能在无偏前提下降低方差。</p>
+<h2 id="llm-场景下的-reinforce">LLM 场景下的 REINFORCE<a class="headerlink" href="#llm-场景下的-reinforce" title="定位到这">&para;</a></h2>
+<p>让我们用 LLM 生成文本的例子来具体理解 REINFORCE 是如何工作的。</p>
+<p><img alt="LLM 场景下 REINFORCE 一次迭代流程图" src="../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-llm-iteration.png" /></p>
+<h2 id="reinforce-的核心问题与关键改进">REINFORCE 的核心问题与关键改进<a class="headerlink" href="#reinforce-的核心问题与关键改进" title="定位到这">&para;</a></h2>
+<p>REINFORCE 算法虽然简单直接，但在实际应用中的核心挑战是高方差；“引入基线”是最关键、最经典的缓解手段。</p>
+<h3 id="核心问题高方差">核心问题：高方差<a class="headerlink" href="#核心问题高方差" title="定位到这">&para;</a></h3>
+<p>REINFORCE 使用蒙特卡洛采样来估计梯度，这意味着梯度的估计值会随着采样的轨迹不同而剧烈波动。</p>
+<p>想象一下，你是一个学生，想知道自己的“真实水平”。REINFORCE 的做法是：每次随机抽一道题做，根据这道题的得分来判断自己的水平。问题在于，如果这次抽到的是简单题，你可能得满分；如果抽到难题，你可能得零分。单次考试的成绩波动很大，很难反映真实水平。</p>
+<p>在强化学习中，不同轨迹的回报 <span class="arithmatex">\(R(\tau)\)</span> 可能相差很大。这种高方差会导致：</p>
+<ul>
 <li>
-<p>你早上醒来的时候会感到兴奋还是厌倦？</p>
+<p><strong>训练不稳定</strong>：参数更新的方向变化较大，难以收敛；</p>
 </li>
 <li>
-<p>你有没有可以毫无保留倾诉的人？</p>
+<p><strong>样本效率低</strong>：需要大量采样才能得到可靠的梯度估计；</p>
 </li>
 <li>
-<p>你过去一年有没有掌握新技能或者得到一些成长？</p>
+<p><strong>学习速度慢</strong>：这就像在一片嘈杂的声音中寻找一个微弱的信号。有用的梯度信号（真水平）很容易被巨大的采样方差（运气）所淹没。</p>
+</li>
+</ul>
+<h3 id="关键改进引入基线baseline">关键改进：引入基线（Baseline）<a class="headerlink" href="#关键改进引入基线baseline" title="定位到这">&para;</a></h3>
+<p>原始 REINFORCE 常见形式直接使用 <span class="arithmatex">\(G_t\)</span>，只利用“绝对回报”信号。更有效的做法是减去一个 baseline，让更新信号变成“高于/低于参考水平多少”。</p>
+<p>举个例子：假设在某个游戏中，无论怎么玩，得分都在 90-100 之间。即使你玩得很差（得 90 分），回报仍然是一个很大的正数，REINFORCE 会增加这些动作的概率。即使你玩得很好（得 100 分），增加的幅度也差不多。模型很难区分“还行”和“很好”的差别。</p>
+<p>理想情况下，我们希望：</p>
+<ul>
+<li>
+<p>如果回报高于平均水平，就增加这些动作的概率</p>
 </li>
 <li>
-<p>你能自主决定大部分时间如何安排吗？</p>
+<p>如果回报低于平均水平，就降低这些动作的概率</p>
+</li>
+</ul>
+<p>这就引出了“基线”（Baseline）的概念。更一般的写法是让基线依赖状态：</p>
+<div class="arithmatex">\[
+\nabla_\theta J(\theta) = \mathbb{E}_\tau \left[ \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)\cdot (G_t - b(s_t)) \right]
+\]</div>
+<p>这里的 <span class="arithmatex">\((G_t - b(s_t))\)</span> 衡量的是“这个动作结果比状态基线好多少”。只要 baseline 不依赖动作 <span class="arithmatex">\(a_t\)</span>，梯度估计仍然是无偏的；它的主要作用是降低方差。</p>
+<h2 id="改进方向">改进方向<a class="headerlink" href="#改进方向" title="定位到这">&para;</a></h2>
+<p>围绕“高方差”这一核心挑战，后续算法主要沿着以下方向改进：</p>
+<ul>
+<li>
+<p><strong>引入基线降低方差</strong>：最常用的基线是状态价值函数 <span class="arithmatex">\(V\left(s\right)\)</span>，它表示从状态 <span class="arithmatex">\(s\)</span> 出发的期望回报。这就引出了 <strong>Actor-Critic</strong> 架构：Actor（策略网络）负责决策动作，Critic（价值网络）负责评估状态的价值。</p>
 </li>
 <li>
-<p>你做的事，对别人有积极影响吗？</p>
+<p><strong>限制策略更新幅度</strong>：由于高方差，每次更新可能导致策略剧烈变化。<strong>TRPO</strong>（Trust Region Policy Optimization）和 <strong>PPO</strong>（Proximal Policy Optimization）通过限制新旧策略之间的差异，提高训练的稳定性。</p>
 </li>
-</ol>
-<figure>
-<p><img alt="beyond-code" src="../2025-10-25-at-a-crossroads-at-24/index-image/beyond-code.png" width="500px" />
-  </p>
-<figcaption>《代码之外》听众来信 #23 用 5 个问题衡量你是否成功</figcaption>
-</figure>
-<p>这里面的每一个问题都让我深思。有一些我认为自己做得还算很棒，我很幸运一直有可以毫无保留倾诉的对象，也有感到一直在进步和成长。但最后一个问题，让我又一次思考自己的价值观，我认为自己还称不上成功。</p>
-<p>我想要做出改变，现在全世界似乎真的都在帮我。于是在中秋节的晚上，我正式向爸妈表达我打算辞职做 AI 的想法。我的爸妈也许并不真正懂得什么是“量化”、什么又是“AI”，但我希望尽力让他们理解我的经历、我是如何思考的，以及我今后具体的打算、未来可能遇到的情况等等。这样若是今后遇到挫折与不顺利了，最爱我的两个人也不会太过担心。爸妈没有谈论太多关于各种选择和可能性的对比，他们只用几句朴素的话表达对我的支持：“男孩子就是要去闯的，你现在还年轻，失败了也没什么可怕的。喜欢就去做，总比你过几年回头看觉得后悔好。”</p>
-<h2 id="迈出去而不是一直模拟未来">迈出去，而不是一直模拟未来<a class="headerlink" href="#迈出去而不是一直模拟未来" title="定位到这">&para;</a></h2>
-<p>该想的已经想了，该聊的也已经聊了，我终于可以不再犹豫，去做自己想做的事。</p>
-<p>10 月 7 日，我写好了辞职信。10 月 9 日早上一到公司，我就把它发给了领导。准备发送前，我的心跳竟有些加快，毕竟这是我第一次重要的职场转变，不知道会发生什么。但按下发送键后，我变得十分平静，觉得没什么可害怕的。</p>
-<p>有些出乎我意料的是，领导和老板都表达了尊重、理解和支持，甚至欣赏我的理想与真诚、关心我的未来打算，还聊到有朋友在做 AI 可以内推我，这让我非常非常感动。没有人泼冷水，没有人阻挠，没有人因为我的离开而对我有恶意，所有我之前担心的情况全都没有发生。我的同事们还是那么的好。</p>
-<p>真正开始行动起来后，我有一个深刻的感悟。之前的我想了很多很多，就像是在做蒙特卡洛模拟：从当前的起点出发，大脑会想象各种可能的情况，线条也向着各个方向推演。模拟得越多，脑中的线条就越多，也越混乱。但当我真的迈出步子后，那些混乱的线条开始变得清晰。回过头看，很多当时想象向下的线条逐渐被擦去，留下的更多是向上的好结果。所以，比起一直在脑中模拟未来，更重要的是迈出去真正实现未来。</p>
-<p>现在，24 岁的我，站在人生的十字路口。我决定听从内心的召唤，去做那些真正能够积极影响更多人的事情，去做改变世界哪怕一点点的事情。未来会怎样？我确实不知道，那就把这些问题交给天意吧，因为我相信一切都是最好的安排。</p>
+<li>
+<p><strong>提高样本效率</strong>：REINFORCE 是“同策略”（On-policy）算法，采样的轨迹用完就会被扔掉。能否重复利用历史数据？可以使用“异策略”（Off-policy）学习和重要性采样技术来实现。</p>
+</li>
+</ul>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
+<p>本文介绍了 REINFORCE 算法——策略梯度定理的一个简单实现。我们看到，通过蒙特卡洛采样，我们可以将抽象的期望梯度转化为具体的计算步骤：采样轨迹、计算回报、估计梯度、更新参数。</p>
+<p>REINFORCE 的优点在于概念简洁、实现直接，不需要知道环境模型。但它的缺陷是高方差，导致训练不稳定、样本效率低。引入基线（以及进一步的 advantage 估计）是最直接的改进方向，后续一系列算法都建立在这条主线上。</p>
+<div class="admonition note">
+<p class="admonition-title">REINFORCE 算法名字的由来</p>
+<p>很多人认为 REINFORCE 这个名字来自“强化学习”的英文 Reinforcement Learning。实际上，REINFORCE 是一个精心设计的首字母缩写，代表：REward Increment = Nonnegative Factor times Offset Reinforcement times Characteristic Eligibility（奖励增量 = 非负因子 × 偏移强化 × 特征资格）。这个略显繁复的名字来自 <a href="https://link.springer.com/article/10.1007/BF00992696" target="_blank" rel="noopener">Ronald J. Williams 在 1992 年发表的开创性论文</a>。Williams 在论文中特别指出，这类算法本身并不是全新发明，而是对已有方法的系统性总结和命名——它们之前就以不同形式存在，只是没有被统一识别和规范化。</p>
+<p><img alt="REINFORCE 原始论文截图" src="../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-origin.png" /></p>
+</div>
 
 
 
@@ -2642,7 +2829,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 21 日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2026 年 2 月 09 日</span>
   </span>
 
     
@@ -2718,7 +2905,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现">
+          <a href="../python-overload/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python @overload 装饰器约束函数签名">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2728,11 +2915,27 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现
+                Python @overload 装饰器约束函数签名
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../at-a-crossroads-at-24/" class="md-footer__link md-footer__link--next" aria-label="下一页: 24 岁，站在人生的十字路口">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                24 岁，站在人生的十字路口
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     

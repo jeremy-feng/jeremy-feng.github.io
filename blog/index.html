@@ -2346,6 +2346,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列四reinforce-算法策略梯度的最简实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#python-overload-装饰器约束函数签名" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2433,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#google-大模型工作坊奥赛大展" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Google 大模型工作坊&amp;奥赛大展
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2513,6 +2513,57 @@
     
     
       <hr>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-02-08 00:00:00+00:00">2026年2月8日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/llm/" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llm-对齐系列四reinforce-算法策略梯度的最简实现"><a class="toclink" href="llm-alignment-4-reinforce-monte-carlo-policy-gradient/">【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现</a></h2>
+<p>在<a href="../llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">上一篇文章</a>中，我们推导出了策略梯度定理，它告诉我们如何计算目标函数的梯度，从而指导智能体不断进化。我们该如何将这个包含期望的梯度公式，转化为可以一行行写出的代码呢？本文作为 LLM 对齐系列的第四篇，将介绍策略梯度定理的一个算法实现：REINFORCE 算法。</p>
+<p>REINFORCE 算法由 Ronald J. Williams 在 1992 年提出，是最简单、最直接的策略梯度算法。它的核心思想可以用一句话概括：<strong>通过采样轨迹来估计梯度，然后更新策略</strong>。理解 REINFORCE 是理解后续高级算法（如 PPO、GRPO）的基础。</p>
+<p><img alt="REINFORCE 算法插画" src="2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-algorithm.jpg" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="llm-alignment-4-reinforce-monte-carlo-policy-gradient/">
+          继续阅读
+        </a>
+      </nav>
+    
     
   </div>
 </article>
@@ -2991,56 +3042,6 @@ Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
     
       <nav class="md-post__action">
         <a href="llm-study-mode-system-prompt/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-20 00:00:00+00:00">2025年7月20日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="google-大模型工作坊奥赛大展"><a class="toclink" href="google-workshop-and-museum-of-art/">Google 大模型工作坊&amp;奥赛大展</a></h2>
-<p><img alt="2978EEE9-890B-4BF9-B91E-9C36B0BE7185_1_105_c" src="2025-07-20-google-workshop-and-museum-of-art/index-image/2978EEE9-890B-4BF9-B91E-9C36B0BE7185_1_105_c.jpeg" /></p>
-<p><img alt="image-20250721001823783" src="2025-07-20-google-workshop-and-museum-of-art/index-image/image-20250721001823783.png" /></p>
-
-    
-      <nav class="md-post__action">
-        <a href="google-workshop-and-museum-of-art/">
           继续阅读
         </a>
       </nav>

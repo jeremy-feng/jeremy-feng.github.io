@@ -1159,6 +1159,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列四reinforce-算法策略梯度的最简实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1251,17 +1262,6 @@
     <span class="md-ellipsis">
       
         基于强化学习 DQN 算法的登月着陆机器人
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gpt-论文精读笔记" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GPT 论文精读笔记
       
     </span>
   </a>
@@ -2496,6 +2496,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llm-对齐系列四reinforce-算法策略梯度的最简实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llm-对齐系列三强化学习的优化目标与策略梯度定理" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2594,17 +2605,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#gpt-论文精读笔记" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GPT 论文精读笔记
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2619,6 +2619,57 @@
       <header class="md-typeset">
         <h1 id="llm">LLM<a class="headerlink" href="#llm" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-02-08 00:00:00+00:00">2026年2月8日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="./" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llm-对齐系列四reinforce-算法策略梯度的最简实现"><a class="toclink" href="../../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">【LLM 对齐系列】（四）：REINFORCE 算法：策略梯度的最简实现</a></h2>
+<p>在<a href="../llm-alignment-3-rl-optimization-objective-policy-gradient-theorem/">上一篇文章</a>中，我们推导出了策略梯度定理，它告诉我们如何计算目标函数的梯度，从而指导智能体不断进化。我们该如何将这个包含期望的梯度公式，转化为可以一行行写出的代码呢？本文作为 LLM 对齐系列的第四篇，将介绍策略梯度定理的一个算法实现：REINFORCE 算法。</p>
+<p>REINFORCE 算法由 Ronald J. Williams 在 1992 年提出，是最简单、最直接的策略梯度算法。它的核心思想可以用一句话概括：<strong>通过采样轨迹来估计梯度，然后更新策略</strong>。理解 REINFORCE 是理解后续高级算法（如 PPO、GRPO）的基础。</p>
+<p><img alt="REINFORCE 算法插画" src="../../2026-02-08-llm-alignment-4-llm-alignment-4-reinforce-monte-carlo-policy-gradient/image/index/reinforce-algorithm.jpg" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -3149,63 +3200,6 @@ Your browser does not support the video tag.
     
       <nav class="md-post__action">
         <a href="../../dqn-lunar-lander/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2023-05-01 00:00:00+00:00">2023年5月1日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-meta__link">深度学习</a>, 
-              <a href="./" class="md-meta__link">LLM</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 5 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="gpt-论文精读笔记"><a class="toclink" href="../../gpt/">GPT 论文精读笔记</a></h2>
-<p>Generative Pre-trained Transformer（GPT）系列是由 OpenAI 提出的非常强大的预训练语言模型，这一系列的模型可以在非常复杂的 NLP 任务中取得非常惊艳的效果，例如文章生成，代码生成，机器翻译，问答等，而完成这些任务甚至 <mark>并不需要有监督学习进行模型微调</mark> 。</p>
-<p>本文梳理了 GPT 系列文章中介绍的的关键技术，包括：</p>
-<ul>
-<li>GPT-1 的解码器、微调、输入形式；</li>
-<li>GPT-2 的 Zero-shot 和 Prompt；</li>
-<li>GPT-3 的 Few-shot；</li>
-<li>Instruct GPT 如何通过基于人类反馈的强化学习生成有帮助的和安全的文本。</li>
-</ul>
-
-    
-      <nav class="md-post__action">
-        <a href="../../gpt/">
           继续阅读
         </a>
       </nav>
