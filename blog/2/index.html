@@ -773,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2025/" class="md-nav__link">
+      <a href="../2026/" class="md-nav__link">
         
   
   
@@ -781,7 +781,7 @@
     
   
     <span class="md-typeset">
-      2025 年
+      2026 年
     </span>
   
 
@@ -805,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026/" class="md-nav__link">
+      <a href="../2025/" class="md-nav__link">
         
   
   
@@ -813,7 +813,7 @@
     
   
     <span class="md-typeset">
-      2026 年
+      2025 年
     </span>
   
 
@@ -2335,6 +2335,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#使用系统提示词为大模型开启学习模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用系统提示词为大模型开启学习模式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#google-大模型工作坊奥赛大展" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2433,17 +2444,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#借助-torchmetrics-的-compositionalmetric-将越大越好的指标作为损失函数" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        借助 torchmetrics 的 CompositionalMetric 将越大越好的指标作为损失函数
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2458,6 +2458,55 @@
       <header class="md-typeset">
         <h1 id="所有文章">所有文章<a class="headerlink" href="#所有文章" title="定位到这">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-09-10 00:00:00+00:00">2025 年 9 月 10 日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="../category/llm/" class="md-meta__link">LLM</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 3 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="使用系统提示词为大模型开启学习模式"><a class="toclink" href="../llm-study-mode-system-prompt/">使用系统提示词为大模型开启学习模式</a></h2>
+<p>本文介绍了如何使用系统提示词中要求大模型扮演老师的角色，将知识循序渐进地教给我们，而不是直接给出答案。这对想要学习一个新知识领域的人来说十分有帮助。</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../llm-study-mode-system-prompt/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2952,66 +3001,6 @@ y = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \bet
     
       <nav class="md-post__action">
         <a href="../layer-normalization/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-12-18 00:00:00+00:00">2024 年 12 月 18 日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="../category/pytorch/" class="md-meta__link">PyTorch</a>, 
-              <a href="../category/%E9%87%8F%E5%8C%96%E7%A0%94%E7%A9%B6/" class="md-meta__link">量化研究</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 2 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="借助-torchmetrics-的-compositionalmetric-将越大越好的指标作为损失函数"><a class="toclink" href="../torchmetrics-CompositionalMetric/">借助 <code>torchmetrics</code> 的 <code>CompositionalMetric</code> 将越大越好的指标作为损失函数</a></h2>
-<p>在量化研究中，我们可以使用诸如 <code>IC</code> 一类的指标来衡量信号的质量。若将 <code>IC</code> 作为损失函数，我们自然是希望其值越大越好。但是，模型的优化过程总是朝着损失函数越小的方向进行的，因此我们需要将 <code>IC</code> 取反后作为损失值，使得模型朝着 <code>IC</code> 越大的方向优化。</p>
-<p>本文介绍了一个便捷的方法，借助 <code>torchmetrics</code> 的 <code>CompositionalMetric</code> 将越大越好的指标作为损失函数。</p>
-<div class="highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1"></a><a href="#__codelineno-78-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<a id="__codelineno-78-2" name="__codelineno-78-2"></a><a href="#__codelineno-78-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<a id="__codelineno-78-3" name="__codelineno-78-3"></a><a href="#__codelineno-78-3"><span class="linenos" data-linenos="3 "></span></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;原始相关系数：&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">pred</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<a id="__codelineno-78-4" name="__codelineno-78-4"></a><a href="#__codelineno-78-4"><span class="linenos" data-linenos="4 "></span></a><span class="n">loss_fn</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">PearsonCorrCoef</span><span class="p">()</span>
-<a id="__codelineno-78-5" name="__codelineno-78-5"></a><a href="#__codelineno-78-5"><span class="linenos" data-linenos="5 "></span></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;损失函数：&quot;</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1"></a><a href="#__codelineno-79-1"><span class="linenos" data-linenos="1 "></span></a>原始相关系数： 0.9431191251430151
-<a id="__codelineno-79-2" name="__codelineno-79-2"></a><a href="#__codelineno-79-2"><span class="linenos" data-linenos="2 "></span></a>损失函数： tensor(-0.9431)
-</code></pre></div>
-
-    
-      <nav class="md-post__action">
-        <a href="../torchmetrics-CompositionalMetric/">
           继续阅读
         </a>
       </nav>

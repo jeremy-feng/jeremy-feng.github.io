@@ -1,0 +1,109 @@
+\documentclass[border=12pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\definecolor{titlegreen}{RGB}{14,90,69}
+\definecolor{linegreen}{RGB}{42,151,121}
+\definecolor{bggreen}{RGB}{245,252,250}
+
+\newcommand{\stage}[2]{%
+  \vspace{2mm}
+  \noindent\fcolorbox{linegreen}{bggreen}{%
+    \begin{minipage}{0.95\linewidth}
+      \textbf{#1}\\[2pt]
+      #2
+    \end{minipage}%
+  }%
+}
+
+\begin{document}
+\begin{minipage}{22.5cm}
+{\LARGE\bfseries\color{titlegreen} LLM 场景：Actor-Critic 一次训练迭代}
+
+\textbf{场景：}输入 Prompt 后，模型按时间顺序生成 token，最终由奖励模型给整段打分。
+
+\stage{阶段 A：先看一条真实生成轨迹（时间维度）}{
+假设一次回答轨迹为：
+\[
+\begin{aligned}
+s_0&:\text{Prompt},\quad a_0=\text{token}_0\\
+s_1&:\text{已生成 }a_0,\quad a_1=\text{token}_1\\
+&\cdots\\
+s_5&:\text{中段上下文},\quad a_5=\text{token}_5\\
+&\cdots\\
+s_{10}&:\text{临近收尾},\quad a_{10}=\text{token}_{10}
+\end{aligned}
+\]
+\vspace{1mm}
+整段生成结束后，奖励模型给分：
+\[
+R=0.80
+\]
+关键点：这个分数是\textbf{事后}才知道，生成当下并不知道。
+}
+
+\stage{阶段 B：Critic 的 $V(s_t)$ 是“当时预期”}{
+$V(s_t)$ 不是“当前得分”，而是：
+\[
+\text{站在时刻 }t\text{，对最终得分的预期。}
+\]
+假设 Critic 在三个时刻的预期是：
+\[
+\begin{aligned}
+V(s_0)&=0.50\quad (\text{开头还行})\\
+V(s_5)&=0.75\quad (\text{中段不错})\\
+V(s_{10})&=0.90\quad (\text{结尾很有把握})
+\end{aligned}
+\]
+可见 Critic 在后期更乐观。
+}
+
+\stage{阶段 C：用“现实 - 预期”得到优势}{
+一般形式：
+\[
+A_t=r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)
+\]
+\vspace{1mm}
+在“中间奖励近似 0、最终统一回报”的简化叙事下，可直观写成
+\[
+A_t\approx R-V(s_t)
+\]
+代入上面的数值：
+\[
+\begin{aligned}
+A_0&=0.80-0.50=+0.30\\
+A_5&=0.80-0.75=+0.05\\
+A_{10}&=0.80-0.90=-0.10
+\end{aligned}
+\]
+含义：前期“比预期好”，中段“略好”，收尾“低于预期”。
+}
+
+\stage{阶段 D：参数更新与策略改进}{
+Actor 更新：
+\[
+\theta\leftarrow\theta+\alpha\,\nabla_\theta\log\pi_\theta(a_t\mid s_t)\cdot A_t
+\]
+\[
+\begin{aligned}
+A_0>0&:\ \text{类似开头语境下，}a_0\text{概率上升}\\
+A_5>0&:\ \text{中段写法对应 }\,a_5\text{ 概率小幅上升}\\
+A_{10}<0&:\ \text{在该收尾语境下，}a_{10}\text{概率下降}
+\end{aligned}
+\]
+\vspace{1mm}
+Critic 更新（校正“预期”）：
+\[
+y_t=r_t+\gamma V_\phi(s_{t+1})
+\]
+其中 $y_t$ 是 Critic 的 TD 目标（在仅终局奖励的简化设定下可近似为 $y_t\approx R$）。
+\[
+\phi\leftarrow\arg\min_\phi\bigl(V_\phi(s_t)-y_t\bigr)^2
+\]
+结论：Actor-Critic 奖励/惩罚的是“\textbf{在特定上下文下的决策}”，不是 token 本身的绝对好坏。
+}
+\end{minipage}
+\end{document}

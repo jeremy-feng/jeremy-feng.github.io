@@ -18,7 +18,7 @@
         <link rel="prev" href="../python-overload/">
       
       
-        <link rel="next" href="../at-a-crossroads-at-24/">
+        <link rel="next" href="../llm-alignment-5-actor-critic-advantage-function/">
       
       
         
@@ -775,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2025/" class="md-nav__link">
+      <a href="../2026/" class="md-nav__link">
         
   
   
@@ -783,7 +783,7 @@
     
   
     <span class="md-typeset">
-      2025 年
+      2026 年
     </span>
   
 
@@ -807,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2026/" class="md-nav__link">
+      <a href="../2025/" class="md-nav__link">
         
   
   
@@ -815,7 +815,7 @@
     
   
     <span class="md-typeset">
-      2026 年
+      2025 年
     </span>
   
 
@@ -2592,33 +2592,6 @@
   
   
     <li class="md-nav__item">
-      <a href="https://zhuanlan.zhihu.com/p/7461863937" class="md-nav__link" target="_blank" rel="noopener">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    人人都能看懂的 RL-PPO 理论知识
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="https://book.douban.com/subject/37331056/" class="md-nav__link" target="_blank" rel="noopener">
         
   
@@ -2749,7 +2722,7 @@ G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
 <h3 id="为什么用-g_t-而不是-rtau">为什么用 <span class="arithmatex">\(G_t\)</span> 而不是 <span class="arithmatex">\(R(\tau)\)</span>？<a class="headerlink" href="#为什么用-g_t-而不是-rtau" title="定位到这">&para;</a></h3>
 <p>在算法流程中，我们用的是从时刻 <span class="arithmatex">\(t\)</span> 开始至轨迹结束的回报 <span class="arithmatex">\(G_t\)</span>，而不是整条轨迹的总回报 <span class="arithmatex">\(R(\tau)\)</span>。</p>
 <p>直觉上，时刻 <span class="arithmatex">\(t\)</span> 的动作 <span class="arithmatex">\(a_t\)</span> 只能影响时刻 <span class="arithmatex">\(t\)</span> 及之后获得的奖励，无法影响过去。如果我们用整条轨迹的回报 <span class="arithmatex">\(R(\tau)\)</span> 来加权，就会把时刻 <span class="arithmatex">\(t\)</span> 之前的奖励也认为受到了动作 <span class="arithmatex">\(a_t\)</span> 的影响，这些信息对于评价动作 <span class="arithmatex">\(a_t\)</span> 是无用的“噪声”。</p>
-<p>举个例子：你正在玩一个游戏，分为三个阶段。你在第一阶段犯了个错，导致扣了 50 分。但在第二阶段，你通过一个神级操作获得了 100 分。在评估第二阶段的这个神级操作的好坏时，我们应该关注它带来了多少未来的收益（100 分），而不应该让它背负第一阶段的“历史包袱”（-50 分）。使用 <span class="arithmatex">\(G_t\)</span> 就是为了实现这种“功过分明”的评估，让每个动作只对它能影响的未来负责，从而降低了无关信息带来的噪声。</p>
+<p>举个例子：你正在参加一个学期的学习，分为三次测验。你在第一次测验中犯了个错，导致扣了 50 分。但在第二次测验中，你通过认真复习获得了 100 分。在评估第二次测验中使用的学习方法的好坏时，我们应该关注它带来了多少未来的收益（100 分），而不应该让它背负第一次测验的“历史包袱”（-50 分）。使用 <span class="arithmatex">\(G_t\)</span> 就是为了实现这种“功过分明”的评估，让每个学习策略只对它能影响的未来负责，从而降低了无关信息带来的噪声。</p>
 <p>从分解关系也能看出这一点：<span class="arithmatex">\(R(\tau)=\sum_{k=0}^{t-1}\gamma^k r_k+\gamma^t G_t\)</span>。前半项是“过去奖励”，与当前动作 <span class="arithmatex">\(a_t\)</span> 无关，对期望梯度不贡献有效信号；保留 <span class="arithmatex">\(G_t\)</span> 只会去掉噪声而不改变期望，因此能在无偏前提下降低方差。</p>
 <h2 id="llm-场景下的-reinforce">LLM 场景下的 REINFORCE<a class="headerlink" href="#llm-场景下的-reinforce" title="定位到这">&para;</a></h2>
 <p>让我们用 LLM 生成文本的例子来具体理解 REINFORCE 是如何工作的。</p>
@@ -2758,7 +2731,7 @@ G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
 <p>REINFORCE 算法虽然简单直接，但在实际应用中的核心挑战是高方差；“引入基线”是最关键、最经典的缓解手段。</p>
 <h3 id="核心问题高方差">核心问题：高方差<a class="headerlink" href="#核心问题高方差" title="定位到这">&para;</a></h3>
 <p>REINFORCE 使用蒙特卡洛采样来估计梯度，这意味着梯度的估计值会随着采样的轨迹不同而剧烈波动。</p>
-<p>想象一下，你是一个学生，想知道自己的“真实水平”。REINFORCE 的做法是：每次随机抽一道题做，根据这道题的得分来判断自己的水平。问题在于，如果这次抽到的是简单题，你可能得满分；如果抽到难题，你可能得零分。单次考试的成绩波动很大，很难反映真实水平。</p>
+<p>想象一下，你是一个学生，想知道自己某种学习方法的“真实效果”。REINFORCE 的做法是：每次用这种方法学习后参加一次测验，根据这次测验的得分来判断学习方法的好坏。问题在于，如果这次测验题目恰好都是你复习过的，你可能得满分；如果考到了没复习的内容，你可能得零分。单次测验的成绩波动很大，很难反映学习方法的真实效果。</p>
 <p>在强化学习中，不同轨迹的回报 <span class="arithmatex">\(R(\tau)\)</span> 可能相差很大。这种高方差会导致：</p>
 <ul>
 <li>
@@ -2773,7 +2746,7 @@ G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
 </ul>
 <h3 id="关键改进引入基线baseline">关键改进：引入基线（Baseline）<a class="headerlink" href="#关键改进引入基线baseline" title="定位到这">&para;</a></h3>
 <p>原始 REINFORCE 常见形式直接使用 <span class="arithmatex">\(G_t\)</span>，只利用“绝对回报”信号。更有效的做法是减去一个 baseline，让更新信号变成“高于/低于参考水平多少”。</p>
-<p>举个例子：假设在某个游戏中，无论怎么玩，得分都在 90-100 之间。即使你玩得很差（得 90 分），回报仍然是一个很大的正数，REINFORCE 会增加这些动作的概率。即使你玩得很好（得 100 分），增加的幅度也差不多。模型很难区分“还行”和“很好”的差别。</p>
+<p>举个例子：假设在某门课程中，无论怎么学，考试分数都在 90-100 之间。即使你学得很差（得 90 分），回报仍然是一个很大的正数，REINFORCE 会增加这些学习策略的概率。即使你学得很好（得 100 分），增加的幅度也差不多。模型很难区分“还行”和“很好”的学习方法的差别。</p>
 <p>理想情况下，我们希望：</p>
 <ul>
 <li>
@@ -2829,7 +2802,7 @@ G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2026 年 2 月 9 日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2026 年 2 月 10 日</span>
   </span>
 
     
@@ -2922,13 +2895,13 @@ G_t^{(i)}=\sum_{k=t}^{T-1}\gamma^{k-t}r_k^{(i)}
         
         
           
-          <a href="../at-a-crossroads-at-24/" class="md-footer__link md-footer__link--next" aria-label="下一页: 24 岁，站在人生的十字路口">
+          <a href="../llm-alignment-5-actor-critic-advantage-function/" class="md-footer__link md-footer__link--next" aria-label="下一页: 【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                24 岁，站在人生的十字路口
+                【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数
               </div>
             </div>
             <div class="md-footer__button md-icon">

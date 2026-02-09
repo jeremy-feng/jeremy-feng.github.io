@@ -773,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="2025/" class="md-nav__link">
+      <a href="2026/" class="md-nav__link">
         
   
   
@@ -781,7 +781,7 @@
     
   
     <span class="md-typeset">
-      2025 年
+      2026 年
     </span>
   
 
@@ -805,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="2026/" class="md-nav__link">
+      <a href="2025/" class="md-nav__link">
         
   
   
@@ -813,7 +813,7 @@
     
   
     <span class="md-typeset">
-      2026 年
+      2025 年
     </span>
   
 
@@ -2335,10 +2335,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#24-岁站在人生的十字路口" class="md-nav__link">
+  <a href="#llm-对齐系列五actor-critic-架构与优势函数" class="md-nav__link">
     <span class="md-ellipsis">
       
-        24 岁，站在人生的十字路口
+        【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数
       
     </span>
   </a>
@@ -2412,6 +2412,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#24-岁站在人生的十字路口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24 岁，站在人生的十字路口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#为什么注意力机制中要除以-sqrtd_k-从方差到梯度的推导" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2427,17 +2438,6 @@
     <span class="md-ellipsis">
       
         PyCon China 2025
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#使用系统提示词为大模型开启学习模式" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        使用系统提示词为大模型开启学习模式
       
     </span>
   </a>
@@ -2473,46 +2473,39 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2025-10-25 00:00:00+00:00">2025 年 10 月 25 日</time></li>
+          <time datetime="2026-02-09 00:00:00+00:00">2026 年 2 月 9 日</time></li>
         
           <li class="md-meta__item">
              
             
-              <a href="category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
+              <a href="category/llm/" class="md-meta__link">LLM</a></li>
         
         
           
           <li class="md-meta__item">
             
-              阅读时间 4 分钟
+              阅读时间 6 分钟
             
           </li>
         
-        
-          <span class="md-pin"></span>
         
       </ul>
       
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="24-岁站在人生的十字路口"><a class="toclink" href="at-a-crossroads-at-24/">24 岁，站在人生的十字路口</a></h2>
-<p>2025 年 10 月 9 日，我按下发送键，将辞职信发给了领导。那一刻，我在人生的十字路口转了个弯。</p>
-<p>一年多前刚毕业的我，大概想不到自己会在一年后选择离开公司，甚至离开陪伴了我数年的量化行业。从 2020 年接触量化开始，到实习、全职工作至今，我曾经期待过自己会在这条路上一直走下去。</p>
-<p>改变并不是某个瞬间的决定，而是一个缓慢的积累过程。一些念头在心中生长得很隐秘，最初只是微弱的疑问，后来逐渐变成了无法忽视的声音。我想在 24 岁的十字路口，用这篇博客记录下这场重要的“改变”——记录我走过的路，也记录路上遇到的那些珍贵的人和事。</p>
-<figure>
-<p><img alt="illustration" src="2025-10-25-at-a-crossroads-at-24/index-image/illustration.png" width="500px" /></p>
-</figure>
+    <h2 id="llm-对齐系列五actor-critic-架构与优势函数"><a class="toclink" href="llm-alignment-5-actor-critic-advantage-function/">【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数</a></h2>
+<p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。我们看到，REINFORCE 通过蒙特卡洛采样将理论公式转化为可执行的算法，但它面临一个核心挑战：<strong>高方差导致训练不稳定</strong>。</p>
+<p>文章结尾提到，最常用的降低方差的方法是引入基线（Baseline），特别是使用状态价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线。这即是本文将要介绍的 <strong>Actor-Critic 架构</strong>。</p>
+<p>本文作为 LLM 对齐系列的第五篇，将介绍价值函数、优势函数以及 Actor-Critic 架构的工作原理。这些概念是对 REINFORCE 的直接改进，更是理解 TRPO、PPO 等高级算法的必要基础。</p>
 
     
       <nav class="md-post__action">
-        <a href="at-a-crossroads-at-24/">
+        <a href="llm-alignment-5-actor-critic-advantage-function/">
           继续阅读
         </a>
       </nav>
     
-    
-      <hr>
     
   </div>
 </article>
@@ -2906,6 +2899,60 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2025-10-25 00:00:00+00:00">2025 年 10 月 25 日</time></li>
+        
+          <li class="md-meta__item">
+             
+            
+              <a href="category/%E7%94%9F%E6%B4%BB/" class="md-meta__link">生活</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              阅读时间 4 分钟
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="24-岁站在人生的十字路口"><a class="toclink" href="at-a-crossroads-at-24/">24 岁，站在人生的十字路口</a></h2>
+<p>2025 年 10 月 9 日，我按下发送键，将辞职信发给了领导。那一刻，我在人生的十字路口转了个弯。</p>
+<p>一年多前刚毕业的我，大概想不到自己会在一年后选择离开公司，甚至离开陪伴了我数年的量化行业。从 2020 年接触量化开始，到实习、全职工作至今，我曾经期待过自己会在这条路上一直走下去。</p>
+<p>改变并不是某个瞬间的决定，而是一个缓慢的积累过程。一些念头在心中生长得很隐秘，最初只是微弱的疑问，后来逐渐变成了无法忽视的声音。我想在 24 岁的十字路口，用这篇博客记录下这场重要的“改变”——记录我走过的路，也记录路上遇到的那些珍贵的人和事。</p>
+<figure>
+<p><img alt="illustration" src="2025-10-25-at-a-crossroads-at-24/index-image/illustration.png" width="500px" /></p>
+</figure>
+
+    
+      <nav class="md-post__action">
+        <a href="at-a-crossroads-at-24/">
+          继续阅读
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="/blog/avatar.jpg" alt="冯超">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2025-10-22 00:00:00+00:00">2025 年 10 月 22 日</time></li>
         
           <li class="md-meta__item">
@@ -2993,55 +3040,6 @@ Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
     
       <nav class="md-post__action">
         <a href="pycon-china-2025/">
-          继续阅读
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="/blog/avatar.jpg" alt="冯超">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-09-10 00:00:00+00:00">2025 年 9 月 10 日</time></li>
-        
-          <li class="md-meta__item">
-             
-            
-              <a href="category/llm/" class="md-meta__link">LLM</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              阅读时间 3 分钟
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="使用系统提示词为大模型开启学习模式"><a class="toclink" href="llm-study-mode-system-prompt/">使用系统提示词为大模型开启学习模式</a></h2>
-<p>本文介绍了如何使用系统提示词中要求大模型扮演老师的角色，将知识循序渐进地教给我们，而不是直接给出答案。这对想要学习一个新知识领域的人来说十分有帮助。</p>
-
-    
-      <nav class="md-post__action">
-        <a href="llm-study-mode-system-prompt/">
           继续阅读
         </a>
       </nav>
