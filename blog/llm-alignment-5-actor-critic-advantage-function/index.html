@@ -2774,6 +2774,7 @@
 <p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。我们看到，REINFORCE 通过蒙特卡洛采样将理论公式转化为可执行的算法，但它面临一个核心挑战：<strong>高方差导致训练不稳定</strong>。</p>
 <p>文章结尾提到，最常用的降低方差的方法是引入基线（Baseline），特别是使用状态价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线。这即是本文将要介绍的 <strong>Actor-Critic 架构</strong>。</p>
 <p>本文作为 LLM 对齐系列的第五篇，将介绍价值函数、优势函数以及 Actor-Critic 架构的工作原理。这些概念是对 REINFORCE 的直接改进，更是理解 TRPO、PPO 等高级算法的必要基础。</p>
+<p><img alt="cover" src="../2026-02-09-llm-alignment-5-actor-critic-advantage-function/image/index/cover.png" /></p>
 <!-- more -->
 
 <h2 id="回顾reinforce-的高方差问题">回顾：REINFORCE 的高方差问题<a class="headerlink" href="#回顾reinforce-的高方差问题" title="定位到这">&para;</a></h2>
