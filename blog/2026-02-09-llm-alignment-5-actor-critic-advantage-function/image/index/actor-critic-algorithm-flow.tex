@@ -1,0 +1,67 @@
+\documentclass[border=12pt]{standalone}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\definecolor{titleblue}{RGB}{24,62,143}
+\definecolor{lineblue}{RGB}{74,118,196}
+\definecolor{bgblue}{RGB}{246,249,255}
+
+\newcommand{\stage}[2]{%
+  \vspace{2mm}
+  \noindent\fcolorbox{lineblue}{bgblue}{%
+    \begin{minipage}{0.95\linewidth}
+      \textbf{#1}\\[2pt]
+      #2
+    \end{minipage}%
+  }%
+}
+
+\begin{document}
+\begin{minipage}{22.5cm}
+{\LARGE\bfseries\color{titleblue} Actor-Critic（Advantage）算法流程}
+
+\textbf{输入：}策略网络 $\pi_\theta$，价值网络 $V_\phi$，学习率 $\alpha_\theta,\alpha_\phi$，折扣因子 $\gamma$。\\
+\textbf{初始化：}初始化参数 $\theta,\phi$（LLM 场景通常从 SFT 参数继续训练）。
+
+\textbf{每个训练回合（episode）包含以下 5 个阶段：}
+
+\stage{阶段 A：采样轨迹}{
+使用当前策略与环境交互，得到轨迹
+\[
+\tau=(s_0,a_0,r_0,s_1,a_1,r_1,\ldots,s_T)
+\]
+}
+
+\stage{阶段 B：逐时刻估计优势（TD 误差）}{
+对每个时间步 $t$ 计算
+\[
+A_t=r_t+\gamma V_\phi(s_{t+1})-V_\phi(s_t)
+\]
+}
+
+\stage{阶段 C：更新 Critic（价值网络）}{
+令 TD 目标为
+\[
+y_t=r_t+\gamma V_\phi(s_{t+1})
+\]
+最小化损失
+\[
+L_{\text{critic}}=\bigl(V_\phi(s_t)-y_t\bigr)^2
+\]
+}
+
+\stage{阶段 D：更新 Actor（策略网络）}{
+沿策略梯度方向更新
+\[
+\theta\leftarrow\theta+\alpha_\theta\,\nabla_\theta\log\pi_\theta(a_t\mid s_t)\cdot A_t
+\]
+}
+
+\stage{阶段 E：进入下一轮}{
+重复阶段 A--D，直到策略收敛或达到最大迭代次数。
+}
+\end{minipage}
+\end{document}
