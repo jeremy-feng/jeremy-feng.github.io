@@ -2771,8 +2771,8 @@
 
 
 <h1 id="llm-对齐系列五actor-critic-架构与优势函数">【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数<a class="headerlink" href="#llm-对齐系列五actor-critic-架构与优势函数" title="定位到这">&para;</a></h1>
-<p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。我们看到，REINFORCE 通过蒙特卡洛采样将理论公式转化为可执行的算法，但它面临一个核心挑战：<strong>高方差导致训练不稳定</strong>。</p>
-<p>文章结尾提到，最常用的降低方差的方法是引入基线（Baseline），特别是使用状态价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线。这即是本文将要介绍的 <strong>Actor-Critic 架构</strong>。</p>
+<p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。REINFORCE 使用蒙特卡洛回报 <span class="arithmatex">\(G_t\)</span> 作为学习信号，因此通常需要先采样完整轨迹，才能在时刻 <span class="arithmatex">\(t\)</span> 得到对应的回报估计，这会带来较高的采样成本和较大的方差。</p>
+<p>针对 REINFORCE 需要完整轨迹才能得到回报信号、从而带来信号延迟和高方差的问题，Actor-Critic 的核心改进是引入 Critic（价值函数近似器），用模型去估计 <span class="arithmatex">\(V_\pi(s)\)</span> 或 <span class="arithmatex">\(Q_\pi(s,a)\)</span>，并结合一步回报对价值进行递推估计，从而提供更及时的学习信号，而不必总是等到整条轨迹结束。进一步地，为了降低策略梯度方差，可以在更新中引入基线（Baseline）；当使用价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线并以优势函数进行更新时，就得到 Advantage Actor-Critic（A2C）。</p>
 <p>本文作为 LLM 对齐系列的第五篇，将介绍价值函数、优势函数以及 Actor-Critic 架构的工作原理。这些概念是对 REINFORCE 的直接改进，更是理解 TRPO、PPO 等高级算法的必要基础。</p>
 <p><img alt="cover" src="../2026-02-09-llm-alignment-5-actor-critic-advantage-function/image/index/cover.png" /></p>
 <!-- more -->
@@ -2850,11 +2850,11 @@
 <p>为什么会是这样的？直观理解：</p>
 <ul>
 <li><strong>概率归一化是数学证明的关键一步</strong>：因为所有动作的概率和恒为 1，所以“对所有动作的策略梯度求和”会得到 0；</li>
-<li><strong>基线改变的是参考系</strong>：就像温度从摄氏度换算成华氏度，水的沸点和冰点的相对差异不变，梯度指向的方向也不会改变；</li>
+<li><strong>基线改变的是参考系</strong>：就像温度从摄氏度换算成华氏度，水的沸点和冰点的相对差异不变；在期望意义下，梯度方向不变；</li>
 <li><strong>保持相对优劣关系</strong>：给所有动作都加上/减去同样的分数，不会改变哪个动作“相对更好”，而梯度更新本质上是在调整不同动作之间的相对概率。</li>
 </ul>
 </div>
-<p>这意味着我们可以放心地使用基线来降低方差，而不用担心改变学习的方向！但是，合理选择的基线才能真正显著降低方差。</p>
+<p>这意味着我们可以放心地使用基线来降低方差，而不引入梯度偏差；但是，合理选择的基线才能真正显著降低方差。</p>
 <p>那么，什么是“好”的基线呢？直觉上，如果 <span class="arithmatex">\(b(s_t)\)</span> 能够准确反映“在状态 <span class="arithmatex">\(s_t\)</span> 下的平均表现”，那么 <span class="arithmatex">\(G_t - b(s_t)\)</span> 就能准确衡量“这次表现比平均水平好/差多少”。这就引出了<strong>价值函数</strong>的概念。</p>
 <h2 id="价值函数评估状态的好坏">价值函数：评估状态的好坏<a class="headerlink" href="#价值函数评估状态的好坏" title="定位到这">&para;</a></h2>
 <p>在强化学习中，有两个重要的价值函数：</p>
@@ -2907,31 +2907,30 @@ A_\pi(s, a) = Q_\pi(s, a) - V_\pi(s)
 </ul>
 <p>现在评估更合理了：好动作得到正反馈，坏动作得到负反馈，权重大小也更相称。</p>
 <h2 id="actor-critic-与-a2c">Actor-Critic 与 A2C<a class="headerlink" href="#actor-critic-与-a2c" title="定位到这">&para;</a></h2>
-<p>Actor-Critic（AC）是一类在策略梯度框架下，同时学习策略函数 <span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 与价值函数 <span class="arithmatex">\(V_\phi(s)\)</span> 或 <span class="arithmatex">\(Q_\phi(s,a)\)</span> 的算法结构。A2C（Advantage Actor-Critic）是其中常用的一种形式，其核心特征是使用优势函数作为策略梯度的估计量，以降低更新方差。</p>
-<p>从策略更新信号看，AC 与 A2C 的区别可以写为：</p>
+<p>Actor-Critic（AC）是一类在策略梯度框架下，同时学习策略函数 <span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 与价值函数 <span class="arithmatex">\(V_\phi(s)\)</span> 或 <span class="arithmatex">\(Q_\phi(s,a)\)</span> 的算法结构。</p>
 <ul>
-<li><strong>原始 AC（概念形式）</strong>：</li>
+<li><strong>Q 形式</strong>：</li>
 </ul>
 <p>$$
-  g_t^{\text{AC}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,Q_\pi(s_t,a_t)
+  g_t^{Q}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,Q_\pi(s_t,a_t)
   $$</p>
 <ul>
-<li><strong>A2C（实践形式）</strong>：</li>
+<li><strong>A2C 形式（工程实践常见）</strong>：</li>
 </ul>
 <p>$$
-  g_t^{\text{A2C}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,A_\pi(s_t,a_t)
+  g_t^{A}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,A_\pi(s_t,a_t)
   $$</p>
 <p>其中</p>
 <p>$$
   A_\pi(s,a)=Q_\pi(s,a)-V_\pi(s)
   $$</p>
-<p>优势函数本质上为价值估计引入了状态基线 <span class="arithmatex">\(V_\pi(s)\)</span>，从而在不改变梯度期望的前提下降低估计方差。</p>
+<p>两种写法在期望梯度上等价；A2C 形式引入了状态基线 <span class="arithmatex">\(V_\pi(s)\)</span>，由前文的数学证明可知，引入与动作无关的状态基线 <span class="arithmatex">\(V_\pi(s)\)</span> 不会改变梯度的期望值，且通常能降低估计方差。</p>
 <table>
 <thead>
 <tr>
 <th>维度</th>
-<th>原始 AC</th>
-<th>A2C</th>
+<th>Q 形式</th>
+<th>A2C 形式</th>
 </tr>
 </thead>
 <tbody>
@@ -2942,7 +2941,7 @@ A_\pi(s, a) = Q_\pi(s, a) - V_\pi(s)
 </tr>
 <tr>
 <td>梯度估计方差</td>
-<td>高</td>
+<td>较高</td>
 <td>较低</td>
 </tr>
 <tr>
@@ -2952,8 +2951,8 @@ A_\pi(s, a) = Q_\pi(s, a) - V_\pi(s)
 </tr>
 <tr>
 <td>工程应用</td>
-<td>较少单独采用</td>
-<td>主流</td>
+<td>常用于理论推导</td>
+<td>主流实现</td>
 </tr>
 </tbody>
 </table>
@@ -2985,11 +2984,12 @@ A_\pi(s_t, a_t) &amp;= Q_\pi(s_t, a_t) - V_\pi(s_t)\\
 </ul>
 <p><img alt="TD Error" src="../2026-02-09-llm-alignment-5-actor-critic-advantage-function/image/index/td-error.png" /></p>
 <h3 id="参数更新">参数更新<a class="headerlink" href="#参数更新" title="定位到这">&para;</a></h3>
-<p><strong>1. Critic 更新（价值回归）</strong></p>
+<p><strong>1. Critic 更新（用实际获得的回报更新对价值的估计）</strong></p>
 <div class="arithmatex">\[
-L_\phi = \mathbb{E}\left[\left(V_\phi(s_t) - G_t\right)^2\right]
+y_t=r_t+\gamma V_\phi(s_{t+1}),\qquad
+L_\phi = \mathbb{E}\left[\left(V_\phi(s_t) - y_t\right)^2\right]
 \]</div>
-<p>其中 <span class="arithmatex">\(G_t\)</span> 可取蒙特卡洛回报，或采用 TD 目标 <span class="arithmatex">\(r_t + \gamma V_\phi(s_{t+1})\)</span>。</p>
+<p>其中 <span class="arithmatex">\(y_t\)</span> 为一步 TD 目标。</p>
 <p><strong>2. Actor 更新（优势加权策略梯度）</strong></p>
 <div class="arithmatex">\[
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^{N}\sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot \left(r_t + \gamma V_\phi(s_{t+1}) - V_\phi(s_t)\right)
@@ -3010,13 +3010,13 @@ L_\phi = \mathbb{E}\left[\left(V_\phi(s_t) - G_t\right)^2\right]
 <tbody>
 <tr>
 <td><strong>网络数量</strong></td>
-<td>1 个（策略网络）</td>
-<td>2 个（策略 + 价值）</td>
+<td>策略网络</td>
+<td>策略网络 + 价值网络（可共享骨干）</td>
 </tr>
 <tr>
 <td><strong>学习信号</strong></td>
 <td>蒙特卡洛回报 <span class="arithmatex">\(G_t\)</span></td>
-<td>优势估计 <span class="arithmatex">\(A_t\)</span>（常用 TD 误差）</td>
+<td>优势估计 <span class="arithmatex">\(A_t\)</span></td>
 </tr>
 <tr>
 <td><strong>方差</strong></td>
@@ -3059,7 +3059,7 @@ L_\phi = \mathbb{E}\left[\left(V_\phi(s_t) - G_t\right)^2\right]
 </ol>
 <h2 id="总结">总结<a class="headerlink" href="#总结" title="定位到这">&para;</a></h2>
 <p>本文介绍了 Actor-Critic 架构，并重点说明了它的工程化主流形态 Advantage Actor-Critic（A2C）。A2C 将策略优化、价值估计与优势更新整合为统一训练闭环，是从基础策略梯度走向 TRPO、PPO 等现代算法的关键过渡。</p>
-<p>A2C 的一个主要局限是样本效率问题：每次更新后都必须用新策略重新采样。这引出一个自然的问题：<strong>已经采集的数据能否继续利用？</strong>这需要一个关键的数学理论工具——<strong>重要性采样（Importance Sampling）</strong>，我们将在下一篇文章中介绍它。</p>
+<p>A2C 的一个主要局限是样本效率问题：每次更新后都必须用新策略重新采样。这引出一个自然的问题：已经采集的数据能否继续利用？这需要一个关键的数学理论工具——重要性采样（Importance Sampling），我们将在下一篇文章中介绍它。</p>
 
 
 

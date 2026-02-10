@@ -2495,8 +2495,8 @@
   </header>
   <div class="md-post__content md-typeset">
     <h2 id="llm-对齐系列五actor-critic-架构与优势函数"><a class="toclink" href="llm-alignment-5-actor-critic-advantage-function/">【LLM 对齐系列】（五）：Actor-Critic 架构与优势函数</a></h2>
-<p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。我们看到，REINFORCE 通过蒙特卡洛采样将理论公式转化为可执行的算法，但它面临一个核心挑战：<strong>高方差导致训练不稳定</strong>。</p>
-<p>文章结尾提到，最常用的降低方差的方法是引入基线（Baseline），特别是使用状态价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线。这即是本文将要介绍的 <strong>Actor-Critic 架构</strong>。</p>
+<p>在<a href="../llm-alignment-4-reinforce-monte-carlo-policy-gradient/">上一篇文章</a>中，我们介绍了 REINFORCE 算法——策略梯度定理的最简实现。REINFORCE 使用蒙特卡洛回报 <span class="arithmatex">\(G_t\)</span> 作为学习信号，因此通常需要先采样完整轨迹，才能在时刻 <span class="arithmatex">\(t\)</span> 得到对应的回报估计，这会带来较高的采样成本和较大的方差。</p>
+<p>针对 REINFORCE 需要完整轨迹才能得到回报信号、从而带来信号延迟和高方差的问题，Actor-Critic 的核心改进是引入 Critic（价值函数近似器），用模型去估计 <span class="arithmatex">\(V_\pi(s)\)</span> 或 <span class="arithmatex">\(Q_\pi(s,a)\)</span>，并结合一步回报对价值进行递推估计，从而提供更及时的学习信号，而不必总是等到整条轨迹结束。进一步地，为了降低策略梯度方差，可以在更新中引入基线（Baseline）；当使用价值函数 <span class="arithmatex">\(V(s)\)</span> 作为基线并以优势函数进行更新时，就得到 Advantage Actor-Critic（A2C）。</p>
 <p>本文作为 LLM 对齐系列的第五篇，将介绍价值函数、优势函数以及 Actor-Critic 架构的工作原理。这些概念是对 REINFORCE 的直接改进，更是理解 TRPO、PPO 等高级算法的必要基础。</p>
 <p><img alt="cover" src="2026-02-09-llm-alignment-5-actor-critic-advantage-function/image/index/cover.png" /></p>
 
