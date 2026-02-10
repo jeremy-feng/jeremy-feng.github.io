@@ -2910,15 +2910,17 @@ A_\pi(s, a) = Q_\pi(s, a) - V_\pi(s)
 <p>Actor-Critic（AC）是一类在策略梯度框架下，同时学习策略函数 <span class="arithmatex">\(\pi_\theta(a \mid s)\)</span> 与价值函数 <span class="arithmatex">\(V_\phi(s)\)</span> 或 <span class="arithmatex">\(Q_\phi(s,a)\)</span> 的算法结构。A2C（Advantage Actor-Critic）是其中常用的一种形式，其核心特征是使用优势函数作为策略梯度的估计量，以降低更新方差。</p>
 <p>从策略更新信号看，AC 与 A2C 的区别可以写为：</p>
 <ul>
-<li><strong>原始 AC（概念形式）</strong>：
-  $$
-  g_t^{\text{AC}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,Q_\pi(s_t,a_t)
-  $$</li>
-<li><strong>A2C（实践形式）</strong>：
-  $$
-  g_t^{\text{A2C}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,A_\pi(s_t,a_t),\quad A_\pi(s,a)=Q_\pi(s,a)-V_\pi(s)
-  $$</li>
+<li><strong>原始 AC（概念形式）</strong>：</li>
 </ul>
+<p>$$
+  g_t^{\text{AC}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,Q_\pi(s_t,a_t)
+  $$</p>
+<ul>
+<li><strong>A2C（实践形式）</strong>：</li>
+</ul>
+<p>$$
+  g_t^{\text{A2C}}=\nabla_\theta\log\pi_\theta(a_t|s_t)\,A_\pi(s_t,a_t),\quad A_\pi(s,a)=Q_\pi(s,a)-V_\pi(s)
+  $$</p>
 <p>优势函数本质上为价值估计引入了状态基线 <span class="arithmatex">\(V_\pi(s)\)</span>，从而在不改变梯度期望的前提下降低估计方差。</p>
 <table>
 <thead>
