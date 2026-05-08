@@ -2546,6 +2546,19 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#准备提交前先与-main-分支同步" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <span class="md-typeset">
+          准备提交前先与 main 分支同步
+        </span>
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commit-message-的格式" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3207,13 +3220,49 @@
 <li><code>-r</code>代表删除文件夹；</li>
 <li><code>-rf</code>代表强制删除，即删除当前目录下的所有文件及目录，并且是直接删除，无需逐一确认。</li>
 </ul>
+<h2 id="准备提交前先与-main-分支同步">准备提交前先与 main 分支同步<a class="headerlink" href="#准备提交前先与-main-分支同步" title="定位到这">&para;</a></h2>
+<p>情况 A：feature 分支没有独有 commit</p>
+<p>所有改动还在工作区/暂存区里，直接 fast-forward 就行：</p>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos=" 1 "></span></a># 1. 保存工作区（包括 untracked）
+<a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos=" 2 "></span></a>git stash push -u -m &quot;WIP before sync main&quot;
+<a id="__codelineno-22-3" name="__codelineno-22-3"></a><a href="#__codelineno-22-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4"></a><a href="#__codelineno-22-4"><span class="linenos" data-linenos=" 4 "></span></a># 2. 拉最新 main
+<a id="__codelineno-22-5" name="__codelineno-22-5"></a><a href="#__codelineno-22-5"><span class="linenos" data-linenos=" 5 "></span></a>git fetch origin main
+<a id="__codelineno-22-6" name="__codelineno-22-6"></a><a href="#__codelineno-22-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7"></a><a href="#__codelineno-22-7"><span class="linenos" data-linenos=" 7 "></span></a># 3. 把当前分支快进到最新 main（没有独有 commit 时一定能 ff）
+<a id="__codelineno-22-8" name="__codelineno-22-8"></a><a href="#__codelineno-22-8"><span class="linenos" data-linenos=" 8 "></span></a>git merge --ff-only origin/main
+<a id="__codelineno-22-9" name="__codelineno-22-9"></a><a href="#__codelineno-22-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10"></a><a href="#__codelineno-22-10"><span class="linenos" data-linenos="10 "></span></a># 4. 顺手把本地 main 也指过去（可选）
+<a id="__codelineno-22-11" name="__codelineno-22-11"></a><a href="#__codelineno-22-11"><span class="linenos" data-linenos="11 "></span></a>git branch -f main origin/main
+<a id="__codelineno-22-12" name="__codelineno-22-12"></a><a href="#__codelineno-22-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-22-13" name="__codelineno-22-13"></a><a href="#__codelineno-22-13"><span class="linenos" data-linenos="13 "></span></a># 5. 恢复工作区
+<a id="__codelineno-22-14" name="__codelineno-22-14"></a><a href="#__codelineno-22-14"><span class="linenos" data-linenos="14 "></span></a>git stash pop
+</code></pre></div>
+<p>情况 B：feature 分支有独有 commit（要 rebase）</p>
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos=" 1 "></span></a># 1. 工作区干净（提交或 stash）
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><a href="#__codelineno-23-2"><span class="linenos" data-linenos=" 2 "></span></a>git stash push -u -m &quot;WIP&quot;     # 如有未提交改动
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><a href="#__codelineno-23-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a><a href="#__codelineno-23-4"><span class="linenos" data-linenos=" 4 "></span></a># 2. 拉最新 main
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><a href="#__codelineno-23-5"><span class="linenos" data-linenos=" 5 "></span></a>git fetch origin main
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a><a href="#__codelineno-23-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7"></a><a href="#__codelineno-23-7"><span class="linenos" data-linenos=" 7 "></span></a># 3. rebase 到最新 main
+<a id="__codelineno-23-8" name="__codelineno-23-8"></a><a href="#__codelineno-23-8"><span class="linenos" data-linenos=" 8 "></span></a>git rebase origin/main
+<a id="__codelineno-23-9" name="__codelineno-23-9"></a><a href="#__codelineno-23-9"><span class="linenos" data-linenos=" 9 "></span></a>#    冲突时：编辑文件 → git add &lt;file&gt; → git rebase --continue
+<a id="__codelineno-23-10" name="__codelineno-23-10"></a><a href="#__codelineno-23-10"><span class="linenos" data-linenos="10 "></span></a>#    放弃：  git rebase --abort
+<a id="__codelineno-23-11" name="__codelineno-23-11"></a><a href="#__codelineno-23-11"><span class="linenos" data-linenos="11 "></span></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12"></a><a href="#__codelineno-23-12"><span class="linenos" data-linenos="12 "></span></a># 4. 恢复工作区
+<a id="__codelineno-23-13" name="__codelineno-23-13"></a><a href="#__codelineno-23-13"><span class="linenos" data-linenos="13 "></span></a>git stash pop                    # 如之前 stash 了
+<a id="__codelineno-23-14" name="__codelineno-23-14"></a><a href="#__codelineno-23-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-23-15" name="__codelineno-23-15"></a><a href="#__codelineno-23-15"><span class="linenos" data-linenos="15 "></span></a># 5. 已经 push 过分支才需要：强推（带 lease 防覆盖别人）
+<a id="__codelineno-23-16" name="__codelineno-23-16"></a><a href="#__codelineno-23-16"><span class="linenos" data-linenos="16 "></span></a>git push --force-with-lease
+</code></pre></div>
 <h2 id="commit-message-的格式">Commit message 的格式<a class="headerlink" href="#commit-message-的格式" title="定位到这">&para;</a></h2>
 <p>每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><a href="#__codelineno-22-1"><span class="linenos" data-linenos="1 "></span></a>&lt;type&gt;<span class="o">(</span>&lt;scope&gt;<span class="o">)</span>:<span class="w"> </span>&lt;subject&gt;
-<a id="__codelineno-22-2" name="__codelineno-22-2"></a><a href="#__codelineno-22-2"><span class="linenos" data-linenos="2 "></span></a>//<span class="w"> </span>空一行
-<a id="__codelineno-22-3" name="__codelineno-22-3"></a><a href="#__codelineno-22-3"><span class="linenos" data-linenos="3 "></span></a>&lt;body&gt;
-<a id="__codelineno-22-4" name="__codelineno-22-4"></a><a href="#__codelineno-22-4"><span class="linenos" data-linenos="4 "></span></a>//<span class="w"> </span>空一行
-<a id="__codelineno-22-5" name="__codelineno-22-5"></a><a href="#__codelineno-22-5"><span class="linenos" data-linenos="5 "></span></a>&lt;footer&gt;
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos="1 "></span></a>&lt;type&gt;<span class="o">(</span>&lt;scope&gt;<span class="o">)</span>:<span class="w"> </span>&lt;subject&gt;
+<a id="__codelineno-24-2" name="__codelineno-24-2"></a><a href="#__codelineno-24-2"><span class="linenos" data-linenos="2 "></span></a>//<span class="w"> </span>空一行
+<a id="__codelineno-24-3" name="__codelineno-24-3"></a><a href="#__codelineno-24-3"><span class="linenos" data-linenos="3 "></span></a>&lt;body&gt;
+<a id="__codelineno-24-4" name="__codelineno-24-4"></a><a href="#__codelineno-24-4"><span class="linenos" data-linenos="4 "></span></a>//<span class="w"> </span>空一行
+<a id="__codelineno-24-5" name="__codelineno-24-5"></a><a href="#__codelineno-24-5"><span class="linenos" data-linenos="5 "></span></a>&lt;footer&gt;
 </code></pre></div>
 <p>其中，Header 是必需的，Body 和 Footer 可以省略。</p>
 <p>不管是哪一个部分，任何一行都不得超过 72 个字符（或 100 个字符）。这是为了避免自动换行影响美观。</p>
@@ -3242,13 +3291,13 @@
 </ul>
 <h3 id="body">Body<a class="headerlink" href="#body" title="定位到这">&para;</a></h3>
 <p>Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><a href="#__codelineno-23-1"><span class="linenos" data-linenos="1 "></span></a>More<span class="w"> </span>detailed<span class="w"> </span>explanatory<span class="w"> </span>text,<span class="w"> </span><span class="k">if</span><span class="w"> </span>necessary.<span class="w">  </span>Wrap<span class="w"> </span>it<span class="w"> </span>to<span class="w"> </span>
-<a id="__codelineno-23-2" name="__codelineno-23-2"></a><a href="#__codelineno-23-2"><span class="linenos" data-linenos="2 "></span></a>about<span class="w"> </span><span class="m">72</span><span class="w"> </span>characters<span class="w"> </span>or<span class="w"> </span>so.<span class="w"> </span>
-<a id="__codelineno-23-3" name="__codelineno-23-3"></a><a href="#__codelineno-23-3"><span class="linenos" data-linenos="3 "></span></a>
-<a id="__codelineno-23-4" name="__codelineno-23-4"></a><a href="#__codelineno-23-4"><span class="linenos" data-linenos="4 "></span></a>Further<span class="w"> </span>paragraphs<span class="w"> </span>come<span class="w"> </span>after<span class="w"> </span>blank<span class="w"> </span>lines.
-<a id="__codelineno-23-5" name="__codelineno-23-5"></a><a href="#__codelineno-23-5"><span class="linenos" data-linenos="5 "></span></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6"></a><a href="#__codelineno-23-6"><span class="linenos" data-linenos="6 "></span></a>-<span class="w"> </span>Bullet<span class="w"> </span>points<span class="w"> </span>are<span class="w"> </span>okay,<span class="w"> </span>too
-<a id="__codelineno-23-7" name="__codelineno-23-7"></a><a href="#__codelineno-23-7"><span class="linenos" data-linenos="7 "></span></a>-<span class="w"> </span>Use<span class="w"> </span>a<span class="w"> </span>hanging<span class="w"> </span>indent
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos="1 "></span></a>More<span class="w"> </span>detailed<span class="w"> </span>explanatory<span class="w"> </span>text,<span class="w"> </span><span class="k">if</span><span class="w"> </span>necessary.<span class="w">  </span>Wrap<span class="w"> </span>it<span class="w"> </span>to<span class="w"> </span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><a href="#__codelineno-25-2"><span class="linenos" data-linenos="2 "></span></a>about<span class="w"> </span><span class="m">72</span><span class="w"> </span>characters<span class="w"> </span>or<span class="w"> </span>so.<span class="w"> </span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><a href="#__codelineno-25-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><a href="#__codelineno-25-4"><span class="linenos" data-linenos="4 "></span></a>Further<span class="w"> </span>paragraphs<span class="w"> </span>come<span class="w"> </span>after<span class="w"> </span>blank<span class="w"> </span>lines.
+<a id="__codelineno-25-5" name="__codelineno-25-5"></a><a href="#__codelineno-25-5"><span class="linenos" data-linenos="5 "></span></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6"></a><a href="#__codelineno-25-6"><span class="linenos" data-linenos="6 "></span></a>-<span class="w"> </span>Bullet<span class="w"> </span>points<span class="w"> </span>are<span class="w"> </span>okay,<span class="w"> </span>too
+<a id="__codelineno-25-7" name="__codelineno-25-7"></a><a href="#__codelineno-25-7"><span class="linenos" data-linenos="7 "></span></a>-<span class="w"> </span>Use<span class="w"> </span>a<span class="w"> </span>hanging<span class="w"> </span>indent
 </code></pre></div>
 <p>有两个注意点。</p>
 <p>（1）使用第一人称现在时，比如使用<code>change</code>而不是<code>changed</code>或<code>changes</code>。</p>
@@ -3257,36 +3306,36 @@
 <p>Footer 部分只用于两种情况。</p>
 <p><strong>（1）不兼容变动</strong></p>
 <p>如果当前代码与上一个版本不兼容，则 Footer 部分以<code>BREAKING CHANGE</code>开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><a href="#__codelineno-24-1"><span class="linenos" data-linenos=" 1 "></span></a>BREAKING<span class="w"> </span>CHANGE:<span class="w"> </span>isolate<span class="w"> </span>scope<span class="w"> </span>bindings<span class="w"> </span>definition<span class="w"> </span>has<span class="w"> </span>changed.
-<a id="__codelineno-24-2" name="__codelineno-24-2"></a><a href="#__codelineno-24-2"><span class="linenos" data-linenos=" 2 "></span></a>
-<a id="__codelineno-24-3" name="__codelineno-24-3"></a><a href="#__codelineno-24-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span>To<span class="w"> </span>migrate<span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>follow<span class="w"> </span>the<span class="w"> </span>example<span class="w"> </span>below:
-<a id="__codelineno-24-4" name="__codelineno-24-4"></a><a href="#__codelineno-24-4"><span class="linenos" data-linenos=" 4 "></span></a>
-<a id="__codelineno-24-5" name="__codelineno-24-5"></a><a href="#__codelineno-24-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span>Before:
-<a id="__codelineno-24-6" name="__codelineno-24-6"></a><a href="#__codelineno-24-6"><span class="linenos" data-linenos=" 6 "></span></a>
-<a id="__codelineno-24-7" name="__codelineno-24-7"></a><a href="#__codelineno-24-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span>scope:<span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8"></a><a href="#__codelineno-24-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span>myAttr:<span class="w"> </span><span class="s1">&#39;attribute&#39;</span>,
-<a id="__codelineno-24-9" name="__codelineno-24-9"></a><a href="#__codelineno-24-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="o">}</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10"></a><a href="#__codelineno-24-10"><span class="linenos" data-linenos="10 "></span></a>
-<a id="__codelineno-24-11" name="__codelineno-24-11"></a><a href="#__codelineno-24-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span>After:
-<a id="__codelineno-24-12" name="__codelineno-24-12"></a><a href="#__codelineno-24-12"><span class="linenos" data-linenos="12 "></span></a>
-<a id="__codelineno-24-13" name="__codelineno-24-13"></a><a href="#__codelineno-24-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span>scope:<span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14"></a><a href="#__codelineno-24-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">      </span>myAttr:<span class="w"> </span><span class="s1">&#39;@&#39;</span>,
-<a id="__codelineno-24-15" name="__codelineno-24-15"></a><a href="#__codelineno-24-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="o">}</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16"></a><a href="#__codelineno-24-16"><span class="linenos" data-linenos="16 "></span></a>
-<a id="__codelineno-24-17" name="__codelineno-24-17"></a><a href="#__codelineno-24-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span>The<span class="w"> </span>removed<span class="w"> </span><span class="sb">`</span>inject<span class="sb">`</span><span class="w"> </span>wasn<span class="err">&#39;</span>t<span class="w"> </span>generaly<span class="w"> </span>useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>directives<span class="w"> </span>so<span class="w"> </span>there<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>no<span class="w"> </span>code<span class="w"> </span>using<span class="w"> </span>it.
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><a href="#__codelineno-26-1"><span class="linenos" data-linenos=" 1 "></span></a>BREAKING<span class="w"> </span>CHANGE:<span class="w"> </span>isolate<span class="w"> </span>scope<span class="w"> </span>bindings<span class="w"> </span>definition<span class="w"> </span>has<span class="w"> </span>changed.
+<a id="__codelineno-26-2" name="__codelineno-26-2"></a><a href="#__codelineno-26-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3"></a><a href="#__codelineno-26-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span>To<span class="w"> </span>migrate<span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>follow<span class="w"> </span>the<span class="w"> </span>example<span class="w"> </span>below:
+<a id="__codelineno-26-4" name="__codelineno-26-4"></a><a href="#__codelineno-26-4"><span class="linenos" data-linenos=" 4 "></span></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5"></a><a href="#__codelineno-26-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span>Before:
+<a id="__codelineno-26-6" name="__codelineno-26-6"></a><a href="#__codelineno-26-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7"></a><a href="#__codelineno-26-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span>scope:<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8"></a><a href="#__codelineno-26-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span>myAttr:<span class="w"> </span><span class="s1">&#39;attribute&#39;</span>,
+<a id="__codelineno-26-9" name="__codelineno-26-9"></a><a href="#__codelineno-26-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10"></a><a href="#__codelineno-26-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-26-11" name="__codelineno-26-11"></a><a href="#__codelineno-26-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span>After:
+<a id="__codelineno-26-12" name="__codelineno-26-12"></a><a href="#__codelineno-26-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13"></a><a href="#__codelineno-26-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span>scope:<span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14"></a><a href="#__codelineno-26-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">      </span>myAttr:<span class="w"> </span><span class="s1">&#39;@&#39;</span>,
+<a id="__codelineno-26-15" name="__codelineno-26-15"></a><a href="#__codelineno-26-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16"></a><a href="#__codelineno-26-16"><span class="linenos" data-linenos="16 "></span></a>
+<a id="__codelineno-26-17" name="__codelineno-26-17"></a><a href="#__codelineno-26-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span>The<span class="w"> </span>removed<span class="w"> </span><span class="sb">`</span>inject<span class="sb">`</span><span class="w"> </span>wasn<span class="err">&#39;</span>t<span class="w"> </span>generaly<span class="w"> </span>useful<span class="w"> </span><span class="k">for</span><span class="w"> </span>directives<span class="w"> </span>so<span class="w"> </span>there<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>no<span class="w"> </span>code<span class="w"> </span>using<span class="w"> </span>it.
 </code></pre></div>
 <p><strong>（2）关闭 Issue</strong></p>
 <p>如果当前 commit 针对某个 issue，那么可以在 Footer 部分关闭这个 issue。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><a href="#__codelineno-25-1"><span class="linenos" data-linenos="1 "></span></a>Closes<span class="w"> </span><span class="c1">#234</span>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><a href="#__codelineno-27-1"><span class="linenos" data-linenos="1 "></span></a>Closes<span class="w"> </span><span class="c1">#234</span>
 </code></pre></div>
 <p>也可以一次关闭多个 issue。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><a href="#__codelineno-26-1"><span class="linenos" data-linenos="1 "></span></a>Closes<span class="w"> </span><span class="c1">#123, #245, #992</span>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a>Closes<span class="w"> </span><span class="c1">#123, #245, #992</span>
 </code></pre></div>
 <h3 id="revert">Revert<a class="headerlink" href="#revert" title="定位到这">&para;</a></h3>
 <p>还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以<code>revert:</code>开头，后面跟着被撤销 Commit 的 Header。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><a href="#__codelineno-27-1"><span class="linenos" data-linenos="1 "></span></a>revert:<span class="w"> </span>feat<span class="o">(</span>pencil<span class="o">)</span>:<span class="w"> </span>add<span class="w"> </span><span class="s1">&#39;graphiteWidth&#39;</span><span class="w"> </span>option
-<a id="__codelineno-27-2" name="__codelineno-27-2"></a><a href="#__codelineno-27-2"><span class="linenos" data-linenos="2 "></span></a>
-<a id="__codelineno-27-3" name="__codelineno-27-3"></a><a href="#__codelineno-27-3"><span class="linenos" data-linenos="3 "></span></a>This<span class="w"> </span>reverts<span class="w"> </span>commit<span class="w"> </span>667ecc1654a317a13331b17617d973392f415f02.
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a>revert:<span class="w"> </span>feat<span class="o">(</span>pencil<span class="o">)</span>:<span class="w"> </span>add<span class="w"> </span><span class="s1">&#39;graphiteWidth&#39;</span><span class="w"> </span>option
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><a href="#__codelineno-29-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><a href="#__codelineno-29-3"><span class="linenos" data-linenos="3 "></span></a>This<span class="w"> </span>reverts<span class="w"> </span>commit<span class="w"> </span>667ecc1654a317a13331b17617d973392f415f02.
 </code></pre></div>
 <p>Body 部分的格式是固定的，必须写成<code>This reverts commit &lt;hash&gt;.</code>，其中的<code>hash</code>是被撤销 commit 的 SHA 标识符。</p>
 <p>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的<code>Reverts</code>小标题下面。</p>
@@ -3295,54 +3344,54 @@
 <h2 id="commitizen">Commitizen<a class="headerlink" href="#commitizen" title="定位到这">&para;</a></h2>
 <p><a href="https://github.com/commitizen/cz-cli" target="_blank" rel="noopener">Commitizen</a>是一个撰写合格 Commit message 的工具。</p>
 <p>安装命令如下。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><a href="#__codelineno-28-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>commitizen
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>commitizen
 </code></pre></div>
 <p>然后，在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式。</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><a href="#__codelineno-29-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>commitizen<span class="w"> </span>init<span class="w"> </span>cz-conventional-changelog<span class="w"> </span>--save<span class="w"> </span>--save-exact
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>commitizen<span class="w"> </span>init<span class="w"> </span>cz-conventional-changelog<span class="w"> </span>--save<span class="w"> </span>--save-exact
 </code></pre></div>
 <p>以后，凡是用到<code>git commit</code>命令，一律改为使用<code>git cz</code>。这时，就会出现选项，用来生成符合格式的 Commit message。</p>
 <p><img alt="img" src="../2023-07-25-git/index-image/bg2016010605.png" /></p>
 <h2 id="gitignore"><code>.gitignore</code><a class="headerlink" href="#gitignore" title="定位到这">&para;</a></h2>
 <p>若要忽略某些文件，不让<code>git</code>提交这些文件，可以在<code>.gitignore</code>文件设定规则。</p>
 <h3 id="新建-gitignore-文件">新建 <code>.gitignore</code> 文件<a class="headerlink" href="#新建-gitignore-文件" title="定位到这">&para;</a></h3>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><a href="#__codelineno-30-1"><span class="linenos" data-linenos="1 "></span></a>touch<span class="w"> </span>.gitignore
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos="1 "></span></a>touch<span class="w"> </span>.gitignore
 </code></pre></div>
 <h3 id="添加规则">添加规则<a class="headerlink" href="#添加规则" title="定位到这">&para;</a></h3>
 <ul>
 <li>禁止上传文件夹</li>
 <li>禁止上传某个后缀的文件</li>
 </ul>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><a href="#__codelineno-31-1"><span class="linenos" data-linenos="1 "></span></a>#idea
-<a id="__codelineno-31-2" name="__codelineno-31-2"></a><a href="#__codelineno-31-2"><span class="linenos" data-linenos="2 "></span></a>/.idea
-<a id="__codelineno-31-3" name="__codelineno-31-3"></a><a href="#__codelineno-31-3"><span class="linenos" data-linenos="3 "></span></a>#__pycache__
-<a id="__codelineno-31-4" name="__codelineno-31-4"></a><a href="#__codelineno-31-4"><span class="linenos" data-linenos="4 "></span></a>/__pycache__
-<a id="__codelineno-31-5" name="__codelineno-31-5"></a><a href="#__codelineno-31-5"><span class="linenos" data-linenos="5 "></span></a>#忽略 gitignore 自身
-<a id="__codelineno-31-6" name="__codelineno-31-6"></a><a href="#__codelineno-31-6"><span class="linenos" data-linenos="6 "></span></a>.gitignore
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos="1 "></span></a>#idea
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a><a href="#__codelineno-33-2"><span class="linenos" data-linenos="2 "></span></a>/.idea
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a><a href="#__codelineno-33-3"><span class="linenos" data-linenos="3 "></span></a>#__pycache__
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a><a href="#__codelineno-33-4"><span class="linenos" data-linenos="4 "></span></a>/__pycache__
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a><a href="#__codelineno-33-5"><span class="linenos" data-linenos="5 "></span></a>#忽略 gitignore 自身
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a><a href="#__codelineno-33-6"><span class="linenos" data-linenos="6 "></span></a>.gitignore
 </code></pre></div>
 <h3 id="gitignore-文件不生效时的解决方案"><code>.gitignore</code> 文件不生效时的解决方案<a class="headerlink" href="#gitignore-文件不生效时的解决方案" title="定位到这">&para;</a></h3>
 <p>在终端输入</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><a href="#__codelineno-32-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>.
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><a href="#__codelineno-34-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>.
 </code></pre></div>
 <p>把本地缓存删除，改变成未 track 状态。</p>
 <p>如果只想把某些文件删掉，例如删除 <code>.xml</code> 文件，可以用</p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><a href="#__codelineno-33-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>*.xml
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><a href="#__codelineno-35-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>*.xml
 </code></pre></div>
 <h4 id="示例">示例<a class="headerlink" href="#示例" title="定位到这">&para;</a></h4>
 <p>目录结构：</p>
 <p><img alt="image-20221204195912121" src="../2023-07-25-git/index-image/image-20221204195912121.png" /></p>
 <p><code>.gitignore</code>文件中的内容：</p>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><a href="#__codelineno-34-1"><span class="linenos" data-linenos="1 "></span></a># 不上传 xml 文件
-<a id="__codelineno-34-2" name="__codelineno-34-2"></a><a href="#__codelineno-34-2"><span class="linenos" data-linenos="2 "></span></a>*.xml
-<a id="__codelineno-34-3" name="__codelineno-34-3"></a><a href="#__codelineno-34-3"><span class="linenos" data-linenos="3 "></span></a># 不上传。gitignore 文件
-<a id="__codelineno-34-4" name="__codelineno-34-4"></a><a href="#__codelineno-34-4"><span class="linenos" data-linenos="4 "></span></a>.gitignore
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><a href="#__codelineno-36-1"><span class="linenos" data-linenos="1 "></span></a># 不上传 xml 文件
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a><a href="#__codelineno-36-2"><span class="linenos" data-linenos="2 "></span></a>*.xml
+<a id="__codelineno-36-3" name="__codelineno-36-3"></a><a href="#__codelineno-36-3"><span class="linenos" data-linenos="3 "></span></a># 不上传。gitignore 文件
+<a id="__codelineno-36-4" name="__codelineno-36-4"></a><a href="#__codelineno-36-4"><span class="linenos" data-linenos="4 "></span></a>.gitignore
 </code></pre></div>
 <h3 id="忽略gitignore文件本身的另一种方法">忽略<code>.gitignore</code>文件本身的另一种方法<a class="headerlink" href="#忽略gitignore文件本身的另一种方法" title="定位到这">&para;</a></h3>
 <p>在<code>.git/info/exclude</code>添加<code>.gitignore</code>：</p>
 <p><img alt="image-20230118091542891" src="../2023-07-25-git/index-image/image-20230118091542891.png" /></p>
 <h3 id="不忽略文件和文件夹">不忽略文件和文件夹<a class="headerlink" href="#不忽略文件和文件夹" title="定位到这">&para;</a></h3>
 <p>方法：在路径前加上 <code>!</code>。</p>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><a href="#__codelineno-35-1"><span class="linenos" data-linenos="1 "></span></a>*
-<a id="__codelineno-35-2" name="__codelineno-35-2"></a><a href="#__codelineno-35-2"><span class="linenos" data-linenos="2 "></span></a>!path/to/uploaded_file.txt
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><a href="#__codelineno-37-1"><span class="linenos" data-linenos="1 "></span></a>*
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a><a href="#__codelineno-37-2"><span class="linenos" data-linenos="2 "></span></a>!path/to/uploaded_file.txt
 </code></pre></div>
 <p>在上面的示例中，<code>*</code> 表示忽略所有文件和文件夹。<code>!path/to/uploaded_file.txt</code> 表示不忽略 <code>path/to/uploaded_file.txt</code> 文件。</p>
 <h2 id="添加-submodule">添加 <code>submodule</code><a class="headerlink" href="#添加-submodule" title="定位到这">&para;</a></h2>
@@ -3353,37 +3402,37 @@
 </li>
 <li>
 <p>使用以下命令添加 submodule：
-   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><a href="#__codelineno-36-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>&lt;URL<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add&gt;<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>repository&gt;
+   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><a href="#__codelineno-38-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>&lt;URL<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add&gt;<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>repository&gt;
 </code></pre></div></p>
 </li>
 </ol>
 <p>例如：
-   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><a href="#__codelineno-37-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/username/another-repository.git<span class="w"> </span>path/to/directory
+   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><a href="#__codelineno-39-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>https://github.com/username/another-repository.git<span class="w"> </span>path/to/directory
 </code></pre></div></p>
 <ol>
 <li>
 <p>添加并提交 submodule 更改：
-   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><a href="#__codelineno-38-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-38-2" name="__codelineno-38-2"></a><a href="#__codelineno-38-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add submodule: &lt;submodule name&gt;&quot;</span>
+   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><a href="#__codelineno-40-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a><a href="#__codelineno-40-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add submodule: &lt;submodule name&gt;&quot;</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>如果你将这些更改推送到远程仓库，确保在推送之前初始化并更新子模块：
-   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><a href="#__codelineno-39-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+   <div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><a href="#__codelineno-41-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
 </code></pre></div></p>
 </li>
 </ol>
 <p>现在，你的主仓库中的指定目录应该映射到另一个仓库。</p>
 <p>请注意，当其他人克隆你的仓库时，他们需要运行以下命令来初始化并拉取子模块中的内容：
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><a href="#__codelineno-40-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><a href="#__codelineno-42-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive
 </code></pre></div></p>
 <p>这样他们才能获取到子模块的内容。</p>
 <h2 id="连接-github-的问题">连接 GitHub 的问题<a class="headerlink" href="#连接-github-的问题" title="定位到这">&para;</a></h2>
 <h3 id="测试和-github-的网络通信是否正常">测试和 GitHub 的网络通信是否正常<a class="headerlink" href="#测试和-github-的网络通信是否正常" title="定位到这">&para;</a></h3>
 <p><code>ssh -T -p 443 git@ssh.github.com</code>来测试和 GitHub 的网络通信是否正常，如果提示<code>Hi xxxxx! You've successfully authenticated, but GitHub does notprovide shell access.</code> 就表示一切正常了。</p>
 <h3 id="报错-the-tls-connection-was-non-properly-terminated">报错 The TLS connection was non-properly terminated.<a class="headerlink" href="#报错-the-tls-connection-was-non-properly-terminated" title="定位到这">&para;</a></h3>
-<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><a href="#__codelineno-41-1"><span class="linenos" data-linenos="1 "></span></a>git push origin master:master
-<a id="__codelineno-41-2" name="__codelineno-41-2"></a><a href="#__codelineno-41-2"><span class="linenos" data-linenos="2 "></span></a>fatal: unable to access &#39;https://github.com/XXX.git/&#39;: gnutls_handshake() failed: The TLS connection was non-properly terminated.
+<div class="highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><a href="#__codelineno-43-1"><span class="linenos" data-linenos="1 "></span></a>git push origin master:master
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a><a href="#__codelineno-43-2"><span class="linenos" data-linenos="2 "></span></a>fatal: unable to access &#39;https://github.com/XXX.git/&#39;: gnutls_handshake() failed: The TLS connection was non-properly terminated.
 </code></pre></div>
 <p>两种解决方法：</p>
 <ol>
@@ -3403,15 +3452,15 @@
 <p>解决方法：</p>
 <p>删除原有的 SSH Key，再重新生成一份 SSH Key，上传新的 SSH Key 到 GitHub。</p>
 <h3 id="为git配置代理">为<code>Git</code>配置代理<a class="headerlink" href="#为git配置代理" title="定位到这">&para;</a></h3>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><a href="#__codelineno-42-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.sslverify<span class="w"> </span><span class="nb">false</span>
-<a id="__codelineno-42-2" name="__codelineno-42-2"></a><a href="#__codelineno-42-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.https://github.com.proxy<span class="w"> </span>socks://127.0.0.1:10808
-<a id="__codelineno-42-3" name="__codelineno-42-3"></a><a href="#__codelineno-42-3"><span class="linenos" data-linenos="3 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>https.https://github.com.proxy<span class="w"> </span>socks://127.0.0.1:10808
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><a href="#__codelineno-44-1"><span class="linenos" data-linenos="1 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.sslverify<span class="w"> </span><span class="nb">false</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a><a href="#__codelineno-44-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.https://github.com.proxy<span class="w"> </span>socks://127.0.0.1:10808
+<a id="__codelineno-44-3" name="__codelineno-44-3"></a><a href="#__codelineno-44-3"><span class="linenos" data-linenos="3 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>https.https://github.com.proxy<span class="w"> </span>socks://127.0.0.1:10808
 </code></pre></div>
 <p><img alt="image-20230131200320933" src="../2023-07-25-git/index-image/image-20230131200320933.png" /></p>
-<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><a href="#__codelineno-43-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 删除重置上述参数</span>
-<a id="__codelineno-43-2" name="__codelineno-43-2"></a><a href="#__codelineno-43-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>http.sslverify
-<a id="__codelineno-43-3" name="__codelineno-43-3"></a><a href="#__codelineno-43-3"><span class="linenos" data-linenos="3 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>http.proxy
-<a id="__codelineno-43-4" name="__codelineno-43-4"></a><a href="#__codelineno-43-4"><span class="linenos" data-linenos="4 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>https.proxy
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><a href="#__codelineno-45-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 删除重置上述参数</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a><a href="#__codelineno-45-2"><span class="linenos" data-linenos="2 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>http.sslverify
+<a id="__codelineno-45-3" name="__codelineno-45-3"></a><a href="#__codelineno-45-3"><span class="linenos" data-linenos="3 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>http.proxy
+<a id="__codelineno-45-4" name="__codelineno-45-4"></a><a href="#__codelineno-45-4"><span class="linenos" data-linenos="4 "></span></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>https.proxy
 </code></pre></div>
 
 
@@ -3433,7 +3482,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2025 年 11 月 15 日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2026 年 5 月 8 日</span>
   </span>
 
     
